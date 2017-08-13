@@ -14,25 +14,6 @@ GameEntity::~GameEntity()
 {
 }
 
-void GameEntity::loadResourcesAll(ResourceHandler & resourceHandler)
-{
-	loadResourcesCurrent(resourceHandler);
-
-	loadResourcesChilds(resourceHandler);
-}
-
-void GameEntity::loadResourcesChilds(ResourceHandler & resourceHandler)
-{
-	for (unsigned int i = 0; i < mChilds.size(); i++)
-	{
-		mChilds[i].get().loadResourcesAll(resourceHandler);
-	}
-}
-
-void GameEntity::loadResourcesCurrent(ResourceHandler & resourceHandler)
-{
-}
-
 void GameEntity::handleEventAll(const sf::Event& event)
 {
 	handleEventCurrent(event);

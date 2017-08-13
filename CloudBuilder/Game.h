@@ -10,17 +10,17 @@
 
 class InstructionSquare;
 
+struct GameContext
+{
+	GameContext(StateMachine& sm, ResourceHandler& rh) : stateMachine(sm), resourceHandler(rh) {}
+
+	StateMachine& stateMachine;
+	ResourceHandler& resourceHandler;
+};
+
 class Game
 {
 public:
-	//struct GameContext
-	//{
-	//	GameContext(StateMachine& sm, ResourceHandler& rh) : stateMachine(sm), resourceHandler(rh) {}
-
-	//	StateMachine& stateMachine;
-	//	ResourceHandler& resourceHandler;
-	//};
-
 	Game();
 	~Game();
 

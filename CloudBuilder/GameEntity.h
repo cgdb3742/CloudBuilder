@@ -4,7 +4,7 @@
 #include <memory>
 #include <SFML\Graphics.hpp>
 
-class ResourceHandler;
+struct GameContext;
 
 class GameEntity
 {
@@ -15,10 +15,6 @@ public:
 
 	GameEntity();
 	~GameEntity();
-
-	virtual void loadResourcesAll(ResourceHandler& resourceHandler); //TODO If an object create children at runtime, they should keep enough to load resources for their children too...
-	virtual void loadResourcesChilds(ResourceHandler& resourceHandler);
-	virtual void loadResourcesCurrent(ResourceHandler& resourceHandler);
 
 	virtual void handleEventAll(const sf::Event& event);
 	virtual void handleEventChilds(const sf::Event& event);
@@ -52,5 +48,7 @@ protected:
 	sf::Vector2f mTopLeftCorner;
 	sf::Vector2f mBoundingBox;
 	std::vector<GameEntityRef> mChilds;
+
+	//GameContext& mGameContext;
 };
 

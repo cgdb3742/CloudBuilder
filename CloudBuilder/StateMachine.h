@@ -4,6 +4,8 @@
 #include "State.h"
 #include "Enums.h"
 
+class ResourceHandler;
+
 class StateMachine:
 	public GameEntity
 {
@@ -28,5 +30,6 @@ private:
 
 	std::map<Enums::eState,State::StatePtr> mStates;
 	//std::map<Enums::eState, State> mStates;
+
 };
 
