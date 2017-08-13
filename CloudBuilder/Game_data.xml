@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<game_data>
+    <levels>
+        <world id = "1">
+            <name>
+                <en>The workshop</en>
+                <fr>L'atelier</fr>
+            </name>
+            <level id = "1">
+                <name>
+                    <en>Moving in</en>
+                    <fr>L'amorce</fr>
+                </name>
+                <description>
+                    <en>Work is piling in the cloud workshop! Learn how you can help by directing the cloud weavers in your first assignment.</en>
+                    <fr>Le travail s'entasse dans l'atelier des nuages ! Apprenez comment venir en aide en dirigeant les tisseurs de nuages dans votre première mission.</fr>
+                </description>
+                <status>New</status>
+                <unlock_requirement>TODO</unlock_requirement>
+            </level>
+        </world>
+    </levels>
+    <options>
+        <current_language>en</current_language>
+        <available_language>en</available_language>
+        <available_language>fr</available_language>
+    </options>
+    <common_translations>
+        <instruction code_name = "Unassigned" id = "0">
+            <en>Unassigned</en>
+            <fr>Vide</fr>
+        </instruction>
+        <instruction code_name = "SpeStart" id = "11">
+            <en>Start</en>
+            <fr>Démarrer</fr>
+            </instruction>
+        <instruction code_name = "SpeAccept" id = "12">
+            <en>Accept</en>
+            <fr>Accepter</fr>
+        </instruction>
+        <instruction code_name = "SpeReject" id = "13">
+            <en>Reject</en>
+            <fr>Refuse</fr>
+        </instruction>
+        <instruction code_name = "ActMove" id = "21">
+            <en>Move</en>
+            <fr>Déplacer</fr>
+        </instruction>
+        <instruction code_name = "ActSetCloud" id = "22">
+            <en>Change cloud</en>
+            <fr>Changer nuage</fr>
+        </instruction>
+        <instruction code_name = "ActSetColor" id = "23">
+            <en>Change color</en>
+            <fr>Changer couleur</fr>
+        </instruction>
+        <instruction code_name = "CheckCloud" id = "31">
+            <en>Check cloud</en>
+            <fr>Vérifier nuage</fr>
+        </instruction>
+        <instruction code_name = "CheckColor" id = "32">
+            <en>Check color</en>
+            <fr>Vérifier couleur</fr>
+        </instruction>
+        <instruction code_name = "CheckBorder" id = "33">
+            <en>Check border</en>
+            <fr>Vérifier bordure</fr>
+        </instruction>
+        <instruction code_name = "FlowWait" id = "41">
+            <en>Wait</en>
+            <fr>Attendre</fr>
+        </instruction>
+        <instruction code_name = "FlowPause" id = "42">
+            <en>Pause</en>
+            <fr>Pauser</fr>
+        </instruction>
+        <instruction code_name = "FlowResume" id = "43">
+            <en>Resume</en>
+            <fr>Rependre</fr>
+        </instruction>
+        <instruction code_name = "FlowSync" id = "44">
+            <en>Synchronize</en>
+            <fr>Synchroniser</fr>
+        </instruction>
+        <instruction_modifier code_name = "NextDir" id = "11">
+            <en>Next</en>
+            <fr>Suivant</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "NextDirTrue" id = "12">
+            <en>Next if true</en>
+            <fr>Suivant si vrai</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "NextDirFalse" id = "13">
+            <en>Next if false</en>
+            <fr>Suivant si vrai</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CheckDir" id = "14">
+            <en>Check direction</en>
+            <fr>Direction de vérification</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudDire" id = "15">
+            <en>Direction</en>
+            <fr>Direction</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "RobotColor" id = "21">
+            <en>Robot color</en>
+            <fr>Couleur du robot</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudColor" id = "22">
+            <en>Color</en>
+            <fr>Couleur</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudBool" id = "31">
+            <en>Want cloud</en>
+            <fr>Nuage voulu</fr>
+        </instruction_modifier>
+        <level_tab code_name = "Infos" id = "0">
+            <en>Infos</en>
+            <fr>Infos</fr>
+        </level_tab>
+        <level_tab code_name = "New" id = "1">
+            <en>New</en>
+            <fr>Nouveau</fr>
+        </level_tab>
+        <level_tab code_name = "Modify" id = "2">
+            <en>Modify</en>
+            <fr>Modifier</fr>
+        </level_tab>
+        <level_tab code_name = "Play" id = "3">
+            <en>Play</en>
+            <fr>Jouer</fr>
+        </level_tab>
+    </common_translations>
+</game_data>

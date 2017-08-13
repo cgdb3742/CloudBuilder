@@ -1,0 +1,40 @@
+#pragma once
+
+#include "GameEntity.h"
+#include "CloudRobot.h"
+#include "InstructionRobot.h"
+
+class RobotPair :
+	public GameEntity
+{
+public:
+	RobotPair(CloudCanvas& canvas, InstructionBoard& board);
+	RobotPair(CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color);
+	~RobotPair();
+
+	//virtual void updateCurrent(sf::Time dt);
+	void startPointsUpdated();
+
+	void resetInstructionDone();
+	bool applyInstruction(float progress); //return if done
+	bool moveInstructionRobot(float progress); //return if done
+	void resetAll();
+
+	Enums::eResult getResult();
+
+	CloudRobot& getCloudRobot();
+	InstructionRobot& getInstructionRobot();
+
+	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
+protected:
+	virtual void updateChildsVector();
+private:
+	Enums::eColor mColor;
+	CloudRobot mCloudRobot;
+	InstructionRobot mInstructionRobot;
+	CloudCanvas& mCanvas;
+	InstructionBoard& mBoard;
+
+	bool mInstructionDone;
+};
+

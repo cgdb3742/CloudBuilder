@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<level_data>
+    <general_info>
+        <name>
+            <en>Moving in</en>
+            <fr>L'amorce</fr>
+        </name>
+        <world>1</world>
+        <puzzle>1</puzzle>
+        <type>validation</type>
+        <robots>1</robots>
+        <status>New</status>
+    </general_info>
+    <cloud_pictures>
+        <cloud id = "0">
+            <data>TODO</data>
+            <result>TODO</result>
+        </cloud>
+    </cloud_pictures>
+    <board>
+        <starting_data>TODO</starting_data>
+        <available_instructions>
+            <instruction code_name = "ActMove" id = "21" />
+            <instruction code_name = "CheckCloud" id = "31" />
+            <instruction code_name = "SpeAccept" id = "12" />
+            <instruction code_name = "SpeReject" id = "13" />
+        </available_instructions>
+        <current_data>TODO</current_data>
+    </board>
+    <infos>
+        <topic id = "0">
+            <name>
+                <en>Welcome !</en>
+                <fr>Bienvenue !</fr>
+            </name>
+            <text id = "0">
+                <en>Are you the new commander ? Thank heavens ! The cloud weavers are hardworkers, but tend to be often disorganized. I am your assistant fairy. Let me explain our problem.</en>
+                <fr>Etes-vous le nouveau commandeur ? J'en remercie le ciel ! Les tisseurs de nuages sont très travailleurs, mais aussi souvent désorganisés. Je suis votre fée assistante. Laissez-moi expliquer le problème.</fr>
+            </text>
+            <text id = "1">
+                <en>We are the control office. On your left we reguraly receive creations from the artistic studio. Our job is to check whether these clouds meet the expectations of the marketing departement. This is described in the Goal topic on the left.</en>
+                <fr>Nous sommes le bureau des contrôles. Sur la gauche nous recevons en permanence les créations du studio artistique. Notre travail est de s'assurer que ces nuages suivent les demandes du département marketing. Ils sont décrits dans le sujet Objectif sur la gauche.</fr>
+            </text>
+            <text id = "2">
+                <en>The cloud weavers are happy to help, but they are often absent-minded. We need to constantly remind them of what they need to do. That's why we have the instruction board on the right. Step by step, we progress on the board and tell our cloud weaver their next action. More on that in the Tools topic.</en>
+                <fr>Les tisseurs de nuages sont ravis d'aider, mais ils sont aussi distraits. Nous devons leur rappeler en permanence ce qu'ils doivent faire. C'est pour ça que nous avons le tableau d'instructions à droite. Etape par étape, nous suivons le tableau pour dire à notre tisseur de nuage sa prochaine action. Je vous en dirais plus dans le sujet Outils.</fr>
+            </text>
+            <text id = "3">
+                <en>Since it is your first assignment, I strongly suggest you start by reading all the topics then experiment with the instruction board. Do not worry, I am here to help!</en>
+                <fr>Puisque c'est votre première mission, je vous conseille fortement de commencer par lire tous les sujets puis expérimenter avec le tableau d'instructions. Pas de panique, je suis là pour aider !</fr>
+            </text>
+        </topic>
+        <topic id = "1">
+            <name>
+                <en>Goal</en>
+                <fr>Objectif</fr>
+            </name>
+            <text id = "0">
+                <en>Our marketing team identified that people absolutely love it when there is a cloud in the second row, third column in the canvas. Yes, that position exactly. Do not ask me why. Our task is only to check that position and accept the canvas if and only if there is a cloud.</en>
+                <fr>Notre équipe marketing a identifié que les gens adorent quand il y a un nuage à la seconde ligne, troisième colonne dans le canevas. Oui, cette position exactement. Ne me demandez pas pourquoi. Notre tâche est seulement de vérifier cette position et accepter le canevas si et seulement s'il y a un nuage.</fr>
+            </text>
+            <text id = "1">
+                <en>So, if our cloud weaver start to the top-left corner, they only need to move twice to right, then once down, then check if there is a cloud, right ? Hopefully our instruction board has the right tools for that.</en>
+                <fr>Donc, si notre tisseur de nuages part du coin haut-gauche, il doit juste se déplacer deux fois vers la droite, puis une fois vers le bas, et enfin vérifier s'il y a un nuage, non ? J'espère que le tableau d'instructions a les bons outils pour ça.</fr>
+            </text>
+        </topic>
+        <topic id = "2">
+            <name>
+                <en>Tools</en>
+                <fr>Outils</fr>
+            </name>
+            <text id = "0">
+                <en>See the red marker on the instruction board ? This is the instruction reader. When we start the instruction reading, the cloud weaver will process the instruction indicated in the marked square, then the instruction reader will follow the blue arrow to the next instruction. This will continue until the reader reach an Accept or Reject instruction.</en>
+                <fr>Vous voyez le marqueur rouge sur le tableau d'instruction ? C'est le lecteur d'instruction. Quand nous démarrons la lecture d'instructions, le tisseur de nuage va exécuter l'instruction indiquée dans le carré marqué, puis le lecteur d'instruction suivra la flêche bleue vers la prochaine instruction. Ceci continue jusqu'à ce que le lecteur atteint une instruction Accepter ou Refuser.</fr>
+            </text>
+            <text id = "1">
+                <en>In our case, there is already a Start and a Move instruction. You can check in the Play tab that it effectively moves the weaver one space to the right. We need to move right once more, once down and then check if there is a cloud.</en>
+                <fr>Dans notre cas, il y a déjà une instruction Démarrer et une Déplacer. Vous pouvez vérifier dans l'onglet Jouer que le tisseur se déplace effectivement d'une case vers la droite. Nous le devons le déplacer encore une fois vers la droite, une fois vers le bas, puis vérifier s'il y a un nuage.</fr>
+            </text>
+            <text id = "2">
+                <en>To add a new instruction, go to the New tab. There you can drag and drop a Move instruction next to the first one. If you mess up, you can drag it back to trash bin, or click on the reset button.</en>
+                <fr>Pour ajouter une nouvelle instruction, allez dans l'onglet Nouveau. Là-bas vous pouvez prendre une instruction Déplacer et la glisser à côté de la première. Si vous vous ratez, vous pouvez la refaire glisser vers la poubelle, ou appuyer sur le bouton de réinitialisation.</fr>
+            </text>
+            <text id = "3">
+                <en>The last Move instruction is a bit trickier. By default a Move instruction move the weaver right. To change that, go to the Modify tab. You can change different properties depending on the selected instruction. For this one, change it to move down. Note you can also change there the direction of the blue arrow on the instruction board, so you can control the path of the instruction reader.</en>
+                <fr>La dernière instruction Déplacer est un peu plus délicate. Par défaut elle déplace le tisseur vers la droite. Pour le changer, allez dans l'onglet Modifier. Vous pouvez changer différentes propriétés selon l'instruction choisie. Pour celle-ci, changez-la pour qu'elle déplace vers la droite. Vous pouvez aussi changer la direction de la flêche bleue sur le tableau d'instructions, pour contrôler le chemin du lecteur d'instructions.</fr>
+            </text>
+            <text id = "4">
+                <en>Now the weaver will go to the right position, time to use the Check instruction. When placed on the instruction board, the Check instruction create two arrows : a green and a red one. This means the instruction reader will follow the green arrow if the check is successful, and the red one otherwise. You can see in the Modify tab there's a lot you can change, but it is not important for now.</en>
+                <fr>Maintenant que le tisseur peut aller à la bonne position, il est temps d'utiliser une instruction Vérifier. Quand elle est placée sur le tableau d'instructions, l'instruction Vérifier crée deux flêches : une verte et une jaune. Ceci signifie que le lecteur d'instructions suivra la flêche verte si la vérification est réussie, et la rouge sinon. Vous pouvez voir dans l'onglet Modifier qu'il y a beaucoup d'options, mais ce n'est pas important pour l'instant.</fr>
+            </text>
+            <text id = "5">
+                <en>Almost there! We want to accept only if we found a cloud, so make the green arrow point to an Accept instruction, and the red one to a Reject instruction. That was a lot of explanations! Now go to the Play tab and see if the weaver does what we expected him to do.</en>
+                <fr>Nous y sommes presque ! Nous voulons accepter uniquement si nous trouvons un nuage, dons faites pointer la flêche verte vers une instruction Accepter, et la rouge vers une instruction Refuser. C'était beaucoup d'explications ! Maintenant allez dans l'onglet Jouer and regardez si le tisseur fais ce que nous attendions de lui.</fr>
+            </text>
+        </topic>
+        <topic id = "3">
+            <name>
+                <en>Constraints</en>
+                <fr>Contraintes</fr>
+            </name>
+            <text id = "0">
+                <en>Sometimes I wonder whether our work make any sense. For example, what if an artist use a canvas so small the second row or the third column does not exist? Fortunately the artistic studio assured me they would send us no such canvas. If our assignment change, I will make sure to ask them to only send canvas we work with.</en>
+                <fr>Parfois je me demande si notre travail a un sens. Par exemple, et si un artiste utilisait un canevas si petit qu'il n'y a pas de seconde ligne ou de troisième colonne ? Heureusement le studio artistique m'a assuré qu'ils nous enverraient aucun canevas de la sorte. Si notre mission change, je ferais attention de leur demander de nous envoyer que des canevas avec lesquels nous pouvons travailler.</fr>
+            </text>
+        </topic>
+        <topic id = "4">
+            <name>
+                <en>Hints</en>
+                <fr>Indices</fr>
+            </name>
+            <text id = "0">
+                <en>I know I am only an assistant, but if you need a second opinion, you can always ask me! If you have tried everything and ran out of idea, I will try to suggest a new way to see your problem!</en>
+                <fr>Je sais que je ne suis qu'une assistante, mais si vous avez besoin d'une seconde opinion, vous pouvez toujours me demander ! Si vous avez tout essayé et n'avez plus d'idée, j'essayerais de vous suggérer une nouvelle façon de voir le problème !</fr>
+            </text>
+            <text id = "1">
+                <en>You can not interact directly with the canvas, only with the interaction board. Frustating, right? I am always confused trying to understand how the cloud weaver and the instruction reader behave differently, yet together...</en>
+                <fr>Vous ne pouvez pas interagir directement avec le canevas, uniquement le tableau d'interactions. Frustrant, non ? Je suis toujours perdue quand j'essaie de comprendre comment le tisseur de nuages et le lecteur d'instructions se comportent différemment, mais ensemble...</fr>
+            </text>
+            <text id = "2">
+                <en>Take your time to mess with the Play tab. Even if your instruction board does not work or is incomplete, you can always check how the cloud weaver react. Since it is your first assignment, nobody expect you to understand everything, so take your time to discover your tools. I heard the best way to learn is to fail and retry.</en>
+                <fr>Prenez le temps de vous familiariser avec l'onglet Jouer. Même si votre tableau d'instructions ne marche pas ou est incomplet, vous pouvez toujours regarder comment le tisseur de nuages réagit. Vu que c'est votre première mission, personne ne s'attend à ce que vous compreniez tout, alors prenez le temps de découvrir vos outils. J'ai entendu dire que la meilleure façon d'apprendre est d'échouer et réessayer.</fr>
+            </text>
+            <text id = "4">
+                <en>Did you understand how to add instructions from the Create tab, and adjust them in the Modify tab? Try to follow my suggestions in the Tools topic step by step, and run the instruction reader from the Play tab. I hope it will work fine...</en>
+                <fr>Avez-vous compris comment ajouter des instructions depuis l'onglet Créer, et les adjuster dans l'onglet Modifier ? Essayez de suivre mes suggestions dans le sujet Outils étape par étape, et lancez le lecteur d'instructions depuis l'onglet Jouer. J'espère que tout va bien fonctionner...</fr>
+            </text>
+        </topic>
+    </infos>
+</level_data>

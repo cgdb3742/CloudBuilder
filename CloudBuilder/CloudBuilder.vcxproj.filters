@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers sources\Cloud">
+      <UniqueIdentifier>{486886e1-314b-4d22-93a6-f2252fd58fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Cloud">
+      <UniqueIdentifier>{861fb215-0650-4d83-9bfc-f504c033d9a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Instruction">
+      <UniqueIdentifier>{db13219e-c34c-4b0c-a94f-7c7a3fa09bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Instruction">
+      <UniqueIdentifier>{f6214be0-1805-428f-8302-6b3f48d0e15d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Instruction\InstructionSquares">
+      <UniqueIdentifier>{93141ab5-29c6-48ee-8242-e472fe59c12e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Instruction\InstructionSquares">
+      <UniqueIdentifier>{c46a13c6-639d-45a2-9309-a5e5aeacf2c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl">
+      <UniqueIdentifier>{be41daf2-ae7b-48fb-9820-bfb4e274b03f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl">
+      <UniqueIdentifier>{56dcc8f2-041c-4e6d-b421-83ae10e6a4cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\States">
+      <UniqueIdentifier>{cb8272f0-8243-4072-bbc9-7ee16208083c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\States">
+      <UniqueIdentifier>{312d139c-d4a8-448c-abab-683ddb12b598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI">
+      <UniqueIdentifier>{f3c892ab-7187-4b6e-8512-1c1c03f3d1d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI">
+      <UniqueIdentifier>{3399fffd-8505-444d-b133-05810ba8e3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUIInstructionCreator">
+      <UniqueIdentifier>{dc75415c-8b64-42b0-ae79-0a8437c65c82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUIInstructionModifier">
+      <UniqueIdentifier>{7dcb9e21-ceb8-4712-903d-6ca53bc131b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator">
+      <UniqueIdentifier>{65871a2e-6bea-4b65-bebd-787fae0d9acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUIInstructionModifier">
+      <UniqueIdentifier>{8c43e1dc-880e-460b-acfa-7f668e5bf992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUIPlayer">
+      <UniqueIdentifier>{b6c14324-d4a9-4de7-a7a5-6ee05a24c43c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUIPlayer">
+      <UniqueIdentifier>{c4c95808-df15-4301-a575-bf227aaf17b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUIInfos">
+      <UniqueIdentifier>{32a11d30-a979-4a13-8527-dcf2e84104db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUIInfos">
+      <UniqueIdentifier>{286ce050-8519-4b28-99cd-73cee01c938c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\TitleScreen">
+      <UniqueIdentifier>{e849d2b4-21a2-461b-bada-b85a4cf9b0c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\TitleScreen">
+      <UniqueIdentifier>{1ca9bf81-9bdb-4d35-a0c1-a2ec94ed7dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\FileReader">
+      <UniqueIdentifier>{7088a941-ce65-4c38-87fd-a613d9e7ec15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\FileReader">
+      <UniqueIdentifier>{0024d340-291b-43f0-8ce6-c3eaa419cbda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\ResourcesHandler">
+      <UniqueIdentifier>{6eafb97b-9dca-4d07-bfd1-7b7ba58a0e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ResourcesHandler">
+      <UniqueIdentifier>{8b44d30f-266d-4cd4-905c-b5c578e8a93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\Fonts">
+      <UniqueIdentifier>{705922d6-3d23-4c1d-bf51-7da8f1484262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\Data">
+      <UniqueIdentifier>{98dcb2cb-9116-42f4-962b-8f575b67fa39}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudCanvas.cpp">
+      <Filter>Fichiers sources\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudSquare.cpp">
+      <Filter>Fichiers sources\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquare.cpp">
+      <Filter>Fichiers sources\Instruction</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudRobot.cpp">
+      <Filter>Fichiers sources\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionRobot.cpp">
+      <Filter>Fichiers sources\Instruction</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareStart.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudPicture.cpp">
+      <Filter>Fichiers sources\Cloud</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareActMove.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareCheckCloud.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="Enums.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotPair.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEntity.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Fichiers sources\GameControl\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Fichiers sources\GameControl\States</Filter>
+    </ClCompile>
+    <ClCompile Include="StateLevel.cpp">
+      <Filter>Fichiers sources\GameControl\States</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionMouseDragHandler.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionDraggableHandler.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionBoard.cpp">
+      <Filter>Fichiers sources\Instruction</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionCreator.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionCreatorContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionModifier.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionModifier</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionModifierContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionModifier</Filter>
+    </ClCompile>
+    <ClCompile Include="GUILevelMenuTab.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUILevelMenu.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionPlayer.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildLockable.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIPlayerContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIPlayerButton.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInfosContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInfosTopic.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInfosScroller.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInfosText.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInfos</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIButton.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="StateTitleScreen.cpp">
+      <Filter>Fichiers sources\GameControl\TitleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="GUITitleScreenButton.cpp">
+      <Filter>Fichiers sources\GameControl\TitleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="StringConvertible.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelDataReader.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDataReader.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareReject.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareAccept.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="FontHandler.cpp">
+      <Filter>Fichiers sources\ResourcesHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceHandler.cpp">
+      <Filter>Fichiers sources\ResourcesHandler</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CloudCanvas.h">
+      <Filter>Fichiers d%27en-tête\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudSquare.h">
+      <Filter>Fichiers d%27en-tête\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionBoard.h">
+      <Filter>Fichiers d%27en-tête\Instruction</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquare.h">
+      <Filter>Fichiers d%27en-tête\Instruction</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudRobot.h">
+      <Filter>Fichiers d%27en-tête\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionRobot.h">
+      <Filter>Fichiers d%27en-tête\Instruction</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareStart.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudPicture.h">
+      <Filter>Fichiers d%27en-tête\Cloud</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareActMove.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareCheckCloud.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="RobotPair.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEntity.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Fichiers d%27en-tête\GameControl\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Fichiers d%27en-tête\GameControl\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateLevel.h">
+      <Filter>Fichiers d%27en-tête\GameControl\States</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionMouseDragHandler.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionDraggableHandler.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionCreator.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionCreatorContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionModifier.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionModifier</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionModifierContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionModifier</Filter>
+    </ClInclude>
+    <ClInclude Include="GUILevelMenuTab.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUILevelMenu.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionPlayer.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildLockable.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIPlayerButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIPlayerContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInfosTopic.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInfosContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInfosText.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInfosScroller.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInfos</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="StateTitleScreen.h">
+      <Filter>Fichiers d%27en-tête\GameControl\TitleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="GUITitleScreenButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\TitleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="StringConvertible.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="pugiconfig.hpp">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml.hpp">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDataReader.h">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelDataReader.h">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareAccept.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareReject.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="FontHandler.h">
+      <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceHandler.h">
+      <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Game_data.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Level_1_1.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf">
+      <Filter>Fichiers de ressources\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+</Project>
