@@ -1,12 +1,13 @@
 #include <iostream>
 #include "Level.h"
-
+#include "Game.h"
 
 
 Level::Level(GameContext & gameContext):
 	GameEntity(gameContext),
 	mCanvas(gameContext, 10, 10),
 	mBoard(gameContext, 8, 8),
+	mCurrentCloud(0),
 	mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, mBoard, mPlayer),
@@ -16,7 +17,21 @@ Level::Level(GameContext & gameContext):
 	createRobotPairs(1);
 	//mMenu.changeSelection(0);
 
-	std::cout << mCanvas.convertToString() << std::endl;
+	//std::cout << mCanvas.convertToString() << std::endl;
+}
+
+Level::Level(GameContext & gameContext, LevelData levelData) :
+	GameEntity(gameContext),
+	mCurrentCloud(0),
+	mCanvas(gameContext, levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
+	mBoard(gameContext, levelData.startingBoard),
+	mIsRunning(false),
+	mPlayer(gameContext, *this, mRobots),
+	mMenu(gameContext, mBoard, mPlayer),
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
+{
+	createRobotPairs(levelData.nbRobots);
+	createBaseReports(levelData);
 }
 
 Level::Level(GameContext & gameContext, unsigned int nbRobots) :
@@ -76,6 +91,23 @@ bool Level::createStartInstructionSpace(unsigned int i, unsigned int j, Enums::e
 	return false;
 }
 
+void Level::createBaseReports(LevelData data)
+{
+	mBaseReports.clear();
+
+	for (unsigned int i = 0; i < data.clouds.size(); i++)
+	{
+		if (data.isValidation)
+		{
+			mBaseReports.push_back(VerificationReport(CloudPicture(mGameContext, data.clouds[i]), (data.results[i] == "Accept") ? Enums::eResult::Accept : Enums::eResult::Refuse));
+		}
+		else
+		{
+			mBaseReports.push_back(VerificationReport(CloudPicture(mGameContext, data.clouds[i]), CloudPicture(mGameContext, data.results[i])));
+		}
+	}
+}
+
 void Level::lock()
 {
 	BuildLockable::lock();
@@ -94,12 +126,63 @@ void Level::unlock()
 
 void Level::resetAll()
 {
+	mCanvas.convertFromString(mGameContext.levelData.clouds[mCurrentCloud]);
+
+	//updateChildsVectorAll();
+	//setPositionAll(mTopLeftCorner, mBoundingBox);
+
 	for (auto& pair : mRobots)
 	{
 		pair.second.resetAll();
 	}
+}
 
-	//TODO Reset CloudBoard
+//TODO Multithreading
+void Level::runVerifications()
+{
+	std::vector<VerificationReport> endReports;
+
+	for (VerificationReport& baseReport : mBaseReports)
+	{
+		HiddenVerifier verifier(mGameContext, baseReport, mBoard, mRobots.size());
+		verifier.play(10000); //TODO test steps number
+		endReports.push_back(verifier.getReport());
+	}
+
+	if (!endReports[mCurrentCloud].isCorrectResult)
+	{
+		mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[1], mGameContext.gameData.levelResultButton[1]);
+	}
+	else
+	{
+		VerificationReport failedReport = endReports[0];
+		bool hasFailed = false;
+		unsigned int failureId = 0;
+
+		for (unsigned int i = 0; i < mGameContext.levelData.clouds.size(); i++)
+		{
+			if (!endReports[i].isCorrectResult)
+			{
+				failedReport = endReports[i];
+				hasFailed = true;
+				failureId = i;
+			}
+		}
+
+		if (hasFailed)
+		{
+			mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[2], mGameContext.gameData.levelResultButton[2]);
+
+			mCurrentCloud = failureId;
+			resetAll();
+		}
+		else
+		{
+			mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[0], mGameContext.gameData.levelResultButton[0]);
+		}
+	}
+
+	//TODO Use the report to clear level
 }
 
 void Level::updateCurrent(sf::Time dt)

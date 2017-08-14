@@ -16,6 +16,15 @@ CloudCanvas::CloudCanvas(GameContext& gameContext):
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight <<" )." << std::endl;
 }
 
+CloudCanvas::CloudCanvas(GameContext & gameContext, std::string source) :
+	GameEntity(gameContext),
+	mWidth(1),
+	mHeight(1),
+	mCanvas(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare(gameContext)))
+{
+	convertFromString(source);
+}
+
 CloudCanvas::CloudCanvas(GameContext& gameContext, unsigned int width, unsigned int height):
 	GameEntity(gameContext),
 	mWidth(width),
@@ -71,6 +80,8 @@ CloudSquare& CloudCanvas::get(unsigned int i, unsigned int j)
 {
 	assert(exists(i, j));
 	
+	//std::cout << "i " << i << " j " << j << std::endl;
+
 	return mCanvas[i][j];
 }
 
@@ -154,6 +165,9 @@ bool CloudCanvas::convertFromPicture(CloudPicture & picture)
 			mCanvas[i][j].setIsCloud(picture.get(i, j));
 		}
 	}
+
+	updateChildsVectorAll();
+	setPositionChilds(mTopLeftCorner, mBoundingBox);
 
 	return true;
 }

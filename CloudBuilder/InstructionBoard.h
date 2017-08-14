@@ -17,6 +17,7 @@ class InstructionBoard :
 {
 public:
 	InstructionBoard(GameContext& gameContext);
+	InstructionBoard(GameContext& gameContext, std::string source);
 	InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height);
 	~InstructionBoard();
 

@@ -5,9 +5,17 @@
 
 State::State(GameContext& gameContext, StateMachine & machine):
 	GameEntity(gameContext),
-	mMachine(machine)
+	mMachine(machine),
+	mName(Enums::eState::Undefined)
 {
 	std::cout << "Creating GameEntity : State." << std::endl;
+}
+
+State::State(GameContext & gameContext, StateMachine & machine, Enums::eState name) :
+	GameEntity(gameContext),
+	mMachine(machine),
+	mName(name)
+{
 }
 
 State::~State()

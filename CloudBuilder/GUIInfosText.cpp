@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GUIInfosText.h"
 #include "Game.h"
 
@@ -105,7 +106,8 @@ void GUIInfosText::wrapCompleteString()
 {
 	unsigned int nextSpace = mCompleteString.find(" ");
 
-	std::string res = mCompleteString.substr(0, nextSpace);
+	std::string res = "";
+	std::string currentLine = mCompleteString.substr(0, nextSpace);
 	unsigned int prevSpace = nextSpace;
 	nextSpace = mCompleteString.find(" ", nextSpace + 1);
 
@@ -118,22 +120,27 @@ void GUIInfosText::wrapCompleteString()
 	while (prevSpace != std::string::npos)
 	{
 		std::string currentWord = mCompleteString.substr(prevSpace + 1, nextSpace - prevSpace - 1);
-		text.setString(res + " " + currentWord);
+		text.setString(currentLine + " " + currentWord);
 
 		sf::FloatRect textRect = text.getGlobalBounds();
 
 		if (textRect.width >= mBoundingBox.x * 0.95f)
 		{
-			res += "\n" + currentWord;
+			//std::cout << textRect.width << std::endl;
+			res += "\n" + currentLine;
+			currentLine = currentWord;
 		}
 		else
 		{
-			res += " " + currentWord;
+			currentLine += " " + currentWord;
 		}
 
 		prevSpace = nextSpace;
 		nextSpace = mCompleteString.find(" ", nextSpace + 1);
 	}
 
+	res += "\n" + currentLine;
 	mWrappedString = res;
+
+	//std::cout << res << std::endl;
 }

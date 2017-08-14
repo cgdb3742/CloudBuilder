@@ -183,6 +183,9 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelDataReader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PopUpButton.cpp" />
+    <ClCompile Include="PopUpMessage.cpp" />
+    <ClCompile Include="PopUpStack.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="ResourceHandler.cpp" />
     <ClCompile Include="RobotPair.cpp" />
@@ -190,8 +193,10 @@
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateLevel.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="StatePopUp.cpp" />
     <ClCompile Include="StateTitleScreen.cpp" />
     <ClCompile Include="StringConvertible.cpp" />
+    <ClCompile Include="HiddenVerifier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuildLockable.h" />
@@ -232,6 +237,9 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="InstructionMouseDragHandler.h" />
     <ClInclude Include="LevelDataReader.h" />
+    <ClInclude Include="PopUpButton.h" />
+    <ClInclude Include="PopUpMessage.h" />
+    <ClInclude Include="PopUpStack.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="ResourceHandler.h" />
@@ -239,8 +247,10 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="StateLevel.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="StatePopUp.h" />
     <ClInclude Include="StateTitleScreen.h" />
     <ClInclude Include="StringConvertible.h" />
+    <ClInclude Include="HiddenVerifier.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game_data.xml" />

@@ -2,6 +2,7 @@
 
 #include <memory>
 #include "GameEntity.h"
+#include "Enums.h"
 
 class StateMachine;
 
@@ -13,6 +14,7 @@ public:
 	//typedef std::reference_wrapper<State> StateRef;
 
 	State(GameContext& gameContext, StateMachine& machine);
+	State(GameContext& gameContext, StateMachine& machine, Enums::eState name);
 	~State();
 
 	virtual void enter();
@@ -23,5 +25,6 @@ public:
 protected:
 	bool mIsActive;
 	StateMachine& mMachine;
+	Enums::eState mName;
 };
 

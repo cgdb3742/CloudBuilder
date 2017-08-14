@@ -13,7 +13,8 @@ public:
 		MainMenu = 2,
 		Pause = 3,
 		LevelSelect = 4,
-		Level = 5
+		Level = 5,
+		PopUp = 6
 	};
 
 	enum eInstruction

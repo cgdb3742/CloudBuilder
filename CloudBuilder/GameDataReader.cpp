@@ -73,10 +73,15 @@ bool GameDataReader::readData()
 			mData.instructionModifierName.insert(std::pair<Enums::eInstructionModifier, std::string>(static_cast<Enums::eInstructionModifier>(instructionModifier.attribute("id").as_uint()), instructionModifier.child_value(mData.currentLanguage.c_str())));
 		}
 
-
 		for (pugi::xml_node levelTab : doc.child("game_data").child("common_translations").children("level_tab"))
 		{
 			mData.levelTabName.push_back(levelTab.child_value(mData.currentLanguage.c_str()));
+		}
+
+		for (pugi::xml_node result : doc.child("game_data").child("common_translations").children("pop_up"))
+		{
+			mData.levelResultMessage.push_back(result.child("message").child_value(mData.currentLanguage.c_str()));
+			mData.levelResultButton.push_back(result.child("button").child_value(mData.currentLanguage.c_str()));
 		}
 
 		return true;

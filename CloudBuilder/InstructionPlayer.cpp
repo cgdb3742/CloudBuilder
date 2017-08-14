@@ -166,10 +166,12 @@ bool InstructionPlayer::progressPlayInstant()
 
 	if (allDone)
 	{
-		//TODO Verify if finished
+		//if finished
 		if (getCurrentResult() != Enums::eResult::Running)
 		{
 			//TODO
+			deactivate();
+			mLevel.runVerifications();
 		}
 
 		allDone = false;
@@ -232,10 +234,12 @@ bool InstructionPlayer::progressPlay(sf::Time dt)
 
 	if (allDone && mPlayerProgress >= 1.0f)
 	{
-		//TODO Verify if finished
+		//if finished
 		if (getCurrentResult() != Enums::eResult::Running)
 		{
 			//TODO
+			deactivate();
+			mLevel.runVerifications();
 		}
 
 		allDone = false;

@@ -99,6 +99,7 @@ void InstructionRobot::resetAll()
 {
 	setPos(mBoard.getStartPosition(mColor).first, mBoard.getStartPosition(mColor).second);
 	mPosOffset = sf::Vector2f(0.0f, 0.0f);
+	setResult(Enums::eResult::Running);
 }
 
 bool InstructionRobot::getLastCheck()

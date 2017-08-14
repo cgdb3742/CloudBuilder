@@ -97,6 +97,18 @@
     <Filter Include="Fichiers de ressources\Data">
       <UniqueIdentifier>{98dcb2cb-9116-42f4-962b-8f575b67fa39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\GameControl\Verification">
+      <UniqueIdentifier>{ceafe680-835f-4498-9708-c9257d25027e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\Verification">
+      <UniqueIdentifier>{2af4ad1b-9d5c-41ba-ba5f-781a0ebc591a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\PopUp">
+      <UniqueIdentifier>{d4eecd37-711c-43fe-af73-3bfa7d836c00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\PopUp">
+      <UniqueIdentifier>{2d730a83-7bab-4036-a568-36f9dc023d97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -240,6 +252,21 @@
     <ClCompile Include="CompleteData.cpp">
       <Filter>Fichiers sources\FileReader</Filter>
     </ClCompile>
+    <ClCompile Include="HiddenVerifier.cpp">
+      <Filter>Fichiers sources\GameControl\Verification</Filter>
+    </ClCompile>
+    <ClCompile Include="StatePopUp.cpp">
+      <Filter>Fichiers sources\PopUp</Filter>
+    </ClCompile>
+    <ClCompile Include="PopUpButton.cpp">
+      <Filter>Fichiers sources\PopUp</Filter>
+    </ClCompile>
+    <ClCompile Include="PopUpMessage.cpp">
+      <Filter>Fichiers sources\PopUp</Filter>
+    </ClCompile>
+    <ClCompile Include="PopUpStack.cpp">
+      <Filter>Fichiers sources\PopUp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -382,6 +409,21 @@
     </ClInclude>
     <ClInclude Include="CompleteData.h">
       <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenVerifier.h">
+      <Filter>Fichiers d%27en-tête\GameControl\Verification</Filter>
+    </ClInclude>
+    <ClInclude Include="StatePopUp.h">
+      <Filter>Fichiers d%27en-tête\PopUp</Filter>
+    </ClInclude>
+    <ClInclude Include="PopUpButton.h">
+      <Filter>Fichiers d%27en-tête\PopUp</Filter>
+    </ClInclude>
+    <ClInclude Include="PopUpMessage.h">
+      <Filter>Fichiers d%27en-tête\PopUp</Filter>
+    </ClInclude>
+    <ClInclude Include="PopUpStack.h">
+      <Filter>Fichiers d%27en-tête\PopUp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

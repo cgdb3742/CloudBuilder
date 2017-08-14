@@ -42,7 +42,7 @@ bool InstructionSquareReject::applyInstruction(CloudRobot & cloudRobot, CloudCan
 {
 	if (instructionRobot.getResult() == Enums::eResult::Running)
 	{
-		instructionRobot.setResult(Enums::eResult::Accept);
+		instructionRobot.setResult(Enums::eResult::Refuse);
 	}
 
 	return true;

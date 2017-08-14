@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <game_data>
     <levels>
@@ -27,6 +27,36 @@
         <available_language>fr</available_language>
     </options>
     <common_translations>
+        <pop_up code_name = "Success" id = "0">
+            <message>
+                <en>Well done! Your board passed all the tests!&#xA;This assignment is a success!</en>
+                <fr>Bien joué ! Votre tableau a passé tous les tests !&#xA;Cette mission est un succès !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Failure" id = "1">
+            <message>
+                <en>Sorry, your solution is wrong.&#xA;Do not give up yet, keep trying!</en>
+                <fr>Désolé, votre solution est fausse.&#xA;N'abandonnez pas encore, continuez d'essayer !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Hidden Failure" id = "2">
+            <message>
+                <en>Your solution may work with this canvas,&#xA;but not all test samples. Try this one!</en>
+                <fr>Votre solution marche peut-être avec ce canevas,&#xA;mais pas tous les échantillons de test. Essayez celui-là !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
         <instruction code_name = "Unassigned" id = "0">
             <en>Unassigned</en>
             <fr>Vide</fr>

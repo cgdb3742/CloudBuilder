@@ -2,21 +2,42 @@
 
 
 
-LevelDataReader::LevelDataReader():
+LevelDataReader::LevelDataReader() :
 	mWorld(1),
-	mLevel(1)
+	mLevel(1),
+	mLanguage("en")
 {
 }
 
-LevelDataReader::LevelDataReader(unsigned int world, unsigned int level):
+LevelDataReader::LevelDataReader(unsigned int world, unsigned int level) :
 	mWorld(world),
-	mLevel(level)
+	mLevel(level),
+	mLanguage("en")
+{
+}
+
+LevelDataReader::LevelDataReader(std::string language) :
+	mWorld(1),
+	mLevel(1),
+	mLanguage(language)
+{
+}
+
+LevelDataReader::LevelDataReader(std::string language, unsigned int world, unsigned int level) :
+	mWorld(world),
+	mLevel(level),
+	mLanguage(language)
 {
 }
 
 
 LevelDataReader::~LevelDataReader()
 {
+}
+
+void LevelDataReader::updateLanguage(std::string language)
+{
+	mLanguage = language;
 }
 
 bool LevelDataReader::readData()
@@ -28,11 +49,11 @@ bool LevelDataReader::readData()
 	if (result)
 	{
 		//TODO get the current language
-		std::string currentLanguage = "en"; //For test purposes only
+		//std::string currentLanguage = "en"; //For test purposes only
 
 		mData = LevelData();
 
-		mData.name = doc.child("level_data").child("general_info").child("name").child_value(currentLanguage.c_str());
+		mData.name = doc.child("level_data").child("general_info").child("name").child_value(mLanguage.c_str());
 		mData.world = doc.child("level_data").child("general_info").child("world").text().as_uint();
 		mData.level = doc.child("level_data").child("general_info").child("puzzle").text().as_uint();
 		mData.isValidation = (doc.child("level_data").child("general_info").child_value("type") == std::string("validation"));
@@ -54,13 +75,13 @@ bool LevelDataReader::readData()
 
 		for (pugi::xml_node topic : doc.child("level_data").child("infos").children("topic"))
 		{
-			mData.topics.push_back(topic.child("name").child_value(currentLanguage.c_str()));
+			mData.topics.push_back(topic.child("name").child_value(mLanguage.c_str()));
 
 			std::vector<std::string> infoString;
 
 			for (pugi::xml_node info : topic.children("text"))
 			{
-				infoString.push_back(info.child_value(currentLanguage.c_str()));
+				infoString.push_back(info.child_value(mLanguage.c_str()));
 			}
 
 			mData.infos.push_back(infoString);
@@ -76,6 +97,20 @@ bool LevelDataReader::readData()
 
 bool LevelDataReader::readData(unsigned int newWorld, unsigned int newLevel)
 {
+	mWorld = newWorld;
+	mLevel = newLevel;
+	return readData();
+}
+
+bool LevelDataReader::readData(std::string language)
+{
+	mLanguage = language;
+	return readData();
+}
+
+bool LevelDataReader::readData(std::string language, unsigned int newWorld, unsigned int newLevel)
+{
+	mLanguage = language;
 	mWorld = newWorld;
 	mLevel = newLevel;
 	return readData();

@@ -16,6 +16,8 @@ public:
 	GameEntity(GameContext& gameContext);
 	~GameEntity();
 
+	//TODO Propagate a function when language is changed ?
+
 	virtual void handleEventAll(const sf::Event& event);
 	virtual void handleEventChilds(const sf::Event& event);
 	virtual void handleEventCurrent(const sf::Event& event);

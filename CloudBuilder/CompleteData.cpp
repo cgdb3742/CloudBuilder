@@ -7,6 +7,7 @@ CompleteData::CompleteData():
 	mLevelDataReader()
 {
 	loadGameData();
+	mLevelDataReader.updateLanguage(getGameData().currentLanguage);
 	loadLevelData();
 }
 

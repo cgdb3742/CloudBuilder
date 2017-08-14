@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <level_data>
     <general_info>
@@ -13,19 +13,27 @@
     </general_info>
     <cloud_pictures>
         <cloud id = "0">
-            <data>TODO</data>
-            <result>TODO</result>
+            <data>w3h3p001010100</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "1">
+            <data>w3h3p010111010</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "2">
+            <data>w3h3p101010101</data>
+            <result>Reject</result>
         </cloud>
     </cloud_pictures>
     <board>
-        <starting_data>TODO</starting_data>
+        <starting_data>w8h8i1j1vSSrri2j1vAMrrn</starting_data>
         <available_instructions>
             <instruction code_name = "ActMove" id = "21" />
             <instruction code_name = "CheckCloud" id = "31" />
             <instruction code_name = "SpeAccept" id = "12" />
             <instruction code_name = "SpeReject" id = "13" />
         </available_instructions>
-        <current_data>TODO</current_data>
+        <current_data>w8h8i1j1vSSrri2j1vAMrrn</current_data>
     </board>
     <infos>
         <topic id = "0">
@@ -121,7 +129,7 @@
                 <en>Take your time to mess with the Play tab. Even if your instruction board does not work or is incomplete, you can always check how the cloud weaver reacts. Since it is your first assignment, nobody expect you to understand everything, so take your time to discover your tools. I heard the best way to learn is to fail and retry.</en>
                 <fr>Prenez le temps de vous familiariser avec l'onglet Jouer. Même si votre tableau d'instructions ne marche pas ou est incomplet, vous pouvez toujours regarder comment le tisseur de nuages réagit. Vu que c'est votre première mission, personne ne s'attend à ce que vous compreniez tout, alors prenez le temps de découvrir vos outils. J'ai entendu dire que la meilleure façon d'apprendre est d'échouer et réessayer.</fr>
             </text>
-            <text id = "4">
+            <text id = "3">
                 <en>Did you understand how to add instructions from the Create tab, and adjust them in the Modify tab? Try to follow my suggestions in the Tools topic step by step, and run the instruction reader from the Play tab. I hope it will work fine...</en>
                 <fr>Avez-vous compris comment ajouter des instructions depuis l'onglet Créer, et les adjuster dans l'onglet Modifier ? Essayez de suivre mes suggestions dans le sujet Outils étape par étape, et lancez le lecteur d'instructions depuis l'onglet Jouer. J'espère que tout va bien fonctionner...</fr>
             </text>

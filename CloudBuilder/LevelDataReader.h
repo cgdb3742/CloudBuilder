@@ -30,10 +30,16 @@ class LevelDataReader
 public:
 	LevelDataReader();
 	LevelDataReader(unsigned int world, unsigned int level);
+	LevelDataReader(std::string language);
+	LevelDataReader(std::string language, unsigned int world, unsigned int level);
 	~LevelDataReader();
+
+	void updateLanguage(std::string language);
 
 	bool readData();
 	bool readData(unsigned int newWorld, unsigned int newLevel);
+	bool readData(std::string language);
+	bool readData(std::string language, unsigned int newWorld, unsigned int newLevel);
 	//TODO save data
 
 	LevelData& getData();
@@ -41,6 +47,8 @@ public:
 private:
 	unsigned int mWorld;
 	unsigned int mLevel;
+
+	std::string mLanguage;
 
 	LevelData mData;
 };

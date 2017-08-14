@@ -9,15 +9,17 @@
 #include "StateMachine.h"
 #include "ResourceHandler.h"
 #include "CompleteData.h"
+#include "PopUpStack.h"
 
 class InstructionSquare;
 
 struct GameContext
 {
-	GameContext(ResourceHandler& rh, GameData& gd, LevelData& ld) : resourceHandler(rh), gameData(gd), levelData(ld) {}
+	GameContext(ResourceHandler& rh, PopUpStack& pus, GameData& gd, LevelData& ld) : resourceHandler(rh), popUpStack(pus), gameData(gd), levelData(ld) {}
 
 	//StateMachine& stateMachine;
 	ResourceHandler& resourceHandler;
+	PopUpStack& popUpStack;
 	GameData& gameData;
 	LevelData& levelData;
 };
@@ -44,6 +46,7 @@ private:
 	sf::RenderWindow mWindow;
 	StateMachine mStateMachine;
 	ResourceHandler mResourceHandler;
+	PopUpStack mPopUpStack;
 	GameContext mContext;
 	CompleteData mData;
 };

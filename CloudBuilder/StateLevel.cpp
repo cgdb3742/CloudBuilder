@@ -1,11 +1,12 @@
 #include <iostream>
 #include "StateLevel.h"
+#include "Game.h"
 
 
 
 StateLevel::StateLevel(GameContext& gameContext, StateMachine & machine):
-	State(gameContext, machine),
-	mLevel(gameContext, 2) //TODO Creation of mLevel
+	State(gameContext, machine, Enums::eState::Level),
+	mLevel(gameContext, gameContext.levelData)
 {
 	std::cout << "Creating GameEntity : StateLevel." << std::endl;
 }

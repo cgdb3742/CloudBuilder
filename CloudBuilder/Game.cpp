@@ -7,8 +7,9 @@
 Game::Game():
 	mWindow(sf::VideoMode(1024, 768), "Cloud Builder"),
 	mResourceHandler(),
+	mPopUpStack(),
 	mData(),
-	mContext(mResourceHandler, mData.getGameData(), mData.getLevelData()),
+	mContext(mResourceHandler, mPopUpStack, mData.getGameData(), mData.getLevelData()),
 	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;
@@ -36,7 +37,12 @@ void Game::run()
 void Game::initialize()
 {
 	mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
-	mStateMachine.startState(Enums::eState::Level);
+	//mStateMachine.startState(Enums::eState::Level);
+	mStateMachine.requestStart(Enums::eState::Level); //TODO startState or requestStart the first state ?
+
+
+	//mPopUpStack.addMessage("Test 1", "Continue");
+	//mPopUpStack.addMessage("Test 2", "Done");
 }
 
 void Game::processEvents()

@@ -14,6 +14,7 @@ class CloudCanvas :
 {
 public:
 	CloudCanvas(GameContext& gameContext);
+	CloudCanvas(GameContext& gameContext, std::string source);
 	CloudCanvas(GameContext& gameContext, unsigned int width, unsigned int height);
 	CloudCanvas(GameContext& gameContext, CloudPicture& picture);
 	~CloudCanvas();

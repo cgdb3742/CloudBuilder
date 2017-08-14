@@ -10,10 +10,19 @@
 //{
 //}
 
-GUILevelMenuTab::GUILevelMenuTab(GameContext& gameContext, std::string name, unsigned int id, GUILevelMenu & menu):
+//GUILevelMenuTab::GUILevelMenuTab(GameContext& gameContext, std::string name, unsigned int id, GUILevelMenu & menu):
+//	GameEntity(gameContext),
+//	mMenu(menu),
+//	mName(name),
+//	mId(id),
+//	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
+//{
+//}
+
+GUILevelMenuTab::GUILevelMenuTab(GameContext& gameContext, unsigned int id, GUILevelMenu & menu) :
 	GameEntity(gameContext),
 	mMenu(menu),
-	mName(name),
+	mName(gameContext.gameData.levelTabName[id]),
 	mId(id),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {

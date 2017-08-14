@@ -11,6 +11,15 @@ CloudPicture::CloudPicture(GameContext& gameContext):
 	std::cout << "Creating GameEntity : CloudPicture." << std::endl;
 }
 
+CloudPicture::CloudPicture(GameContext & gameContext, std::string source) :
+	GameEntity(gameContext),
+	mWidth(1),
+	mHeight(1),
+	mPicture(mWidth, std::vector<bool>(mHeight, false))
+{
+	convertFromString(source);
+}
+
 CloudPicture::CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height):
 	GameEntity(gameContext),
 	mWidth(width),
@@ -55,6 +64,19 @@ CloudPicture::CloudPicture(GameContext& gameContext, CloudCanvas & canvas):
 	}
 }
 
+CloudPicture::CloudPicture(const CloudPicture & toCopy) :
+	GameEntity(toCopy.mGameContext),
+	mWidth(toCopy.mWidth),
+	mHeight(toCopy.mHeight),
+	mPicture(toCopy.mPicture)
+{
+}
+
+CloudPicture CloudPicture::operator=(const CloudPicture & toCopy)
+{
+	return CloudPicture(toCopy);
+}
+
 
 CloudPicture::~CloudPicture()
 {
@@ -70,6 +92,27 @@ bool CloudPicture::get(unsigned int i, unsigned int j)
 	{
 		return false;
 	}
+}
+
+bool CloudPicture::compare(CloudPicture & picture)
+{
+	if (picture.getWidth() != getWidth() || picture.getHeight() != getHeight())
+	{
+		return false;
+	}
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		for (unsigned int j = 0; j < mHeight; j++)
+		{
+			if (picture.get(i, j) != get(i, j))
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 std::string CloudPicture::getPicture()

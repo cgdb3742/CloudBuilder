@@ -38,6 +38,18 @@ InstructionBoard::InstructionBoard(GameContext& gameContext):
 	//setSelection(0, 0);
 }
 
+InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source) :
+	GameEntity(gameContext),
+	mWidth(1),
+	mHeight(1),
+	mBoard(generate(1 * 1)),
+	mSelected(0, 0),
+	mStartPointsUpdated(false),
+	mSelectionUpdated(false)
+{
+	convertFromString(source);
+}
+
 InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height):
 	GameEntity(gameContext),
 	mWidth(width),
@@ -59,15 +71,18 @@ InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width,
 
 	//mBoard[5 + 2*mHeight]->setNextDir(Enums::eDir::Down);
 
-	insert(2, 5, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
-	insert(6, 4, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
-	insert(3, 7, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::CheckCloud));
-	insert(1, 0, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
-	insert(7, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Blue));
+	//insert(2, 5, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	//insert(6, 4, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	//insert(3, 7, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::CheckCloud));
+	//insert(1, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
+	//insert(7, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Blue));
 	//insert(6, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Green));
 	//insert(5, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Yellow));
 	//mSelectionUpdated = false;
 	//setSelection(0, 0);
+	insert(2, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	insert(1, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
+	//std::cout << convertToString() << std::endl;
 }
 
 InstructionBoard::~InstructionBoard()

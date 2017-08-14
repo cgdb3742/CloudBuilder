@@ -3,7 +3,7 @@
 
 
 StateTitleScreen::StateTitleScreen(GameContext& gameContext, StateMachine & machine):
-	State(gameContext, machine)
+	State(gameContext, machine, Enums::eState::TitleScreen)
 {
 }
 

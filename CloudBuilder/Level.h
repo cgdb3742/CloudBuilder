@@ -8,6 +8,9 @@
 #include "InstructionMouseDragHandler.h"
 #include "GUILevelMenu.h"
 #include "InstructionPlayer.h"
+#include "HiddenVerifier.h"
+
+struct LevelData;
 
 class Level :
 	public GameEntity,
@@ -15,6 +18,7 @@ class Level :
 {
 public:
 	Level(GameContext& gameContext);
+	Level(GameContext& gameContext, LevelData levelData);
 	Level(GameContext& gameContext, unsigned int nbRobots);
 	~Level();
 
@@ -22,10 +26,14 @@ public:
 
 	bool createStartInstructionSpace(unsigned int i, unsigned int j, Enums::eColor color);
 
+	void createBaseReports(LevelData data);
+
 	virtual void lock();
 	virtual void unlock();
 
 	void resetAll();
+
+	void runVerifications();
 
 	virtual void updateCurrent(sf::Time dt);
 
@@ -33,6 +41,7 @@ public:
 protected:
 	virtual void updateChildsVector();
 private:
+	unsigned int mCurrentCloud;
 	bool mIsRunning; //false if building code, true if testing code
 	std::map<Enums::eColor,RobotPair> mRobots;
 	CloudCanvas mCanvas;
@@ -41,5 +50,6 @@ private:
 	GUILevelMenu mMenu;
 	InstructionMouseDragHandler mInstructionDragger;
 	InstructionPlayer mPlayer;
+	std::list<VerificationReport> mBaseReports;
 };
 

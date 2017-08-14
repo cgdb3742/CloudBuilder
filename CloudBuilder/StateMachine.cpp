@@ -3,8 +3,12 @@
 #include <cassert>
 #include <iostream>
 #include "StateMachine.h"
+#include "Game.h"
+#include "PopUpStack.h"
+
 #include "StateLevel.h"
 #include "StateTitleScreen.h"
+#include "StatePopUp.h"
 
 
 StateMachine::StateMachine(GameContext& gameContext):
@@ -16,6 +20,49 @@ StateMachine::StateMachine(GameContext& gameContext):
 
 StateMachine::~StateMachine()
 {
+}
+
+void StateMachine::updateCurrent(sf::Time dt)
+{
+	//Don't start anything if a pop-up is active
+	if (!exists(Enums::eState::PopUp) && mGameContext.popUpStack.isEmpty()) //Pop-ups freeze game
+	{
+		for (Enums::eState state : mRequestedStart)
+		{
+			startState(state);
+		}
+		mRequestedStart.clear();
+
+		for (Enums::eState state : mRequestedActivate)
+		{
+			activateState(state);
+		}
+		mRequestedActivate.clear();
+
+		for (Enums::eState state : mRequestedFullFocus)
+		{
+			fullFocusState(state);
+		}
+		mRequestedFullFocus.clear();
+	}
+
+	for (Enums::eState state : mRequestedDeactivate)
+	{
+		deactivateState(state);
+	}
+	mRequestedDeactivate.clear();
+
+	for (Enums::eState state : mRequestedStop)
+	{
+		stopState(state);
+	}
+	mRequestedStop.clear();
+
+	if (!exists(Enums::eState::PopUp) && !mGameContext.popUpStack.isEmpty())
+	{
+		startState(Enums::eState::PopUp);
+		fullFocusState(Enums::eState::PopUp);
+	}
 }
 
 bool StateMachine::startState(Enums::eState state)
@@ -50,7 +97,77 @@ bool StateMachine::stopState(Enums::eState state)
 		getState(state).exit();
 		mStates.erase(state);
 		updateChildsVectorAll(); //TODO Overkill
+		preventGameDeactivation();
 		return true;
+	}
+}
+
+bool StateMachine::activateState(Enums::eState state)
+{
+	if (!exists(state))
+	{
+		return false;
+	}
+	else
+	{
+		if (getState(state).getIsActive())
+		{
+			return false;
+		}
+		else
+		{
+			getState(state).setActive();
+			getState(state).setPositionAll(mTopLeftCorner, mBoundingBox); //TODO Necessary ?
+			return true;
+		}
+	}
+}
+
+bool StateMachine::deactivateState(Enums::eState state)
+{
+	if (!exists(state))
+	{
+		return false;
+	}
+	else
+	{
+		if (!getState(state).getIsActive())
+		{
+			return false;
+		}
+		else
+		{
+			getState(state).setInactive();
+			preventGameDeactivation();
+			return true;
+		}
+	}
+}
+
+bool StateMachine::fullFocusState(Enums::eState state)
+{
+	if (!exists(state))
+	{
+		return false;
+	}
+	else
+	{
+		if (!getState(state).getIsActive())
+		{
+			return false;
+		}
+		else
+		{
+			for (auto &otherState : mStates)
+			{
+				if (otherState.first != state)
+				{
+					deactivateState(otherState.first);
+				}
+			}
+
+			return true;
+		}
 	}
 }
 
@@ -72,6 +189,58 @@ bool StateMachine::isActive(Enums::eState state)
 	}
 }
 
+//If all states inactives, activate all states
+//TODO prevent case where no state instancied
+bool StateMachine::preventGameDeactivation()
+{
+	bool atLeastOneActive = false;
+
+	for (auto &state : mStates)
+	{
+		atLeastOneActive = atLeastOneActive || state.second->getIsActive();
+	}
+
+	if (!atLeastOneActive)
+	{
+		for (auto &state : mStates)
+		{
+			state.second->setActive();
+		}
+	}
+
+	return false;
+}
+
+bool StateMachine::requestStart(Enums::eState state)
+{
+	mRequestedStart.push_back(state);
+	return true;
+}
+
+bool StateMachine::requestStop(Enums::eState state)
+{
+	mRequestedStop.push_back(state);
+	return true;
+}
+
+bool StateMachine::requestActivate(Enums::eState state)
+{
+	mRequestedActivate.push_back(state);
+	return true;
+}
+
+bool StateMachine::requestDeactivate(Enums::eState state)
+{
+	mRequestedDeactivate.push_back(state);
+	return true;
+}
+
+bool StateMachine::requestFullFocus(Enums::eState state)
+{
+	mRequestedFullFocus.push_back(state);
+	return true;
+}
+
 void StateMachine::handleEventChilds(const sf::Event & event)
 {
 	for (auto &state : mStates)
@@ -89,13 +258,27 @@ void StateMachine::drawChilds(sf::RenderTarget & target)
 {
 	//std::cout << "StateMachine is drawing." << std::endl;
 
-	std::map<Enums::eState, State::StatePtr>::reverse_iterator rit;
-	//std::map<Enums::eState, State>::reverse_iterator rit;
-	for (rit = mStates.rbegin(); rit != mStates.rend(); ++rit){
-		// iterator->first = key
-		// iterator->second = value
-		rit->second->drawAll(target);
-		//rit->second.drawAll(target);
+	//std::map<Enums::eState, State::StatePtr>::reverse_iterator rit;
+	//for (rit = mStates.rbegin(); rit != mStates.rend(); ++rit){
+	//	// iterator->first = key
+	//	// iterator->second = value
+	//	rit->second->drawAll(target);
+	//}
+
+	for (auto &state : mStates)
+	{
+		if (!state.second->getIsActive())
+		{
+			state.second->drawAll(target);
+		}
+	}
+
+	for (auto &state : mStates)
+	{
+		if (state.second->getIsActive())
+		{
+			state.second->drawAll(target);
+		}
 	}
 
 	drawCurrent(target);
@@ -162,6 +345,7 @@ State::StatePtr StateMachine::createNewState(Enums::eState state)
 	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(mGameContext, *this));
 	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(mGameContext, *this)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
 	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(mGameContext, *this));
+	case Enums::eState::PopUp: return std::unique_ptr<State>(new StatePopUp(mGameContext, *this));
 	default: return std::unique_ptr<State>(new State(mGameContext, *this));
 	}
 
