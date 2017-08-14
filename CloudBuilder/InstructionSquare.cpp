@@ -11,35 +11,35 @@
 
 
 
-std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(Enums::eInstruction type)
+std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type)
 {
-	return createNewInstructionSquare(type, Enums::eColor::NoColor);
+	return createNewInstructionSquare(gameContext, type, Enums::eColor::NoColor);
 }
 
-std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(Enums::eInstruction type, Enums::eColor color)
+std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type, Enums::eColor color)
 {
 	switch (type)
 	{
-	case Enums::eInstruction::Unassigned: return std::make_unique<InstructionSquare>(InstructionSquare());
-	case Enums::eInstruction::SpeStart: return std::make_unique<InstructionSquareStart>(InstructionSquareStart(color));
-	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept());
-	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject());
-	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove());
-	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud());
-	default: return std::make_unique<InstructionSquare>(InstructionSquare());
+	case Enums::eInstruction::Unassigned: return std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
+	case Enums::eInstruction::SpeStart: return std::make_unique<InstructionSquareStart>(InstructionSquareStart(gameContext, color));
+	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept(gameContext));
+	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject(gameContext));
+	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove(gameContext));
+	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud(gameContext));
+	default: return std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
 	}
 }
 
-std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(std::string source)
+std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(GameContext& gameContext, std::string source)
 {
 	switch (Enums::getInstructionFromString(source.substr(0, 2)))
 	{
-	case Enums::eInstruction::Unassigned: return std::make_unique<InstructionSquare>(InstructionSquare(source));
-	case Enums::eInstruction::SpeStart: return std::make_unique<InstructionSquareStart>(InstructionSquareStart(source));
-	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept(source));
-	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject(source));
-	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove(source));
-	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud(source));
+	case Enums::eInstruction::Unassigned: return std::make_unique<InstructionSquare>(InstructionSquare(gameContext, source));
+	case Enums::eInstruction::SpeStart: return std::make_unique<InstructionSquareStart>(InstructionSquareStart(gameContext, source));
+	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept(gameContext, source));
+	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject(gameContext, source));
+	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove(gameContext, source));
+	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud(gameContext, source));
 	default: return nullptr;
 	}
 
@@ -63,7 +63,8 @@ std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare
 //	}
 //}
 
-InstructionSquare::InstructionSquare() :
+InstructionSquare::InstructionSquare(GameContext& gameContext) :
+	GameEntity(gameContext),
 	mType(Enums::eInstruction::Unassigned),
 	mName("Unassigned"),
 	mNext(Enums::eDir::Center)
@@ -71,7 +72,8 @@ InstructionSquare::InstructionSquare() :
 	//std::cout << "Creating GameEntity : InstructionSquare." << std::endl;
 }
 
-InstructionSquare::InstructionSquare(std::string & source) :
+InstructionSquare::InstructionSquare(GameContext& gameContext, std::string & source) :
+	GameEntity(gameContext),
 	mType(Enums::eInstruction::Unassigned),
 	mName("Unassigned"),
 	mNext(Enums::eDir::Center)
@@ -79,7 +81,8 @@ InstructionSquare::InstructionSquare(std::string & source) :
 	convertFromString(source);
 }
 
-InstructionSquare::InstructionSquare(Enums::eInstruction type, std::string name):
+InstructionSquare::InstructionSquare(GameContext& gameContext, Enums::eInstruction type, std::string name):
+	GameEntity(gameContext),
 	mType(type),
 	mName(name),
 	mNext(Enums::eDir::Center)

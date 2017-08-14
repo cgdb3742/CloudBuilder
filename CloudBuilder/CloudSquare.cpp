@@ -3,14 +3,16 @@
 
 
 
-CloudSquare::CloudSquare():
+CloudSquare::CloudSquare(GameContext& gameContext):
+	GameEntity(gameContext),
 	mColor(Enums::eColor::NoColor),
 	mIsCloud(false)
 {
 	std::cout << "Creating GameEntity : CloudSquare." << std::endl;
 }
 
-CloudSquare::CloudSquare(bool isCloud):
+CloudSquare::CloudSquare(GameContext& gameContext, bool isCloud):
+	GameEntity(gameContext),
 	mColor(Enums::eColor::NoColor),
 	mIsCloud(isCloud)
 {

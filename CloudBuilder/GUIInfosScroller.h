@@ -7,7 +7,7 @@ class GUIInfosScroller :
 	public GUIButton
 {
 public:
-	GUIInfosScroller(GUIInfosContainer& container, int dir, sf::Vector2f positionRatio);
+	GUIInfosScroller(GameContext& gameContext, GUIInfosContainer& container, int dir, sf::Vector2f positionRatio);
 	~GUIInfosScroller();
 
 	void scroll();

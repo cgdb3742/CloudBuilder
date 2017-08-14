@@ -14,8 +14,8 @@ class Level :
 	public BuildLockable
 {
 public:
-	Level();
-	Level(unsigned int nbRobots);
+	Level(GameContext& gameContext);
+	Level(GameContext& gameContext, unsigned int nbRobots);
 	~Level();
 
 	void createRobotPairs(unsigned int nb);

@@ -3,7 +3,8 @@
 
 //typedef std::unique_ptr<GameEntity> GameEntityPtr;
 
-GameEntity::GameEntity():
+GameEntity::GameEntity(GameContext & gameContext):
+	mGameContext(gameContext),
 	mChilds(std::vector<GameEntityRef>())
 {
 	//std::cout << "Creating GameEntity : unknown." << std::endl;

@@ -2,18 +2,18 @@
 
 
 
-GUIInstructionCreator::GUIInstructionCreator():
-	GUIButton(sf::Vector2f(0.0f, 0.0f)),
+GUIInstructionCreator::GUIInstructionCreator(GameContext& gameContext):
+	GUIButton(gameContext, sf::Vector2f(0.0f, 0.0f)),
 	mType(Enums::eInstruction::Unassigned),
-	mInstruction(InstructionSquare::createNewInstructionSquare(Enums::eInstruction::Unassigned))//,
+	mInstruction(InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::Unassigned))//,
 	//mPositionRatio(sf::Vector2f(0.0f,0.0f))
 {
 }
 
-GUIInstructionCreator::GUIInstructionCreator(Enums::eInstruction type, sf::Vector2f positionRatio):
-	GUIButton(positionRatio),
+GUIInstructionCreator::GUIInstructionCreator(GameContext& gameContext, Enums::eInstruction type, sf::Vector2f positionRatio):
+	GUIButton(gameContext, positionRatio),
 	mType(type),
-	mInstruction(InstructionSquare::createNewInstructionSquare(type))//,
+	mInstruction(InstructionSquare::createNewInstructionSquare(gameContext, type))//,
 	//mPositionRatio(positionRatio)
 {
 }
@@ -24,7 +24,7 @@ GUIInstructionCreator::GUIInstructionCreator(const GUIInstructionCreator & toCop
 	//mInstruction(nullptr),
 	//mInstruction(std::move(toCopy.mInstruction)),
 	//mInstruction(std::make_unique<InstructionSquare>(InstructionSquare(*toCopy.mInstruction))),
-	mInstruction(InstructionSquare::createNewInstructionSquare(toCopy.mType))//,
+	mInstruction(InstructionSquare::createNewInstructionSquare(toCopy.mGameContext, toCopy.mType))//,
 	//mPositionRatio(toCopy.mPositionRatio)
 {
 	//mInstruction = std::move(toCopy.mInstruction);
@@ -49,7 +49,7 @@ InstructionSquare::InstructionSquarePtr GUIInstructionCreator::giveToDrag(sf::Ve
 
 InstructionSquare::InstructionSquarePtr GUIInstructionCreator::createNewInstruction()
 {
-	return InstructionSquare::createNewInstructionSquare(mType);
+	return InstructionSquare::createNewInstructionSquare(mGameContext, mType);
 }
 
 //void GUIInstructionCreator::setSquareSize(sf::Vector2f newSize)

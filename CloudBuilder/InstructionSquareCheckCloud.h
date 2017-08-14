@@ -4,8 +4,8 @@ class InstructionSquareCheckCloud :
 	public InstructionSquare
 {
 public:
-	InstructionSquareCheckCloud();
-	explicit InstructionSquareCheckCloud(std::string& source);
+	InstructionSquareCheckCloud(GameContext& gameContext);
+	InstructionSquareCheckCloud(GameContext& gameContext, std::string& source);
 	~InstructionSquareCheckCloud();
 
 	virtual Enums::eDir getNextDir(InstructionRobot& robot);

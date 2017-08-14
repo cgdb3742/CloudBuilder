@@ -2,7 +2,8 @@
 #include "CloudPicture.h"
 #include "CloudCanvas.h"
 
-CloudPicture::CloudPicture():
+CloudPicture::CloudPicture(GameContext& gameContext):
+	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
 	mPicture(mWidth, std::vector<bool>(mHeight, false))
@@ -10,7 +11,8 @@ CloudPicture::CloudPicture():
 	std::cout << "Creating GameEntity : CloudPicture." << std::endl;
 }
 
-CloudPicture::CloudPicture(unsigned int width, unsigned int height):
+CloudPicture::CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height):
+	GameEntity(gameContext),
 	mWidth(width),
 	mHeight(height),
 	mPicture(width, std::vector<bool>(height, false))
@@ -18,7 +20,8 @@ CloudPicture::CloudPicture(unsigned int width, unsigned int height):
 	std::cout << "Creating GameEntity : CloudPicture." << std::endl;
 }
 
-CloudPicture::CloudPicture(unsigned int width, unsigned int height, std::string values) :
+CloudPicture::CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height, std::string values) :
+	GameEntity(gameContext),
 	mWidth(width),
 	mHeight(height),
 	mPicture(width, std::vector<bool>(height, false))
@@ -37,7 +40,8 @@ CloudPicture::CloudPicture(unsigned int width, unsigned int height, std::string 
 	}
 }
 
-CloudPicture::CloudPicture(CloudCanvas & canvas):
+CloudPicture::CloudPicture(GameContext& gameContext, CloudCanvas & canvas):
+	GameEntity(gameContext),
 	mWidth(canvas.getWidth()),
 	mHeight(canvas.getHeight()),
 	mPicture(mWidth, std::vector<bool>(mHeight, false))

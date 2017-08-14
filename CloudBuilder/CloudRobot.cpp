@@ -3,7 +3,8 @@
 
 
 
-CloudRobot::CloudRobot(CloudCanvas& canvas):
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas& canvas):
+	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
@@ -13,7 +14,8 @@ CloudRobot::CloudRobot(CloudCanvas& canvas):
 	std::cout << "Creating GameEntity : CloudRobot." << std::endl;
 }
 
-CloudRobot::CloudRobot(CloudCanvas & canvas, bool isWriter) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, bool isWriter) :
+	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
@@ -23,7 +25,8 @@ CloudRobot::CloudRobot(CloudCanvas & canvas, bool isWriter) :
 	std::cout << "Creating GameEntity : CloudRobot." << std::endl;
 }
 
-CloudRobot::CloudRobot(CloudCanvas & canvas, Enums::eColor color) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color) :
+	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
@@ -32,7 +35,8 @@ CloudRobot::CloudRobot(CloudCanvas & canvas, Enums::eColor color) :
 {
 }
 
-CloudRobot::CloudRobot(CloudCanvas & canvas, Enums::eColor color, bool isWriter) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color, bool isWriter) :
+	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),

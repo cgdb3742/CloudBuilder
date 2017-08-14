@@ -150,6 +150,7 @@
     <ClCompile Include="CloudPicture.cpp" />
     <ClCompile Include="CloudRobot.cpp" />
     <ClCompile Include="CloudSquare.cpp" />
+    <ClCompile Include="CompleteData.cpp" />
     <ClCompile Include="FontHandler.cpp" />
     <ClCompile Include="GameDataReader.cpp" />
     <ClCompile Include="GUIButton.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="CloudPicture.h" />
     <ClInclude Include="CloudRobot.h" />
     <ClInclude Include="CloudSquare.h" />
+    <ClInclude Include="CompleteData.h" />
     <ClInclude Include="FontHandler.h" />
     <ClInclude Include="GameDataReader.h" />
     <ClInclude Include="GUIButton.h" />

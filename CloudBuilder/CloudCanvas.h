@@ -13,9 +13,9 @@ class CloudCanvas :
 	public StringConvertible
 {
 public:
-	CloudCanvas();
-	CloudCanvas(unsigned int width, unsigned int height);
-	explicit CloudCanvas(CloudPicture& picture);
+	CloudCanvas(GameContext& gameContext);
+	CloudCanvas(GameContext& gameContext, unsigned int width, unsigned int height);
+	CloudCanvas(GameContext& gameContext, CloudPicture& picture);
 	~CloudCanvas();
 
 	bool exists(unsigned int i, unsigned int j);

@@ -1,13 +1,15 @@
 #include "GUIInfosTopic.h"
 #include "GUIInfosContainer.h"
+#include "Game.h"
 
 
 
-GUIInfosTopic::GUIInfosTopic(GUIInfosContainer & container, int id, std::string title, sf::Vector2f positionRatio):
-	GUIButton(positionRatio),
+GUIInfosTopic::GUIInfosTopic(GameContext& gameContext, GUIInfosContainer & container, int id, std::string title, sf::Vector2f positionRatio):
+	GUIButton(gameContext, positionRatio),
 	mContainer(container),
 	mId(id),
-	mTitle(title)
+	mTitle(title),
+	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
 
@@ -45,5 +47,16 @@ void GUIInfosTopic::drawCurrent(sf::RenderTarget & target)
 	button.setOutlineColor(sf::Color(0, 255, 0));
 	target.draw(button);
 
-	//TODO Draw topic title
+	sf::Text text;
+	text.setFont(mFont);
+	text.setString(mTitle);
+	text.setCharacterSize(36);
+	text.setFillColor(sf::Color(0, 0, 0));
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	//text.setOrigin(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height) / 2.0f);
+	float scale = std::min(mBoundingBox.x / textRect.width, mBoundingBox.y / textRect.height);
+	text.scale(sf::Vector2f(scale, scale) * 0.8f);
+	text.setPosition(mTopLeftCorner + mBoundingBox / 2.0f);
+	target.draw(text);
 }

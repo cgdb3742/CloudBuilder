@@ -3,7 +3,8 @@
 
 
 
-GUIInstructionModifierContainer::GUIInstructionModifierContainer(InstructionBoard& board):
+GUIInstructionModifierContainer::GUIInstructionModifierContainer(GameContext& gameContext, InstructionBoard& board):
+	GameEntity(gameContext),
 	mBoard(board)
 {
 }
@@ -101,7 +102,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.2f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Right))
 		{
@@ -111,7 +112,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(1.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Up))
 		{
@@ -121,7 +122,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.2f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 0.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Down))
 		{
@@ -131,7 +132,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 1.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.8f, 0.5f), shape));
 		}
 		break;
 	}
@@ -144,7 +145,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.2f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Left), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Left), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Right))
 		{
@@ -154,7 +155,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(1.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Right), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Right), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Up))
 		{
@@ -164,7 +165,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.2f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 0.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Up), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Up), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Down))
 		{
@@ -174,7 +175,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 1.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Down), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirTrue, Enums::eDir::Down), mBoard, sf::Vector2f(0.7f, 0.5f), shape));
 		}
 		break;
 	case Enums::eInstructionModifier::NextDirFalse: //Pos 5/5 (offset : 0.9f)
@@ -186,7 +187,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.2f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Left), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Left), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Right))
 		{
@@ -196,7 +197,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(1.0f, 0.8f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Right), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Right), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Up))
 		{
@@ -206,7 +207,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.2f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 0.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Up), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Up), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
 		}
 		if (mBoard.canMove(i, j, Enums::eDir::Down))
 		{
@@ -216,7 +217,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 			shape.setPoint(4, sf::Vector2f(0.8f, 1.0f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Down), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::NextDirFalse, Enums::eDir::Down), mBoard, sf::Vector2f(0.9f, 0.5f), shape));
 		}
 		break;
 	case Enums::eInstructionModifier::CheckDir: //Pos 2/5 (offset : 0.3f)
@@ -227,34 +228,34 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 		shape.setPoint(2, sf::Vector2f(0.3f, 0.3f));
 		shape.setPoint(3, sf::Vector2f(0.3f, 0.7f));
 		shape.setPoint(4, sf::Vector2f(0.2f, 0.7f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(1.0f, 0.5f));
 		shape.setPoint(1, sf::Vector2f(0.8f, 0.3f));
 		shape.setPoint(2, sf::Vector2f(0.7f, 0.3f));
 		shape.setPoint(3, sf::Vector2f(0.7f, 0.7f));
 		shape.setPoint(4, sf::Vector2f(0.8f, 0.7f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(0.5f, 0.0f));
 		shape.setPoint(1, sf::Vector2f(0.3f, 0.2f));
 		shape.setPoint(2, sf::Vector2f(0.3f, 0.3f));
 		shape.setPoint(3, sf::Vector2f(0.7f, 0.3f));
 		shape.setPoint(4, sf::Vector2f(0.7f, 0.2f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(0.5f, 1.0f));
 		shape.setPoint(1, sf::Vector2f(0.3f, 0.8f));
 		shape.setPoint(2, sf::Vector2f(0.3f, 0.7f));
 		shape.setPoint(3, sf::Vector2f(0.7f, 0.7f));
 		shape.setPoint(4, sf::Vector2f(0.7f, 0.8f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
 		shape.setPointCount(4);
 		shape.setPoint(0, sf::Vector2f(0.3f, 0.3f));
 		shape.setPoint(1, sf::Vector2f(0.7f, 0.3f));
 		shape.setPoint(2, sf::Vector2f(0.7f, 0.7f));
 		shape.setPoint(3, sf::Vector2f(0.3f, 0.7f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Center), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CheckDir, Enums::eDir::Center), mBoard, sf::Vector2f(0.3f, 0.5f), shape));
 		break;
 	}
 	case Enums::eInstructionModifier::CloudDir: //Pos 3/5 (offset : 0.5f)
@@ -265,28 +266,28 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 		shape.setPoint(3, sf::Vector2f(0.2f, 0.8f));
 		shape.setPoint(4, sf::Vector2f(0.0f, 0.8f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Left), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(1.0f, 0.2f));
 		shape.setPoint(1, sf::Vector2f(0.8f, 0.2f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 		shape.setPoint(4, sf::Vector2f(1.0f, 0.8f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Right), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(0.2f, 0.0f));
 		shape.setPoint(1, sf::Vector2f(0.2f, 0.2f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.2f));
 		shape.setPoint(4, sf::Vector2f(0.8f, 0.0f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Up), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(0.2f, 1.0f));
 		shape.setPoint(1, sf::Vector2f(0.2f, 0.8f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.5f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.8f));
 		shape.setPoint(4, sf::Vector2f(0.8f, 1.0f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudDir, Enums::eDir::Down), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		break;
 	}
 	case Enums::eInstructionModifier::RobotColor: //Pos 1/5 (offset : 0.1f), TODO only created if more than one robot ?
@@ -301,7 +302,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 				shape.setPoint(2, sf::Vector2f(0.5f, 0.2f));
 				shape.setPoint(3, sf::Vector2f(0.2f, 0.5f));
 				shape.setPoint(4, sf::Vector2f(0.0f, 0.5f));
-				mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Red), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
+				mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Red), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
 			}
 			if (mBoard.getStartPosition(Enums::eColor::Blue) != std::pair<unsigned int, unsigned int>(-1, -1))
 			{
@@ -311,7 +312,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 				shape.setPoint(2, sf::Vector2f(0.5f, 0.2f));
 				shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
 				shape.setPoint(4, sf::Vector2f(1.0f, 0.5f));
-				mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Blue), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
+				mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Blue), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
 			}
 			if (mBoard.getStartPosition(Enums::eColor::Green) != std::pair<unsigned int, unsigned int>(-1, -1))
 			{
@@ -321,7 +322,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 				shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 				shape.setPoint(3, sf::Vector2f(0.2f, 0.5f));
 				shape.setPoint(4, sf::Vector2f(0.0f, 0.5f));
-				mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Green), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
+				mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Green), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
 			}
 			if (mBoard.getStartPosition(Enums::eColor::Yellow) != std::pair<unsigned int, unsigned int>(-1, -1))
 			{
@@ -331,14 +332,14 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 				shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 				shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
 				shape.setPoint(4, sf::Vector2f(1.0f, 0.5f));
-				mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Yellow), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
+				mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::Yellow), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
 			}
 			shape.setPointCount(4);
 			shape.setPoint(0, sf::Vector2f(0.5f, 0.2f));
 			shape.setPoint(1, sf::Vector2f(0.2f, 0.5f));
 			shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 			shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
-			mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::NoColor), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
+			mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::RobotColor, Enums::eColor::NoColor), mBoard, sf::Vector2f(0.1f, 0.5f), shape));
 		}
 		break;
 	}
@@ -350,34 +351,34 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.2f));
 		shape.setPoint(3, sf::Vector2f(0.2f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(0.0f, 0.5f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Red), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Red), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(1.0f, 0.0f));
 		shape.setPoint(1, sf::Vector2f(0.5f, 0.0f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.2f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(1.0f, 0.5f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Blue), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Blue), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(0.0f, 1.0f));
 		shape.setPoint(1, sf::Vector2f(0.5f, 1.0f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 		shape.setPoint(3, sf::Vector2f(0.2f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(0.0f, 0.5f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Green), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Green), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(5);
 		shape.setPoint(0, sf::Vector2f(1.0f, 1.0f));
 		shape.setPoint(1, sf::Vector2f(0.5f, 1.0f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(1.0f, 0.5f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Yellow), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::Yellow), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(4);
 		shape.setPoint(0, sf::Vector2f(0.5f, 0.2f));
 		shape.setPoint(1, sf::Vector2f(0.2f, 0.5f));
 		shape.setPoint(2, sf::Vector2f(0.5f, 0.8f));
 		shape.setPoint(3, sf::Vector2f(0.8f, 0.5f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::NoColor), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudColor, Enums::eColor::NoColor), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		break;
 	}
 	case Enums::eInstructionModifier::CloudBool: //Pos 3/5 (offset : 0.5f)
@@ -389,7 +390,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 		shape.setPoint(3, sf::Vector2f(1.0f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(1.0f, 0.2f));
 		shape.setPoint(5, sf::Vector2f(0.8f, 0.0f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudBool, true), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudBool, true), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		shape.setPointCount(6);
 		shape.setPoint(0, sf::Vector2f(0.2f, 1.0f));
 		shape.setPoint(1, sf::Vector2f(0.0f, 0.8f));
@@ -397,7 +398,7 @@ void GUIInstructionModifierContainer::createModifiers(unsigned int i, unsigned i
 		shape.setPoint(3, sf::Vector2f(1.0f, 0.5f));
 		shape.setPoint(4, sf::Vector2f(1.0f, 0.8f));
 		shape.setPoint(5, sf::Vector2f(0.8f, 1.0f));
-		mModifiers.push_back(GUIInstructionModifier(InstructionModificationData(Enums::eInstructionModifier::CloudBool, false), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
+		mModifiers.push_back(GUIInstructionModifier(mGameContext, InstructionModificationData(Enums::eInstructionModifier::CloudBool, false), mBoard, sf::Vector2f(0.5f, 0.5f), shape));
 		break;
 	}
 	default:break;

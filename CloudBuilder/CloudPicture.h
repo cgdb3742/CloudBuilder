@@ -12,10 +12,10 @@ class CloudPicture :
 	public StringConvertible
 {
 public:
-	CloudPicture();
-	CloudPicture(unsigned int width, unsigned int height);
-	CloudPicture(unsigned int width, unsigned int height, std::string values);
-	explicit CloudPicture(CloudCanvas& canvas);
+	CloudPicture(GameContext& gameContext);
+	CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height);
+	CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height, std::string values);
+	CloudPicture(GameContext& gameContext, CloudCanvas& canvas);
 	~CloudPicture();
 
 	bool get(unsigned int i, unsigned int j);

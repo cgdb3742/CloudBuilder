@@ -4,6 +4,8 @@
 
 ResourceHandler::ResourceHandler()
 {
+	//TODO Pre-load only stuff necessary for the first screen and create a loading screen for the rest ?
+	loadResources();
 }
 
 

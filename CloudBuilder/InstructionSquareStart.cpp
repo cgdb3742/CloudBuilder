@@ -2,21 +2,21 @@
 
 
 
-InstructionSquareStart::InstructionSquareStart() :
-	InstructionSquare(Enums::eInstruction::SpeStart, "Robot Start"),
+InstructionSquareStart::InstructionSquareStart(GameContext& gameContext) :
+	InstructionSquare(gameContext, Enums::eInstruction::SpeStart, "Robot Start"),
 	mColor(Enums::eColor::NoColor)
 {
 }
 
-InstructionSquareStart::InstructionSquareStart(std::string & source) :
-	InstructionSquare(Enums::eInstruction::SpeStart, "Robot Start"),
+InstructionSquareStart::InstructionSquareStart(GameContext& gameContext, std::string & source) :
+	InstructionSquare(gameContext, Enums::eInstruction::SpeStart, "Robot Start"),
 	mColor(Enums::eColor::NoColor)
 {
 	convertFromString(source);
 }
 
-InstructionSquareStart::InstructionSquareStart(Enums::eColor color) :
-	InstructionSquare(Enums::eInstruction::SpeStart, "Robot Start"),
+InstructionSquareStart::InstructionSquareStart(GameContext& gameContext, Enums::eColor color) :
+	InstructionSquare(gameContext, Enums::eInstruction::SpeStart, "Robot Start"),
 	mColor(color)
 {
 }

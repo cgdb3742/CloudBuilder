@@ -4,8 +4,8 @@ class InstructionSquareReject :
 	public InstructionSquare
 {
 public:
-	InstructionSquareReject();
-	explicit InstructionSquareReject(std::string& source);
+	InstructionSquareReject(GameContext& gameContext);
+	InstructionSquareReject(GameContext& gameContext, std::string& source);
 	~InstructionSquareReject();
 
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();

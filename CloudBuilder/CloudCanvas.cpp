@@ -7,18 +7,20 @@
 
 
 
-CloudCanvas::CloudCanvas():
+CloudCanvas::CloudCanvas(GameContext& gameContext):
+	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
-	mCanvas(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare()))
+	mCanvas(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare(gameContext)))
 {
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight <<" )." << std::endl;
 }
 
-CloudCanvas::CloudCanvas(unsigned int width, unsigned int height):
+CloudCanvas::CloudCanvas(GameContext& gameContext, unsigned int width, unsigned int height):
+	GameEntity(gameContext),
 	mWidth(width),
 	mHeight(height),
-	mCanvas(width, std::vector<CloudSquare>(height, CloudSquare()))
+	mCanvas(width, std::vector<CloudSquare>(height, CloudSquare(gameContext)))
 {
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight << " )." << std::endl;
 
@@ -39,10 +41,11 @@ CloudCanvas::CloudCanvas(unsigned int width, unsigned int height):
 	//std::cout << mCanvas[4][5].getIsCloud() << std::endl;
 }
 
-CloudCanvas::CloudCanvas(CloudPicture & picture):
+CloudCanvas::CloudCanvas(GameContext& gameContext, CloudPicture & picture):
+	GameEntity(gameContext),
 	mWidth(picture.getWidth()),
 	mHeight(picture.getHeight()),
-	mCanvas(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare()))
+	mCanvas(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare(mGameContext)))
 {
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight << " )." << std::endl;
 
@@ -142,7 +145,7 @@ bool CloudCanvas::convertFromPicture(CloudPicture & picture)
 {
 	mWidth = picture.getWidth();
 	mHeight = picture.getHeight();
-	mCanvas = std::vector<std::vector<CloudSquare>>(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare()));
+	mCanvas = std::vector<std::vector<CloudSquare>>(mWidth, std::vector<CloudSquare>(mHeight, CloudSquare(mGameContext)));
 
 	for (unsigned int i = 0; i < mWidth; i++)
 	{
@@ -157,14 +160,14 @@ bool CloudCanvas::convertFromPicture(CloudPicture & picture)
 
 std::string CloudCanvas::convertToString()
 {
-	CloudPicture pic(*this);
+	CloudPicture pic(mGameContext, *this);
 
 	return pic.convertToString();
 }
 
 bool CloudCanvas::convertFromString(std::string & source)
 {
-	CloudPicture pic;
+	CloudPicture pic(mGameContext);
 
 	if (pic.convertFromString(source))
 	{

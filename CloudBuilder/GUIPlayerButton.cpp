@@ -3,8 +3,8 @@
 
 
 
-GUIPlayerButton::GUIPlayerButton(InstructionPlayer & player, Enums::eInstructionPlayerCommand command, sf::Vector2f positionRatio) :
-	GUIButton(positionRatio),
+GUIPlayerButton::GUIPlayerButton(GameContext& gameContext, InstructionPlayer & player, Enums::eInstructionPlayerCommand command, sf::Vector2f positionRatio) :
+	GUIButton(gameContext, positionRatio),
 	mPlayCommand(command),
 	mPauseCommand(command),
 	mStopCommand(command),
@@ -13,8 +13,8 @@ GUIPlayerButton::GUIPlayerButton(InstructionPlayer & player, Enums::eInstruction
 {
 }
 
-GUIPlayerButton::GUIPlayerButton(InstructionPlayer & player, Enums::eInstructionPlayerCommand playCommand, Enums::eInstructionPlayerCommand pauseCommand, Enums::eInstructionPlayerCommand stopCommand, sf::Vector2f positionRatio):
-	GUIButton(positionRatio),
+GUIPlayerButton::GUIPlayerButton(GameContext& gameContext, InstructionPlayer & player, Enums::eInstructionPlayerCommand playCommand, Enums::eInstructionPlayerCommand pauseCommand, Enums::eInstructionPlayerCommand stopCommand, sf::Vector2f positionRatio):
+	GUIButton(gameContext, positionRatio),
 	mPlayCommand(playCommand),
 	mPauseCommand(pauseCommand),
 	mStopCommand(stopCommand),

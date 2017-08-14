@@ -10,7 +10,7 @@ class StateMachine:
 	public GameEntity
 {
 public:
-	StateMachine();
+	StateMachine(GameContext& gameContext);
 	~StateMachine();
 
 	bool startState(Enums::eState state);

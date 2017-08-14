@@ -3,9 +3,9 @@
 
 
 
-StateLevel::StateLevel(StateMachine & machine):
-	State(machine),
-	mLevel(2) //TODO Creation of mLevel
+StateLevel::StateLevel(GameContext& gameContext, StateMachine & machine):
+	State(gameContext, machine),
+	mLevel(gameContext, 2) //TODO Creation of mLevel
 {
 	std::cout << "Creating GameEntity : StateLevel." << std::endl;
 }

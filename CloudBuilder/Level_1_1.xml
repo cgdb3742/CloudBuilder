@@ -10,7 +10,6 @@
         <puzzle>1</puzzle>
         <type>validation</type>
         <robots>1</robots>
-        <status>New</status>
     </general_info>
     <cloud_pictures>
         <cloud id = "0">
@@ -84,7 +83,7 @@
             </text>
             <text id = "3">
                 <en>The last Move instruction is a bit trickier. By default a Move instruction move the weaver right. To change that, go to the Modify tab. You can change different properties depending on the selected instruction. For this one, change it to move down. Note you can also change there the direction of the blue arrow on the instruction board, so you can control the path of the instruction reader.</en>
-                <fr>La dernière instruction Déplacer est un peu plus délicate. Par défaut elle déplace le tisseur vers la droite. Pour le changer, allez dans l'onglet Modifier. Vous pouvez changer différentes propriétés selon l'instruction choisie. Pour celle-ci, changez-la pour qu'elle déplace vers la droite. Vous pouvez aussi changer la direction de la flêche bleue sur le tableau d'instructions, pour contrôler le chemin du lecteur d'instructions.</fr>
+                <fr>La dernière instruction Déplacer est un peu plus délicate. Par défaut elle déplace le tisseur vers la droite. Pour le changer, allez dans l'onglet Modifier. Vous pouvez changer différentes propriétés selon l'instruction choisie. Pour celle-ci, changez-la pour qu'elle déplace vers le bas. Vous pouvez aussi changer la direction de la flêche bleue sur le tableau d'instructions, pour contrôler le chemin du lecteur d'instructions.</fr>
             </text>
             <text id = "4">
                 <en>Now the weaver will go to the right position, time to use the Check instruction. When placed on the instruction board, the Check instruction create two arrows : a green and a red one. This means the instruction reader will follow the green arrow if the check is successful, and the red one otherwise. You can see in the Modify tab there's a lot you can change, but it is not important for now.</en>
@@ -101,7 +100,7 @@
                 <fr>Contraintes</fr>
             </name>
             <text id = "0">
-                <en>Sometimes I wonder whether our work make any sense. For example, what if an artist use a canvas so small the second row or the third column does not exist? Fortunately the artistic studio assured me they would send us no such canvas. If our assignment change, I will make sure to ask them to only send canvas we work with.</en>
+                <en>Sometimes I wonder whether our work make any sense. For example, what if an artist use a canvas so small the second row or the third column does not exist? Fortunately the artistic studio assured me they would send us no such canvas. If our assignment change, I will make sure to ask them to only send canvases we work with.</en>
                 <fr>Parfois je me demande si notre travail a un sens. Par exemple, et si un artiste utilisait un canevas si petit qu'il n'y a pas de seconde ligne ou de troisième colonne ? Heureusement le studio artistique m'a assuré qu'ils nous enverraient aucun canevas de la sorte. Si notre mission change, je ferais attention de leur demander de nous envoyer que des canevas avec lesquels nous pouvons travailler.</fr>
             </text>
         </topic>
@@ -119,7 +118,7 @@
                 <fr>Vous ne pouvez pas interagir directement avec le canevas, uniquement le tableau d'interactions. Frustrant, non ? Je suis toujours perdue quand j'essaie de comprendre comment le tisseur de nuages et le lecteur d'instructions se comportent différemment, mais ensemble...</fr>
             </text>
             <text id = "2">
-                <en>Take your time to mess with the Play tab. Even if your instruction board does not work or is incomplete, you can always check how the cloud weaver react. Since it is your first assignment, nobody expect you to understand everything, so take your time to discover your tools. I heard the best way to learn is to fail and retry.</en>
+                <en>Take your time to mess with the Play tab. Even if your instruction board does not work or is incomplete, you can always check how the cloud weaver reacts. Since it is your first assignment, nobody expect you to understand everything, so take your time to discover your tools. I heard the best way to learn is to fail and retry.</en>
                 <fr>Prenez le temps de vous familiariser avec l'onglet Jouer. Même si votre tableau d'instructions ne marche pas ou est incomplet, vous pouvez toujours regarder comment le tisseur de nuages réagit. Vu que c'est votre première mission, personne ne s'attend à ce que vous compreniez tout, alors prenez le temps de découvrir vos outils. J'ai entendu dire que la meilleure façon d'apprendre est d'échouer et réessayer.</fr>
             </text>
             <text id = "4">

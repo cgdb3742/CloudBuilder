@@ -2,8 +2,8 @@
 
 
 
-StateTitleScreen::StateTitleScreen(StateMachine & machine):
-	State(machine)
+StateTitleScreen::StateTitleScreen(GameContext& gameContext, StateMachine & machine):
+	State(gameContext, machine)
 {
 }
 

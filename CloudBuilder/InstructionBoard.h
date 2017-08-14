@@ -16,8 +16,8 @@ class InstructionBoard :
 	public StringConvertible
 {
 public:
-	InstructionBoard();
-	InstructionBoard(unsigned int width, unsigned int height);
+	InstructionBoard(GameContext& gameContext);
+	InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height);
 	~InstructionBoard();
 
 	//InstructionBoard(const InstructionBoard& toCopy);

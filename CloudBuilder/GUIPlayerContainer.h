@@ -9,7 +9,7 @@ class GUIPlayerContainer :
 	public GameEntity
 {
 public:
-	GUIPlayerContainer(InstructionPlayer& player);
+	GUIPlayerContainer(GameContext& gameContext, InstructionPlayer& player);
 	~GUIPlayerContainer();
 
 	virtual void drawCurrent(sf::RenderTarget& target);

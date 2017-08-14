@@ -7,11 +7,11 @@
 Game::Game():
 	mWindow(sf::VideoMode(1024, 768), "Cloud Builder"),
 	mResourceHandler(),
-	mStateMachine()
+	mData(),
+	mContext(mResourceHandler, mData.getGameData(), mData.getLevelData()),
+	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;
-
-	mResourceHandler.loadResources(); //TODO LoadingState ?
 }
 
 

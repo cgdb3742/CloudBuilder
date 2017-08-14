@@ -3,7 +3,8 @@
 
 
 
-InstructionRobot::InstructionRobot(InstructionBoard& board):
+InstructionRobot::InstructionRobot(GameContext& gameContext, InstructionBoard& board):
+	GameEntity(gameContext),
 	mBoard(board),
 	mPosi(0),
 	mPosj(0),
@@ -15,7 +16,8 @@ InstructionRobot::InstructionRobot(InstructionBoard& board):
 	std::cout << "Creating GameEntity : InstructionRobot." << std::endl;
 }
 
-InstructionRobot::InstructionRobot(InstructionBoard & board, Enums::eColor color) :
+InstructionRobot::InstructionRobot(GameContext& gameContext, InstructionBoard & board, Enums::eColor color) :
+	GameEntity(gameContext),
 	mBoard(board),
 	mPosi(0),
 	mPosj(0),

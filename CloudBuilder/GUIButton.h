@@ -4,7 +4,7 @@ class GUIButton :
 	public GameEntity
 {
 public:
-	GUIButton(sf::Vector2f positionRatio);
+	GUIButton(GameContext& gameContext, sf::Vector2f positionRatio);
 	~GUIButton();
 
 	virtual void clicked();

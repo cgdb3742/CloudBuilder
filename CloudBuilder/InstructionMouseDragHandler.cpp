@@ -5,7 +5,8 @@
 #include "InstructionSquare.h"
 
 
-InstructionMouseDragHandler::InstructionMouseDragHandler(InstructionBoard& board, GUIInstructionCreatorContainer& creatorContainer) :
+InstructionMouseDragHandler::InstructionMouseDragHandler(GameContext& gameContext, InstructionBoard& board, GUIInstructionCreatorContainer& creatorContainer) :
+	GameEntity(gameContext),
 	mIsDragging(false),
 	mDragged(nullptr),
 	mBoard(board),

@@ -2,8 +2,8 @@
 
 
 
-GUITitleScreenButton::GUITitleScreenButton(sf::Vector2f positionRatio, unsigned int id):
-	GUIButton(positionRatio),
+GUITitleScreenButton::GUITitleScreenButton(GameContext& gameContext, sf::Vector2f positionRatio, unsigned int id):
+	GUIButton(gameContext, positionRatio),
 	mId(id)
 {
 }

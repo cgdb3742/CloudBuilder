@@ -4,16 +4,16 @@
 
 
 
-InstructionSquareActMove::InstructionSquareActMove() :
-	InstructionSquare(Enums::eInstruction::ActMove, "Move Action"),
+InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext) :
+	InstructionSquare(gameContext, Enums::eInstruction::ActMove, "Move Action"),
 	mToMove(Enums::eDir::Right),
 	mRobotColor(Enums::eColor::NoColor)
 {
 	std::cout << "Creating GameEntity : InstructionSquareActMove." << std::endl;
 }
 
-InstructionSquareActMove::InstructionSquareActMove(std::string & source) :
-	InstructionSquare(Enums::eInstruction::ActMove, "Move Action"),
+InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext, std::string & source) :
+	InstructionSquare(gameContext, Enums::eInstruction::ActMove, "Move Action"),
 	mToMove(Enums::eDir::Right),
 	mRobotColor(Enums::eColor::NoColor)
 {

@@ -4,8 +4,8 @@
 
 
 
-InstructionSquareCheckCloud::InstructionSquareCheckCloud() :
-	InstructionSquare(Enums::eInstruction::CheckCloud, "Check Cloud"),
+InstructionSquareCheckCloud::InstructionSquareCheckCloud(GameContext& gameContext) :
+	InstructionSquare(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),
 	mCheckDir(Enums::eDir::Center),
@@ -14,8 +14,8 @@ InstructionSquareCheckCloud::InstructionSquareCheckCloud() :
 {
 }
 
-InstructionSquareCheckCloud::InstructionSquareCheckCloud(std::string & source) :
-	InstructionSquare(Enums::eInstruction::CheckCloud, "Check Cloud"),
+InstructionSquareCheckCloud::InstructionSquareCheckCloud(GameContext& gameContext, std::string & source) :
+	InstructionSquare(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),
 	mCheckDir(Enums::eDir::Center),

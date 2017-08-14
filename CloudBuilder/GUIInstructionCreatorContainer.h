@@ -12,7 +12,7 @@ class GUIInstructionCreatorContainer:
 	public InstructionDraggableHandler
 {
 public:
-	GUIInstructionCreatorContainer(InstructionBoard& board);
+	GUIInstructionCreatorContainer(GameContext& gameContext, InstructionBoard& board);
 	~GUIInstructionCreatorContainer();
 
 	void setUpCreators();

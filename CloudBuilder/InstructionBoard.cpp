@@ -16,7 +16,8 @@ static std::vector<InstructionSquare::InstructionSquarePtr> generate(size_t sz)
 	return result;
 }
 
-InstructionBoard::InstructionBoard():
+InstructionBoard::InstructionBoard(GameContext& gameContext):
+	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
 	mBoard(generate(1*1)),
@@ -30,14 +31,15 @@ InstructionBoard::InstructionBoard():
 	{
 		for (unsigned int j = 0; j < mHeight; j++)
 		{
-			mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare());
+			mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
 		}
 	}
 
 	//setSelection(0, 0);
 }
 
-InstructionBoard::InstructionBoard(unsigned int width, unsigned int height):
+InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height):
+	GameEntity(gameContext),
 	mWidth(width),
 	mHeight(height),
 	mBoard(generate(width*height)),
@@ -51,17 +53,17 @@ InstructionBoard::InstructionBoard(unsigned int width, unsigned int height):
 	{
 		for (unsigned int j = 0; j < mHeight; j++)
 		{
-			mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare());
+			mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
 		}
 	}
 
 	//mBoard[5 + 2*mHeight]->setNextDir(Enums::eDir::Down);
 
-	insert(2, 5, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::ActMove));
-	insert(6, 4, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::ActMove));
-	insert(3, 7, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::CheckCloud));
-	insert(1, 0, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Red));
-	insert(7, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Blue));
+	insert(2, 5, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	insert(6, 4, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	insert(3, 7, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::CheckCloud));
+	insert(1, 0, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
+	insert(7, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Blue));
 	//insert(6, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Green));
 	//insert(5, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Yellow));
 	//mSelectionUpdated = false;
@@ -129,7 +131,7 @@ bool InstructionBoard::convertFromString(std::string & source)
 		{
 			for (unsigned int j = 0; j < mHeight; j++)
 			{
-				mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare());
+				mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare(mGameContext));
 			}
 		}
 
@@ -142,11 +144,11 @@ bool InstructionBoard::convertFromString(std::string & source)
 
 			if (iFound != std::string::npos)
 			{
-				newSquare = InstructionSquare::createNewInstructionSquare(source.substr(vFound + 1, vFound - iFound - 1));
+				newSquare = InstructionSquare::createNewInstructionSquare(mGameContext, source.substr(vFound + 1, vFound - iFound - 1));
 			}
 			else
 			{
-				newSquare = InstructionSquare::createNewInstructionSquare(source.substr(vFound + 1));
+				newSquare = InstructionSquare::createNewInstructionSquare(mGameContext, source.substr(vFound + 1));
 			}
 
 			if (newSquare == nullptr)
@@ -423,7 +425,7 @@ InstructionSquare::InstructionSquarePtr InstructionBoard::giveToDrag(unsigned in
 	{
 		InstructionSquare::InstructionSquarePtr toReturn = std::move(mBoard[i + j*mWidth]);
 		//mBoard[i + j*mHeight] = std::make_unique<InstructionSquare>(InstructionSquare());
-		insert(i, j, std::make_unique<InstructionSquare>(InstructionSquare()));
+		insert(i, j, std::make_unique<InstructionSquare>(InstructionSquare(mGameContext)));
 		return toReturn;
 	}
 	else

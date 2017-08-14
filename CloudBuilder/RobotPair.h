@@ -8,8 +8,8 @@ class RobotPair :
 	public GameEntity
 {
 public:
-	RobotPair(CloudCanvas& canvas, InstructionBoard& board);
-	RobotPair(CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color);
+	RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board);
+	RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color);
 	~RobotPair();
 
 	//virtual void updateCurrent(sf::Time dt);

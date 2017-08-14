@@ -2,7 +2,8 @@
 
 
 
-GUIButton::GUIButton(sf::Vector2f positionRatio):
+GUIButton::GUIButton(GameContext& gameContext, sf::Vector2f positionRatio):
+	GameEntity(gameContext),
 	mPositionRatio(positionRatio)
 {
 }

@@ -10,7 +10,7 @@ class GUIInstructionModifierContainer :
 	public GameEntity
 {
 public:
-	GUIInstructionModifierContainer(InstructionBoard& board);
+	GUIInstructionModifierContainer(GameContext& gameContext, InstructionBoard& board);
 	~GUIInstructionModifierContainer();
 
 	void setUpModifiers();

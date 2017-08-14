@@ -22,7 +22,7 @@ class GUIInstructionModifier :
 	public GUIButton
 {
 public:
-	GUIInstructionModifier(InstructionModificationData modificationReport, InstructionBoard& board, sf::Vector2f positionRatio, sf::ConvexShape basicShape);
+	GUIInstructionModifier(GameContext& gameContext, InstructionModificationData modificationReport, InstructionBoard& board, sf::Vector2f positionRatio, sf::ConvexShape basicShape);
 	~GUIInstructionModifier();
 
 	InstructionModificationData getModification();

@@ -9,7 +9,7 @@ class InstructionPlayer :
 	public GameEntity
 {
 public:
-	InstructionPlayer(Level& level, std::map<Enums::eColor, RobotPair>& robots);
+	InstructionPlayer(GameContext& gameContext, Level& level, std::map<Enums::eColor, RobotPair>& robots);
 	~InstructionPlayer();
 
 	void activate(bool loopOnce);

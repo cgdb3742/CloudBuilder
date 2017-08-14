@@ -4,8 +4,8 @@ class InstructionSquareActMove :
 	public InstructionSquare
 {
 public:
-	InstructionSquareActMove();
-	explicit InstructionSquareActMove(std::string& source);
+	InstructionSquareActMove(GameContext& gameContext);
+	InstructionSquareActMove(GameContext& gameContext, std::string& source);
 	~InstructionSquareActMove();
 
 	Enums::eDir getToMove();

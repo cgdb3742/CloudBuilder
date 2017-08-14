@@ -8,8 +8,8 @@ class GUIPlayerButton :
 	public GUIButton
 {
 public:
-	GUIPlayerButton(InstructionPlayer& player, Enums::eInstructionPlayerCommand command, sf::Vector2f positionRatio);
-	GUIPlayerButton(InstructionPlayer& player, Enums::eInstructionPlayerCommand playCommand, Enums::eInstructionPlayerCommand pauseCommand, Enums::eInstructionPlayerCommand stopCommand, sf::Vector2f positionRatio);
+	GUIPlayerButton(GameContext& gameContext, InstructionPlayer& player, Enums::eInstructionPlayerCommand command, sf::Vector2f positionRatio);
+	GUIPlayerButton(GameContext& gameContext, InstructionPlayer& player, Enums::eInstructionPlayerCommand playCommand, Enums::eInstructionPlayerCommand pauseCommand, Enums::eInstructionPlayerCommand stopCommand, sf::Vector2f positionRatio);
 	~GUIPlayerButton();
 
 	virtual void clicked();

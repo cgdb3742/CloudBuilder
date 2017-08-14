@@ -237,6 +237,9 @@
     <ClCompile Include="ResourceHandler.cpp">
       <Filter>Fichiers sources\ResourcesHandler</Filter>
     </ClCompile>
+    <ClCompile Include="CompleteData.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -376,6 +379,9 @@
     </ClInclude>
     <ClInclude Include="ResourceHandler.h">
       <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="CompleteData.h">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

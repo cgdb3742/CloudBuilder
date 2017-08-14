@@ -4,7 +4,7 @@ class GUITitleScreenButton :
 	public GUIButton
 {
 public:
-	GUITitleScreenButton(sf::Vector2f positionRatio, unsigned int id);
+	GUITitleScreenButton(GameContext& gameContext, sf::Vector2f positionRatio, unsigned int id);
 	~GUITitleScreenButton();
 
 	virtual void clicked();

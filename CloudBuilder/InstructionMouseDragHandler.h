@@ -19,7 +19,7 @@ class GUIInstructionCreatorContainer;
 	public BuildLockable
 {
 public:
-	InstructionMouseDragHandler(InstructionBoard& board, GUIInstructionCreatorContainer& creatorContainer);
+	InstructionMouseDragHandler(GameContext& gameContext, InstructionBoard& board, GUIInstructionCreatorContainer& creatorContainer);
 	~InstructionMouseDragHandler();
 
 	bool pick();

@@ -13,7 +13,7 @@ public:
 	typedef std::reference_wrapper<GameEntity> GameEntityRef;
 	//typedef std::unique_ptr<GameEntity> GameEntityPtr;
 
-	GameEntity();
+	GameEntity(GameContext& gameContext);
 	~GameEntity();
 
 	virtual void handleEventAll(const sf::Event& event);
@@ -49,6 +49,6 @@ protected:
 	sf::Vector2f mBoundingBox;
 	std::vector<GameEntityRef> mChilds;
 
-	//GameContext& mGameContext;
+	GameContext& mGameContext;
 };
 

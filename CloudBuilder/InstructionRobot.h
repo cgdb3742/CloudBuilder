@@ -7,8 +7,8 @@ class InstructionRobot :
 	public GameEntity
 {
 public:
-	explicit InstructionRobot(InstructionBoard& board);
-	InstructionRobot(InstructionBoard& board, Enums::eColor color);
+	InstructionRobot(GameContext& gameContext, InstructionBoard& board);
+	InstructionRobot(GameContext& gameContext, InstructionBoard& board, Enums::eColor color);
 	~InstructionRobot();
 
 	InstructionSquare& getPos();

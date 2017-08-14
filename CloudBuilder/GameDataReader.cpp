@@ -86,3 +86,8 @@ bool GameDataReader::readData()
 		return false;
 	}
 }
+
+GameData & GameDataReader::getData()
+{
+	return mData;
+}

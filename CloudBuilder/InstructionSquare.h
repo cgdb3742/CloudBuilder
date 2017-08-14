@@ -18,14 +18,14 @@ class InstructionSquare :
 public:
 	typedef std::unique_ptr<InstructionSquare> InstructionSquarePtr;
 
-	static InstructionSquarePtr createNewInstructionSquare(Enums::eInstruction type);
-	static InstructionSquarePtr createNewInstructionSquare(Enums::eInstruction type, Enums::eColor color); //used for starter
-	static InstructionSquarePtr createNewInstructionSquare(std::string source);
+	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type);
+	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type, Enums::eColor color); //used for starter
+	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, std::string source);
 	//static InstructionSquare createNewInstructionSquareRaw(Enums::eInstruction type);
 	//static InstructionSquare createNewInstructionSquareRaw(Enums::eInstruction type, Enums::eColor color);
 
-	InstructionSquare();
-	explicit InstructionSquare(std::string& source);
+	InstructionSquare(GameContext& gameContext);
+	InstructionSquare(GameContext& gameContext, std::string& source);
 	~InstructionSquare();
 
 	bool IsAssigned();
@@ -57,7 +57,7 @@ public:
 
 	virtual void drawCurrent(sf::RenderTarget & target);
 protected:
-	InstructionSquare(Enums::eInstruction type, std::string name);
+	InstructionSquare(GameContext& gameContext, Enums::eInstruction type, std::string name);
 
 	virtual void drawNextDir(sf::RenderTarget & target);
 	virtual void drawInterior(sf::RenderTarget & target);

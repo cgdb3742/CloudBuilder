@@ -73,3 +73,15 @@ bool LevelDataReader::readData()
 		return false;
 	}
 }
+
+bool LevelDataReader::readData(unsigned int newWorld, unsigned int newLevel)
+{
+	mWorld = newWorld;
+	mLevel = newLevel;
+	return readData();
+}
+
+LevelData & LevelDataReader::getData()
+{
+	return mData;
+}

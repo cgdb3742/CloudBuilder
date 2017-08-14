@@ -9,8 +9,8 @@ class GUIInstructionCreator :
 	public InstructionDraggableHandler
 {
 public:
-	GUIInstructionCreator();
-	GUIInstructionCreator(Enums::eInstruction type, sf::Vector2f positionRatio);
+	GUIInstructionCreator(GameContext& gameContext);
+	GUIInstructionCreator(GameContext& gameContext, Enums::eInstruction type, sf::Vector2f positionRatio);
 	GUIInstructionCreator(const GUIInstructionCreator& toCopy);
 	~GUIInstructionCreator();
 

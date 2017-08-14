@@ -2,8 +2,8 @@
 #include "InstructionBoard.h"
 
 
-GUIInstructionModifier::GUIInstructionModifier(InstructionModificationData modificationReport, InstructionBoard & board, sf::Vector2f positionRatio, sf::ConvexShape basicShape):
-	GUIButton(positionRatio),
+GUIInstructionModifier::GUIInstructionModifier(GameContext& gameContext, InstructionModificationData modificationReport, InstructionBoard & board, sf::Vector2f positionRatio, sf::ConvexShape basicShape):
+	GUIButton(gameContext, positionRatio),
 	mModificationReport(modificationReport),
 	//mPositionRatio(positionRatio),
 	mBoard(board),

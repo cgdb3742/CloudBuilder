@@ -2,15 +2,16 @@
 
 
 
-GUIPlayerContainer::GUIPlayerContainer(InstructionPlayer& player)
+GUIPlayerContainer::GUIPlayerContainer(GameContext& gameContext, InstructionPlayer& player):
+	GameEntity(gameContext)
 {
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdPause, Enums::eInstructionPlayerCommand::CmdPlay, Enums::eInstructionPlayerCommand::CmdPlay, sf::Vector2f(0.2f,0.25f))); //Play/Pause
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdStep, sf::Vector2f(0.4f, 0.25f))); //Play step
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdStop, Enums::eInstructionPlayerCommand::CmdStop, Enums::eInstructionPlayerCommand::CmdUnknown, sf::Vector2f(0.6f, 0.25f))); //Stop
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdSpeedSlow, sf::Vector2f(0.2f, 0.75f))); //Speed : slow
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdSpeedMedium, sf::Vector2f(0.4f, 0.75f))); //Speed : medium
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdSpeedFast, sf::Vector2f(0.6f, 0.75f))); //Speed : fast
-	mButtons.push_back(GUIPlayerButton(player, Enums::eInstructionPlayerCommand::CmdSpeedInstant, sf::Vector2f(0.8f, 0.75f))); //Speed : instant
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdPause, Enums::eInstructionPlayerCommand::CmdPlay, Enums::eInstructionPlayerCommand::CmdPlay, sf::Vector2f(0.2f,0.25f))); //Play/Pause
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdStep, sf::Vector2f(0.4f, 0.25f))); //Play step
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdStop, Enums::eInstructionPlayerCommand::CmdStop, Enums::eInstructionPlayerCommand::CmdUnknown, sf::Vector2f(0.6f, 0.25f))); //Stop
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdSpeedSlow, sf::Vector2f(0.2f, 0.75f))); //Speed : slow
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdSpeedMedium, sf::Vector2f(0.4f, 0.75f))); //Speed : medium
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdSpeedFast, sf::Vector2f(0.6f, 0.75f))); //Speed : fast
+	mButtons.push_back(GUIPlayerButton(gameContext, player, Enums::eInstructionPlayerCommand::CmdSpeedInstant, sf::Vector2f(0.8f, 0.75f))); //Speed : instant
 }
 
 

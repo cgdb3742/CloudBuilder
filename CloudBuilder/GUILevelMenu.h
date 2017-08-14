@@ -17,7 +17,7 @@ class GUILevelMenu :
 	public BuildLockable
 {
 public:
-	GUILevelMenu(InstructionBoard& board, InstructionPlayer& player);
+	GUILevelMenu(GameContext& gameContext, InstructionBoard& board, InstructionPlayer& player);
 	~GUILevelMenu();
 
 	void createTabs(InstructionBoard& board, InstructionPlayer& player);

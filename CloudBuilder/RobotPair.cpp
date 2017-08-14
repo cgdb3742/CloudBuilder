@@ -4,10 +4,11 @@
 
 
 
-RobotPair::RobotPair(CloudCanvas& canvas, InstructionBoard& board):
+RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board):
+	GameEntity(gameContext),
 	mColor(Enums::eColor::NoColor),
-	mCloudRobot(canvas),
-	mInstructionRobot(board),
+	mCloudRobot(gameContext, canvas),
+	mInstructionRobot(gameContext, board),
 	mCanvas(canvas),
 	mBoard(board),
 	mInstructionDone(false)
@@ -18,10 +19,11 @@ RobotPair::RobotPair(CloudCanvas& canvas, InstructionBoard& board):
 	mInstructionRobot.setPos(startPos.first, startPos.second);
 }
 
-RobotPair::RobotPair(CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color) :
+RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color) :
+	GameEntity(gameContext),
 	mColor(color),
-	mCloudRobot(canvas, color),
-	mInstructionRobot(board, color),
+	mCloudRobot(gameContext, canvas, color),
+	mInstructionRobot(gameContext, board, color),
 	mCanvas(canvas),
 	mBoard(board),
 	mInstructionDone(false)

@@ -33,6 +33,7 @@ public:
 	bool readData();
 	//TODO save data
 
+	GameData& getData();
 private:
 	GameData mData;
 };

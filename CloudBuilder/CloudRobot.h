@@ -7,10 +7,10 @@ class CloudRobot :
 	public GameEntity
 {
 public:
-	explicit CloudRobot(CloudCanvas& canvas);
-	CloudRobot(CloudCanvas& canvas, bool isWriter);
-	CloudRobot(CloudCanvas& canvas, Enums::eColor color);
-	CloudRobot(CloudCanvas& canvas, Enums::eColor color, bool isWriter);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, bool isWriter);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isWriter);
 	~CloudRobot();
 
 	CloudSquare& getPos();

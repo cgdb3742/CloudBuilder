@@ -2,13 +2,13 @@
 #include "InstructionRobot.h"
 
 
-InstructionSquareReject::InstructionSquareReject() :
-	InstructionSquare(Enums::eInstruction::SpeReject, "Reject")
+InstructionSquareReject::InstructionSquareReject(GameContext& gameContext) :
+	InstructionSquare(gameContext, Enums::eInstruction::SpeReject, "Reject")
 {
 }
 
-InstructionSquareReject::InstructionSquareReject(std::string & source) :
-	InstructionSquare(Enums::eInstruction::SpeReject, "Reject")
+InstructionSquareReject::InstructionSquareReject(GameContext& gameContext, std::string & source) :
+	InstructionSquare(gameContext, Enums::eInstruction::SpeReject, "Reject")
 {
 	convertFromString(source);
 }

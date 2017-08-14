@@ -10,7 +10,7 @@ class GUIInfosContainer :
 	public GameEntity
 {
 public:
-	GUIInfosContainer();
+	GUIInfosContainer(GameContext& gameContext);
 	~GUIInfosContainer();
 
 	void setNewText(unsigned int topic, unsigned int text);

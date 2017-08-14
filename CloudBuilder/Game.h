@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <SFML\Audio.hpp>
 #include <SFML\Graphics.hpp>
 //#include <SFML\Network.hpp>
@@ -7,15 +8,18 @@
 #include <SFML\Window.hpp>
 #include "StateMachine.h"
 #include "ResourceHandler.h"
+#include "CompleteData.h"
 
 class InstructionSquare;
 
 struct GameContext
 {
-	GameContext(StateMachine& sm, ResourceHandler& rh) : stateMachine(sm), resourceHandler(rh) {}
+	GameContext(ResourceHandler& rh, GameData& gd, LevelData& ld) : resourceHandler(rh), gameData(gd), levelData(ld) {}
 
-	StateMachine& stateMachine;
+	//StateMachine& stateMachine;
 	ResourceHandler& resourceHandler;
+	GameData& gameData;
+	LevelData& levelData;
 };
 
 class Game
@@ -40,5 +44,7 @@ private:
 	sf::RenderWindow mWindow;
 	StateMachine mStateMachine;
 	ResourceHandler mResourceHandler;
+	GameContext mContext;
+	CompleteData mData;
 };
 

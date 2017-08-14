@@ -3,12 +3,12 @@
 
 
 
-State::State(StateMachine & machine):
+State::State(GameContext& gameContext, StateMachine & machine):
+	GameEntity(gameContext),
 	mMachine(machine)
 {
 	std::cout << "Creating GameEntity : State." << std::endl;
 }
-
 
 State::~State()
 {

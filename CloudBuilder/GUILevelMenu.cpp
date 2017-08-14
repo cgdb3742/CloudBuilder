@@ -3,12 +3,13 @@
 
 
 
-GUILevelMenu::GUILevelMenu(InstructionBoard& board, InstructionPlayer& player) :
+GUILevelMenu::GUILevelMenu(GameContext& gameContext, InstructionBoard& board, InstructionPlayer& player) :
+	GameEntity(gameContext),
 	mSelected(0),
-	mMenuCreator(GUIInstructionCreatorContainer(board)),
-	mMenuModifier(GUIInstructionModifierContainer(board)),
-	mMenuPlayer(GUIPlayerContainer(player)),
-	mInfos(GUIInfosContainer()),
+	mMenuCreator(GUIInstructionCreatorContainer(gameContext, board)),
+	mMenuModifier(GUIInstructionModifierContainer(gameContext, board)),
+	mMenuPlayer(GUIPlayerContainer(gameContext, player)),
+	mInfos(GUIInfosContainer(gameContext)),
 	mBoard(board)
 {
 	createTabs(board, player);
@@ -21,12 +22,12 @@ GUILevelMenu::~GUILevelMenu()
 
 void GUILevelMenu::createTabs(InstructionBoard& board, InstructionPlayer& player)
 {
-	mMenuTabs.push_back(GUILevelMenuTab("Infos", 0, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, "Infos", 0, *this));
 	//mMenuCreator(GUIInstructionCreatorContainer(board));
-	mMenuTabs.push_back(GUILevelMenuTab("New", 1, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, "New", 1, *this));
 	//mMenuModifier(GUIInstructionModifierContainer(board));
-	mMenuTabs.push_back(GUILevelMenuTab("Modify", 2, *this));
-	mMenuTabs.push_back(GUILevelMenuTab("Play", 3, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, "Modify", 2, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, "Play", 3, *this));
 }
 
 bool GUILevelMenu::changeSelection(unsigned int i)

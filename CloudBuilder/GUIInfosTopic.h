@@ -8,7 +8,7 @@ class GUIInfosTopic :
 	public GUIButton
 {
 public:
-	GUIInfosTopic(GUIInfosContainer& container, int id, std::string title, sf::Vector2f positionRatio);
+	GUIInfosTopic(GameContext& gameContext, GUIInfosContainer& container, int id, std::string title, sf::Vector2f positionRatio);
 	~GUIInfosTopic();
 
 	virtual void clicked();
@@ -20,6 +20,6 @@ private:
 
 	GUIInfosContainer& mContainer;
 
-	//sf::Font& mFont;
+	sf::Font& mFont;
 };
 

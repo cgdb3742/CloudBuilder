@@ -7,9 +7,9 @@ class InstructionSquareStart :
 	public InstructionSquare
 {
 public:
-	InstructionSquareStart();
-	explicit InstructionSquareStart(std::string& source);
-	explicit InstructionSquareStart(Enums::eColor color);
+	InstructionSquareStart(GameContext& gameContext);
+	InstructionSquareStart(GameContext& gameContext, std::string& source);
+	InstructionSquareStart(GameContext& gameContext, Enums::eColor color);
 	//InstructionSquareStart(Enums::eColor color, InstructionRobot& robot);
 	~InstructionSquareStart();
 

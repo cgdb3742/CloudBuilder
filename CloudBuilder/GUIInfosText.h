@@ -5,7 +5,7 @@ class GUIInfosText :
 	public GUIButton
 {
 public:
-	GUIInfosText(sf::Vector2f positionRatio);
+	GUIInfosText(GameContext& gameContext, sf::Vector2f positionRatio);
 	~GUIInfosText();
 
 	virtual void updateCurrent(sf::Time dt);
@@ -13,10 +13,12 @@ public:
 	//virtual void handleEventCurrent(const sf::Event& event);
 	virtual void drawCurrent(sf::RenderTarget& target);
 
+	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
+
 	void setNewText(std::string newString);
 	void showAll();
 private:
-	void wrapCurrentString();
+	void wrapCompleteString();
 
 	std::string mCompleteString;
 	unsigned int mCurrentLength;
@@ -26,6 +28,6 @@ private:
 	float mTimerShow;
 	float mMaxTimerShow;
 
-	//sf::Font& mFont;
+	sf::Font& mFont;
 };
 

@@ -3,8 +3,8 @@
 
 
 
-GUIInfosScroller::GUIInfosScroller(GUIInfosContainer & container, int dir, sf::Vector2f positionRatio):
-	GUIButton(positionRatio),
+GUIInfosScroller::GUIInfosScroller(GameContext& gameContext, GUIInfosContainer & container, int dir, sf::Vector2f positionRatio):
+	GUIButton(gameContext, positionRatio),
 	mContainer(container),
 	mDir(dir)
 {

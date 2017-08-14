@@ -7,8 +7,8 @@ class CloudSquare :
 	public GameEntity
 {
 public:
-	CloudSquare();
-	explicit CloudSquare(bool isCloud);
+	CloudSquare(GameContext& gameContext);
+	CloudSquare(GameContext& gameContext, bool isCloud);
 	~CloudSquare();
 
 	Enums::eColor getColor();

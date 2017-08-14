@@ -12,7 +12,7 @@ public:
 	typedef std::unique_ptr<State> StatePtr;
 	//typedef std::reference_wrapper<State> StateRef;
 
-	State(StateMachine& machine);
+	State(GameContext& gameContext, StateMachine& machine);
 	~State();
 
 	virtual void enter();

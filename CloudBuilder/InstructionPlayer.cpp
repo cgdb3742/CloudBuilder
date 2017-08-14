@@ -4,7 +4,8 @@
 
 
 
-InstructionPlayer::InstructionPlayer(Level & level, std::map<Enums::eColor, RobotPair> & robots):
+InstructionPlayer::InstructionPlayer(GameContext & gameContext, Level & level, std::map<Enums::eColor, RobotPair> & robots):
+	GameEntity(gameContext),
 	mRobots(robots),
 	mPlayerSpeed(1.0f),
 	mPlayerProgress(0.0f),

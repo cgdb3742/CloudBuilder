@@ -9,7 +9,7 @@ class GUILevelMenuTab :
 {
 public:
 	//GUILevelMenuTab();
-	GUILevelMenuTab(std::string name, unsigned int id, GUILevelMenu& menu);
+	GUILevelMenuTab(GameContext& gameContext, std::string name, unsigned int id, GUILevelMenu& menu);
 	~GUILevelMenuTab();
 
 	virtual void handleEventCurrent(const sf::Event& event);
@@ -18,5 +18,7 @@ private:
 	GUILevelMenu& mMenu;
 	std::string mName;
 	unsigned int mId;
+
+	sf::Font& mFont;
 };
 

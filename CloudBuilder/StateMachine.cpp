@@ -7,7 +7,8 @@
 #include "StateTitleScreen.h"
 
 
-StateMachine::StateMachine()
+StateMachine::StateMachine(GameContext& gameContext):
+	GameEntity(gameContext)
 {
 	std::cout << "Creating StateMachine." << std::endl;
 }
@@ -158,10 +159,10 @@ State::StatePtr StateMachine::createNewState(Enums::eState state)
 
 	switch (state)
 	{
-	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(*this));
-	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(*this)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
-	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(*this));
-	default: return std::unique_ptr<State>(new State(*this));
+	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(mGameContext, *this));
+	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(mGameContext, *this)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
+	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(mGameContext, *this));
+	default: return std::unique_ptr<State>(new State(mGameContext, *this));
 	}
 
 	//switch (state)

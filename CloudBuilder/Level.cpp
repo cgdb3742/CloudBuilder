@@ -3,13 +3,14 @@
 
 
 
-Level::Level():
-	mCanvas(10, 10),
-	mBoard(8, 8),
+Level::Level(GameContext & gameContext):
+	GameEntity(gameContext),
+	mCanvas(gameContext, 10, 10),
+	mBoard(gameContext, 8, 8),
 	mIsRunning(false),
-	mPlayer(*this, mRobots),
-	mMenu(mBoard, mPlayer),
-	mInstructionDragger(mBoard, mMenu.getCreator())
+	mPlayer(gameContext, *this, mRobots),
+	mMenu(gameContext, mBoard, mPlayer),
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 	createRobotPairs(1);
@@ -18,13 +19,14 @@ Level::Level():
 	std::cout << mCanvas.convertToString() << std::endl;
 }
 
-Level::Level(unsigned int nbRobots) :
-	mCanvas(10, 10),
-	mBoard(8, 8),
+Level::Level(GameContext & gameContext, unsigned int nbRobots) :
+	GameEntity(gameContext),
+	mCanvas(gameContext, 10, 10),
+	mBoard(gameContext, 8, 8),
 	mIsRunning(false),
-	mPlayer(*this, mRobots),
-	mMenu(mBoard, mPlayer),
-	mInstructionDragger(mBoard, mMenu.getCreator())
+	mPlayer(gameContext, *this, mRobots),
+	mMenu(gameContext, mBoard, mPlayer),
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 	createRobotPairs(nbRobots);
@@ -62,7 +64,7 @@ void Level::createRobotPairs(unsigned int nb)
 		default: color = Enums::eColor::Red; break;
 		}
 
-		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(mCanvas, mBoard, color)));
+		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(mGameContext, mCanvas, mBoard, color)));
 		//mRobots.push_back(RobotPair(mCanvas, mBoard, color));
 		//mRobots.push_back(RobotPair(mCanvas, mBoard, Enums::eColor::Yellow));
 	}

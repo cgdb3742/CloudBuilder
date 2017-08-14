@@ -33,7 +33,10 @@ public:
 	~LevelDataReader();
 
 	bool readData();
+	bool readData(unsigned int newWorld, unsigned int newLevel);
 	//TODO save data
+
+	LevelData& getData();
 
 private:
 	unsigned int mWorld;

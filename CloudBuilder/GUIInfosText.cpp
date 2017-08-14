@@ -1,15 +1,17 @@
 #include "GUIInfosText.h"
+#include "Game.h"
 
 
 
-GUIInfosText::GUIInfosText(sf::Vector2f positionRatio):
-	GUIButton(positionRatio),
+GUIInfosText::GUIInfosText(GameContext& gameContext, sf::Vector2f positionRatio):
+	GUIButton(gameContext, positionRatio),
 	mCompleteString(""),
 	mCurrentLength(0),
 	mCurrentString(""),
 	mWrappedString(""),
 	mTimerShow(0.0f),
-	mMaxTimerShow(0.2f)
+	mMaxTimerShow(0.05f),
+	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
 
@@ -20,7 +22,7 @@ GUIInfosText::~GUIInfosText()
 
 void GUIInfosText::updateCurrent(sf::Time dt)
 {
-	if (mCurrentLength < mCompleteString.size())
+	if (mCurrentLength < mWrappedString.size())
 	{
 		mTimerShow += dt.asSeconds();
 
@@ -28,8 +30,8 @@ void GUIInfosText::updateCurrent(sf::Time dt)
 		{
 			mTimerShow -= mMaxTimerShow;
 			mCurrentLength++;
-			mCurrentString = mCompleteString.substr(0, mCurrentLength);
-			wrapCurrentString();
+			mCurrentString = mWrappedString.substr(0, mCurrentLength);
+			//wrapCompleteString();
 		}
 	}
 }
@@ -61,7 +63,25 @@ void GUIInfosText::drawCurrent(sf::RenderTarget & target)
 	button.setOutlineColor(sf::Color(0, 255, 0));
 	target.draw(button);
 
-	//TODO Draw text
+	sf::Text text;
+	text.setFont(mFont);
+	text.setString(mWrappedString);
+	text.setCharacterSize(16);
+	text.setFillColor(sf::Color(0, 0, 0));
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+	//float scale = mBoundingBox.x / 480.0f;
+	float scale = std::min(mBoundingBox.x / 480.0f, mBoundingBox.y / textRect.height);
+	text.scale(sf::Vector2f(scale, scale) * 0.95f);
+	text.setPosition(mTopLeftCorner + mBoundingBox / 2.0f);
+	text.setString(mCurrentString);
+	target.draw(text);
+}
+
+void GUIInfosText::setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox)
+{
+	GUIButton::setPositionCurrent(minCorner, maxBox);
+	wrapCompleteString();
 }
 
 void GUIInfosText::setNewText(std::string newString)
@@ -70,17 +90,50 @@ void GUIInfosText::setNewText(std::string newString)
 	mCurrentLength = 0;
 	mCurrentString = "";
 	mTimerShow = 0.0f;
+	wrapCompleteString();
 }
 
 void GUIInfosText::showAll()
 {
-	mCurrentString = mCompleteString;
-	mCurrentLength = mCompleteString.size();
+	mCurrentString = mWrappedString;
+	mCurrentLength = mWrappedString.size();
 	mTimerShow = 0.0f;
-	wrapCurrentString();
+	//wrapCompleteString();
 }
 
-void GUIInfosText::wrapCurrentString()
+void GUIInfosText::wrapCompleteString()
 {
-	//TODO Wrap the current string to display it inside mBoundingBox
+	unsigned int nextSpace = mCompleteString.find(" ");
+
+	std::string res = mCompleteString.substr(0, nextSpace);
+	unsigned int prevSpace = nextSpace;
+	nextSpace = mCompleteString.find(" ", nextSpace + 1);
+
+	sf::Text text;
+	text.setFont(mFont);
+	text.setString(res);
+	text.setCharacterSize(16);
+	text.scale(mBoundingBox / 480.0f); //Note : only width is useful here
+
+	while (prevSpace != std::string::npos)
+	{
+		std::string currentWord = mCompleteString.substr(prevSpace + 1, nextSpace - prevSpace - 1);
+		text.setString(res + " " + currentWord);
+
+		sf::FloatRect textRect = text.getGlobalBounds();
+
+		if (textRect.width >= mBoundingBox.x * 0.95f)
+		{
+			res += "\n" + currentWord;
+		}
+		else
+		{
+			res += " " + currentWord;
+		}
+
+		prevSpace = nextSpace;
+		nextSpace = mCompleteString.find(" ", nextSpace + 1);
+	}
+
+	mWrappedString = res;
 }
