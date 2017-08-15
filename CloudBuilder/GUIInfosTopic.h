@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "GUIbutton.h"
+#include "GUIButton.h"
 
 class GUIInfosContainer;
 

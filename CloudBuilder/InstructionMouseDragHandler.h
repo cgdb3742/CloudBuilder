@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <memory>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "GameEntity.h"
 #include "InstructionSquare.h"
 #include "BuildLockable.h"

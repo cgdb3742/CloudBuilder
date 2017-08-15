@@ -1,11 +1,11 @@
 #pragma once
 
 #include <memory>
-#include <SFML\Audio.hpp>
-#include <SFML\Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 //#include <SFML\Network.hpp>
-#include <SFML\System.hpp>
-#include <SFML\Window.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 #include "StateMachine.h"
 #include "ResourceHandler.h"
 #include "CompleteData.h"

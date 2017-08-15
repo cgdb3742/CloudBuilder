@@ -1,6 +1,7 @@
 //#include <utility>
 #include "GUIInstructionCreatorContainer.h"
 #include "InstructionBoard.h"
+#include "Game.h"
 
 
 
@@ -18,11 +19,18 @@ GUIInstructionCreatorContainer::~GUIInstructionCreatorContainer()
 
 void GUIInstructionCreatorContainer::setUpCreators()
 {
-	mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActMove, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActMove, sf::Vector2f(3.0f / 45.0f, 3.0f / 11.0f))));
-	mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckCloud, sf::Vector2f(14.0f / 45.0f, 8.0f / 11.0f))));
-	mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeAccept, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeAccept, sf::Vector2f(36.0f / 45.0f, 3.0f / 11.0f))));
-	mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeReject, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeReject, sf::Vector2f(36.0f / 45.0f, 8.0f / 11.0f))));
-	//mCreators[Enums::eInstruction::ActMove] = GUIInstructionCreator(Enums::eInstruction::ActMove, sf::Vector2f(0.5f, 0.5f));
+	//TODO Fail if duplicates in availableInstructions
+	for (Enums::eInstruction instruction : mGameContext.levelData.availableInstructions)
+	{
+		switch (instruction)
+		{
+		case Enums::eInstruction::ActMove: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActMove, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActMove, sf::Vector2f(3.0f / 45.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::CheckCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckCloud, sf::Vector2f(14.0f / 45.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::SpeAccept: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeAccept, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeAccept, sf::Vector2f(36.0f / 45.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::SpeReject: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeReject, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeReject, sf::Vector2f(36.0f / 45.0f, 8.0f / 11.0f)))); break;
+		default: break;
+		}
+	}
 }
 
 sf::Vector2f GUIInstructionCreatorContainer::computeChildsBoundingBox()

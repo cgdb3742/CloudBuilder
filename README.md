@@ -1,5 +1,5 @@
 # CloudBuilder
-The source code of a game about learning and creating.
+The source code of a game about learning and creating. Created using Visual Studio 2017 for Windows, SFML 2.4.2 and pugixml 1.8.
 
 I decided to learn C++ this summer and create a game to assess my understanding of this language. This repository shows part of the creation process.
 

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GUIInfosContainer.h"
 #include "Game.h"
 
@@ -11,6 +12,8 @@ GUIInfosContainer::GUIInfosContainer(GameContext& gameContext):
 	mScrollerUp(gameContext, *this, -1, sf::Vector2f(0.95f, 0.2f)),
 	mScrollerDown(gameContext, *this, 1, sf::Vector2f(0.95f, 0.8f))
 {
+	std::cout << "Creating GameEntity : GUIInfosContainer." << std::endl;
+
 	//Create mStrings...
 	mStrings = gameContext.levelData.infos;
 	mTopicNames = gameContext.levelData.topics;

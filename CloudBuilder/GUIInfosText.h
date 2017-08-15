@@ -21,7 +21,7 @@ private:
 	void wrapCompleteString();
 
 	std::string mCompleteString;
-	unsigned int mCurrentLength;
+	size_t mCurrentLength;
 	std::string mCurrentString;
 	std::string mWrappedString;
 

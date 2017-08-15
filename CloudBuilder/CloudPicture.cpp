@@ -180,9 +180,9 @@ std::string CloudPicture::convertToString()
 
 bool CloudPicture::convertFromString(std::string & source)
 {
-	unsigned int wFound = source.find("w");
-	unsigned int hFound = source.find("h");
-	unsigned int pFound = source.find("p");
+	size_t wFound = source.find("w");
+	size_t hFound = source.find("h");
+	size_t pFound = source.find("p");
 
 	if (wFound == std::string::npos || hFound == std::string::npos || pFound == std::string::npos)
 	{

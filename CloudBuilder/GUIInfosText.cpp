@@ -104,11 +104,11 @@ void GUIInfosText::showAll()
 
 void GUIInfosText::wrapCompleteString()
 {
-	unsigned int nextSpace = mCompleteString.find(" ");
+	size_t nextSpace = mCompleteString.find(" ");
 
 	std::string res = "";
 	std::string currentLine = mCompleteString.substr(0, nextSpace);
-	unsigned int prevSpace = nextSpace;
+	size_t prevSpace = nextSpace;
 	nextSpace = mCompleteString.find(" ", nextSpace + 1);
 
 	sf::Text text;

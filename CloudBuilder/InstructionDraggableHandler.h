@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "InstructionSquare.h"
 
  class InstructionDraggableHandler//:

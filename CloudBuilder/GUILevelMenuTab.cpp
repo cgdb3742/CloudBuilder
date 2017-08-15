@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GUILevelMenuTab.h"
 #include "GUILevelMenu.h"
 #include "Game.h"
@@ -26,6 +27,7 @@ GUILevelMenuTab::GUILevelMenuTab(GameContext& gameContext, unsigned int id, GUIL
 	mId(id),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
+	std::cout << "Creating GameEntity : GUILevelMenuTab." << std::endl;
 }
 
 

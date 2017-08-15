@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <memory>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 struct GameContext;
 

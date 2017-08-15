@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GUILevelMenu.h"
 #include "InstructionBoard.h"
 
@@ -12,7 +13,9 @@ GUILevelMenu::GUILevelMenu(GameContext& gameContext, InstructionBoard& board, In
 	mInfos(GUIInfosContainer(gameContext)),
 	mBoard(board)
 {
+	std::cout << "Creating GameEntity : GUILevelMenu." << std::endl;
 	createTabs(board, player);
+	std::cout << "GUIMenuTabs created." << std::endl;
 }
 
 

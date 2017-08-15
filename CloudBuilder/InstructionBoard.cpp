@@ -47,7 +47,10 @@ InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source
 	mStartPointsUpdated(false),
 	mSelectionUpdated(false)
 {
+	std::cout << "Creating GameEntity : InstructionBoard" << std::endl;
 	convertFromString(source);
+	std::cout << "Loaded GameEntity : InstructionBoard ( " << mWidth << " * " << mHeight << " )." << std::endl;
+
 }
 
 InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height):
@@ -126,11 +129,11 @@ bool InstructionBoard::convertFromString(std::string & source)
 {
 	try
 	{
-		unsigned int wFound = source.find("w");
-		unsigned int hFound = source.find("h");
-		unsigned int iFound = source.find("i");
-		unsigned int jFound = source.find("j");
-		unsigned int vFound = source.find("v");
+		size_t wFound = source.find("w");
+		size_t hFound = source.find("h");
+		size_t iFound = source.find("i");
+		size_t jFound = source.find("j");
+		size_t vFound = source.find("v");
 
 		if (wFound == std::string::npos || hFound == std::string::npos || iFound == std::string::npos || jFound == std::string::npos || vFound == std::string::npos)
 		{

@@ -5,7 +5,7 @@
 
 
 
-HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture & cloud, Enums::eResult wantedResult, InstructionBoard & board, unsigned int nbRobots):
+HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture cloud, Enums::eResult wantedResult, InstructionBoard & board, unsigned int nbRobots):
 	mCanvas(gameContext, cloud),
 	mBoard(board),
 	mReport(cloud, wantedResult),
@@ -15,7 +15,7 @@ HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture & cloud, E
 	createRobotPairs(gameContext, nbRobots);
 }
 
-HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture & cloud, CloudPicture & wantedCloud, InstructionBoard & board, unsigned int nbRobots) :
+HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture cloud, CloudPicture wantedCloud, InstructionBoard & board, unsigned int nbRobots) :
 	mCanvas(gameContext, cloud),
 	mBoard(board),
 	mReport(cloud, wantedCloud),

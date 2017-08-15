@@ -8,10 +8,11 @@
 
 struct VerificationReport
 {
-	VerificationReport(CloudPicture& cloud) : startingCloud(cloud), isValidation(true), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(Enums::eResult::Running), isCorrectResult(false) {}
-	VerificationReport(CloudPicture& cloud, bool wantValidation) : startingCloud(cloud), isValidation(wantValidation), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(Enums::eResult::Running), isCorrectResult(false) {}
-	VerificationReport(CloudPicture& cloud, Enums::eResult wantedResult) : startingCloud(cloud), isValidation(true), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(wantedResult), isCorrectResult(false) {}
-	VerificationReport(CloudPicture& cloud, CloudPicture& wantedCloud) : startingCloud(cloud), isValidation(false), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(wantedCloud), expectedResult(Enums::eResult::Submit), isCorrectResult(false) {}
+	VerificationReport(CloudPicture cloud) : startingCloud(cloud), isValidation(true), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(Enums::eResult::Running), isCorrectResult(false) {}
+	VerificationReport(CloudPicture cloud, bool wantValidation) : startingCloud(cloud), isValidation(wantValidation), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(Enums::eResult::Running), isCorrectResult(false) {}
+	VerificationReport(CloudPicture cloud, Enums::eResult wantedResult) : startingCloud(cloud), isValidation(true), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(cloud), expectedResult(wantedResult), isCorrectResult(false) {}
+	VerificationReport(CloudPicture cloud, CloudPicture wantedCloud) : startingCloud(cloud), isValidation(false), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(wantedCloud), expectedResult(Enums::eResult::Submit), isCorrectResult(false) {}
+	//VerificationReport(CloudPicture& cloud, CloudPicture& wantedCloud) : startingCloud(cloud), isValidation(false), nbSteps(0), finalCloud(cloud), isComplete(false), finalResult(Enums::eResult::Running), expectedCloud(wantedCloud), expectedResult(Enums::eResult::Submit), isCorrectResult(false) {}
 	//VerificationReport(const VerificationReport & toCopy) : startingCloud(toCopy.startingCloud), isVerification(toCopy.isVerification), nbSteps(toCopy.nbSteps), finalCloud(toCopy.finalCloud), isComplete(toCopy.isComplete), resultStatus(toCopy.resultStatus), expectedCloud(toCopy.expectedCloud), expectedResult(toCopy.expectedResult), isCorrectResult(toCopy.isCorrectResult) {}
 	//VerificationReport operator=(const VerificationReport & toCopy) { startingCloud = toCopy.startingCloud; isVerification(toCopy.isVerification), nbSteps(toCopy.nbSteps), finalCloud(toCopy.finalCloud), isComplete(toCopy.isComplete), resultStatus(toCopy.resultStatus), expectedCloud(toCopy.expectedCloud), expectedResult(toCopy.expectedResult), isCorrectResult(toCopy.isCorrectResult) }
 
@@ -31,8 +32,8 @@ struct VerificationReport
 class HiddenVerifier
 {
 public:
-	HiddenVerifier(GameContext& gameContext, CloudPicture& cloud, Enums::eResult wantedResult, InstructionBoard& board, unsigned int nbRobots);
-	HiddenVerifier(GameContext& gameContext, CloudPicture& cloud, CloudPicture& wantedCloud, InstructionBoard& board, unsigned int nbRobots);
+	HiddenVerifier(GameContext& gameContext, CloudPicture cloud, Enums::eResult wantedResult, InstructionBoard& board, unsigned int nbRobots);
+	HiddenVerifier(GameContext& gameContext, CloudPicture cloud, CloudPicture wantedCloud, InstructionBoard& board, unsigned int nbRobots);
 	HiddenVerifier(GameContext& gameContext, VerificationReport& report, InstructionBoard& board, unsigned int nbRobots);
 	~HiddenVerifier();
 
