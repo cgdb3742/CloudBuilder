@@ -25,7 +25,10 @@ void GUIInstructionCreatorContainer::setUpCreators()
 		switch (instruction)
 		{
 		case Enums::eInstruction::ActMove: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActMove, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActMove, sf::Vector2f(3.0f / 45.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::ActSetCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActSetCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActSetCloud, sf::Vector2f(3.0f / 45.0f, 8.0f / 11.0f)))); break;
 		case Enums::eInstruction::CheckCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckCloud, sf::Vector2f(14.0f / 45.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::CheckBorder: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckBorder, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckBorder, sf::Vector2f(14.0f / 45.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::FlowWait: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowWait, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowWait, sf::Vector2f(25.0f / 45.0f, 3.0f / 11.0f)))); break;
 		case Enums::eInstruction::SpeAccept: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeAccept, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeAccept, sf::Vector2f(36.0f / 45.0f, 3.0f / 11.0f)))); break;
 		case Enums::eInstruction::SpeReject: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeReject, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeReject, sf::Vector2f(36.0f / 45.0f, 8.0f / 11.0f)))); break;
 		default: break;

@@ -39,10 +39,6 @@ void Game::initialize()
 	mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	//mStateMachine.startState(Enums::eState::Level);
 	mStateMachine.requestStart(Enums::eState::Level); //TODO startState or requestStart the first state ?
-
-
-	//mPopUpStack.addMessage("Test 1", "Continue");
-	//mPopUpStack.addMessage("Test 2", "Done");
 }
 
 void Game::processEvents()
@@ -86,6 +82,9 @@ void Game::draw()
 void Game::test()
 {
 	initialize();
+
+	mData.loadLevelData(1, 1);
+
 	sf::Clock clock;
 	while (mWindow.isOpen())
 	{

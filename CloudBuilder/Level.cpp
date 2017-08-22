@@ -129,7 +129,7 @@ void Level::resetAll()
 	mCanvas.convertFromString(mGameContext.levelData.clouds[mCurrentCloud]);
 
 	//updateChildsVectorAll();
-	//setPositionAll(mTopLeftCorner, mBoundingBox);
+	setPositionAll(mTopLeftCorner, mBoundingBox);
 
 	for (auto& pair : mRobots)
 	{

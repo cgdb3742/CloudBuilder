@@ -31,6 +31,8 @@ public:
 	virtual std::string convertToString();
 	virtual bool convertFromString(std::string& source);
 
+	virtual void convertFromCanvas(CloudCanvas& canvas);
+
 	unsigned int getWidth();
 	unsigned int getHeight();
 

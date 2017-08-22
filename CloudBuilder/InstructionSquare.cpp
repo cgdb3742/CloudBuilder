@@ -7,7 +7,10 @@
 #include "InstructionSquareAccept.h"
 #include "InstructionSquareReject.h"
 #include "InstructionSquareActMove.h"
+#include "InstructionSquareActCloud.h"
 #include "InstructionSquareCheckCloud.h"
+#include "InstructionSquareCheckBorder.h"
+#include "InstructionSquareFlowWait.h"
 
 
 
@@ -25,7 +28,10 @@ std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare
 	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept(gameContext));
 	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject(gameContext));
 	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove(gameContext));
+	case Enums::eInstruction::ActSetCloud: return std::make_unique<InstructionSquareActCloud>(InstructionSquareActCloud(gameContext));
 	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud(gameContext));
+	case Enums::eInstruction::CheckBorder: return std::make_unique<InstructionSquareCheckBorder>(InstructionSquareCheckBorder(gameContext));
+	case Enums::eInstruction::FlowWait: return std::make_unique<InstructionSquareFlowWait>(InstructionSquareFlowWait(gameContext));
 	default: return std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
 	}
 }
@@ -39,7 +45,10 @@ std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare
 	case Enums::eInstruction::SpeAccept: return std::make_unique<InstructionSquareAccept>(InstructionSquareAccept(gameContext, source));
 	case Enums::eInstruction::SpeReject: return std::make_unique<InstructionSquareReject>(InstructionSquareReject(gameContext, source));
 	case Enums::eInstruction::ActMove: return std::make_unique<InstructionSquareActMove>(InstructionSquareActMove(gameContext, source));
+	case Enums::eInstruction::ActSetCloud: return std::make_unique<InstructionSquareActCloud>(InstructionSquareActCloud(gameContext, source));
 	case Enums::eInstruction::CheckCloud: return std::make_unique<InstructionSquareCheckCloud>(InstructionSquareCheckCloud(gameContext, source));
+	case Enums::eInstruction::CheckBorder: return std::make_unique<InstructionSquareCheckBorder>(InstructionSquareCheckBorder(gameContext, source));
+	case Enums::eInstruction::FlowWait: return std::make_unique<InstructionSquareFlowWait>(InstructionSquareFlowWait(gameContext, source));
 	default: return nullptr;
 	}
 

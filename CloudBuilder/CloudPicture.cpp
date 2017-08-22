@@ -43,7 +43,7 @@ CloudPicture::CloudPicture(GameContext& gameContext, unsigned int width, unsigne
 		{
 			if (i + j*mHeight < l)
 			{
-				mPicture[i][j] = (values[i + j*mHeight] ==  '1');
+				mPicture[i][j] = (values[i + j*mWidth] ==  '1');
 			}
 		}
 	}
@@ -55,13 +55,7 @@ CloudPicture::CloudPicture(GameContext& gameContext, CloudCanvas & canvas):
 	mHeight(canvas.getHeight()),
 	mPicture(mWidth, std::vector<bool>(mHeight, false))
 {
-	for (unsigned int i = 0; i < mWidth; i++)
-	{
-		for (unsigned int j = 0; j < mHeight; j++)
-		{
-			mPicture[i][j] = canvas.get(i, j).getIsCloud();
-		}
-	}
+	convertFromCanvas(canvas);
 }
 
 CloudPicture::CloudPicture(const CloudPicture & toCopy) :
@@ -125,7 +119,7 @@ std::string CloudPicture::getPicture()
 		{
 			if (mPicture[i][j])
 			{
-				res[i + j*mHeight] = '1';
+				res[i + j*mWidth] = '1';
 			}
 		}
 	}
@@ -162,9 +156,9 @@ bool CloudPicture::getPictureFromString(std::string values)
 		{
 			for (unsigned int j = 0; j < mHeight; j++)
 			{
-				if (i + j*mHeight < l)
+				if (i + j*mWidth< l)
 				{
-					mPicture[i][j] = (values[i + j*mHeight] == '1');
+					mPicture[i][j] = (values[i + j*mWidth] == '1');
 				}
 			}
 		}
@@ -203,6 +197,21 @@ bool CloudPicture::convertFromString(std::string & source)
 	}
 	
 	return false;
+}
+
+void CloudPicture::convertFromCanvas(CloudCanvas & canvas)
+{
+	mWidth = canvas.getWidth();
+	mHeight = canvas.getHeight();
+	mPicture = std::vector<std::vector<bool>>(mWidth, std::vector<bool>(mHeight, false));
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		for (unsigned int j = 0; j < mHeight; j++)
+		{
+			mPicture[i][j] = canvas.get(i, j).getIsCloud();
+		}
+	}
 }
 
 unsigned int CloudPicture::getWidth()

@@ -33,15 +33,15 @@ CloudCanvas::CloudCanvas(GameContext& gameContext, unsigned int width, unsigned 
 {
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight << " )." << std::endl;
 
-	mCanvas[2][3].setIsCloud(true);
-	mCanvas[9][4].setIsCloud(true);
-	mCanvas[5][0].setIsCloud(true);
-	mCanvas[1][7].setIsCloud(true);
-	mCanvas[7][6].setIsCloud(true);
-	mCanvas[0][3].setIsCloud(true);
-	mCanvas[4][2].setIsCloud(true);
-	mCanvas[1][9].setIsCloud(true);
-	mCanvas[8][3].setIsCloud(true);
+	//mCanvas[2][3].setIsCloud(true);
+	//mCanvas[9][4].setIsCloud(true);
+	//mCanvas[5][0].setIsCloud(true);
+	//mCanvas[1][7].setIsCloud(true);
+	//mCanvas[7][6].setIsCloud(true);
+	//mCanvas[0][3].setIsCloud(true);
+	//mCanvas[4][2].setIsCloud(true);
+	//mCanvas[1][9].setIsCloud(true);
+	//mCanvas[8][3].setIsCloud(true);
 	//mCanvas[2][3].setColor(Enums::eColor::Green);
 	//mCanvas[4][5].setColor(Enums::eColor::Yellow);
 	//mCanvas[9][1].setColor(Enums::eColor::Red);
@@ -73,7 +73,7 @@ CloudCanvas::~CloudCanvas()
 
 bool CloudCanvas::exists(unsigned int i, unsigned int j)
 {
-	return (i >= 0 && i < mHeight && j >= 0 && j < mWidth);
+	return (i >= 0 && i < mWidth && j >= 0 && j < mHeight);
 }
 
 CloudSquare& CloudCanvas::get(unsigned int i, unsigned int j)
@@ -147,7 +147,7 @@ bool CloudCanvas::getIsBorder(unsigned int i, unsigned int j, Enums::eDir dir)
 	case Enums::eDir::Left: return (i <= 0);
 	case Enums::eDir::Right: return (i >= mWidth - 1);
 	case Enums::eDir::Up: return (j <= 0);
-	case Enums::eDir::Down: return (i >= mHeight - 1);
+	case Enums::eDir::Down: return (j >= mHeight - 1);
 	default: return false;
 	}
 }

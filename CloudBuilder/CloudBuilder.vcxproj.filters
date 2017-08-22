@@ -267,6 +267,18 @@
     <ClCompile Include="PopUpStack.cpp">
       <Filter>Fichiers sources\PopUp</Filter>
     </ClCompile>
+    <ClCompile Include="InstructionSquareCheck.cpp">
+      <Filter>Fichiers sources\Instruction</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareCheckBorder.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareFlowWait.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareActCloud.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -425,12 +437,30 @@
     <ClInclude Include="PopUpStack.h">
       <Filter>Fichiers d%27en-tête\PopUp</Filter>
     </ClInclude>
+    <ClInclude Include="InstructionSquareCheck.h">
+      <Filter>Fichiers d%27en-tête\Instruction</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareCheckBorder.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareFlowWait.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareActCloud.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game_data.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
     <Xml Include="Level_1_1.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Level_1_2.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Level_2_1.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
   </ItemGroup>

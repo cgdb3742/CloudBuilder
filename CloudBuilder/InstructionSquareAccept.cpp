@@ -1,5 +1,6 @@
 #include "InstructionSquareAccept.h"
 #include "InstructionRobot.h"
+#include "Game.h"
 
 
 InstructionSquareAccept::InstructionSquareAccept(GameContext& gameContext) :
@@ -43,7 +44,14 @@ bool InstructionSquareAccept::applyInstruction(CloudRobot & cloudRobot, CloudCan
 {
 	if (instructionRobot.getResult() == Enums::eResult::Running)
 	{
-		instructionRobot.setResult(Enums::eResult::Accept);
+		if (mGameContext.levelData.isValidation)
+		{
+			instructionRobot.setResult(Enums::eResult::Accept);
+		}
+		else
+		{
+			instructionRobot.setResult(Enums::eResult::Submit);
+		}
 	}
 
 	return true;

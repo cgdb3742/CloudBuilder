@@ -50,6 +50,16 @@ CloudRobot::~CloudRobot()
 {
 }
 
+bool CloudRobot::getIsWriter()
+{
+	return mIsWriter;
+}
+
+void CloudRobot::setIsWriter(bool newValue)
+{
+	mIsWriter = newValue;
+}
+
 CloudSquare & CloudRobot::getPos()
 {
 	return mCanvas.get(mPosi, mPosj);

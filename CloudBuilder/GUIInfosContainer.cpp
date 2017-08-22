@@ -100,7 +100,7 @@ void GUIInfosContainer::setPositionChilds(sf::Vector2f minCorner, sf::Vector2f m
 	mScrollerDown.setBoundingBoxCurrent(childBoundingBox);
 	mScrollerDown.setPositionAll(minCorner + sf::Vector2f(margin, margin), maxBox - 2.0f * sf::Vector2f(margin, margin));
 
-	childBoundingBox = sf::Vector2f(mBoundingBox.x * 3.5 / 5.0f - 2.0f * margin, minSize - 2.0f * margin);
+	childBoundingBox = sf::Vector2f(mBoundingBox.x * 3.5f / 5.0f - 2.0f * margin, minSize - 2.0f * margin);
 	mText.setBoundingBoxCurrent(childBoundingBox);
 	mText.setPositionAll(minCorner + sf::Vector2f(margin, margin), maxBox - 2.0f * sf::Vector2f(margin, margin));
 }

@@ -1,15 +1,15 @@
 #pragma once
 #include "InstructionSquareCheck.h"
-class InstructionSquareCheckCloud :
+class InstructionSquareCheckBorder :
 	public InstructionSquareCheck
 {
 public:
-	InstructionSquareCheckCloud(GameContext& gameContext);
-	InstructionSquareCheckCloud(GameContext& gameContext, std::string& source);
-	~InstructionSquareCheckCloud();
+	InstructionSquareCheckBorder(GameContext& gameContext);
+	InstructionSquareCheckBorder(GameContext& gameContext, std::string& source);
+	~InstructionSquareCheckBorder();
 
-	virtual bool getWantCloud();
-	virtual void setWantCloud(bool newWant);
+	virtual Enums::eDir getBorder();
+	virtual void setBorder(Enums::eDir newBorder);
 
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
@@ -21,6 +21,6 @@ public:
 protected:
 	virtual void drawInterior(sf::RenderTarget & target);
 private:
-	bool mWantCloud;
+	Enums::eDir mBorder;
 };
 

@@ -13,6 +13,8 @@ public:
 	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isWriter);
 	~CloudRobot();
 
+	bool getIsWriter();
+	void setIsWriter(bool newValue);
 	CloudSquare& getPos();
 	unsigned int getPosi();
 	unsigned int getPosj();

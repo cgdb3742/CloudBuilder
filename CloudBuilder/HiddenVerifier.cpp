@@ -163,7 +163,8 @@ Enums::eResult HiddenVerifier::getCurrentResult()
 
 void HiddenVerifier::completeReport()
 {
-	mReport.finalCloud = CloudPicture(mGameContext, mCanvas);
+	//mReport.finalCloud = CloudPicture(mGameContext, mCanvas); //TODO Why does it not work ?
+	mReport.finalCloud.convertFromCanvas(mCanvas);
 	mReport.finalResult = getCurrentResult();
 	mReport.nbSteps = mSteps;
 	mReport.isComplete = true;

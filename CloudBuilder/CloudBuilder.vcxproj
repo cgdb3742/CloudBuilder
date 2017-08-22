@@ -176,10 +176,14 @@
     <ClCompile Include="InstructionRobot.cpp" />
     <ClCompile Include="InstructionSquare.cpp" />
     <ClCompile Include="InstructionSquareAccept.cpp" />
+    <ClCompile Include="InstructionSquareActCloud.cpp" />
     <ClCompile Include="InstructionSquareActMove.cpp" />
+    <ClCompile Include="InstructionSquareCheck.cpp" />
+    <ClCompile Include="InstructionSquareCheckBorder.cpp" />
     <ClCompile Include="InstructionSquareCheckCloud.cpp" />
     <ClCompile Include="InstructionSquareReject.cpp" />
     <ClCompile Include="InstructionSquareStart.cpp" />
+    <ClCompile Include="InstructionSquareFlowWait.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelDataReader.cpp" />
     <ClCompile Include="main.cpp" />
@@ -230,10 +234,14 @@
     <ClInclude Include="InstructionRobot.h" />
     <ClInclude Include="InstructionSquare.h" />
     <ClInclude Include="InstructionSquareAccept.h" />
+    <ClInclude Include="InstructionSquareActCloud.h" />
     <ClInclude Include="InstructionSquareActMove.h" />
+    <ClInclude Include="InstructionSquareCheck.h" />
+    <ClInclude Include="InstructionSquareCheckBorder.h" />
     <ClInclude Include="InstructionSquareCheckCloud.h" />
     <ClInclude Include="InstructionSquareReject.h" />
     <ClInclude Include="InstructionSquareStart.h" />
+    <ClInclude Include="InstructionSquareFlowWait.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="InstructionMouseDragHandler.h" />
     <ClInclude Include="LevelDataReader.h" />
@@ -255,6 +263,8 @@
   <ItemGroup>
     <Xml Include="Game_data.xml" />
     <Xml Include="Level_1_1.xml" />
+    <Xml Include="Level_1_2.xml" />
+    <Xml Include="Level_2_1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />

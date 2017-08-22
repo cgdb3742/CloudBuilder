@@ -38,12 +38,12 @@
     <infos>
         <topic id = "0">
             <name>
-                <en>Welcome !</en>
+                <en>Welcome!</en>
                 <fr>Bienvenue !</fr>
             </name>
             <text id = "0">
-                <en>Are you the new commander ? Thank heavens ! The cloud weavers are hardworkers, but tend to be often disorganized. I am your assistant fairy. Let me explain our problem.</en>
-                <fr>Etes-vous le nouveau commandeur ? J'en remercie le ciel ! Les tisseurs de nuages sont très travailleurs, mais aussi souvent désorganisés. Je suis votre fée assistante. Laissez-moi expliquer le problème.</fr>
+                <en>Are you the new Commander ? Thank heavens ! The cloud weavers are hardworkers, but tend to be often disorganized. I am your assistant fairy. Let me explain our problem.</en>
+                <fr>Etes-vous le nouveau Commandeur ? J'en remercie le ciel ! Les tisseurs de nuages sont très travailleurs, mais aussi souvent désorganisés. Je suis votre fée assistante. Laissez-moi expliquer le problème.</fr>
             </text>
             <text id = "1">
                 <en>We are the control office. On your left we reguraly receive creations from the artistic studio. Our job is to check whether these clouds meet the expectations of the marketing departement. This is described in the Goal topic on the left.</en>

@@ -19,6 +19,36 @@
                 <status>New</status>
                 <unlock_requirement>TODO</unlock_requirement>
             </level>
+            <level id = "2">
+                <name>
+                    <en>Back to square one</en>
+                    <fr>Retour à la case départ</fr>
+                </name>
+                <description>
+                    <en>Already feeling you are repeating the same thing again and again? Well, we can help that!</en>
+                    <fr>Vous avez déjà l'impression de vous répéter encore et encore ? Bien, on peut aider ça !</fr>
+                </description>
+                <status>New</status>
+                <unlock_requirement>TODO</unlock_requirement>
+            </level>
+        </world>
+        <world id = "2">
+            <name>
+                <en>A change of pace</en>
+                <fr>Un changement de rythme</fr>
+            </name>
+            <level id = "1">
+                <name>
+                    <en>The other case</en>
+                    <fr>L'autre cas</fr>
+                </name>
+                <description>
+                    <en>Some days, everything is going well and there is nothing to say. Today is not one of these days. Quite the opposite.</en>
+                    <fr>Certains jours, tout va bien et il n'y a rien à dire. Aujourd'hui n'est pas un de ces jours. Au contraire.</fr>
+                </description>
+                <status>New</status>
+                <unlock_requirement>TODO</unlock_requirement>
+            </level>
         </world>
     </levels>
     <options>
@@ -71,7 +101,7 @@
         </instruction>
         <instruction code_name = "SpeReject" id = "13">
             <en>Reject</en>
-            <fr>Refuse</fr>
+            <fr>Refuser</fr>
         </instruction>
         <instruction code_name = "ActMove" id = "21">
             <en>Move</en>
@@ -129,7 +159,7 @@
             <en>Check direction</en>
             <fr>Direction de vérification</fr>
         </instruction_modifier>
-        <instruction_modifier code_name = "CloudDire" id = "15">
+        <instruction_modifier code_name = "CloudDir" id = "15">
             <en>Direction</en>
             <fr>Direction</fr>
         </instruction_modifier>

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <utility>
 #include "RobotPair.h"
+#include "Game.h"
+#include "LevelDataReader.h"
 
 
 
@@ -17,6 +19,13 @@ RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionB
 
 	std::pair<unsigned int, unsigned int> startPos = board.getStartPosition(mColor);
 	mInstructionRobot.setPos(startPos.first, startPos.second);
+
+	//If the problem is a modification, we allow one (and only one to prevent concurrency ?) CloudRobot to write
+	//TODO Indicate in the xml file who is writer to allow multiple writer robots ? How to differenciate writer and non-writer ?
+	if ((mColor == Enums::eColor::Red) && !gameContext.levelData.isValidation)
+	{
+		mCloudRobot.setIsWriter(true);
+	}
 }
 
 RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color) :
@@ -32,6 +41,13 @@ RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionB
 
 	std::pair<unsigned int, unsigned int> startPos = board.getStartPosition(color);
 	mInstructionRobot.setPos(startPos.first, startPos.second);
+
+	//If the problem is a modification, we allow one (and only one to prevent concurrency ?) CloudRobot to write
+	//TODO Indicate in the xml file who is writer to allow multiple writer robots ? How to differenciate writer and non-writer ?
+	if ((mColor == Enums::eColor::Red) && !gameContext.levelData.isValidation)
+	{
+		mCloudRobot.setIsWriter(true);
+	}
 }
 
 

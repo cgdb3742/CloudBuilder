@@ -83,8 +83,8 @@ InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width,
 	//insert(5, 1, InstructionSquare::createNewInstructionSquare(Enums::eInstruction::SpeStart, Enums::eColor::Yellow));
 	//mSelectionUpdated = false;
 	//setSelection(0, 0);
-	insert(2, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
-	insert(1, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
+	//insert(2, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::ActMove));
+	//insert(1, 1, InstructionSquare::createNewInstructionSquare(gameContext, Enums::eInstruction::SpeStart, Enums::eColor::Red));
 	//std::cout << convertToString() << std::endl;
 }
 
@@ -101,8 +101,8 @@ InstructionBoard::~InstructionBoard()
 //	{
 //		for (unsigned int j = 0; j < mHeight; j++)
 //		{
-//			mBoard[i + j*mHeight] = std::make_unique<InstructionSquare>(InstructionSquare(*toCopy.mBoard[i + j*mHeight]));
 //			mBoard[i + j*mHeight] = std::move(InstructionSquare::createNewInstructionSquare(*toCopy.mBoard[i + j*mHeight].type)),
+//			*mBoard[i + j*mHeight] = *(toCopy.mBoard[i + j*mHeight])
 //		}
 //	}
 //}
@@ -340,6 +340,12 @@ void InstructionBoard::handleEventCurrent(const sf::Event & event)
 				setSelection(static_cast<unsigned int>(i), static_cast<unsigned int>(j));
 				//TODO Switch GUILevelMenu to GUIInstructionModifierContainer ?
 			}
+		}
+		break;
+	case sf::Event::KeyReleased:
+		if (event.key.code == sf::Keyboard::C)
+		{
+			std::cout << "Code : " + convertToString() << std::endl; //TODO For tests purposes only
 		}
 		break;
 	}
