@@ -8,6 +8,8 @@ public:
 	~GUIButton();
 
 	virtual void clicked();
+	virtual void beginHover();
+	virtual void endHover();
 
 	virtual void handleEventCurrent(const sf::Event& event);
 
@@ -16,6 +18,8 @@ public:
 
 protected:
 	virtual bool containsPoint(sf::Vector2f point);
+
+	bool mIsHovered;
 
 	sf::Vector2f mPositionRatio;
 };

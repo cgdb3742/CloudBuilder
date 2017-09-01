@@ -3,6 +3,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+struct GameContext;
+
 class Enums
 {
 public:
@@ -91,6 +93,7 @@ public:
 	~Enums();
 
 	static sf::Color getColor(eColor color);
+	static bool isValid(eColor color, GameContext& gameContext); //Get if the robot color is allowed in the given level context in gameContext
 
 	static eInstruction getInstructionFromString(std::string source);
 	static eColor getColorFromString(char source);

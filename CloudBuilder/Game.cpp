@@ -9,7 +9,7 @@ Game::Game():
 	mResourceHandler(),
 	mPopUpStack(),
 	mData(),
-	mContext(mResourceHandler, mPopUpStack, mData.getGameData(), mData.getLevelData()),
+	mContext(mResourceHandler, mPopUpStack, mData),
 	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;
@@ -38,7 +38,8 @@ void Game::initialize()
 {
 	mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
 	//mStateMachine.startState(Enums::eState::Level);
-	mStateMachine.requestStart(Enums::eState::Level); //TODO startState or requestStart the first state ?
+	//mStateMachine.requestStart(Enums::eState::Level); //TODO startState or requestStart the first state ?
+	mStateMachine.requestStart(Enums::eState::LevelSelect);
 }
 
 void Game::processEvents()

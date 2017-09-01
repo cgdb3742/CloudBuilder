@@ -8,6 +8,8 @@ public:
 	InstructionSquareCheck(GameContext& gameContext, std::string& source);
 	~InstructionSquareCheck();
 
+	virtual bool isValid();
+
 	virtual Enums::eDir getNextDir(InstructionRobot& robot);
 	virtual Enums::eDir getNextTrueDir();
 	virtual void setNextTrueDir(Enums::eDir newDir);

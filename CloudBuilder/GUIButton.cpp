@@ -4,6 +4,7 @@
 
 GUIButton::GUIButton(GameContext& gameContext, sf::Vector2f positionRatio):
 	GameEntity(gameContext),
+	mIsHovered(false),
 	mPositionRatio(positionRatio)
 {
 }
@@ -17,10 +18,36 @@ void GUIButton::clicked()
 {
 }
 
+void GUIButton::beginHover()
+{
+}
+
+void GUIButton::endHover()
+{
+}
+
 void GUIButton::handleEventCurrent(const sf::Event & event)
 {
 	switch (event.type)
 	{
+	case sf::Event::MouseMoved:
+		if (containsPoint(sf::Vector2f(event.mouseMove.x, event.mouseMove.y)))
+		{
+			if (!mIsHovered)
+			{
+				mIsHovered = true;
+				beginHover();
+			}
+		}
+		else
+		{
+			if (mIsHovered)
+			{
+				mIsHovered = false;
+				endHover();
+			}
+		}
+		break;
 	case sf::Event::MouseButtonReleased:
 		if (event.mouseButton.button == sf::Mouse::Button::Left && containsPoint(sf::Vector2f(event.mouseButton.x, event.mouseButton.y)))
 		{

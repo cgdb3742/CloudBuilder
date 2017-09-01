@@ -27,6 +27,11 @@ InstructionSquareCheck::~InstructionSquareCheck()
 {
 }
 
+bool InstructionSquareCheck::isValid()
+{
+	return InstructionSquare::isValid() && Enums::isValid(getRobotColor(), mGameContext);
+}
+
 Enums::eDir InstructionSquareCheck::getNextDir(InstructionRobot & robot)
 {
 	if (robot.getLastCheck())

@@ -8,6 +8,8 @@ public:
 	InstructionSquareActCloud(GameContext& gameContext, std::string& source);
 	~InstructionSquareActCloud();
 
+	virtual bool isValid();
+
 	bool getWantCloud();
 	void setWantCloud(bool newWant);
 	Enums::eColor getRobotColor();

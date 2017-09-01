@@ -3,6 +3,7 @@
 #include <cassert>
 #include <iostream>
 #include "InstructionBoard.h"
+#include "Game.h"
 
 // /!\ i varies along x and j varies along y
 
@@ -16,12 +17,12 @@ static std::vector<InstructionSquare::InstructionSquarePtr> generate(size_t sz)
 	return result;
 }
 
-InstructionBoard::InstructionBoard(GameContext& gameContext):
+InstructionBoard::InstructionBoard(GameContext& gameContext) :
 	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
-	mBoard(generate(1*1)),
-	mSelected(0,0),
+	mBoard(generate(1 * 1)),
+	mSelected(0, 0),
 	mStartPointsUpdated(false),
 	mSelectionUpdated(false)
 {
@@ -53,7 +54,7 @@ InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source
 
 }
 
-InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height):
+InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height) :
 	GameEntity(gameContext),
 	mWidth(width),
 	mHeight(height),
@@ -106,6 +107,80 @@ InstructionBoard::~InstructionBoard()
 //		}
 //	}
 //}
+
+//TODO : use this when getting board from string to ensure there's no error
+//Take special care for one and only one Start square per color
+bool InstructionBoard::isValid()
+{
+	bool redNeeded = (mGameContext.levelData.nbRobots >= 1);
+	bool blueNeeded = (mGameContext.levelData.nbRobots >= 2);
+	bool greenNeeded = (mGameContext.levelData.nbRobots >= 3);
+	bool yellowNeeded = (mGameContext.levelData.nbRobots >= 4);
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		for (unsigned int j = 0; j < mHeight; j++)
+		{
+			if (!get(i, j).isValid())
+			{
+				return false;
+			}
+
+			if (get(i, j).getType() == Enums::eInstruction::SpeStart)
+			{
+				switch (get(i, j).getStartColor())
+				{
+				case Enums::eColor::Red:
+				{
+					if (redNeeded)
+					{
+						redNeeded = false;
+					}
+					else //Second start of the same color or start of an unused color
+					{
+						return false;
+					}
+				}; break;
+				case Enums::eColor::Blue:
+				{
+					if (blueNeeded)
+					{
+						blueNeeded = false;
+					}
+					else //Second start of the same color or start of an unused color
+					{
+						return false;
+					}
+				}; break;
+				case Enums::eColor::Green:
+				{
+					if (greenNeeded)
+					{
+						greenNeeded = false;
+					}
+					else //Second start of the same color or start of an unused color
+					{
+						return false;
+					}
+				}; break;
+				case Enums::eColor::Yellow:
+				{
+					if (yellowNeeded)
+					{
+						yellowNeeded = false;
+					}
+					else //Second start of the same color or start of an unused color
+					{
+						return false;
+					}
+				}; break;
+				}
+			}
+		}
+	}
+
+	return !(redNeeded || blueNeeded || greenNeeded || yellowNeeded);
+}
 
 std::string InstructionBoard::convertToString() //Sparse definition, TODO do full definition too ?
 {
@@ -180,7 +255,7 @@ bool InstructionBoard::convertFromString(std::string & source)
 			vFound = source.find("v", vFound + 1);
 		}
 
-		//TODO Check number of Special Start squares ?
+		//TODO use isValid() to check whether the loaded board is correct for the current level
 
 		return true;
 	}
@@ -485,7 +560,7 @@ InstructionSquare::InstructionSquarePtr InstructionBoard::insert(unsigned int i,
 	if (mBoard[i + j*mWidth]->getType() == Enums::eInstruction::SpeStart)
 	{
 		setStartPosition(mBoard[i + j*mWidth]->getStartColor(), i, j);
-		mStartPointsUpdated	= true;
+		mStartPointsUpdated = true;
 	}
 
 	mBoard[i + j*mWidth]->setUpNextDir(i == 0, i == mWidth - 1, j == 0, j == mHeight - 1);

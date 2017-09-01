@@ -6,7 +6,8 @@
 
 struct LevelData
 {
-	LevelData() : name(""), world(1), level(1), isValidation(true), nbRobots(1), startingBoard(""), currentBoard("") {}
+	//LevelData() : name(""), world(1), level(1), isValidation(true), nbRobots(1), startingBoard(""), currentBoard("") {}
+	LevelData() : name(""), world(1), level(1), isValidation(true), nbRobots(1), startingBoard("") {}
 
 	std::string name;
 	unsigned int world;
@@ -19,7 +20,6 @@ struct LevelData
 
 	std::string startingBoard;
 	std::vector<Enums::eInstruction> availableInstructions;
-	std::string currentBoard;
 
 	std::vector<std::string> topics;
 	std::vector<std::vector<std::string>> infos;
@@ -40,7 +40,6 @@ public:
 	bool readData(unsigned int newWorld, unsigned int newLevel);
 	bool readData(std::string language);
 	bool readData(std::string language, unsigned int newWorld, unsigned int newLevel);
-	//TODO save data
 
 	LevelData& getData();
 

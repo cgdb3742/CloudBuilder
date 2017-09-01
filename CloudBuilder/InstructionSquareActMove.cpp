@@ -25,6 +25,11 @@ InstructionSquareActMove::~InstructionSquareActMove()
 {
 }
 
+bool InstructionSquareActMove::isValid()
+{
+	return InstructionSquare::isValid() && Enums::isValid(getRobotColor(), mGameContext);
+}
+
 bool InstructionSquareActMove::applyInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress)
 {
 	CloudRobot& movingRobot = cloudRobot; //TODO Move other robots

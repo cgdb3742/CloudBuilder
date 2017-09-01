@@ -2,6 +2,7 @@
 #include "InstructionSquare.h"
 #include "CloudCanvas.h"
 #include "InstructionRobot.h"
+#include "Game.h"
 
 #include "InstructionSquareStart.h"
 #include "InstructionSquareAccept.h"
@@ -153,6 +154,20 @@ void InstructionSquare::drawInterior(sf::RenderTarget & target)
 
 InstructionSquare::~InstructionSquare()
 {
+}
+
+bool InstructionSquare::isValid()
+{
+	//Find if type is allowed
+	for (Enums::eInstruction inst : mGameContext.levelData.availableInstructions)
+	{
+		if (inst == getType())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool InstructionSquare::IsAssigned()

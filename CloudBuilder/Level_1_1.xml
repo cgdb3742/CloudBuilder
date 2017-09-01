@@ -33,7 +33,6 @@
             <instruction code_name = "SpeAccept" id = "12" />
             <instruction code_name = "SpeReject" id = "13" />
         </available_instructions>
-        <current_data>w8h8i1j1vSSrri2j1vAMrrn</current_data>
     </board>
     <infos>
         <topic id = "0">

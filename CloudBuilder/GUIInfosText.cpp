@@ -102,7 +102,7 @@ void GUIInfosText::showAll()
 	//wrapCompleteString();
 }
 
-void GUIInfosText::wrapCompleteString()
+void GUIInfosText::wrapCompleteString() //TODO Why wrapped text begin by /n ?
 {
 	size_t nextSpace = mCompleteString.find(" ");
 

@@ -28,14 +28,16 @@ public:
 	InstructionSquare(GameContext& gameContext, std::string& source);
 	~InstructionSquare();
 
-	bool IsAssigned();
-	bool IsSpecial();
-	bool IsAction();
-	bool IsCheck();
-	bool IsFlow();
-	bool IsWriteOnly();
-	bool IsDraggable();
-	bool IsErasable();
+	virtual bool isValid(); //ie is valid in the current gameContext, including the Level restrications
+
+	virtual bool IsAssigned();
+	virtual bool IsSpecial();
+	virtual bool IsAction();
+	virtual bool IsCheck();
+	virtual bool IsFlow();
+	virtual bool IsWriteOnly();
+	virtual bool IsDraggable();
+	virtual bool IsErasable();
 	Enums::eInstruction getType();
 	virtual Enums::eDir getNextDir();
 	virtual Enums::eDir getNextDir(InstructionRobot& robot);

@@ -7,16 +7,15 @@
 
 struct GameData
 {
-	GameData() : currentLanguage("en") {}
+	//GameData() : currentLanguage("en") {}
+	GameData() {}
 
 	std::vector<std::string> worldName;
 	std::vector<std::vector<std::string>> levelName;
 	std::vector<std::vector<std::string>> levelDescription;
-	std::vector<std::vector<std::string>> levelStatus; //"New", "Available", "Complete" or "Locked"
+	std::vector<std::vector<bool>> levelIsValidation;
 	//TODO Unlock conditions
-	//TODO Create a separate file for saving level status and current interaction boards ?
 
-	std::string currentLanguage;
 	std::vector<std::string> availableLanguages;
 
 	std::map<Enums::eInstruction, std::string> instructionName;
@@ -30,13 +29,18 @@ class GameDataReader
 {
 public:
 	GameDataReader();
+	GameDataReader(std::string language);
 	~GameDataReader();
 
+	void updateLanguage(std::string language);
+
 	bool readData();
-	//TODO save data
+	bool readData(std::string language);
 
 	GameData& getData();
 private:
+	std::string mLanguage;
+
 	GameData mData;
 };
 

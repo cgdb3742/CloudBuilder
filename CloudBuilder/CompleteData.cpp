@@ -3,17 +3,25 @@
 
 
 CompleteData::CompleteData():
+	mSaveDataReader(),
 	mGameDataReader(),
 	mLevelDataReader()
 {
+	loadSaveData();
+	mGameDataReader.updateLanguage(getSaveData().currentLanguage);
 	loadGameData();
-	mLevelDataReader.updateLanguage(getGameData().currentLanguage);
+	mLevelDataReader.updateLanguage(getSaveData().currentLanguage);
 	loadLevelData();
 }
 
 
 CompleteData::~CompleteData()
 {
+}
+
+bool CompleteData::loadSaveData()
+{
+	return mSaveDataReader.readData();
 }
 
 bool CompleteData::loadGameData()
@@ -29,6 +37,28 @@ bool CompleteData::loadLevelData()
 bool CompleteData::loadLevelData(unsigned int world, unsigned int level)
 {
 	return mLevelDataReader.readData(world, level);
+}
+
+bool CompleteData::setLanguage(std::string newLanguage)
+{
+	if (true)//TODO mSaveDataReader.setLanguage(newLanguage)
+	{
+		mGameDataReader.updateLanguage(newLanguage);
+		loadGameData();
+		mLevelDataReader.updateLanguage(newLanguage);
+		loadLevelData();
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+SaveData & CompleteData::getSaveData()
+{
+	return mSaveDataReader.getData();
 }
 
 GameData & CompleteData::getGameData()

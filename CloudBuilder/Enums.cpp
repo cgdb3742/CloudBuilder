@@ -1,4 +1,5 @@
 #include "Enums.h"
+#include "Game.h"
 
 
 
@@ -24,6 +25,22 @@ sf::Color Enums::getColor(eColor color)
 	}
 
 	return sf::Color(127, 127, 127);
+}
+
+//Assume the creation order red>blue>green>yellow
+bool Enums::isValid(eColor color, GameContext& gameContext)
+{
+	unsigned int nbRobots = gameContext.levelData.nbRobots;
+
+	switch (color)
+	{
+	case eColor::NoColor: return true;
+	case eColor::Red: return (nbRobots >= 1);
+	case eColor::Blue: return (nbRobots >= 2);
+	case eColor::Green: return (nbRobots >= 3);
+	case eColor::Yellow: return (nbRobots >= 4);
+	default: return true;
+	}
 }
 
 Enums::eInstruction Enums::getInstructionFromString(std::string source)

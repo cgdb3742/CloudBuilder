@@ -13,6 +13,8 @@ public:
 	//InstructionSquareStart(Enums::eColor color, InstructionRobot& robot);
 	~InstructionSquareStart();
 
+	virtual bool isValid();
+
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 

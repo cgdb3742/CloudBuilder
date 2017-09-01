@@ -26,6 +26,11 @@ InstructionSquareStart::~InstructionSquareStart()
 {
 }
 
+bool InstructionSquareStart::isValid()
+{
+	return InstructionSquare::isValid() && (getStartColor()!=Enums::eColor::NoColor) && Enums::isValid(getStartColor(), mGameContext);
+}
+
 std::list<Enums::eInstructionModifier> InstructionSquareStart::getPossibleModifications()
 {
 	return { Enums::eInstructionModifier::NextDir };

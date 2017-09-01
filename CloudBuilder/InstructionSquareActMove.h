@@ -8,6 +8,8 @@ public:
 	InstructionSquareActMove(GameContext& gameContext, std::string& source);
 	~InstructionSquareActMove();
 
+	virtual bool isValid();
+
 	Enums::eDir getToMove();
 	void setToMove(Enums::eDir newDir);
 	Enums::eColor getRobotColor();

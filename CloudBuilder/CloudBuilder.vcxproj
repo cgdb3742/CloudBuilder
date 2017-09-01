@@ -186,6 +186,8 @@
     <ClCompile Include="InstructionSquareFlowWait.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelDataReader.cpp" />
+    <ClCompile Include="LevelSelectButton.cpp" />
+    <ClCompile Include="LevelSelectDescription.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PopUpButton.cpp" />
     <ClCompile Include="PopUpMessage.cpp" />
@@ -194,13 +196,16 @@
     <ClCompile Include="ResourceHandler.cpp" />
     <ClCompile Include="RobotPair.cpp" />
     <ClCompile Include="InstructionMouseDragHandler.cpp" />
+    <ClCompile Include="SaveDataReader.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateLevel.cpp" />
+    <ClCompile Include="StateLevelSelect.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="StatePopUp.cpp" />
     <ClCompile Include="StateTitleScreen.cpp" />
     <ClCompile Include="StringConvertible.cpp" />
     <ClCompile Include="HiddenVerifier.cpp" />
+    <ClCompile Include="WorldSelectButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuildLockable.h" />
@@ -245,6 +250,8 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="InstructionMouseDragHandler.h" />
     <ClInclude Include="LevelDataReader.h" />
+    <ClInclude Include="LevelSelectButton.h" />
+    <ClInclude Include="LevelSelectDescription.h" />
     <ClInclude Include="PopUpButton.h" />
     <ClInclude Include="PopUpMessage.h" />
     <ClInclude Include="PopUpStack.h" />
@@ -252,19 +259,23 @@
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="ResourceHandler.h" />
     <ClInclude Include="RobotPair.h" />
+    <ClInclude Include="SaveDataReader.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateLevel.h" />
+    <ClInclude Include="StateLevelSelect.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="StatePopUp.h" />
     <ClInclude Include="StateTitleScreen.h" />
     <ClInclude Include="StringConvertible.h" />
     <ClInclude Include="HiddenVerifier.h" />
+    <ClInclude Include="WorldSelectButton.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game_data.xml" />
     <Xml Include="Level_1_1.xml" />
     <Xml Include="Level_1_2.xml" />
     <Xml Include="Level_2_1.xml" />
+    <Xml Include="Save_data.xml" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />

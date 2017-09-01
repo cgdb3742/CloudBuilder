@@ -24,6 +24,8 @@ public:
 	//InstructionBoard(const InstructionBoard& toCopy);
 	InstructionBoard(const InstructionBoard&) = delete;
 
+	virtual bool isValid(); //ie is valid in the current gameContext, including the Level restrications
+
 	virtual std::string convertToString();
 	virtual bool convertFromString(std::string& source);
 

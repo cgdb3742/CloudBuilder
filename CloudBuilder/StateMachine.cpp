@@ -7,6 +7,7 @@
 #include "PopUpStack.h"
 
 #include "StateLevel.h"
+#include "StateLevelSelect.h"
 #include "StateTitleScreen.h"
 #include "StatePopUp.h"
 
@@ -22,7 +23,7 @@ StateMachine::~StateMachine()
 {
 }
 
-void StateMachine::updateCurrent(sf::Time dt)
+void StateMachine::updateCurrent(sf::Time dt) //TODO Screens/States transitions ?
 {
 	//Don't start anything if a pop-up is active
 	if (!exists(Enums::eState::PopUp) && mGameContext.popUpStack.isEmpty()) //Pop-ups freeze game
@@ -344,6 +345,7 @@ State::StatePtr StateMachine::createNewState(Enums::eState state)
 	{
 	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(mGameContext, *this));
 	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(mGameContext, *this)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
+	case Enums::eState::LevelSelect: return std::unique_ptr<State>(new StateLevelSelect(mGameContext, *this));
 	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(mGameContext, *this));
 	case Enums::eState::PopUp: return std::unique_ptr<State>(new StatePopUp(mGameContext, *this));
 	default: return std::unique_ptr<State>(new State(mGameContext, *this));

@@ -66,7 +66,7 @@ bool LevelDataReader::readData()
 		}
 
 		mData.startingBoard = doc.child("level_data").child("board").child_value("starting_data");
-		mData.currentBoard = doc.child("level_data").child("board").child_value("current_data");
+		//mData.currentBoard = doc.child("level_data").child("board").child_value("current_data");
 
 		for (pugi::xml_node instruction : doc.child("level_data").child("board").child("available_instructions").children("instruction"))
 		{

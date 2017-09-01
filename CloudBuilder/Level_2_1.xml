@@ -35,7 +35,6 @@
             <instruction code_name = "FlowWait" id = "41" />
             <instruction code_name = "SpeAccept" id = "12" />
         </available_instructions>
-        <current_data>w8h8i1j1vSSrr</current_data>
     </board>
     <infos>
         <topic id = "0">

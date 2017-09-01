@@ -109,6 +109,12 @@
     <Filter Include="Fichiers sources\PopUp">
       <UniqueIdentifier>{2d730a83-7bab-4036-a568-36f9dc023d97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\LevelSelect">
+      <UniqueIdentifier>{0ef01990-2dc7-41d6-8bba-217e92aa6694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\LevelSelect">
+      <UniqueIdentifier>{163a9f57-29a6-4a98-b3e2-45f559ab70a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -278,6 +284,21 @@
     </ClCompile>
     <ClCompile Include="InstructionSquareActCloud.cpp">
       <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveDataReader.cpp">
+      <Filter>Fichiers sources\FileReader</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldSelectButton.cpp">
+      <Filter>Fichiers sources\GameControl\LevelSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSelectButton.cpp">
+      <Filter>Fichiers sources\GameControl\LevelSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="StateLevelSelect.cpp">
+      <Filter>Fichiers sources\GameControl\LevelSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSelectDescription.cpp">
+      <Filter>Fichiers sources\GameControl\LevelSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +470,21 @@
     <ClInclude Include="InstructionSquareActCloud.h">
       <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
     </ClInclude>
+    <ClInclude Include="SaveDataReader.h">
+      <Filter>Fichiers d%27en-tête\FileReader</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSelectButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\LevelSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSelectButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\LevelSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="StateLevelSelect.h">
+      <Filter>Fichiers d%27en-tête\GameControl\LevelSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSelectDescription.h">
+      <Filter>Fichiers d%27en-tête\GameControl\LevelSelect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game_data.xml">
@@ -461,6 +497,9 @@
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
     <Xml Include="Level_2_1.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Save_data.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
   </ItemGroup>

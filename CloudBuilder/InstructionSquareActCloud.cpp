@@ -24,6 +24,11 @@ InstructionSquareActCloud::~InstructionSquareActCloud()
 {
 }
 
+bool InstructionSquareActCloud::isValid()
+{
+	return InstructionSquare::isValid() && Enums::isValid(getRobotColor(), mGameContext);
+}
+
 bool InstructionSquareActCloud::getWantCloud()
 {
 	return mWantCloud;

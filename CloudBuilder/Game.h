@@ -15,11 +15,13 @@ class InstructionSquare;
 
 struct GameContext
 {
-	GameContext(ResourceHandler& rh, PopUpStack& pus, GameData& gd, LevelData& ld) : resourceHandler(rh), popUpStack(pus), gameData(gd), levelData(ld) {}
+	GameContext(ResourceHandler& rh, PopUpStack& pus, CompleteData& cd) : resourceHandler(rh), popUpStack(pus), dataReader(cd), saveData(cd.getSaveData()), gameData(cd.getGameData()), levelData(cd.getLevelData()) {}
 
 	//StateMachine& stateMachine;
 	ResourceHandler& resourceHandler;
 	PopUpStack& popUpStack;
+	CompleteData& dataReader;
+	SaveData& saveData;
 	GameData& gameData;
 	LevelData& levelData;
 };

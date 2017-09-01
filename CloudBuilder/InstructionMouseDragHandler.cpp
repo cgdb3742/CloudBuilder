@@ -58,7 +58,7 @@ bool InstructionMouseDragHandler::pick() //TODO Make available only during Build
 }
 
 
-bool InstructionMouseDragHandler::drop(sf::Vector2f pos)
+bool InstructionMouseDragHandler::drop(sf::Vector2f pos) //TODO Bug if try to drop and play the test at the same time
 {
 	if (!mIsDragging || mLocked)
 	{
