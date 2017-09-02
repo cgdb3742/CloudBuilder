@@ -9,7 +9,7 @@ class PopUpMessage :
 	public GUIButton
 {
 public:
-	PopUpMessage(GameContext& gameContext, sf::Vector2f positionRatio, StateMachine& machine, PopUpData messageData);
+	PopUpMessage(GameContext& gameContext, sf::Vector2f positionRatio, PopUpData messageData);
 	~PopUpMessage();
 
 	virtual sf::Vector2f computeChildsBoundingBox();

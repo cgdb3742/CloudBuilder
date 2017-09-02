@@ -16,6 +16,12 @@ public:
 
 	virtual void updateCurrent(sf::Time dt);
 
+	void processStartRequests();
+	void processStopRequests();
+	void processActivateRequests();
+	void processDeactivateRequests();
+	void processFullFocusRequests();
+
 	bool startState(Enums::eState state);
 	bool stopState(Enums::eState state);
 	bool activateState(Enums::eState state);
@@ -24,12 +30,6 @@ public:
 	bool exists(Enums::eState state);
 	bool isActive(Enums::eState state);
 	bool preventGameDeactivation();
-
-	bool requestStart(Enums::eState state);
-	bool requestStop(Enums::eState state);
-	bool requestActivate(Enums::eState state);
-	bool requestDeactivate(Enums::eState state);
-	bool requestFullFocus(Enums::eState state);
 
 	virtual void handleEventChilds(const sf::Event& event);
 	virtual void drawChilds(sf::RenderTarget& target);
@@ -43,10 +43,5 @@ private:
 
 	std::map<Enums::eState,State::StatePtr> mStates;
 	//std::map<Enums::eState, State> mStates;
-	std::list<Enums::eState> mRequestedStart;
-	std::list<Enums::eState> mRequestedStop;
-	std::list<Enums::eState> mRequestedActivate;
-	std::list<Enums::eState> mRequestedDeactivate;
-	std::list<Enums::eState> mRequestedFullFocus;
 };
 

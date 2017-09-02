@@ -21,6 +21,7 @@ struct GameData
 	std::map<Enums::eInstruction, std::string> instructionName;
 	std::map<Enums::eInstructionModifier, std::string> instructionModifierName;
 	std::vector<std::string> levelTabName;
+	std::map<Enums::eState, std::string> stateName;
 	std::vector<std::string> levelResultMessage;
 	std::vector<std::string> levelResultButton;
 };

@@ -9,16 +9,18 @@
 #include "StateMachine.h"
 #include "ResourceHandler.h"
 #include "CompleteData.h"
+#include "StateRequestStack.h"
 #include "PopUpStack.h"
 
 class InstructionSquare;
 
 struct GameContext
 {
-	GameContext(ResourceHandler& rh, PopUpStack& pus, CompleteData& cd) : resourceHandler(rh), popUpStack(pus), dataReader(cd), saveData(cd.getSaveData()), gameData(cd.getGameData()), levelData(cd.getLevelData()) {}
+	GameContext(ResourceHandler& rh, StateRequestStack& srs, PopUpStack& pus, CompleteData& cd) : resourceHandler(rh), stateStack(srs), popUpStack(pus), dataReader(cd), saveData(cd.getSaveData()), gameData(cd.getGameData()), levelData(cd.getLevelData()) {}
 
 	//StateMachine& stateMachine;
 	ResourceHandler& resourceHandler;
+	StateRequestStack& stateStack;
 	PopUpStack& popUpStack;
 	CompleteData& dataReader;
 	SaveData& saveData;
@@ -48,6 +50,7 @@ private:
 	sf::RenderWindow mWindow;
 	StateMachine mStateMachine;
 	ResourceHandler mResourceHandler;
+	StateRequestStack mStateStack;
 	PopUpStack mPopUpStack;
 	GameContext mContext;
 	CompleteData mData;

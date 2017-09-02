@@ -4,11 +4,10 @@
 
 
 
-PopUpButton::PopUpButton(GameContext& gameContext, sf::Vector2f positionRatio, StateMachine& machine, PopUpData messageData):
+PopUpButton::PopUpButton(GameContext& gameContext, sf::Vector2f positionRatio, PopUpData messageData):
 	GUIButton(gameContext, positionRatio),
 	mText(messageData.buttonMessage),
-	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial)),
-	mMachine(machine)
+	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
 
@@ -39,5 +38,6 @@ void PopUpButton::drawCurrent(sf::RenderTarget & target)
 
 void PopUpButton::clicked()
 {
-	mMachine.requestStop(Enums::eState::PopUp);
+	//mMachine.requestStop(Enums::eState::PopUp);
+	mGameContext.stateStack.addStopRequest(Enums::eState::PopUp);
 }

@@ -36,6 +36,9 @@ public:
 	unsigned int getWidth();
 	unsigned int getHeight();
 
+	virtual void drawTo(sf::RenderTarget& target, sf::Vector2f topLeftCorner, sf::Vector2f boundingBox);
+	virtual void drawCurrent(sf::RenderTarget& target);
+
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 private:
 	unsigned int mWidth;

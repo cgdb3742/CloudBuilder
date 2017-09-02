@@ -6,7 +6,7 @@ class StateLevel :
 	public State
 {
 public:
-	StateLevel(GameContext& gameContext, StateMachine& machine);
+	StateLevel(GameContext& gameContext);
 	~StateLevel();
 protected:
 	virtual void updateChildsVector();

@@ -13,8 +13,10 @@ public:
 	typedef std::unique_ptr<State> StatePtr;
 	//typedef std::reference_wrapper<State> StateRef;
 
-	State(GameContext& gameContext, StateMachine& machine);
-	State(GameContext& gameContext, StateMachine& machine, Enums::eState name);
+	//State(GameContext& gameContext, StateMachine& machine);
+	//State(GameContext& gameContext, StateMachine& machine, Enums::eState name);
+	State(GameContext& gameContext);
+	State(GameContext& gameContext, Enums::eState name);
 	~State();
 
 	virtual void enter();
@@ -24,7 +26,7 @@ public:
 	virtual bool getIsActive();
 protected:
 	bool mIsActive;
-	StateMachine& mMachine;
+	//StateMachine& mMachine;
 	Enums::eState mName;
 };
 

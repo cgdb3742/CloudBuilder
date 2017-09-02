@@ -57,8 +57,10 @@ void GUILevelMenuTab::drawCurrent(sf::RenderTarget & target)
 	{
 	case 0: background.setFillColor(sf::Color(0, 191, 0, 127)); break;
 	case 1: background.setFillColor(sf::Color(191, 0, 191, 127)); break;
-	case 2: background.setFillColor(sf::Color(0, 191, 191, 127)); break;
+	case 2: background.setFillColor(sf::Color(191, 191, 0, 127)); break;
 	case 3: background.setFillColor(sf::Color(0, 0, 191, 127)); break;
+	case 4: background.setFillColor(sf::Color(0, 191, 191, 127)); break;
+	case 5: background.setFillColor(sf::Color(191, 191, 191, 127)); break;
 	}
 
 	target.draw(background);

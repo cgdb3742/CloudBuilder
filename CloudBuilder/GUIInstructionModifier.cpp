@@ -86,9 +86,9 @@ void GUIInstructionModifier::drawCurrent(sf::RenderTarget & target)
 	//target.draw(background);
 
 	sf::ConvexShape toDraw(mShape);
-	toDraw.setFillColor(sf::Color(0, 191, 191));
+	toDraw.setFillColor(sf::Color(191, 191, 0));
 	toDraw.setOutlineThickness(1.0f);
-	toDraw.setOutlineColor(sf::Color(0, 255, 255));
+	toDraw.setOutlineColor(sf::Color(255, 255, 0));
 	target.draw(toDraw);
 }
 

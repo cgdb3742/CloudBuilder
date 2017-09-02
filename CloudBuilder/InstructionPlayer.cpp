@@ -50,8 +50,8 @@ void InstructionPlayer::deactivate()
 	//	pair.second.resetAll();
 	//}
 
-	mLevel.resetAll();
 	mLevel.unlock();
+	mLevel.resetAll();
 
 	std::cout << "InstructionPlayer deactivated." << std::endl;
 }

@@ -224,6 +224,42 @@ unsigned int CloudPicture::getHeight()
 	return mHeight;
 }
 
+void CloudPicture::drawTo(sf::RenderTarget & target, sf::Vector2f topLeftCorner, sf::Vector2f boundingBox)
+{
+	float xsize = boundingBox.x / mWidth;
+	float ysize = boundingBox.y / mHeight;
+	float size = std::min(xsize, ysize);
+	float xmargin = (boundingBox.x - (size * mWidth)) / 2.0f;
+	float ymargin = (boundingBox.y - (size * mHeight)) / 2.0f;
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		for (unsigned int j = 0; j < mHeight; j++)
+		{
+			sf::RectangleShape space(sf::Vector2f(size, size));
+			space.setPosition(topLeftCorner + sf::Vector2f(xmargin + i * size, ymargin + j * size));
+
+			if (mPicture[i][j])
+			{
+				space.setFillColor(sf::Color(255, 255, 255));
+			}
+			else
+			{
+				space.setFillColor(sf::Color(0, 0, 0, 0));
+				space.setOutlineThickness(1.0f);
+				space.setOutlineColor(sf::Color(255, 255, 255));
+			}
+
+			target.draw(space);
+		}
+	}
+}
+
+void CloudPicture::drawCurrent(sf::RenderTarget & target)
+{
+	drawTo(target, mTopLeftCorner, mBoundingBox);
+}
+
 void CloudPicture::setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox)
 {
 	float squareSize = std::min(maxBox.x / mWidth, maxBox.y / mHeight);

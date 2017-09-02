@@ -5,8 +5,10 @@
 
 
 
-GUIInstructionCreatorContainer::GUIInstructionCreatorContainer(GameContext& gameContext, InstructionBoard& board):
+GUIInstructionCreatorContainer::GUIInstructionCreatorContainer(GameContext& gameContext, Level& level, InstructionBoard& board):
 	GameEntity(gameContext),
+	mTrashBin(gameContext, sf::Vector2f(42.0f / 45.0f, 3.0f / 11.0f)),
+	mReset(gameContext, sf::Vector2f(42.0f / 45.0f, 8.0f / 11.0f), level),
 	mBoard(board)
 {
 	setUpCreators();
@@ -55,6 +57,16 @@ sf::Vector2f GUIInstructionCreatorContainer::computeChildsBoundingBox()
 //		creator.second.setPositionAll(minCorner, maxBox);
 //	}
 //}
+
+bool GUIInstructionCreatorContainer::canGetFromDrag(sf::Vector2f mousePos)
+{
+	return mTrashBin.canGetFromDrag(mousePos);
+}
+
+InstructionSquare::InstructionSquarePtr GUIInstructionCreatorContainer::getFromDrag(sf::Vector2f mousePos, InstructionSquare::InstructionSquarePtr ptr)
+{
+	return mTrashBin.getFromDrag(mousePos, std::move(ptr));
+}
 
 //TODO Give only if mouse in inner bounding box ?
 InstructionSquare::InstructionSquarePtr GUIInstructionCreatorContainer::giveToDrag(sf::Vector2f mousePos)
@@ -108,4 +120,7 @@ void GUIInstructionCreatorContainer::updateChildsVector()
 	{
 		mChilds.push_back(creator.second);
 	}
+
+	mChilds.push_back(mTrashBin);
+	mChilds.push_back(mReset);
 }

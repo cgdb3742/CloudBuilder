@@ -31,7 +31,7 @@ void GUIButton::handleEventCurrent(const sf::Event & event)
 	switch (event.type)
 	{
 	case sf::Event::MouseMoved:
-		if (containsPoint(sf::Vector2f(event.mouseMove.x, event.mouseMove.y)))
+		if (containsPoint(sf::Vector2f(static_cast<float>(event.mouseMove.x), static_cast<float>(event.mouseMove.y))))
 		{
 			if (!mIsHovered)
 			{
@@ -49,7 +49,7 @@ void GUIButton::handleEventCurrent(const sf::Event & event)
 		}
 		break;
 	case sf::Event::MouseButtonReleased:
-		if (event.mouseButton.button == sf::Mouse::Button::Left && containsPoint(sf::Vector2f(event.mouseButton.x, event.mouseButton.y)))
+		if (event.mouseButton.button == sf::Mouse::Button::Left && containsPoint(sf::Vector2f(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y))))
 		{
 			clicked();
 		}

@@ -9,7 +9,7 @@ class StateLevelSelect :
 	public State
 {
 public:
-	StateLevelSelect(GameContext& gameContext, StateMachine& machine);
+	StateLevelSelect(GameContext& gameContext);
 	~StateLevelSelect();
 
 	void selectWorld(unsigned int newWorld);

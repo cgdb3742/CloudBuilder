@@ -2,6 +2,8 @@
 #include <string>
 #include <list>
 
+class StateRequestStack;
+
 struct PopUpData
 {
 	PopUpData() : mainMessage("error"), buttonMessage("error") {}
@@ -14,7 +16,7 @@ struct PopUpData
 class PopUpStack
 {
 public:
-	PopUpStack();
+	PopUpStack(StateRequestStack& stateStack);
 	~PopUpStack();
 
 	bool isEmpty();
@@ -23,5 +25,7 @@ public:
 	PopUpData popMessage();
 private:
 	std::list<PopUpData> mStack;
+
+	StateRequestStack& mStateStack;
 };
 

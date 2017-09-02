@@ -13,9 +13,9 @@ public:
 		Undefined = 0,
 		TitleScreen = 1,
 		MainMenu = 2,
-		Pause = 3,
-		LevelSelect = 4,
-		Level = 5,
+		LevelSelect = 3,
+		Level = 4,
+		Pause = 5,
 		PopUp = 6
 	};
 

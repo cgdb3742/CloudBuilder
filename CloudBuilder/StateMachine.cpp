@@ -25,44 +25,105 @@ StateMachine::~StateMachine()
 
 void StateMachine::updateCurrent(sf::Time dt) //TODO Screens/States transitions ?
 {
-	//Don't start anything if a pop-up is active
-	if (!exists(Enums::eState::PopUp) && mGameContext.popUpStack.isEmpty()) //Pop-ups freeze game
+	////Don't start anything if a pop-up is active
+	//if (!exists(Enums::eState::PopUp) && mGameContext.popUpStack.isEmpty()) //Pop-ups freeze game
+	//{
+	//	for (Enums::eState state : mRequestedStart)
+	//	{
+	//		startState(state);
+	//	}
+	//	mRequestedStart.clear();
+
+	//	for (Enums::eState state : mRequestedActivate)
+	//	{
+	//		activateState(state);
+	//	}
+	//	mRequestedActivate.clear();
+
+	//	for (Enums::eState state : mRequestedFullFocus)
+	//	{
+	//		fullFocusState(state);
+	//	}
+	//	mRequestedFullFocus.clear();
+	//}
+
+	//for (Enums::eState state : mRequestedDeactivate)
+	//{
+	//	deactivateState(state);
+	//}
+	//mRequestedDeactivate.clear();
+
+	//for (Enums::eState state : mRequestedStop)
+	//{
+	//	stopState(state);
+	//}
+	//mRequestedStop.clear();
+
+	//if (!exists(Enums::eState::PopUp) && !mGameContext.popUpStack.isEmpty())
+	//{
+	//	startState(Enums::eState::PopUp);
+	//	fullFocusState(Enums::eState::PopUp);
+	//}
+
+	processStartRequests();
+	processActivateRequests();
+	processFullFocusRequests();
+	processDeactivateRequests();
+	processStopRequests();
+}
+
+void StateMachine::processStartRequests()
+{
+	Enums::eState toProcess = mGameContext.stateStack.popStartRequest();
+
+	while (toProcess != Enums::eState::Undefined)
 	{
-		for (Enums::eState state : mRequestedStart)
-		{
-			startState(state);
-		}
-		mRequestedStart.clear();
-
-		for (Enums::eState state : mRequestedActivate)
-		{
-			activateState(state);
-		}
-		mRequestedActivate.clear();
-
-		for (Enums::eState state : mRequestedFullFocus)
-		{
-			fullFocusState(state);
-		}
-		mRequestedFullFocus.clear();
+		startState(toProcess);
+		toProcess = mGameContext.stateStack.popStartRequest();
 	}
+}
 
-	for (Enums::eState state : mRequestedDeactivate)
+void StateMachine::processStopRequests()
+{
+	Enums::eState toProcess = mGameContext.stateStack.popStopRequest();
+
+	while (toProcess != Enums::eState::Undefined)
 	{
-		deactivateState(state);
+		stopState(toProcess);
+		toProcess = mGameContext.stateStack.popStopRequest();
 	}
-	mRequestedDeactivate.clear();
+}
 
-	for (Enums::eState state : mRequestedStop)
+void StateMachine::processActivateRequests()
+{
+	Enums::eState toProcess = mGameContext.stateStack.popActivateRequest();
+
+	while (toProcess != Enums::eState::Undefined)
 	{
-		stopState(state);
+		activateState(toProcess);
+		toProcess = mGameContext.stateStack.popActivateRequest();
 	}
-	mRequestedStop.clear();
+}
 
-	if (!exists(Enums::eState::PopUp) && !mGameContext.popUpStack.isEmpty())
+void StateMachine::processDeactivateRequests()
+{
+	Enums::eState toProcess = mGameContext.stateStack.popDeactivateRequest();
+
+	while (toProcess != Enums::eState::Undefined)
 	{
-		startState(Enums::eState::PopUp);
-		fullFocusState(Enums::eState::PopUp);
+		deactivateState(toProcess);
+		toProcess = mGameContext.stateStack.popDeactivateRequest();
+	}
+}
+
+void StateMachine::processFullFocusRequests()
+{
+	Enums::eState toProcess = mGameContext.stateStack.popFullFocusRequest();
+
+	while (toProcess != Enums::eState::Undefined)
+	{
+		fullFocusState(toProcess);
+		toProcess = mGameContext.stateStack.popFullFocusRequest();
 	}
 }
 
@@ -212,36 +273,6 @@ bool StateMachine::preventGameDeactivation()
 	return false;
 }
 
-bool StateMachine::requestStart(Enums::eState state)
-{
-	mRequestedStart.push_back(state);
-	return true;
-}
-
-bool StateMachine::requestStop(Enums::eState state)
-{
-	mRequestedStop.push_back(state);
-	return true;
-}
-
-bool StateMachine::requestActivate(Enums::eState state)
-{
-	mRequestedActivate.push_back(state);
-	return true;
-}
-
-bool StateMachine::requestDeactivate(Enums::eState state)
-{
-	mRequestedDeactivate.push_back(state);
-	return true;
-}
-
-bool StateMachine::requestFullFocus(Enums::eState state)
-{
-	mRequestedFullFocus.push_back(state);
-	return true;
-}
-
 void StateMachine::handleEventChilds(const sf::Event & event)
 {
 	for (auto &state : mStates)
@@ -343,12 +374,12 @@ State::StatePtr StateMachine::createNewState(Enums::eState state)
 
 	switch (state)
 	{
-	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(mGameContext, *this));
-	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(mGameContext, *this)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
-	case Enums::eState::LevelSelect: return std::unique_ptr<State>(new StateLevelSelect(mGameContext, *this));
-	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(mGameContext, *this));
-	case Enums::eState::PopUp: return std::unique_ptr<State>(new StatePopUp(mGameContext, *this));
-	default: return std::unique_ptr<State>(new State(mGameContext, *this));
+	case Enums::eState::Undefined: return std::unique_ptr<State>(new State(mGameContext));
+	case Enums::eState::Level: return std::unique_ptr<State>(new StateLevel(mGameContext)); //make_unique return pointer to object of parent type but new return pointer to object of derived type !
+	case Enums::eState::LevelSelect: return std::unique_ptr<State>(new StateLevelSelect(mGameContext));
+	case Enums::eState::TitleScreen: return std::unique_ptr<State>(new StateTitleScreen(mGameContext));
+	case Enums::eState::PopUp: return std::unique_ptr<State>(new StatePopUp(mGameContext));
+	default: return std::unique_ptr<State>(new State(mGameContext));
 	}
 
 	//switch (state)

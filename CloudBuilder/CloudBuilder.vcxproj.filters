@@ -115,6 +115,18 @@
     <Filter Include="Fichiers sources\GameControl\LevelSelect">
       <UniqueIdentifier>{163a9f57-29a6-4a98-b3e2-45f559ab70a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUITests">
+      <UniqueIdentifier>{fed065ad-d43d-45c7-9034-efa71534aefb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUITests">
+      <UniqueIdentifier>{b650f1b8-aa81-411b-9200-cdcc78947bfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameControl\GUI\GUIOptions">
+      <UniqueIdentifier>{82e9700d-f4ab-43f4-9830-c56f8f9e5233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameControl\GUI\GUIOptions">
+      <UniqueIdentifier>{6b6f0e83-057b-469c-ab87-92ad77de320c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -300,6 +312,30 @@
     <ClCompile Include="LevelSelectDescription.cpp">
       <Filter>Fichiers sources\GameControl\LevelSelect</Filter>
     </ClCompile>
+    <ClCompile Include="GUITestsContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUITests</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIOptionsContainer.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIOptions</Filter>
+    </ClCompile>
+    <ClCompile Include="StateRequestStack.cpp">
+      <Filter>Fichiers sources\GameControl\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIButtonChangeState.cpp">
+      <Filter>Fichiers sources\GameControl\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUITestsButton.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUITests</Filter>
+    </ClCompile>
+    <ClCompile Include="GUITestsModel.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUITests</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionTrashBin.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIInstructionReset.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -484,6 +520,30 @@
     </ClInclude>
     <ClInclude Include="LevelSelectDescription.h">
       <Filter>Fichiers d%27en-tête\GameControl\LevelSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="GUITestsContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUITests</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIOptionsContainer.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIOptions</Filter>
+    </ClInclude>
+    <ClInclude Include="StateRequestStack.h">
+      <Filter>Fichiers d%27en-tête\GameControl\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIButtonChangeState.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUITestsButton.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUITests</Filter>
+    </ClInclude>
+    <ClInclude Include="GUITestsModel.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUITests</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionTrashBin.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIInstructionReset.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

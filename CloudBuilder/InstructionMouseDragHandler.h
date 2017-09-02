@@ -25,6 +25,8 @@ public:
 	bool pick();
 	bool drop(sf::Vector2f pos);
 
+	virtual void lock();
+
 	virtual void handleEventCurrent(const sf::Event& event);
 	virtual bool updateMousePos(sf::Vector2f newMousePos);
 

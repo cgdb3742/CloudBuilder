@@ -4,13 +4,15 @@
 
 
 
-GUILevelMenu::GUILevelMenu(GameContext& gameContext, InstructionBoard& board, InstructionPlayer& player) :
+GUILevelMenu::GUILevelMenu(GameContext& gameContext, Level& level, InstructionBoard& board, InstructionPlayer& player) :
 	GameEntity(gameContext),
 	mSelected(0),
-	mMenuCreator(GUIInstructionCreatorContainer(gameContext, board)),
+	mMenuCreator(GUIInstructionCreatorContainer(gameContext, level, board)),
 	mMenuModifier(GUIInstructionModifierContainer(gameContext, board)),
 	mMenuPlayer(GUIPlayerContainer(gameContext, player)),
-	mInfos(GUIInfosContainer(gameContext)),
+	mMenuInfos(GUIInfosContainer(gameContext)),
+	mMenuTests(GUITestsContainer(gameContext, level)),
+	mMenuOptions(GUIOptionsContainer(gameContext)),
 	mBoard(board)
 {
 	std::cout << "Creating GameEntity : GUILevelMenu." << std::endl;
@@ -36,11 +38,18 @@ void GUILevelMenu::createTabs(InstructionBoard& board, InstructionPlayer& player
 	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, 1, *this));
 	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, 2, *this));
 	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, 3, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, 4, *this));
+	mMenuTabs.push_back(GUILevelMenuTab(mGameContext, 5, *this));
 }
 
 bool GUILevelMenu::changeSelection(unsigned int i)
 {
-	if (i<0 || i>mMenuTabs.size() || i == mSelected || mLocked) //TODO Enforce menu on player if running tests
+	if (i<0 || i>mMenuTabs.size() || i == mSelected)
+	{
+		return false;
+	}
+
+	if (mLocked && (i == 1 || i == 2))
 	{
 		return false;
 	}
@@ -48,6 +57,8 @@ bool GUILevelMenu::changeSelection(unsigned int i)
 	mSelected = i;
 
 	setPositionChilds(mTopLeftCorner, mBoundingBox);
+
+	std::cout << "Changed selection to menu " << mSelected << std::endl;
 
 	return true;
 }
@@ -61,10 +72,12 @@ GameEntity & GUILevelMenu::getMenu(unsigned int i)
 {
 	switch (i)
 	{
-	case 0: return mInfos;
+	case 0: return mMenuInfos;
 	case 1: return mMenuCreator;
 	case 2: return mMenuModifier;
 	case 3: return mMenuPlayer;
+	case 4: return mMenuTests;
+	case 5: return mMenuOptions;
 	default: return mMenuCreator;
 	}
 }

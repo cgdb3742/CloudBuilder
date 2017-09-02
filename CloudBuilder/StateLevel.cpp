@@ -4,9 +4,9 @@
 
 
 
-StateLevel::StateLevel(GameContext& gameContext, StateMachine & machine):
-	State(gameContext, machine, Enums::eState::Level),
-	mLevel(gameContext, gameContext.levelData)
+StateLevel::StateLevel(GameContext& gameContext):
+	State(gameContext, Enums::eState::Level),
+	mLevel(gameContext)
 {
 	std::cout << "Creating GameEntity : StateLevel." << std::endl;
 }

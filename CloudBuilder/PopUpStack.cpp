@@ -1,8 +1,9 @@
 #include "PopUpStack.h"
+#include "StateRequestStack.h"
 
 
-
-PopUpStack::PopUpStack()
+PopUpStack::PopUpStack(StateRequestStack & stateStack):
+	mStateStack(stateStack)
 {
 }
 
@@ -19,6 +20,8 @@ bool PopUpStack::isEmpty()
 void PopUpStack::addMessage(PopUpData message)
 {
 	mStack.push_back(message);
+	mStateStack.addStartRequest(Enums::eState::PopUp);
+	mStateStack.addFullFocusRequest(Enums::eState::PopUp);
 }
 
 void PopUpStack::addMessage(std::string mainMessage, std::string buttonMessage)

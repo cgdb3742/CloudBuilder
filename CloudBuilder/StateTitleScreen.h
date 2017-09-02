@@ -7,7 +7,7 @@ class StateTitleScreen :
 	public State
 {
 public:
-	StateTitleScreen(GameContext& gameContext, StateMachine & machine);
+	StateTitleScreen(GameContext& gameContext);
 	~StateTitleScreen();
 protected:
 	virtual void updateChildsVector();

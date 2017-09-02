@@ -6,7 +6,7 @@ class StatePopUp :
 	public State
 {
 public:
-	StatePopUp(GameContext& gameContext, StateMachine & machine);
+	StatePopUp(GameContext& gameContext);
 	~StatePopUp();
 
 	//virtual void setActive();

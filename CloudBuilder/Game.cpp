@@ -7,9 +7,10 @@
 Game::Game():
 	mWindow(sf::VideoMode(1024, 768), "Cloud Builder"),
 	mResourceHandler(),
-	mPopUpStack(),
+	mStateStack(),
+	mPopUpStack(mStateStack),
 	mData(),
-	mContext(mResourceHandler, mPopUpStack, mData),
+	mContext(mResourceHandler, mStateStack, mPopUpStack, mData),
 	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;
@@ -36,10 +37,11 @@ void Game::run()
 
 void Game::initialize()
 {
-	mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(mWindow.getSize().x, mWindow.getSize().y));
+	mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(static_cast<float>(mWindow.getSize().x), static_cast<float>(mWindow.getSize().y)));
 	//mStateMachine.startState(Enums::eState::Level);
 	//mStateMachine.requestStart(Enums::eState::Level); //TODO startState or requestStart the first state ?
-	mStateMachine.requestStart(Enums::eState::LevelSelect);
+	//mStateMachine.requestStart(Enums::eState::LevelSelect);
+	mStateStack.addStartRequest(Enums::eState::LevelSelect);
 }
 
 void Game::processEvents()
@@ -59,8 +61,8 @@ void Game::handleEvent(const sf::Event& event)
 		mWindow.close();
 		break;
 	case sf::Event::Resized:
-		mWindow.setView(sf::View(sf::FloatRect(0.f, 0.f, event.size.width, event.size.height)));
-		mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(event.size.width, event.size.height));
+		mWindow.setView(sf::View(sf::FloatRect(0.f, 0.f, static_cast<float>(event.size.width), static_cast<float>(event.size.height))));
+		mStateMachine.setPositionAll(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(static_cast<float>(event.size.width), static_cast<float>(event.size.height)));
 		break;
 	}
 

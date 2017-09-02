@@ -58,12 +58,25 @@ bool InstructionMouseDragHandler::pick() //TODO Make available only during Build
 }
 
 
-bool InstructionMouseDragHandler::drop(sf::Vector2f pos) //TODO Bug if try to drop and play the test at the same time
+bool InstructionMouseDragHandler::drop(sf::Vector2f pos)
 {
 	if (!mIsDragging || mLocked)
 	{
 		return false;
 	}
+
+	//if (mBoard.canGetFromDrag(pos))
+	//{
+	//	mDragged = mBoard.getFromDrag(pos, std::move(mDragged));
+
+	//	if (mDragged == nullptr)
+	//	{
+	//		mIsDragging = false;
+	//		updateChildsVector();
+	//		std::cout << "Dropped an InstructionSquare." << std::endl;
+	//		return false;
+	//	}
+	//}
 
 	if (mBoard.canGetFromDrag(pos))
 	{
@@ -74,13 +87,13 @@ bool InstructionMouseDragHandler::drop(sf::Vector2f pos) //TODO Bug if try to dr
 			mIsDragging = false;
 			updateChildsVector();
 			std::cout << "Dropped an InstructionSquare." << std::endl;
-			return false;
+			return true;
 		}
 	}
 
-	if (mBoard.canGetFromDrag(pos))
+	if (mCreatorContainer.canGetFromDrag(pos))
 	{
-		mDragged = mBoard.getFromDrag(pos, std::move(mDragged));
+		mDragged = mCreatorContainer.getFromDrag(pos, std::move(mDragged));
 
 		if (mDragged == nullptr)
 		{
@@ -103,24 +116,30 @@ bool InstructionMouseDragHandler::drop(sf::Vector2f pos) //TODO Bug if try to dr
 	return false;
 }
 
+void InstructionMouseDragHandler::lock()
+{
+	drop(mMousePos);
+	BuildLockable::lock();
+}
+
 void InstructionMouseDragHandler::handleEventCurrent(const sf::Event & event)
 {
 	switch (event.type)
 	{
 	case sf::Event::MouseMoved:
-		updateMousePos(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
+		updateMousePos(sf::Vector2f(static_cast<float>(event.mouseMove.x), static_cast<float>(event.mouseMove.y)));
 		break;
 	case sf::Event::MouseButtonPressed:
 		if (event.mouseButton.button == sf::Mouse::Button::Left)
 		{
-			updateMousePos(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+			updateMousePos(sf::Vector2f(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)));
 			pick();
 		}
 		break;
 	case sf::Event::MouseButtonReleased:
 		if (event.mouseButton.button == sf::Mouse::Button::Left)
 		{
-			updateMousePos(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+			updateMousePos(sf::Vector2f(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)));
 			drop(mMousePos);
 		}
 		break;

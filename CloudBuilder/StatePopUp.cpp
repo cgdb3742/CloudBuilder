@@ -4,10 +4,10 @@
 
 
 
-StatePopUp::StatePopUp(GameContext& gameContext, StateMachine & machine):
-	State(gameContext, machine, Enums::eState::PopUp),
+StatePopUp::StatePopUp(GameContext& gameContext):
+	State(gameContext, Enums::eState::PopUp),
 	mMessageData(gameContext.popUpStack.popMessage()),
-	mMessage(gameContext, sf::Vector2f(0.5f,0.5f), machine, mMessageData)
+	mMessage(gameContext, sf::Vector2f(0.5f,0.5f), mMessageData)
 {
 }
 

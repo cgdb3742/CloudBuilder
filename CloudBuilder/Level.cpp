@@ -5,16 +5,17 @@
 
 Level::Level(GameContext & gameContext):
 	GameEntity(gameContext),
-	mCanvas(gameContext, 10, 10),
-	mBoard(gameContext, 8, 8),
 	mCurrentCloud(0),
-	mIsRunning(false),
+	mCanvas(gameContext, gameContext.levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
+	mBoard(gameContext, gameContext.levelData.startingBoard),
+	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
-	mMenu(gameContext, mBoard, mPlayer),
+	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
-	createRobotPairs(1);
+	createRobotPairs(gameContext.levelData.nbRobots);
+	createBaseReports(gameContext.levelData);
 	//mMenu.changeSelection(0);
 
 	//std::cout << mCanvas.convertToString() << std::endl;
@@ -25,9 +26,9 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 	mCurrentCloud(0),
 	mCanvas(gameContext, levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
 	mBoard(gameContext, levelData.startingBoard),
-	mIsRunning(false),
+	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
-	mMenu(gameContext, mBoard, mPlayer),
+	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	createRobotPairs(levelData.nbRobots);
@@ -36,15 +37,17 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 
 Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	GameEntity(gameContext),
-	mCanvas(gameContext, 10, 10),
-	mBoard(gameContext, 8, 8),
-	mIsRunning(false),
+	mCurrentCloud(0),
+	mCanvas(gameContext, gameContext.levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
+	mBoard(gameContext, gameContext.levelData.startingBoard),
+	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
-	mMenu(gameContext, mBoard, mPlayer),
+	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 	createRobotPairs(nbRobots);
+	createBaseReports(gameContext.levelData);
 	//mMenu.changeSelection(0);
 
 	//std::cout << mCanvas.convertToString() << std::endl;
@@ -85,6 +88,7 @@ void Level::createRobotPairs(unsigned int nb)
 	}
 }
 
+//TODO Unused ? Use when board loaded from string is incomplete ?
 bool Level::createStartInstructionSpace(unsigned int i, unsigned int j, Enums::eColor color)
 {
 	
@@ -124,8 +128,25 @@ void Level::unlock()
 	mInstructionDragger.unlock();
 }
 
+void Level::resetBoardFromStart()
+{
+	if (isLocked())
+	{
+		return;
+	}
+
+	mBoard.convertFromString(mGameContext.levelData.startingBoard);
+
+	resetAll();
+}
+
 void Level::resetAll()
 {
+	if (isLocked())
+	{
+		return;
+	}
+
 	mCanvas.convertFromString(mGameContext.levelData.clouds[mCurrentCloud]);
 
 	//updateChildsVectorAll();
@@ -134,6 +155,49 @@ void Level::resetAll()
 	for (auto& pair : mRobots)
 	{
 		pair.second.resetAll();
+	}
+}
+
+unsigned int Level::getCurrentCloud()
+{
+	return mCurrentCloud;
+}
+
+void Level::changeCurrentCloud(unsigned int newCloud)
+{
+	if (newCloud < 0 || newCloud >= mGameContext.levelData.clouds.size() || isLocked())
+	{
+		return;
+	}
+	else
+	{
+		mCurrentCloud = newCloud;
+		mCanvas.convertFromString(mGameContext.levelData.clouds[mCurrentCloud]);
+		setPositionAll(mTopLeftCorner, mBoundingBox);
+	}
+}
+
+void Level::changeToNextCloud()
+{
+	if (mCurrentCloud == mGameContext.levelData.clouds.size() - 1)
+	{
+		changeCurrentCloud(0);
+	}
+	else
+	{
+		changeCurrentCloud(mCurrentCloud + 1);
+	}
+}
+
+void Level::changeToPreviousCloud()
+{
+	if (mCurrentCloud == 0)
+	{
+		changeCurrentCloud(mGameContext.levelData.clouds.size() - 1);
+	}
+	else
+	{
+		changeCurrentCloud(mCurrentCloud - 1);
 	}
 }
 
@@ -173,7 +237,7 @@ void Level::runVerifications()
 		{
 			mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[2], mGameContext.gameData.levelResultButton[2]);
 
-			mCurrentCloud = failureId;
+			changeCurrentCloud(failureId);
 			resetAll();
 		}
 		else

@@ -190,5 +190,41 @@
             <en>Play</en>
             <fr>Jouer</fr>
         </level_tab>
+        <level_tab code_name = "Tests" id = "4">
+            <en>Tests</en>
+            <fr>Tests</fr>
+        </level_tab>
+        <level_tab code_name = "Options" id = "5">
+            <en>Options</en>
+            <fr>Options</fr>
+        </level_tab>
+        <state code_name = "Undefined" id = "0">
+            <en>Undefined</en>
+            <fr>Indéfini</fr>
+        </state>
+        <state code_name = "TitleScreen" id = "1">
+            <en>Title screen</en>
+            <fr>Ecran titre</fr>
+        </state>
+        <state code_name = "MainMenu" id = "2">
+            <en>Main menu</en>
+            <fr>Menu principal</fr>
+        </state>
+        <state code_name = "LevelSelect" id = "3">
+            <en>Level select</en>
+            <fr>Choix du niveau</fr>
+        </state>
+        <state code_name = "Level" id = "4">
+            <en>Level</en>
+            <fr>Niveau</fr>
+        </state>
+        <state code_name = "Pause" id = "5">
+            <en>Pause</en>
+            <fr>Pause</fr>
+        </state>
+        <state code_name = "PopUp" id = "6">
+            <en>Pop-up</en>
+            <fr>Pop-up</fr>
+        </state>
     </common_translations>
 </game_data>

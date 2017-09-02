@@ -8,7 +8,10 @@
 #include "GUIInstructionModifierContainer.h"
 #include "GUIPlayerContainer.h"
 #include "GUIInfosContainer.h"
+#include "GUITestsContainer.h"
+#include "GUIOptionsContainer.h"
 
+class Level;
 class InstructionBoard;
 class InstructionPlayer;
 
@@ -17,7 +20,7 @@ class GUILevelMenu :
 	public BuildLockable
 {
 public:
-	GUILevelMenu(GameContext& gameContext, InstructionBoard& board, InstructionPlayer& player);
+	GUILevelMenu(GameContext& gameContext, Level& level, InstructionBoard& board, InstructionPlayer& player);
 	~GUILevelMenu();
 
 	void createTabs(InstructionBoard& board, InstructionPlayer& player);
@@ -44,7 +47,9 @@ private:
 	GUIInstructionCreatorContainer mMenuCreator;
 	GUIInstructionModifierContainer mMenuModifier;
 	GUIPlayerContainer mMenuPlayer;
-	GUIInfosContainer mInfos;
+	GUIInfosContainer mMenuInfos;
+	GUITestsContainer mMenuTests;
+	GUIOptionsContainer mMenuOptions;
 
 	InstructionBoard& mBoard;
 

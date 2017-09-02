@@ -3,10 +3,10 @@
 #include "StateMachine.h"
 
 
-PopUpMessage::PopUpMessage(GameContext& gameContext, sf::Vector2f positionRatio, StateMachine& machine, PopUpData messageData):
+PopUpMessage::PopUpMessage(GameContext& gameContext, sf::Vector2f positionRatio, PopUpData messageData):
 	GUIButton(gameContext, positionRatio),
 	mText(messageData.mainMessage),
-	mButton(gameContext, sf::Vector2f(0.5f,0.8f), machine, messageData),
+	mButton(gameContext, sf::Vector2f(0.5f,0.8f), messageData),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }

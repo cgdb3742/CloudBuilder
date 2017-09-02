@@ -3,8 +3,8 @@
 
 
 
-StateLevelSelect::StateLevelSelect(GameContext& gameContext, StateMachine & machine) :
-	State(gameContext, machine, Enums::eState::LevelSelect),
+StateLevelSelect::StateLevelSelect(GameContext& gameContext) :
+	State(gameContext, Enums::eState::LevelSelect),
 	mDesc(gameContext, sf::Vector2f(0.5f,0.5f)),
 	mSelectedWorld(1),
 	mSelectedLevel(0)
@@ -48,8 +48,10 @@ void StateLevelSelect::startLevel()
 
 	mGameContext.dataReader.loadLevelData(mSelectedWorld, mSelectedLevel);
 
-	mMachine.requestStop(Enums::eState::LevelSelect);
-	mMachine.requestStart(Enums::eState::Level);
+	//mMachine.requestStop(Enums::eState::LevelSelect);
+	//mMachine.requestStart(Enums::eState::Level);
+	mGameContext.stateStack.addStopRequest(Enums::eState::LevelSelect);
+	mGameContext.stateStack.addStartRequest(Enums::eState::Level);
 }
 
 void StateLevelSelect::setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox)

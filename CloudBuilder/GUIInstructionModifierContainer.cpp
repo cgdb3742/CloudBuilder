@@ -33,12 +33,12 @@ void GUIInstructionModifierContainer::drawCurrent(sf::RenderTarget & target)
 {
 	sf::RectangleShape background(mBoundingBox);
 	background.setPosition(mTopLeftCorner);
-	background.setFillColor(sf::Color(0, 191, 191, 127));
+	background.setFillColor(sf::Color(191, 191, 0, 127));
 	target.draw(background);
 
 	sf::RectangleShape line(sf::Vector2f(1.0f, mBoundingBox.y * 0.8f));
 	line.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 0.6f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
-	line.setFillColor(sf::Color(0, 63, 63));
+	line.setFillColor(sf::Color(63, 63, 0));
 	target.draw(line);
 }
 

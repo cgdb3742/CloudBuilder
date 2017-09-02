@@ -31,7 +31,13 @@ public:
 	virtual void lock();
 	virtual void unlock();
 
+	void resetBoardFromStart();
 	void resetAll();
+
+	unsigned int getCurrentCloud();
+	void changeCurrentCloud(unsigned int newCloud);
+	void changeToNextCloud();
+	void changeToPreviousCloud();
 
 	void runVerifications();
 
@@ -42,7 +48,7 @@ protected:
 	virtual void updateChildsVector();
 private:
 	unsigned int mCurrentCloud;
-	bool mIsRunning; //false if building code, true if testing code
+	//bool mIsRunning; //false if building code, true if testing code
 	std::map<Enums::eColor,RobotPair> mRobots;
 	CloudCanvas mCanvas;
 	InstructionBoard mBoard;
