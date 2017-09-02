@@ -3,6 +3,7 @@
 #include <vector>
 #include "pugixml.hpp"
 #include "Enums.h"
+#include "MusicHandler.h"
 
 struct LevelData
 {
@@ -14,6 +15,7 @@ struct LevelData
 	unsigned int level;
 	bool isValidation; //true if validation, false if modification
 	unsigned int nbRobots;
+	MusicHandler::eMusic music;
 
 	std::vector<std::string> clouds;
 	std::vector<std::string> results; //TODO hold Accept or Reject if validation, final clouds if modification ?

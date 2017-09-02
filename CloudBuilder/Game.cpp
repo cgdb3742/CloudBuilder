@@ -71,6 +71,7 @@ void Game::handleEvent(const sf::Event& event)
 
 void Game::update(sf::Time dt)
 {
+	mResourceHandler.updateAll(dt);
 	mStateMachine.updateAll(dt);
 }
 

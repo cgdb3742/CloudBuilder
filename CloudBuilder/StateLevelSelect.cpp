@@ -17,6 +17,13 @@ StateLevelSelect::~StateLevelSelect()
 {
 }
 
+void StateLevelSelect::setActive()
+{
+	State::setActive();
+
+	mGameContext.resourceHandler.changeAndPlayMusic(MusicHandler::eMusic::Title, false);
+}
+
 void StateLevelSelect::selectWorld(unsigned int newWorld)
 {
 	mSelectedWorld = newWorld;

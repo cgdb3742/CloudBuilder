@@ -12,6 +12,8 @@ public:
 	StateLevelSelect(GameContext& gameContext);
 	~StateLevelSelect();
 
+	virtual void setActive();
+
 	void selectWorld(unsigned int newWorld);
 	void selectLevel(unsigned int newLevel);
 

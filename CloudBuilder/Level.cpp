@@ -16,6 +16,8 @@ Level::Level(GameContext & gameContext):
 	std::cout << "Creating GameEntity : Level." << std::endl;
 	createRobotPairs(gameContext.levelData.nbRobots);
 	createBaseReports(gameContext.levelData);
+
+	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
 
 	//std::cout << mCanvas.convertToString() << std::endl;
@@ -33,6 +35,8 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 {
 	createRobotPairs(levelData.nbRobots);
 	createBaseReports(levelData);
+
+	mGameContext.resourceHandler.changeAndPlayMusic(levelData.music, false);
 }
 
 Level::Level(GameContext & gameContext, unsigned int nbRobots) :
@@ -48,6 +52,8 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	std::cout << "Creating GameEntity : Level." << std::endl;
 	createRobotPairs(nbRobots);
 	createBaseReports(gameContext.levelData);
+
+	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
 
 	//std::cout << mCanvas.convertToString() << std::endl;
@@ -135,6 +141,7 @@ void Level::resetBoardFromStart()
 		return;
 	}
 
+	mInstructionDragger.drop();
 	mBoard.convertFromString(mGameContext.levelData.startingBoard);
 
 	resetAll();

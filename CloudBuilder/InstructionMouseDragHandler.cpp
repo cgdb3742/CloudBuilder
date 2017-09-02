@@ -57,6 +57,11 @@ bool InstructionMouseDragHandler::pick() //TODO Make available only during Build
 	return false;
 }
 
+bool InstructionMouseDragHandler::drop()
+{
+	return drop(mMousePos);
+}
+
 
 bool InstructionMouseDragHandler::drop(sf::Vector2f pos)
 {

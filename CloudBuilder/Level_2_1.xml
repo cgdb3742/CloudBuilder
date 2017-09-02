@@ -10,6 +10,7 @@
         <puzzle>1</puzzle>
         <type>modification</type>
         <robots>1</robots>
+        <music_id>2</music_id>
     </general_info>
     <cloud_pictures>
         <cloud id = "0">

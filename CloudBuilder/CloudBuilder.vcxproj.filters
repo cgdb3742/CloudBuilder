@@ -127,6 +127,9 @@
     <Filter Include="Fichiers sources\GameControl\GUI\GUIOptions">
       <UniqueIdentifier>{6b6f0e83-057b-469c-ab87-92ad77de320c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\Music">
+      <UniqueIdentifier>{b22e7e65-5729-400e-ace6-31cf795153d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="GUIInstructionReset.cpp">
       <Filter>Fichiers sources\GameControl\GUI\GUIInstructionCreator</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicHandler.cpp">
+      <Filter>Fichiers sources\ResourcesHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -545,6 +551,9 @@
     <ClInclude Include="GUIInstructionReset.h">
       <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
     </ClInclude>
+    <ClInclude Include="MusicHandler.h">
+      <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game_data.xml">
@@ -567,5 +576,22 @@
     <Font Include="arial.ttf">
       <Filter>Fichiers de ressources\Fonts</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CafouilleBase.ogg">
+      <Filter>Fichiers de ressources\Music</Filter>
+    </None>
+    <None Include="CafouilleLayer.ogg">
+      <Filter>Fichiers de ressources\Music</Filter>
+    </None>
+    <None Include="LupanarBase.ogg">
+      <Filter>Fichiers de ressources\Music</Filter>
+    </None>
+    <None Include="LupanarLayer.ogg">
+      <Filter>Fichiers de ressources\Music</Filter>
+    </None>
+    <None Include="Pouillasse.ogg">
+      <Filter>Fichiers de ressources\Music</Filter>
+    </None>
   </ItemGroup>
 </Project>

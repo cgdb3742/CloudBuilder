@@ -1,6 +1,7 @@
 #include <iostream>
 #include "InstructionPlayer.h"
 #include "Level.h"
+#include "Game.h"
 
 
 
@@ -32,6 +33,8 @@ void InstructionPlayer::activate(bool loopOnce)
 	mPauseAtEnd = loopOnce;
 	mLevel.lock();
 
+	mGameContext.resourceHandler.playMusic(true);
+
 	std::cout << "InstructionPlayer activated." << std::endl;
 }
 
@@ -52,6 +55,8 @@ void InstructionPlayer::deactivate()
 
 	mLevel.unlock();
 	mLevel.resetAll();
+
+	mGameContext.resourceHandler.playMusic(false);
 
 	std::cout << "InstructionPlayer deactivated." << std::endl;
 }

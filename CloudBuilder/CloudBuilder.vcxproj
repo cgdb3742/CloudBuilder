@@ -196,6 +196,7 @@
     <ClCompile Include="LevelSelectButton.cpp" />
     <ClCompile Include="LevelSelectDescription.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MusicHandler.cpp" />
     <ClCompile Include="PopUpButton.cpp" />
     <ClCompile Include="PopUpMessage.cpp" />
     <ClCompile Include="PopUpStack.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="LevelDataReader.h" />
     <ClInclude Include="LevelSelectButton.h" />
     <ClInclude Include="LevelSelectDescription.h" />
+    <ClInclude Include="MusicHandler.h" />
     <ClInclude Include="PopUpButton.h" />
     <ClInclude Include="PopUpMessage.h" />
     <ClInclude Include="PopUpStack.h" />
@@ -295,6 +297,13 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CafouilleBase.ogg" />
+    <None Include="CafouilleLayer.ogg" />
+    <None Include="LupanarBase.ogg" />
+    <None Include="LupanarLayer.ogg" />
+    <None Include="Pouillasse.ogg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

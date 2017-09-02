@@ -58,6 +58,7 @@ bool LevelDataReader::readData()
 		mData.level = doc.child("level_data").child("general_info").child("puzzle").text().as_uint();
 		mData.isValidation = (doc.child("level_data").child("general_info").child_value("type") == std::string("validation"));
 		mData.nbRobots = doc.child("level_data").child("general_info").child("robots").text().as_uint();
+		mData.music = static_cast<MusicHandler::eMusic>(doc.child("level_data").child("general_info").child("music_id").text().as_uint());
 
 		for (pugi::xml_node cloud : doc.child("level_data").child("cloud_pictures").children("cloud"))
 		{

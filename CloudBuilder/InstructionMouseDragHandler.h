@@ -23,6 +23,7 @@ public:
 	~InstructionMouseDragHandler();
 
 	bool pick();
+	bool drop();
 	bool drop(sf::Vector2f pos);
 
 	virtual void lock();
