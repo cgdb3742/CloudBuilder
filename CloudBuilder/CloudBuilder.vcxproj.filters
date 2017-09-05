@@ -342,6 +342,18 @@
     <ClCompile Include="MusicHandler.cpp">
       <Filter>Fichiers sources\ResourcesHandler</Filter>
     </ClCompile>
+    <ClCompile Include="GUIOptionsLanguage.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIOptions</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionBoardFlow.cpp">
+      <Filter>Fichiers sources\Instruction</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundHandler.cpp">
+      <Filter>Fichiers sources\ResourcesHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteHandler.cpp">
+      <Filter>Fichiers sources\ResourcesHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -552,6 +564,18 @@
       <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIInstructionCreator</Filter>
     </ClInclude>
     <ClInclude Include="MusicHandler.h">
+      <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIOptionsLanguage.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIOptions</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionBoardFlow.h">
+      <Filter>Fichiers d%27en-tête\Instruction</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteHandler.h">
+      <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundHandler.h">
       <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
     </ClInclude>
   </ItemGroup>

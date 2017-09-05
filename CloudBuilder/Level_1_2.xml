@@ -7,7 +7,7 @@
             <fr>Retour à la case départ</fr>
         </name>
         <world>1</world>
-        <puzzle>2</puzzle>
+        <level>2</level>
         <type>validation</type>
         <robots>1</robots>
         <music_id>3</music_id>

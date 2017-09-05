@@ -20,6 +20,8 @@ public:
 	void scrollDown();
 	void changeTopic(unsigned int newTopic);
 
+	virtual void updateCurrent(sf::Time dt);
+
 	virtual void drawCurrent(sf::RenderTarget& target);
 
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
@@ -30,11 +32,12 @@ private:
 	std::vector<GUIInfosTopic> mTopics;
 	GUIInfosScroller mScrollerUp;
 	GUIInfosScroller mScrollerDown;
-	std::vector<std::vector<std::string>> mStrings;
-	std::vector<std::string> mTopicNames;
+	std::vector<std::vector<std::string>>& mStrings;
 
 	unsigned int mCurrentTopic;
 	unsigned int mCurrentText;
+
+	std::string mLanguage;
 
 	//sf::Font mFont;
 };

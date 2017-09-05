@@ -4,23 +4,24 @@
 
 
 
-GUIInfosContainer::GUIInfosContainer(GameContext& gameContext):
+GUIInfosContainer::GUIInfosContainer(GameContext& gameContext) :
 	GameEntity(gameContext),
 	mCurrentTopic(0),
 	mCurrentText(0),
+	mStrings(gameContext.levelData.infos),
 	mText(gameContext, sf::Vector2f(0.5f,0.5f)),
 	mScrollerUp(gameContext, *this, -1, sf::Vector2f(0.95f, 0.2f)),
-	mScrollerDown(gameContext, *this, 1, sf::Vector2f(0.95f, 0.8f))
+	mScrollerDown(gameContext, *this, 1, sf::Vector2f(0.95f, 0.8f)),
+	mLanguage(gameContext.saveData.currentLanguage)
 {
 	std::cout << "Creating GameEntity : GUIInfosContainer." << std::endl;
 
-	//Create mStrings...
-	mStrings = gameContext.levelData.infos;
-	mTopicNames = gameContext.levelData.topics;
+	////Create mStrings...
+	//mStrings = gameContext.levelData.infos;
 
 	for (unsigned int i = 0; i < mStrings.size(); i++)
 	{
-		mTopics.push_back(GUIInfosTopic(gameContext, *this, i, mTopicNames[i], sf::Vector2f(0.075f, (2.0f * i + 1.0f) / (2.0f * mStrings.size()))));
+		mTopics.push_back(GUIInfosTopic(gameContext, *this, i, sf::Vector2f(0.075f, (2.0f * i + 1.0f) / (2.0f * mStrings.size()))));
 	}
 
 	setNewText(0, 0);
@@ -70,6 +71,16 @@ void GUIInfosContainer::changeTopic(unsigned int newTopic)
 	if (newTopic != mCurrentTopic &&  newTopic >= 0 && newTopic < mTopics.size())
 	{
 		setNewText(newTopic, 0);
+	}
+}
+
+void GUIInfosContainer::updateCurrent(sf::Time dt)
+{
+	if (mLanguage != mGameContext.saveData.currentLanguage)
+	{
+		mLanguage = mGameContext.saveData.currentLanguage;
+		mStrings = mGameContext.levelData.infos;
+		setNewText(mCurrentTopic, mCurrentText);
 	}
 }
 

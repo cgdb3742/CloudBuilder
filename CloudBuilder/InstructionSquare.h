@@ -43,6 +43,8 @@ public:
 	virtual Enums::eDir getNextDir(InstructionRobot& robot);
 	virtual void setNextDir(Enums::eDir newDir);
 
+	virtual bool isPossibleNextDir(Enums::eDir dir);
+
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 

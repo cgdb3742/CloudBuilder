@@ -23,6 +23,10 @@ public:
 	bool readData();
 	//TODO Save data
 
+	bool writeLanguage(std::string language);
+	bool writeLevelStatus(unsigned int world, unsigned int level, std::string status);
+	bool writeSavedBoard(unsigned int world, unsigned int level, std::string board);
+
 	SaveData& getData();
 
 private:

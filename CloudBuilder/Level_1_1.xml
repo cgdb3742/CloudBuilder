@@ -7,7 +7,7 @@
             <fr>L'amorce</fr>
         </name>
         <world>1</world>
-        <puzzle>1</puzzle>
+        <level>1</level>
         <type>validation</type>
         <robots>1</robots>
         <music_id>2</music_id>

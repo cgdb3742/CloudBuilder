@@ -14,7 +14,9 @@ public:
 	bool loadLevelData();
 	bool loadLevelData(unsigned int world, unsigned int level);
 
-	bool setLanguage(std::string newLanguage);
+	bool writeLanguage(std::string language);
+	bool writeLevelStatus(unsigned int world, unsigned int level, std::string status);
+	bool writeSavedBoard(unsigned int world, unsigned int level, std::string board);
 
 	SaveData& getSaveData();
 	GameData& getGameData();

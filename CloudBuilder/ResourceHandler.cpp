@@ -15,7 +15,24 @@ ResourceHandler::~ResourceHandler()
 
 void ResourceHandler::loadResources()
 {
+	mSprites.loadResources();
+	mSoundPlayer.loadResources();
 	mFonts.loadResources();
+}
+
+sf::Sprite ResourceHandler::createSprite(SpriteHandler::eSprite id)
+{
+	return mSprites.createSprite(id);
+}
+
+sf::Sound & ResourceHandler::playSound(SoundHandler::eSound id)
+{
+	return mSoundPlayer.playSound(id);
+}
+
+void ResourceHandler::clearSounds()
+{
+	mSoundPlayer.clearSounds();
 }
 
 void ResourceHandler::changeMusic(MusicHandler::eMusic newMusic)
@@ -55,5 +72,6 @@ sf::Font & ResourceHandler::getFont(FontHandler::eFont id)
 
 void ResourceHandler::updateAll(sf::Time dt)
 {
+	mSoundPlayer.updateCurrent(dt);
 	mMusicPlayer.updateCurrent(dt);
 }

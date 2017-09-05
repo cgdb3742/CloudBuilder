@@ -30,6 +30,7 @@ void GUIInstructionModifier::applyModification()
 void GUIInstructionModifier::applyModification(InstructionSquare & instruction)
 {
 	instruction.applyModification(mModificationReport);
+	mBoard.updateBordFlow();
 }
 
 void GUIInstructionModifier::clicked()

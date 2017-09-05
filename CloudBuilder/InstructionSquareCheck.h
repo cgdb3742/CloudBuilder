@@ -16,6 +16,8 @@ public:
 	virtual Enums::eDir getNextFalseDir();
 	virtual void setNextFalseDir(Enums::eDir newDir);
 
+	virtual bool isPossibleNextDir(Enums::eDir dir);
+
 	virtual Enums::eDir getCheckDir();
 	virtual void setCheckDir(Enums::eDir newDir);
 	virtual Enums::eColor getRobotColor();

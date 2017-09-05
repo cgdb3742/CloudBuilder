@@ -39,15 +39,42 @@ bool CompleteData::loadLevelData(unsigned int world, unsigned int level)
 	return mLevelDataReader.readData(world, level);
 }
 
-bool CompleteData::setLanguage(std::string newLanguage)
+bool CompleteData::writeLanguage(std::string language)
 {
-	if (true)//TODO mSaveDataReader.setLanguage(newLanguage)
+	if (mSaveDataReader.writeLanguage(language))
 	{
-		mGameDataReader.updateLanguage(newLanguage);
+		mGameDataReader.updateLanguage(language);
 		loadGameData();
-		mLevelDataReader.updateLanguage(newLanguage);
+		mLevelDataReader.updateLanguage(language);
 		loadLevelData();
 
+		//Each object should update its translation on its own
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool CompleteData::writeLevelStatus(unsigned int world, unsigned int level, std::string status)
+{
+	if (mSaveDataReader.writeLevelStatus(world, level, status))
+	{
+		//TODO Process level unlocks if necessary
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool CompleteData::writeSavedBoard(unsigned int world, unsigned int level, std::string board)
+{
+	if (mSaveDataReader.writeSavedBoard(world, level, board))
+	{
 		return true;
 	}
 	else

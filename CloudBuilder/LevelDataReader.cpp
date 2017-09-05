@@ -55,7 +55,7 @@ bool LevelDataReader::readData()
 
 		mData.name = doc.child("level_data").child("general_info").child("name").child_value(mLanguage.c_str());
 		mData.world = doc.child("level_data").child("general_info").child("world").text().as_uint();
-		mData.level = doc.child("level_data").child("general_info").child("puzzle").text().as_uint();
+		mData.level = doc.child("level_data").child("general_info").child("level").text().as_uint();
 		mData.isValidation = (doc.child("level_data").child("general_info").child_value("type") == std::string("validation"));
 		mData.nbRobots = doc.child("level_data").child("general_info").child("robots").text().as_uint();
 		mData.music = static_cast<MusicHandler::eMusic>(doc.child("level_data").child("general_info").child("music_id").text().as_uint());

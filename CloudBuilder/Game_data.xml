@@ -52,8 +52,14 @@
         </world>
     </levels>
     <options>
-        <available_language>en</available_language>
-        <available_language>fr</available_language>
+        <available_language>
+            <name>English</name>
+            <tag>en</tag>
+        </available_language>
+        <available_language>
+            <name>Français</name>
+            <tag>fr</tag>
+        </available_language>
     </options>
     <common_translations>
         <pop_up code_name = "Success" id = "0">

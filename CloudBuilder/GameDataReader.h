@@ -16,7 +16,8 @@ struct GameData
 	std::vector<std::vector<bool>> levelIsValidation;
 	//TODO Unlock conditions
 
-	std::vector<std::string> availableLanguages;
+	std::vector<std::string> availableLanguageName;
+	std::vector<std::string> availableLanguageTag;
 
 	std::map<Enums::eInstruction, std::string> instructionName;
 	std::map<Enums::eInstructionModifier, std::string> instructionModifierName;

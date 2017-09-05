@@ -87,7 +87,10 @@ void Game::test()
 {
 	initialize();
 
-	mData.loadLevelData(1, 1);
+	//mData.loadLevelData(1, 1);
+	//mData.writeLanguage("fr");
+	//mData.writeLevelStatus(1, 2, "Complete");
+	//mData.writeSavedBoard(2, 1, "w8h8i1j1vSSrr");
 
 	sf::Clock clock;
 	while (mWindow.isOpen())

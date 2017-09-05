@@ -9,6 +9,7 @@ GUIButtonChangeState::GUIButtonChangeState(GameContext& gameContext, sf::Vector2
 	mNewState(newState),
 	mFillColor(fillColor),
 	mOutlineColor(outlineColor),
+	mUseStateName(false),
 	mText(text),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 
@@ -21,7 +22,8 @@ GUIButtonChangeState::GUIButtonChangeState(GameContext & gameContext, sf::Vector
 	mNewState(newState),
 	mFillColor(fillColor),
 	mOutlineColor(outlineColor),
-	mText(gameContext.gameData.stateName[newState]),
+	mUseStateName(true),
+	mText(""),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
@@ -53,7 +55,16 @@ void GUIButtonChangeState::drawCurrent(sf::RenderTarget & target)
 
 	sf::Text text;
 	text.setFont(mFont);
-	text.setString(mText);
+
+	if (mUseStateName)
+	{
+		text.setString(mGameContext.gameData.stateName[mNewState]);
+	}
+	else
+	{
+		text.setString(mText);
+	}
+
 	text.setCharacterSize(36);
 	text.setFillColor(sf::Color(0, 0, 0));
 	sf::FloatRect textRect = text.getLocalBounds();

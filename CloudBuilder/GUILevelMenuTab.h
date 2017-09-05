@@ -17,7 +17,6 @@ public:
 	void drawCurrent(sf::RenderTarget & target);
 private:
 	GUILevelMenu& mMenu;
-	std::string mName;
 	unsigned int mId;
 
 	sf::Font& mFont;

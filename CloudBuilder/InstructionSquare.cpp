@@ -230,6 +230,11 @@ void InstructionSquare::setNextDir(Enums::eDir newDir)
 	mNext = newDir;
 }
 
+bool InstructionSquare::isPossibleNextDir(Enums::eDir dir)
+{
+	return (mNext == dir);
+}
+
 std::list<Enums::eInstructionModifier> InstructionSquare::getPossibleModifications()
 {
 	return {};

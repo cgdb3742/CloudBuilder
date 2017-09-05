@@ -74,6 +74,11 @@ void InstructionSquareCheck::setNextFalseDir(Enums::eDir newDir)
 	mNextFalse = newDir;
 }
 
+bool InstructionSquareCheck::isPossibleNextDir(Enums::eDir dir)
+{
+	return (mNextTrue == dir || mNextFalse == dir);
+}
+
 Enums::eDir InstructionSquareCheck::getCheckDir()
 {
 	return mCheckDir;

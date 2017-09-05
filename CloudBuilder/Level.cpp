@@ -7,13 +7,16 @@ Level::Level(GameContext & gameContext):
 	GameEntity(gameContext),
 	mCurrentCloud(0),
 	mCanvas(gameContext, gameContext.levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
-	mBoard(gameContext, gameContext.levelData.startingBoard),
+	mBoard(gameContext),
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
+
+	mBoard.loadLevelBoard(gameContext.levelData.world, gameContext.levelData.level);
+
 	createRobotPairs(gameContext.levelData.nbRobots);
 	createBaseReports(gameContext.levelData);
 
@@ -27,12 +30,14 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 	GameEntity(gameContext),
 	mCurrentCloud(0),
 	mCanvas(gameContext, levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
-	mBoard(gameContext, levelData.startingBoard),
+	mBoard(gameContext),
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
+	mBoard.loadLevelBoard(levelData.world, levelData.level);
+
 	createRobotPairs(levelData.nbRobots);
 	createBaseReports(levelData);
 
@@ -43,13 +48,16 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	GameEntity(gameContext),
 	mCurrentCloud(0),
 	mCanvas(gameContext, gameContext.levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
-	mBoard(gameContext, gameContext.levelData.startingBoard),
+	mBoard(gameContext),
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
+
+	mBoard.loadLevelBoard(gameContext.levelData.world, gameContext.levelData.level);
+
 	createRobotPairs(nbRobots);
 	createBaseReports(gameContext.levelData);
 
@@ -254,6 +262,11 @@ void Level::runVerifications()
 	}
 
 	//TODO Use the report to clear level
+}
+
+bool Level::saveBoard()
+{
+	return mGameContext.dataReader.writeSavedBoard(mGameContext.levelData.world, mGameContext.levelData.level, mBoard.convertToString());
 }
 
 void Level::updateCurrent(sf::Time dt)

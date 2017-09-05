@@ -22,6 +22,7 @@ InstructionBoard::InstructionBoard(GameContext& gameContext) :
 	mWidth(1),
 	mHeight(1),
 	mBoard(generate(1 * 1)),
+	mFlow(gameContext, *this),
 	mSelected(0, 0),
 	mStartPointsUpdated(false),
 	mSelectionUpdated(false)
@@ -37,6 +38,8 @@ InstructionBoard::InstructionBoard(GameContext& gameContext) :
 	}
 
 	//setSelection(0, 0);
+
+	updateBordFlow();
 }
 
 InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source) :
@@ -44,12 +47,14 @@ InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source
 	mWidth(1),
 	mHeight(1),
 	mBoard(generate(1 * 1)),
+	mFlow(gameContext, *this),
 	mSelected(0, 0),
 	mStartPointsUpdated(false),
 	mSelectionUpdated(false)
 {
 	std::cout << "Creating GameEntity : InstructionBoard" << std::endl;
 	convertFromString(source);
+	updateBordFlow();
 	std::cout << "Loaded GameEntity : InstructionBoard ( " << mWidth << " * " << mHeight << " )." << std::endl;
 
 }
@@ -59,6 +64,7 @@ InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width,
 	mWidth(width),
 	mHeight(height),
 	mBoard(generate(width*height)),
+	mFlow(gameContext, *this),
 	mSelected(0, 0),
 	mStartPointsUpdated(false),
 	mSelectionUpdated(false)
@@ -72,6 +78,8 @@ InstructionBoard::InstructionBoard(GameContext& gameContext, unsigned int width,
 			mBoard[i + j*mWidth] = std::make_unique<InstructionSquare>(InstructionSquare(gameContext));
 		}
 	}
+
+	updateBordFlow();
 
 	//mBoard[5 + 2*mHeight]->setNextDir(Enums::eDir::Down);
 
@@ -182,6 +190,20 @@ bool InstructionBoard::isValid()
 	return !(redNeeded || blueNeeded || greenNeeded || yellowNeeded);
 }
 
+void InstructionBoard::loadLevelBoard(unsigned int world, unsigned int level)
+{
+	if (mGameContext.saveData.savedBoard[world - 1][level - 1] == "NONE")
+	{
+		convertFromString(mGameContext.levelData.startingBoard);
+	}
+	else
+	{
+		convertFromString(mGameContext.saveData.savedBoard[world - 1][level - 1]);
+	}
+
+	//mFlow.computeLinks();
+}
+
 std::string InstructionBoard::convertToString() //Sparse definition, TODO do full definition too ?
 {
 	std::string values = "";
@@ -257,6 +279,8 @@ bool InstructionBoard::convertFromString(std::string & source)
 
 		//TODO use isValid() to check whether the loaded board is correct for the current level
 
+		updateBordFlow();
+
 		return true;
 	}
 	catch (...)
@@ -292,6 +316,16 @@ bool InstructionBoard::canMove(unsigned int i, unsigned int j, Enums::eDir dir)
 	case Enums::eDir::Down: return (j < mHeight - 1);
 	default: return false;
 	}
+}
+
+unsigned int InstructionBoard::getWidth()
+{
+	return mWidth;
+}
+
+unsigned int InstructionBoard::getHeight()
+{
+	return mHeight;
 }
 
 sf::Vector2f InstructionBoard::getSquareSize()
@@ -344,6 +378,11 @@ InstructionSquare::InstructionSquarePtr InstructionBoard::getFromDrag(sf::Vector
 	}
 }
 
+void InstructionBoard::updateBordFlow()
+{
+	mFlow.computeLinks();
+}
+
 void InstructionBoard::drawCurrent(sf::RenderTarget & target)
 {
 	//std::cout << "Drawing InstructionBoard." << std::endl;
@@ -386,6 +425,8 @@ void InstructionBoard::setPositionChilds(sf::Vector2f minCorner, sf::Vector2f ma
 			mBoard[i + j*mWidth]->setPositionAll(sf::Vector2f(mTopLeftCorner.x + i * squareSize, mTopLeftCorner.y + j *squareSize), sf::Vector2f(squareSize, squareSize));
 		}
 	}
+
+	mFlow.setPositionAll(mTopLeftCorner, mBoundingBox);
 }
 
 void InstructionBoard::setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox)
@@ -516,6 +557,8 @@ void InstructionBoard::updateChildsVector()
 			mChilds.push_back(*(mBoard[i + j*mWidth].get()));
 		}
 	}
+
+	mChilds.push_back(mFlow);
 }
 
 InstructionSquare::InstructionSquarePtr InstructionBoard::giveToDrag(unsigned int i, unsigned int j)
@@ -525,6 +568,9 @@ InstructionSquare::InstructionSquarePtr InstructionBoard::giveToDrag(unsigned in
 		InstructionSquare::InstructionSquarePtr toReturn = std::move(mBoard[i + j*mWidth]);
 		//mBoard[i + j*mHeight] = std::make_unique<InstructionSquare>(InstructionSquare());
 		insert(i, j, std::make_unique<InstructionSquare>(InstructionSquare(mGameContext)));
+
+		updateBordFlow();
+
 		return toReturn;
 	}
 	else
@@ -568,6 +614,8 @@ InstructionSquare::InstructionSquarePtr InstructionBoard::insert(unsigned int i,
 	updateChildsVectorAll(); //TODO Overkill
 
 	mBoard[i + j*mWidth]->setPositionAll(sf::Vector2f(mTopLeftCorner.x + i * getSquareSize().x, mTopLeftCorner.y + j * getSquareSize().y), getSquareSize());
+
+	updateBordFlow();
 
 	return nullptr;
 }

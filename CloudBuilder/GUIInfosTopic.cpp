@@ -4,11 +4,10 @@
 
 
 
-GUIInfosTopic::GUIInfosTopic(GameContext& gameContext, GUIInfosContainer & container, int id, std::string title, sf::Vector2f positionRatio):
+GUIInfosTopic::GUIInfosTopic(GameContext& gameContext, GUIInfosContainer & container, int id, sf::Vector2f positionRatio):
 	GUIButton(gameContext, positionRatio),
 	mContainer(container),
 	mId(id),
-	mTitle(title),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
@@ -49,7 +48,7 @@ void GUIInfosTopic::drawCurrent(sf::RenderTarget & target)
 
 	sf::Text text;
 	text.setFont(mFont);
-	text.setString(mTitle);
+	text.setString(mGameContext.levelData.topics[mId]);
 	text.setCharacterSize(36);
 	text.setFillColor(sf::Color(0, 0, 0));
 	sf::FloatRect textRect = text.getLocalBounds();

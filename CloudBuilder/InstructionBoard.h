@@ -5,9 +5,10 @@
 #include <utility>
 #include "GameEntity.h"
 #include "StringConvertible.h"
-#include "InstructionSquare.h"
 #include "InstructionDraggableHandler.h"
 #include "BuildLockable.h"
+#include "InstructionSquare.h"
+#include "InstructionBoardFlow.h"
 
 class InstructionBoard :
 	public GameEntity,
@@ -26,6 +27,8 @@ public:
 
 	virtual bool isValid(); //ie is valid in the current gameContext, including the Level restrications
 
+	void loadLevelBoard(unsigned int world, unsigned int level);
+
 	virtual std::string convertToString();
 	virtual bool convertFromString(std::string& source);
 
@@ -33,11 +36,15 @@ public:
 	InstructionSquare& get(unsigned int i, unsigned int j);
 	bool canMove(unsigned int i, unsigned int j, Enums::eDir dir);
 
+	unsigned int getWidth();
+	unsigned int getHeight();
 	sf::Vector2f getSquareSize();
 
 	virtual InstructionSquare::InstructionSquarePtr giveToDrag(sf::Vector2f mousePos);
 	virtual bool canGetFromDrag(sf::Vector2f mousePos);
 	virtual InstructionSquare::InstructionSquarePtr getFromDrag(sf::Vector2f mousePos, InstructionSquare::InstructionSquarePtr ptr);
+
+	void updateBordFlow();
 
 	virtual void drawCurrent(sf::RenderTarget & target);
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
@@ -63,8 +70,12 @@ private:
 
 	unsigned int mWidth;
 	unsigned int mHeight;
+	
 	//std::vector<std::vector<InstructionSquare::InstructionSquarePtr>> mBoard;
 	std::vector<InstructionSquare::InstructionSquarePtr> mBoard;
+	InstructionBoardFlow mFlow;
+
+
 	std::map<Enums::eColor, std::pair<unsigned int, unsigned int>> mStartPoints;
 	bool mStartPointsUpdated;
 	std::pair<unsigned int, unsigned int> mSelected;

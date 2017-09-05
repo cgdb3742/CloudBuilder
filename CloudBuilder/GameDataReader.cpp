@@ -54,7 +54,8 @@ bool GameDataReader::readData()
 
 		for (pugi::xml_node language : doc.child("game_data").child("options").children("available_language"))
 		{
-			mData.availableLanguages.push_back(language.text().as_string());
+			mData.availableLanguageName.push_back(language.child_value("name"));
+			mData.availableLanguageTag.push_back(language.child_value("tag"));
 		}
 
 		for (pugi::xml_node world : doc.child("game_data").child("levels").children("world"))

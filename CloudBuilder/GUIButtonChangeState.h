@@ -16,6 +16,7 @@ private:
 	Enums::eState mCurrentState;
 	Enums::eState mNewState;
 
+	bool mUseStateName;
 	std::string mText;
 
 	sf::Color mFillColor;

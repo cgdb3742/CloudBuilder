@@ -23,7 +23,6 @@
 GUILevelMenuTab::GUILevelMenuTab(GameContext& gameContext, unsigned int id, GUILevelMenu & menu) :
 	GameEntity(gameContext),
 	mMenu(menu),
-	mName(gameContext.gameData.levelTabName[id]),
 	mId(id),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
@@ -67,9 +66,16 @@ void GUILevelMenuTab::drawCurrent(sf::RenderTarget & target)
 
 	sf::Text text;
 	text.setFont(mFont);
-	text.setString(mName);
+	text.setString(mGameContext.gameData.levelTabName[mId]);
 	text.setCharacterSize(36);
-	text.setFillColor(sf::Color(0, 0, 0));
+	if (mMenu.isLocked() && (mId == 1 || mId == 2))
+	{
+		text.setFillColor(sf::Color(63, 63, 63));
+	}
+	else
+	{
+		text.setFillColor(sf::Color(0, 0, 0));
+	}
 	sf::FloatRect textRect = text.getLocalBounds();
 	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	//text.setOrigin(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height) / 2.0f);

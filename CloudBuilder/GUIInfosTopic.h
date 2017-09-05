@@ -8,7 +8,7 @@ class GUIInfosTopic :
 	public GUIButton
 {
 public:
-	GUIInfosTopic(GameContext& gameContext, GUIInfosContainer& container, int id, std::string title, sf::Vector2f positionRatio);
+	GUIInfosTopic(GameContext& gameContext, GUIInfosContainer& container, int id, sf::Vector2f positionRatio);
 	~GUIInfosTopic();
 
 	virtual void clicked();
@@ -16,7 +16,6 @@ public:
 	virtual void drawCurrent(sf::RenderTarget& target);
 private:
 	int mId;
-	std::string mTitle;
 
 	GUIInfosContainer& mContainer;
 

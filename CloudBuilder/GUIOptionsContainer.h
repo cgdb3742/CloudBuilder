@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "GameEntity.h"
+#include "GUIOptionsLanguage.h"
 #include "GUIButtonChangeState.h"
 class GUIOptionsContainer :
 	public GameEntity
@@ -14,6 +16,8 @@ public:
 protected:
 	virtual void updateChildsVector();
 private:
+	std::vector<GUIOptionsLanguage> mLanguageButtons;
+
 	GUIButtonChangeState mToLevelSelect;
 };
 

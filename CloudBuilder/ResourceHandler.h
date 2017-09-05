@@ -1,4 +1,6 @@
 #pragma once
+#include "SpriteHandler.h"
+#include "SoundHandler.h"
 #include "MusicHandler.h"
 #include "FontHandler.h"
 
@@ -9,6 +11,11 @@ public:
 	~ResourceHandler();
 
 	void loadResources();
+
+	sf::Sprite createSprite(SpriteHandler::eSprite id);
+
+	sf::Sound& playSound(SoundHandler::eSound id);
+	void clearSounds();
 
 	void changeMusic(MusicHandler::eMusic newMusic);
 	void changeMusic(MusicHandler::eMusic newMusic, bool playLayer);
@@ -22,6 +29,8 @@ public:
 
 	virtual void updateAll(sf::Time dt);
 private:
+	SpriteHandler mSprites;
+	SoundHandler mSoundPlayer;
 	MusicHandler mMusicPlayer;
 	FontHandler mFonts;
 };

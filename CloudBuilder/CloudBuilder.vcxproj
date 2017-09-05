@@ -168,12 +168,14 @@
     <ClCompile Include="GUILevelMenu.cpp" />
     <ClCompile Include="GUILevelMenuTab.cpp" />
     <ClCompile Include="GUIOptionsContainer.cpp" />
+    <ClCompile Include="GUIOptionsLanguage.cpp" />
     <ClCompile Include="GUIPlayerButton.cpp" />
     <ClCompile Include="GUIPlayerContainer.cpp" />
     <ClCompile Include="GUITestsButton.cpp" />
     <ClCompile Include="GUITestsContainer.cpp" />
     <ClCompile Include="GUITestsModel.cpp" />
     <ClCompile Include="GUITitleScreenButton.cpp" />
+    <ClCompile Include="InstructionBoardFlow.cpp" />
     <ClCompile Include="InstructionDraggableHandler.cpp" />
     <ClCompile Include="Enums.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -205,6 +207,8 @@
     <ClCompile Include="RobotPair.cpp" />
     <ClCompile Include="InstructionMouseDragHandler.cpp" />
     <ClCompile Include="SaveDataReader.cpp" />
+    <ClCompile Include="SoundHandler.cpp" />
+    <ClCompile Include="SpriteHandler.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateLevel.cpp" />
     <ClCompile Include="StateLevelSelect.cpp" />
@@ -240,12 +244,14 @@
     <ClInclude Include="GUILevelMenu.h" />
     <ClInclude Include="GUILevelMenuTab.h" />
     <ClInclude Include="GUIOptionsContainer.h" />
+    <ClInclude Include="GUIOptionsLanguage.h" />
     <ClInclude Include="GUIPlayerButton.h" />
     <ClInclude Include="GUIPlayerContainer.h" />
     <ClInclude Include="GUITestsButton.h" />
     <ClInclude Include="GUITestsContainer.h" />
     <ClInclude Include="GUITestsModel.h" />
     <ClInclude Include="GUITitleScreenButton.h" />
+    <ClInclude Include="InstructionBoardFlow.h" />
     <ClInclude Include="InstructionDraggableHandler.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
@@ -277,6 +283,8 @@
     <ClInclude Include="ResourceHandler.h" />
     <ClInclude Include="RobotPair.h" />
     <ClInclude Include="SaveDataReader.h" />
+    <ClInclude Include="SoundHandler.h" />
+    <ClInclude Include="SpriteHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateLevel.h" />
     <ClInclude Include="StateLevelSelect.h" />

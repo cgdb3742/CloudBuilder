@@ -41,6 +41,8 @@ public:
 
 	void runVerifications();
 
+	bool saveBoard();
+
 	virtual void updateCurrent(sf::Time dt);
 
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
