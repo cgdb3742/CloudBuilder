@@ -65,17 +65,20 @@ bool GameDataReader::readData()
 			std::vector<std::string> levelName;
 			std::vector<std::string> levelDescription;
 			std::vector<bool> levelIsValidation;
+			std::vector<GameData::LevelUnlockPossibilities> levelUnlockRequirements;
 
 			for (pugi::xml_node level : world.children("level"))
 			{
 				levelName.push_back(level.child("name").child_value(mLanguage.c_str()));
 				levelDescription.push_back(level.child("description").child_value(mLanguage.c_str()));
 				levelIsValidation.push_back(level.child_value("type") == std::string("validation"));
+				levelUnlockRequirements.push_back(readUnlockPossibilities(level.child_value("unlock_requirements")));
 			}
 
 			mData.levelName.push_back(levelName);
 			mData.levelDescription.push_back(levelDescription);
 			mData.levelIsValidation.push_back(levelIsValidation);
+			mData.levelUnlockRequirements.push_back(levelUnlockRequirements);
 		}
 
 		for (pugi::xml_node instruction : doc.child("game_data").child("common_translations").children("instruction"))
@@ -101,8 +104,8 @@ bool GameDataReader::readData()
 
 		for (pugi::xml_node result : doc.child("game_data").child("common_translations").children("pop_up"))
 		{
-			mData.levelResultMessage.push_back(result.child("message").child_value(mLanguage.c_str()));
-			mData.levelResultButton.push_back(result.child("button").child_value(mLanguage.c_str()));
+			mData.popUpMessage.push_back(result.child("message").child_value(mLanguage.c_str()));
+			mData.popUpButton.push_back(result.child("button").child_value(mLanguage.c_str()));
 		}
 
 		return true;
@@ -117,6 +120,39 @@ bool GameDataReader::readData(std::string language)
 {
 	mLanguage = language;
 	return readData();
+}
+
+GameData::LevelUnlockPossibilities GameDataReader::readUnlockPossibilities(std::string source)
+{
+	GameData::LevelUnlockPossibilities res;
+
+	size_t oFound = source.find("o");
+
+	while (oFound != std::string::npos)
+	{
+		size_t aFound = source.find("a", oFound + 1);
+
+		oFound = source.find("o", oFound + 1);
+
+		std::vector<std::pair<unsigned int, unsigned int>> possibility;
+
+		while (aFound != std::string::npos && aFound < oFound)
+		{
+			size_t wFound = source.find("w", aFound + 1);
+			size_t lFound = source.find("l", wFound + 1);
+
+			aFound = source.find("a", lFound + 1);
+
+			unsigned int w = stoul(source.substr(wFound + 1, wFound - lFound - 1));
+			unsigned int l = stoul(source.substr(lFound + 1, lFound - std::min(oFound, aFound) - 1));
+
+			possibility.push_back(std::pair<unsigned int, unsigned int>(w, l));
+		}
+
+		res.push_back(possibility);
+	}
+
+	return res;
 }
 
 GameData & GameDataReader::getData()

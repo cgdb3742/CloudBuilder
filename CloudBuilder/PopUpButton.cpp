@@ -40,4 +40,9 @@ void PopUpButton::clicked()
 {
 	//mMachine.requestStop(Enums::eState::PopUp);
 	mGameContext.stateStack.addStopRequest(Enums::eState::PopUp);
+
+	if (!mGameContext.popUpStack.isEmpty())
+	{
+		mGameContext.stateStack.addStartRequest(Enums::eState::PopUp);
+	}
 }

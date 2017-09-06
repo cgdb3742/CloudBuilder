@@ -89,6 +89,14 @@ public:
 		Submit = 3
 	};
 
+	enum eLevelStatus
+	{
+		Locked = 0,
+		New = 1,
+		Available = 2,
+		Complete = 3
+	};
+
 	Enums();
 	~Enums();
 

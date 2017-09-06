@@ -7,10 +7,10 @@ class CloudRobot :
 	public GameEntity
 {
 public:
-	CloudRobot(GameContext& gameContext, CloudCanvas& canvas);
-	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, bool isWriter);
-	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color);
-	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isWriter);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, bool isVisible);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, bool isWriter, bool isVisible);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isVisible);
+	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isWriter, bool isVisible);
 	~CloudRobot();
 
 	bool getIsWriter();
@@ -35,6 +35,8 @@ private:
 	unsigned int mPosi;
 	unsigned int mPosj;
 	bool mIsWriter;
+
+	bool mIsVisible;
 
 	sf::Vector2f mPosOffset;
 };

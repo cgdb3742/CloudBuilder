@@ -46,10 +46,10 @@ void WorldSelectButton::drawCurrent(sf::RenderTarget & target)
 	text.setCharacterSize(36);
 	text.setFillColor(sf::Color(0, 0, 0));
 	sf::FloatRect textRect = text.getLocalBounds();
-	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	//text.setOrigin(sf::Vector2f(text.getLocalBounds().width, text.getLocalBounds().height) / 2.0f);
 	float scale = std::min(mBoundingBox.x / textRect.width, mBoundingBox.y / textRect.height);
+	text.setOrigin(textRect.left, textRect.top + textRect.height / 2.0f);
 	text.scale(sf::Vector2f(scale, scale) * 0.8f);
-	text.setPosition(mTopLeftCorner + mBoundingBox / 2.0f);
+	text.setPosition(mTopLeftCorner + sf::Vector2f(0.05f * mBoundingBox.x, mBoundingBox.y / 2.0f));
 	target.draw(text);
 }

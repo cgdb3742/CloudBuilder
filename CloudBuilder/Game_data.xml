@@ -17,7 +17,8 @@
                     <en>Work is piling in the cloud workshop! Learn how you can help by directing the cloud weavers in your first assignment.</en>
                     <fr>Le travail s'entasse dans l'atelier des nuages ! Apprenez comment venir en aide en dirigeant les tisseurs de nuages dans votre première mission.</fr>
                 </description>
-                <unlock_requirement>TODO</unlock_requirement>
+                <!--unlock_requirements syntax : oawXlXawXlXawXlXoawXlXawXlXawXlXoawXlXawXlXawXlXoawXlXawXlXawXlX-->
+                <unlock_requirements></unlock_requirements>
             </level>
             <level id = "2">
                 <type>validation</type>
@@ -29,7 +30,7 @@
                     <en>Already feeling you are repeating the same thing again and again? Well, we can help that!</en>
                     <fr>Vous avez déjà l'impression de vous répéter encore et encore ? Bien, on peut aider ça !</fr>
                 </description>
-                <unlock_requirement>TODO</unlock_requirement>
+                <unlock_requirements>oaw1l1</unlock_requirements>
             </level>
         </world>
         <world id = "2">
@@ -47,7 +48,7 @@
                     <en>Some days, everything is going well and there is nothing to say. Today is not one of these days. Quite the opposite.</en>
                     <fr>Certains jours, tout va bien et il n'y a rien à dire. Aujourd'hui n'est pas un de ces jours. Au contraire.</fr>
                 </description>
-                <unlock_requirement>TODO</unlock_requirement>
+                <unlock_requirements>oaw1l1aw1l2</unlock_requirements>
             </level>
         </world>
     </levels>
@@ -86,6 +87,26 @@
             <message>
                 <en>Your solution may work with this canvas,&#xA;but not all test samples. Try this one!</en>
                 <fr>Votre solution marche peut-être avec ce canevas,&#xA;mais pas tous les échantillons de test. Essayez celui-là !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Save Board" id = "3">
+            <message>
+                <en>The current instruction board&#xA;has been successfully saved.</en>
+                <fr>Le tableau d'instructions actuel&#xA;a été correctement enregistré.</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Level Unlock" id = "4">
+            <message>
+                <en>Congratulations!&#xA;You unlocked a new level :&#xA;</en>
+                <fr>Félicitations !&#xA;Vous avez débloqué un nouveau niveau :&#xA;</fr>
             </message>
             <button>
                 <en>Continue</en>

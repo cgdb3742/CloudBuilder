@@ -26,12 +26,12 @@ bool SaveDataReader::readData()
 
 		for (pugi::xml_node world : doc.child("save_data").child("levels").children("world")) //TODO Should be read in the right order
 		{
-			std::vector<std::string> status;
+			std::vector<Enums::eLevelStatus> status;
 			std::vector<std::string> board;
 
 			for (pugi::xml_node level : world.children("level"))
 			{
-				status.push_back(level.child_value("status"));
+				status.push_back(static_cast<Enums::eLevelStatus>(level.child("status").text().as_uint()));
 				board.push_back(level.child_value("saved_board"));
 			}
 
@@ -73,7 +73,7 @@ bool SaveDataReader::writeLanguage(std::string language)
 	}
 }
 
-bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, std::string status)
+bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, Enums::eLevelStatus status)
 {
 	if (world > mData.levelStatus.size())
 	{
@@ -85,7 +85,8 @@ bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, st
 		return false;
 	}
 
-	if (status == mData.levelStatus[world-1][level-1])
+	//Complete > Available > New > Locked
+	if (status <= mData.levelStatus[world-1][level-1])
 	{
 		return false;
 	}
@@ -104,7 +105,7 @@ bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, st
 				{
 					if (levelNode.attribute("id").as_uint() == level)
 					{
-						levelNode.child("status").text().set(status.c_str());
+						levelNode.child("status").text().set(status);
 						//std::cout << "Saving new status : " << levelNode.child("status").set_value(status.c_str()) << std::endl;
 					}
 				}

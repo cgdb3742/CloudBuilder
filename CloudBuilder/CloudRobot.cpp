@@ -3,44 +3,48 @@
 
 
 
-CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas& canvas):
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas& canvas, bool isVisible):
 	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
 	mIsWriter(false),
+	mIsVisible(isVisible),
 	mColor(Enums::eColor::NoColor)
 {
 	std::cout << "Creating GameEntity : CloudRobot." << std::endl;
 }
 
-CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, bool isWriter) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, bool isWriter, bool isVisible) :
 	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
 	mIsWriter(isWriter),
+	mIsVisible(isVisible),
 	mColor(Enums::eColor::NoColor)
 {
 	std::cout << "Creating GameEntity : CloudRobot." << std::endl;
 }
 
-CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color, bool isVisible) :
 	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
 	mIsWriter(false),
+	mIsVisible(isVisible),
 	mColor(color)
 {
 }
 
-CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color, bool isWriter) :
+CloudRobot::CloudRobot(GameContext& gameContext, CloudCanvas & canvas, Enums::eColor color, bool isWriter, bool isVisible) :
 	GameEntity(gameContext),
 	mCanvas(canvas),
 	mPosi(0),
 	mPosj(0),
 	mIsWriter(isWriter),
+	mIsVisible(isVisible),
 	mColor(color)
 {
 }

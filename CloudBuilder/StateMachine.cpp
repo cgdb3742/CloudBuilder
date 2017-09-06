@@ -65,11 +65,11 @@ void StateMachine::updateCurrent(sf::Time dt) //TODO Screens/States transitions 
 	//	fullFocusState(Enums::eState::PopUp);
 	//}
 
+	processDeactivateRequests();
+	processStopRequests();
 	processStartRequests();
 	processActivateRequests();
 	processFullFocusRequests();
-	processDeactivateRequests();
-	processStopRequests();
 }
 
 void StateMachine::processStartRequests()

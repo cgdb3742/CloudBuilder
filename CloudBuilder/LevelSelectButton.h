@@ -15,6 +15,7 @@ public:
 	virtual void endHover();
 
 	virtual void drawCurrent(sf::RenderTarget& target);
+	virtual void drawIcon(sf::RenderTarget& target, sf::Vector2f center, sf::Vector2f maxBox);
 
 private:
 	unsigned int mWorld;

@@ -59,7 +59,7 @@ void HiddenVerifier::createRobotPairs(GameContext & gameContext, unsigned int nb
 		default: color = Enums::eColor::Red; break;
 		}
 
-		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(gameContext, mCanvas, mBoard, color)));
+		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(gameContext, mCanvas, mBoard, color, false)));
 
 		mRobots.at(color).resetAll();
 	}

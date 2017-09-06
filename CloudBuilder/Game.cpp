@@ -9,7 +9,7 @@ Game::Game():
 	mResourceHandler(),
 	mStateStack(),
 	mPopUpStack(mStateStack),
-	mData(),
+	mData(mPopUpStack),
 	mContext(mResourceHandler, mStateStack, mPopUpStack, mData),
 	mStateMachine(mContext)
 {
@@ -91,6 +91,8 @@ void Game::test()
 	//mData.writeLanguage("fr");
 	//mData.writeLevelStatus(1, 2, "Complete");
 	//mData.writeSavedBoard(2, 1, "w8h8i1j1vSSrr");
+	//mPopUpStack.addMessage("test1", "test1");
+	//mPopUpStack.addMessage("test2", "test2");
 
 	sf::Clock clock;
 	while (mWindow.isOpen())

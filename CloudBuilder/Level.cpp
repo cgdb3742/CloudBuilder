@@ -19,6 +19,7 @@ Level::Level(GameContext & gameContext):
 
 	createRobotPairs(gameContext.levelData.nbRobots);
 	createBaseReports(gameContext.levelData);
+	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
 
 	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
@@ -40,6 +41,7 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 
 	createRobotPairs(levelData.nbRobots);
 	createBaseReports(levelData);
+	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
 
 	mGameContext.resourceHandler.changeAndPlayMusic(levelData.music, false);
 }
@@ -60,6 +62,7 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 
 	createRobotPairs(nbRobots);
 	createBaseReports(gameContext.levelData);
+	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
 
 	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
@@ -96,7 +99,7 @@ void Level::createRobotPairs(unsigned int nb)
 		default: color = Enums::eColor::Red; break;
 		}
 
-		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(mGameContext, mCanvas, mBoard, color)));
+		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(mGameContext, mCanvas, mBoard, color, true)));
 		//mRobots.push_back(RobotPair(mCanvas, mBoard, color));
 		//mRobots.push_back(RobotPair(mCanvas, mBoard, Enums::eColor::Yellow));
 	}
@@ -230,7 +233,8 @@ void Level::runVerifications()
 
 	if (!endReports[mCurrentCloud].isCorrectResult)
 	{
-		mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[1], mGameContext.gameData.levelResultButton[1]);
+		//Failure
+		mGameContext.popUpStack.addMessage(mGameContext.gameData.popUpMessage[1], mGameContext.gameData.popUpButton[1]);
 	}
 	else
 	{
@@ -250,14 +254,18 @@ void Level::runVerifications()
 
 		if (hasFailed)
 		{
-			mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[2], mGameContext.gameData.levelResultButton[2]);
+			//Hidden failure
+			mGameContext.popUpStack.addMessage(mGameContext.gameData.popUpMessage[2], mGameContext.gameData.popUpButton[2]);
 
 			changeCurrentCloud(failureId);
 			resetAll();
 		}
 		else
 		{
-			mGameContext.popUpStack.addMessage(mGameContext.gameData.levelResultMessage[0], mGameContext.gameData.levelResultButton[0]);
+			//Success
+			mGameContext.popUpStack.addMessage(mGameContext.gameData.popUpMessage[0], mGameContext.gameData.popUpButton[0]);
+
+			mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Complete);
 		}
 	}
 

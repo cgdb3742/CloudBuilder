@@ -6,10 +6,10 @@
 
 
 
-RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board):
+RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, bool isVisible):
 	GameEntity(gameContext),
 	mColor(Enums::eColor::NoColor),
-	mCloudRobot(gameContext, canvas),
+	mCloudRobot(gameContext, canvas, isVisible),
 	mInstructionRobot(gameContext, board),
 	mCanvas(canvas),
 	mBoard(board),
@@ -28,10 +28,10 @@ RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionB
 	}
 }
 
-RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color) :
+RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionBoard& board, Enums::eColor color, bool isVisible) :
 	GameEntity(gameContext),
 	mColor(color),
-	mCloudRobot(gameContext, canvas, color),
+	mCloudRobot(gameContext, canvas, color, isVisible),
 	mInstructionRobot(gameContext, board, color),
 	mCanvas(canvas),
 	mBoard(board),
