@@ -51,6 +51,24 @@
                 <unlock_requirements>oaw1l1aw1l2</unlock_requirements>
             </level>
         </world>
+        <world id = "3">
+            <name>
+                <en>Unending</en>
+                <fr>Sans fin</fr>
+            </name>
+            <level id = "1">
+                <type>modification</type>
+                <name>
+                    <en>Sandbox</en>
+                    <fr>Bac à sable</fr>
+                </name>
+                <description>
+                    <en>You want freedom? Here it comes!</en>
+                    <fr>Vous voulez la liberté? Vous l'aurez!</fr>
+                </description>
+                <unlock_requirements></unlock_requirements>
+            </level>
+        </world>
     </levels>
     <options>
         <available_language>

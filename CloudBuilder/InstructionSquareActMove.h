@@ -12,8 +12,6 @@ public:
 
 	Enums::eDir getToMove();
 	void setToMove(Enums::eDir newDir);
-	Enums::eColor getRobotColor();
-	void setRobotColor(Enums::eColor newColor);
 
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
@@ -26,6 +24,5 @@ public:
 	virtual void drawInterior(sf::RenderTarget & target);
 private:
 	Enums::eDir mToMove;
-	Enums::eColor mRobotColor;
 };
 

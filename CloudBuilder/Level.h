@@ -4,7 +4,7 @@
 #include <utility>
 #include "GameEntity.h"
 #include "BuildLockable.h"
-#include "RobotPair.h"
+#include "RobotControl.h"
 #include "InstructionMouseDragHandler.h"
 #include "GUILevelMenu.h"
 #include "InstructionPlayer.h"
@@ -21,8 +21,6 @@ public:
 	Level(GameContext& gameContext, LevelData levelData);
 	Level(GameContext& gameContext, unsigned int nbRobots);
 	~Level();
-
-	void createRobotPairs(unsigned int nb);
 
 	bool createStartInstructionSpace(unsigned int i, unsigned int j, Enums::eColor color);
 
@@ -51,7 +49,8 @@ protected:
 private:
 	unsigned int mCurrentCloud;
 	//bool mIsRunning; //false if building code, true if testing code
-	std::map<Enums::eColor,RobotPair> mRobots;
+	//std::map<Enums::eColor,RobotPair> mRobots;
+	RobotControl mRobots;
 	CloudCanvas mCanvas;
 	InstructionBoard mBoard;
 	//GUIInstructionCreatorContainer mCreatorContainer;

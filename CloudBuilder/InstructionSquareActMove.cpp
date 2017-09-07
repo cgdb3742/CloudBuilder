@@ -6,16 +6,14 @@
 
 InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActMove, "Move Action"),
-	mToMove(Enums::eDir::Right),
-	mRobotColor(Enums::eColor::NoColor)
+	mToMove(Enums::eDir::Right)
 {
 	std::cout << "Creating GameEntity : InstructionSquareActMove." << std::endl;
 }
 
 InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext, std::string & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActMove, "Move Action"),
-	mToMove(Enums::eDir::Right),
-	mRobotColor(Enums::eColor::NoColor)
+	mToMove(Enums::eDir::Right)
 {
 	convertFromString(source);
 }
@@ -32,15 +30,13 @@ bool InstructionSquareActMove::isValid()
 
 bool InstructionSquareActMove::applyInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress)
 {
-	CloudRobot& movingRobot = cloudRobot; //TODO Move other robots
-
 	switch (mToMove)
 	{
 	case Enums::eDir::Center: return true;
-	case Enums::eDir::Left: return movingRobot.moveLeft(progress);
-	case Enums::eDir::Right: return movingRobot.moveRight(progress);
-	case Enums::eDir::Up: return movingRobot.moveUp(progress);
-	case Enums::eDir::Down: return movingRobot.moveDown(progress);
+	case Enums::eDir::Left: return cloudRobot.moveLeft(progress);
+	case Enums::eDir::Right: return cloudRobot.moveRight(progress);
+	case Enums::eDir::Up: return cloudRobot.moveUp(progress);
+	case Enums::eDir::Down: return cloudRobot.moveDown(progress);
 	default: return true;
 	}
 
@@ -103,16 +99,6 @@ Enums::eDir InstructionSquareActMove::getToMove()
 void InstructionSquareActMove::setToMove(Enums::eDir newDir)
 {
 	mToMove = newDir;
-}
-
-Enums::eColor InstructionSquareActMove::getRobotColor()
-{
-	return mRobotColor;
-}
-
-void InstructionSquareActMove::setRobotColor(Enums::eColor newColor)
-{
-	mRobotColor = newColor;
 }
 
 std::list<Enums::eInstructionModifier> InstructionSquareActMove::getPossibleModifications()

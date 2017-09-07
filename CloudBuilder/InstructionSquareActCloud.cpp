@@ -7,15 +7,13 @@
 
 InstructionSquareActCloud::InstructionSquareActCloud(GameContext & gameContext) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActSetCloud, "Cloud Action"),
-	mWantCloud(true),
-	mRobotColor(Enums::eColor::NoColor)
+	mWantCloud(true)
 {
 }
 
 InstructionSquareActCloud::InstructionSquareActCloud(GameContext & gameContext, std::string & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActSetCloud, "Cloud Action"),
-	mWantCloud(true),
-	mRobotColor(Enums::eColor::NoColor)
+	mWantCloud(true)
 {
 	convertFromString(source);
 }
@@ -37,16 +35,6 @@ bool InstructionSquareActCloud::getWantCloud()
 void InstructionSquareActCloud::setWantCloud(bool newWant)
 {
 	mWantCloud = newWant;
-}
-
-Enums::eColor InstructionSquareActCloud::getRobotColor()
-{
-	return mRobotColor;
-}
-
-void InstructionSquareActCloud::setRobotColor(Enums::eColor newColor)
-{
-	mRobotColor = newColor;
 }
 
 std::list<Enums::eInstructionModifier> InstructionSquareActCloud::getPossibleModifications()
@@ -88,16 +76,14 @@ bool InstructionSquareActCloud::convertFromString(std::string & source)
 
 bool InstructionSquareActCloud::applyInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress)
 {
-	CloudRobot& actingRobot = cloudRobot; //TODO Control other robots
-
-	if (!actingRobot.getIsWriter())
+	if (!cloudRobot.getIsWriter())
 	{
 		return true;
 	}
 
 	if (progress >= 1.0f)
 	{
-		actingRobot.getPos().setIsCloud(mWantCloud); //TODO Animation and concurrency between robots
+		cloudRobot.getPos().setIsCloud(mWantCloud); //TODO Animation and concurrency between robots
 		return true;
 	}
 	else

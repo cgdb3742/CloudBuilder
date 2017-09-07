@@ -11,15 +11,17 @@ Level::Level(GameContext & gameContext):
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
-	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
+	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
 	mBoard.loadLevelBoard(gameContext.levelData.world, gameContext.levelData.level);
 
-	createRobotPairs(gameContext.levelData.nbRobots);
 	createBaseReports(gameContext.levelData);
 	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
+
+	mRobots.createRobotPairs();
 
 	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
@@ -35,13 +37,15 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
-	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
+	mRobots(gameContext, mCanvas, mBoard, levelData.nbRobots, true)
 {
 	mBoard.loadLevelBoard(levelData.world, levelData.level);
 
-	createRobotPairs(levelData.nbRobots);
 	createBaseReports(levelData);
 	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
+
+	mRobots.createRobotPairs();
 
 	mGameContext.resourceHandler.changeAndPlayMusic(levelData.music, false);
 }
@@ -54,15 +58,17 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	//mIsRunning(false),
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
-	mInstructionDragger(gameContext, mBoard, mMenu.getCreator())
+	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
+	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
 	mBoard.loadLevelBoard(gameContext.levelData.world, gameContext.levelData.level);
 
-	createRobotPairs(nbRobots);
 	createBaseReports(gameContext.levelData);
 	mGameContext.dataReader.writeLevelStatus(mGameContext.levelData.world, mGameContext.levelData.level, Enums::eLevelStatus::Available);
+
+	mRobots.createRobotPairs();
 
 	mGameContext.resourceHandler.changeAndPlayMusic(gameContext.levelData.music, false);
 	//mMenu.changeSelection(0);
@@ -77,32 +83,6 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 
 Level::~Level()
 {
-}
-
-void Level::createRobotPairs(unsigned int nb)
-{
-	if (nb < 1) nb = 1;
-	if (nb > 4) nb = 4;
-
-	mRobots.clear();
-
-	for (unsigned int i = 1; i <= nb; i++)
-	{
-		Enums::eColor color;
-
-		switch (i)
-		{
-		case 1: color = Enums::eColor::Red; break;
-		case 2: color = Enums::eColor::Blue; break;
-		case 3: color = Enums::eColor::Green; break;
-		case 4: color = Enums::eColor::Yellow; break;
-		default: color = Enums::eColor::Red; break;
-		}
-
-		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(mGameContext, mCanvas, mBoard, color, true)));
-		//mRobots.push_back(RobotPair(mCanvas, mBoard, color));
-		//mRobots.push_back(RobotPair(mCanvas, mBoard, Enums::eColor::Yellow));
-	}
 }
 
 //TODO Unused ? Use when board loaded from string is incomplete ?
@@ -170,10 +150,7 @@ void Level::resetAll()
 	//updateChildsVectorAll();
 	setPositionAll(mTopLeftCorner, mBoundingBox);
 
-	for (auto& pair : mRobots)
-	{
-		pair.second.resetAll();
-	}
+	mRobots.resetAll();
 }
 
 unsigned int Level::getCurrentCloud()
@@ -226,7 +203,8 @@ void Level::runVerifications()
 
 	for (VerificationReport& baseReport : mBaseReports)
 	{
-		HiddenVerifier verifier(mGameContext, baseReport, mBoard, mRobots.size());
+		//HiddenVerifier verifier(mGameContext, baseReport, mBoard, mRobots.size());
+		HiddenVerifier verifier(mGameContext, baseReport, mBoard, mGameContext.levelData.nbRobots);
 		verifier.play(10000); //TODO test steps number
 		endReports.push_back(verifier.getReport());
 	}
@@ -281,10 +259,7 @@ void Level::updateCurrent(sf::Time dt)
 {
 	if (mBoard.hasUpdatedStartPoints()) //Note : can only happen in build mode
 	{
-		for (auto& rb : mRobots)
-		{
-			rb.second.startPointsUpdated();
-		}
+		mRobots.startPointsUpdated();
 	}
 }
 
@@ -296,11 +271,7 @@ void Level::setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox)
 	mInstructionDragger.setPositionAll(minCorner, maxBox);
 	mPlayer.setPositionAll(minCorner, maxBox);
 
-	//for (RobotPair& rb : mRobots)
-	for (auto& rb : mRobots)
-	{
-		rb.second.setPositionAll(minCorner, maxBox);
-	}
+	mRobots.setPositionAll(minCorner, maxBox);
 }
 
 void Level::updateChildsVector()
@@ -309,10 +280,7 @@ void Level::updateChildsVector()
 	mChilds.push_back(mCanvas);
 	mChilds.push_back(mBoard);
 
-	for (auto& rb : mRobots)
-	{
-		mChilds.push_back(rb.second);
-	}
+	mChilds.push_back(mRobots);
 
 	mChilds.push_back(mMenu);
 	mChilds.push_back(mInstructionDragger);

@@ -7,8 +7,8 @@
 
 GUIInstructionCreatorContainer::GUIInstructionCreatorContainer(GameContext& gameContext, Level& level, InstructionBoard& board):
 	GameEntity(gameContext),
-	mTrashBin(gameContext, sf::Vector2f(42.0f / 45.0f, 3.0f / 11.0f)),
-	mReset(gameContext, sf::Vector2f(42.0f / 45.0f, 8.0f / 11.0f), level),
+	mTrashBin(gameContext, sf::Vector2f(42.0f / 50.0f, 3.0f / 11.0f)),
+	mReset(gameContext, sf::Vector2f(42.0f / 50.0f, 8.0f / 11.0f), level),
 	mBoard(board)
 {
 	setUpCreators();
@@ -24,15 +24,21 @@ void GUIInstructionCreatorContainer::setUpCreators()
 	//TODO Fail if duplicates in availableInstructions
 	for (Enums::eInstruction instruction : mGameContext.levelData.availableInstructions)
 	{
+		//Note : mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(instruction, GUIInstructionCreator(mGameContext, instruction, positionRatio))); would be easier to read ?
 		switch (instruction)
 		{
-		case Enums::eInstruction::ActMove: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActMove, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActMove, sf::Vector2f(3.0f / 45.0f, 3.0f / 11.0f)))); break;
-		case Enums::eInstruction::ActSetCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActSetCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActSetCloud, sf::Vector2f(3.0f / 45.0f, 8.0f / 11.0f)))); break;
-		case Enums::eInstruction::CheckCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckCloud, sf::Vector2f(14.0f / 45.0f, 8.0f / 11.0f)))); break;
-		case Enums::eInstruction::CheckBorder: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckBorder, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckBorder, sf::Vector2f(14.0f / 45.0f, 3.0f / 11.0f)))); break;
-		case Enums::eInstruction::FlowWait: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowWait, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowWait, sf::Vector2f(25.0f / 45.0f, 3.0f / 11.0f)))); break;
-		case Enums::eInstruction::SpeAccept: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeAccept, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeAccept, sf::Vector2f(36.0f / 45.0f, 3.0f / 11.0f)))); break;
-		case Enums::eInstruction::SpeReject: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeReject, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeReject, sf::Vector2f(36.0f / 45.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::ActMove: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActMove, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActMove, sf::Vector2f(3.0f / 50.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::ActSetCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActSetCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActSetCloud, sf::Vector2f(3.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::ActSetColor: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::ActSetColor, GUIInstructionCreator(mGameContext, Enums::eInstruction::ActSetColor, sf::Vector2f(8.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::CheckCloud: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckCloud, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckCloud, sf::Vector2f(14.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::CheckColor: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckColor, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckColor, sf::Vector2f(19.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::CheckBorder: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::CheckBorder, GUIInstructionCreator(mGameContext, Enums::eInstruction::CheckBorder, sf::Vector2f(14.0f / 50.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::FlowWait: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowWait, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowWait, sf::Vector2f(25.0f / 50.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::FlowPause: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowPause, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowPause, sf::Vector2f(25.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::FlowResume: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowResume, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowResume, sf::Vector2f(30.0f / 50.0f, 8.0f / 11.0f)))); break;
+		case Enums::eInstruction::FlowSync: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::FlowSync, GUIInstructionCreator(mGameContext, Enums::eInstruction::FlowSync, sf::Vector2f(30.0f / 50.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::SpeAccept: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeAccept, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeAccept, sf::Vector2f(36.0f / 50.0f, 3.0f / 11.0f)))); break;
+		case Enums::eInstruction::SpeReject: mCreators.insert(std::pair<Enums::eInstruction, GUIInstructionCreator>(Enums::eInstruction::SpeReject, GUIInstructionCreator(mGameContext, Enums::eInstruction::SpeReject, sf::Vector2f(36.0f / 50.0f, 8.0f / 11.0f)))); break;
 		default: break;
 		}
 	}
@@ -92,22 +98,22 @@ void GUIInstructionCreatorContainer::drawCurrent(sf::RenderTarget & target)
 	target.draw(background);
 
 	sf::RectangleShape line1(sf::Vector2f(1.0f, mBoundingBox.y * 0.8f));
-	line1.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 11.0f / 45.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
+	line1.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 11.0f / 50.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
 	line1.setFillColor(sf::Color(63, 0, 63));
 	target.draw(line1);
 
 	sf::RectangleShape line2(sf::Vector2f(1.0f, mBoundingBox.y * 0.8f));
-	line2.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 22.0f / 45.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
+	line2.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 22.0f / 50.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
 	line2.setFillColor(sf::Color(63, 0, 63));
 	target.draw(line2);
 
 	sf::RectangleShape line3(sf::Vector2f(1.0f, mBoundingBox.y * 0.8f));
-	line3.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 33.0f / 45.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
+	line3.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 33.0f / 50.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
 	line3.setFillColor(sf::Color(63, 0, 63));
 	target.draw(line3);
 
 	sf::RectangleShape line4(sf::Vector2f(1.0f, mBoundingBox.y * 0.8f));
-	line4.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 39.0f / 45.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
+	line4.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * 39.0f / 50.0f, mTopLeftCorner.y + mBoundingBox.y * 0.1f));
 	line4.setFillColor(sf::Color(63, 0, 63));
 	target.draw(line4);
 }

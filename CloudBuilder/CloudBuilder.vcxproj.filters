@@ -354,6 +354,24 @@
     <ClCompile Include="SpriteHandler.cpp">
       <Filter>Fichiers sources\ResourcesHandler</Filter>
     </ClCompile>
+    <ClCompile Include="RobotControl.cpp">
+      <Filter>Fichiers sources\GameControl</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareFlowSync.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareFlowPause.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareFlowResume.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareActColor.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionSquareCheckColor.cpp">
+      <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -577,6 +595,24 @@
     </ClInclude>
     <ClInclude Include="SoundHandler.h">
       <Filter>Fichiers d%27en-tête\ResourcesHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="RobotControl.h">
+      <Filter>Fichiers d%27en-tête\GameControl</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareFlowPause.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareFlowResume.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareFlowSync.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareActColor.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionSquareCheckColor.h">
+      <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

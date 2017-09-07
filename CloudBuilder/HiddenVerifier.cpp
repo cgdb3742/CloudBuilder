@@ -1,4 +1,5 @@
 #include "HiddenVerifier.h"
+#include "Game.h"
 
 
 
@@ -10,9 +11,10 @@ HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture cloud, Enu
 	mBoard(board),
 	mReport(cloud, wantedResult),
 	mSteps(0),
-	mGameContext(gameContext)
+	mGameContext(gameContext),
+	mRobots(gameContext, mCanvas, board, gameContext.levelData.nbRobots, false)
 {
-	createRobotPairs(gameContext, nbRobots);
+	mRobots.createRobotPairs();
 }
 
 HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture cloud, CloudPicture wantedCloud, InstructionBoard & board, unsigned int nbRobots) :
@@ -20,9 +22,10 @@ HiddenVerifier::HiddenVerifier(GameContext& gameContext, CloudPicture cloud, Clo
 	mBoard(board),
 	mReport(cloud, wantedCloud),
 	mSteps(0),
-	mGameContext(gameContext)
+	mGameContext(gameContext),
+	mRobots(gameContext, mCanvas, board, gameContext.levelData.nbRobots, false)
 {
-	createRobotPairs(gameContext, nbRobots);
+	mRobots.createRobotPairs();
 }
 
 HiddenVerifier::HiddenVerifier(GameContext & gameContext, VerificationReport & report, InstructionBoard & board, unsigned int nbRobots) :
@@ -30,47 +33,19 @@ HiddenVerifier::HiddenVerifier(GameContext & gameContext, VerificationReport & r
 	mBoard(board),
 	mReport(report),
 	mSteps(0),
-	mGameContext(gameContext)
+	mGameContext(gameContext),
+	mRobots(gameContext, mCanvas, board, gameContext.levelData.nbRobots, false)
 {
-	createRobotPairs(gameContext, nbRobots);
+	mRobots.createRobotPairs();
 }
 
 HiddenVerifier::~HiddenVerifier()
 {
 }
 
-void HiddenVerifier::createRobotPairs(GameContext & gameContext, unsigned int nb)
-{
-	if (nb < 1) nb = 1;
-	if (nb > 4) nb = 4;
-
-	mRobots.clear();
-
-	for (unsigned int i = 1; i <= nb; i++)
-	{
-		Enums::eColor color;
-
-		switch (i)
-		{
-		case 1: color = Enums::eColor::Red; break;
-		case 2: color = Enums::eColor::Blue; break;
-		case 3: color = Enums::eColor::Green; break;
-		case 4: color = Enums::eColor::Yellow; break;
-		default: color = Enums::eColor::Red; break;
-		}
-
-		mRobots.insert(std::pair<Enums::eColor, RobotPair>(color, RobotPair(gameContext, mCanvas, mBoard, color, false)));
-
-		mRobots.at(color).resetAll();
-	}
-}
-
 void HiddenVerifier::resetAll()
 {
-	for (auto& pair : mRobots)
-	{
-		pair.second.resetAll();
-	}
+	mRobots.resetAll();
 
 	//TODO Reset CloudBoard
 
@@ -92,40 +67,19 @@ void HiddenVerifier::play(unsigned int maxSteps)
 	//unsigned int step = 0;
 	bool finished = false;
 
+	mRobots.processCloudRobotAttribution();
+
 	while (!finished && mSteps <= maxSteps)
 	{
 		mSteps++;
 
-		for (auto& pair : mRobots)
-		{
-			if (pair.second.getInstructionRobot().getPos().IsCheck()) //Do checks first
-			{
-				pair.second.applyInstruction(2.0f);
-			}
-		}
+		mRobots.processCloudRobotActions(2.0f);
 
-		for (auto& pair : mRobots)
-		{
-			if (!pair.second.getInstructionRobot().getPos().IsCheck()) //Do non-checks after
-			{
-				pair.second.applyInstruction(2.0f);
-			}
-		}
+		mRobots.resetInstructionDone(false);
 
-		for (auto& pair : mRobots)
-		{
-			pair.second.resetInstructionDone();
-		}
+		mRobots.processInstructionRobotMoves(2.0f);
 
-		for (auto& pair : mRobots)
-		{
-			pair.second.moveInstructionRobot(2.0f);
-		}
-
-		for (auto& pair : mRobots)
-		{
-			pair.second.resetInstructionDone();
-		}
+		mRobots.resetInstructionDone(true);
 
 		if (getCurrentResult() != Enums::eResult::Running)
 		{
@@ -138,27 +92,7 @@ void HiddenVerifier::play(unsigned int maxSteps)
 
 Enums::eResult HiddenVerifier::getCurrentResult()
 {
-	bool hasRejected = false;
-
-	for (auto& pair : mRobots)
-	{
-		switch (pair.second.getResult())
-		{
-		case Enums::eResult::Accept: return Enums::eResult::Accept;
-		case Enums::eResult::Refuse: hasRejected = true; break;
-		case Enums::eResult::Submit: return Enums::eResult::Submit;
-		default: break;
-		}
-	}
-
-	if (hasRejected)
-	{
-		return Enums::eResult::Refuse;
-	}
-	else
-	{
-		return Enums::eResult::Running;
-	}
+	return mRobots.getCurrentResult();
 }
 
 void HiddenVerifier::completeReport()

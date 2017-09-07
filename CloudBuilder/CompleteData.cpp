@@ -71,7 +71,6 @@ bool CompleteData::writeLevelStatus(unsigned int world, unsigned int level, Enum
 		}
 		if (status == Enums::eLevelStatus::New)
 		{
-			//TODO PopUp message
 			mPopUpStack.addMessage(mGameDataReader.getData().popUpMessage[4] + std::to_string(world) + "-" + std::to_string(level) + " : " + mGameDataReader.getData().levelName[world - 1][level - 1], mGameDataReader.getData().popUpButton[4]);
 		}
 

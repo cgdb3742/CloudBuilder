@@ -9,8 +9,7 @@ InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext):
 	InstructionSquare(gameContext),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),
-	mCheckDir(Enums::eDir::Center),
-	mRobotColor(Enums::eColor::NoColor)
+	mCheckDir(Enums::eDir::Center)
 {
 }
 
@@ -18,8 +17,7 @@ InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext, std::s
 	InstructionSquare(gameContext, source),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),
-	mCheckDir(Enums::eDir::Center),
-	mRobotColor(Enums::eColor::NoColor)
+	mCheckDir(Enums::eDir::Center)
 {
 }
 
@@ -87,16 +85,6 @@ Enums::eDir InstructionSquareCheck::getCheckDir()
 void InstructionSquareCheck::setCheckDir(Enums::eDir newDir)
 {
 	mCheckDir = newDir;
-}
-
-Enums::eColor InstructionSquareCheck::getRobotColor()
-{
-	return mRobotColor;
-}
-
-void InstructionSquareCheck::setRobotColor(Enums::eColor newColor)
-{
-	mRobotColor = newColor;
 }
 
 std::list<Enums::eInstructionModifier> InstructionSquareCheck::getPossibleModifications()
@@ -178,8 +166,7 @@ InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext, Enums:
 	InstructionSquare(gameContext, type, name),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),
-	mCheckDir(Enums::eDir::Center),
-	mRobotColor(Enums::eColor::NoColor)
+	mCheckDir(Enums::eDir::Center)
 {
 }
 

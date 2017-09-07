@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include "GameEntity.h"
-#include "RobotPair.h"
+#include "RobotControl.h"
 
 class Level;
 
@@ -9,7 +9,7 @@ class InstructionPlayer :
 	public GameEntity
 {
 public:
-	InstructionPlayer(GameContext& gameContext, Level& level, std::map<Enums::eColor, RobotPair>& robots);
+	InstructionPlayer(GameContext& gameContext, Level& level, RobotControl& robots);
 	~InstructionPlayer();
 
 	void activate(bool loopOnce);
@@ -33,7 +33,8 @@ public:
 
 	virtual void updateCurrent(sf::Time dt);
 private:
-	std::map<Enums::eColor, RobotPair>& mRobots;
+	//std::map<Enums::eColor, RobotPair>& mRobots;
+	RobotControl& mRobots;
 	bool mIsPlaying;
 	bool mIsPaused;
 	float mPlayerSpeed; //0.0f for paused/stopped, -1.0f for instant

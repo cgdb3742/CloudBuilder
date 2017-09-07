@@ -186,10 +186,15 @@
     <ClCompile Include="InstructionSquare.cpp" />
     <ClCompile Include="InstructionSquareAccept.cpp" />
     <ClCompile Include="InstructionSquareActCloud.cpp" />
+    <ClCompile Include="InstructionSquareActColor.cpp" />
     <ClCompile Include="InstructionSquareActMove.cpp" />
     <ClCompile Include="InstructionSquareCheck.cpp" />
     <ClCompile Include="InstructionSquareCheckBorder.cpp" />
     <ClCompile Include="InstructionSquareCheckCloud.cpp" />
+    <ClCompile Include="InstructionSquareCheckColor.cpp" />
+    <ClCompile Include="InstructionSquareFlowPause.cpp" />
+    <ClCompile Include="InstructionSquareFlowResume.cpp" />
+    <ClCompile Include="InstructionSquareFlowSync.cpp" />
     <ClCompile Include="InstructionSquareReject.cpp" />
     <ClCompile Include="InstructionSquareStart.cpp" />
     <ClCompile Include="InstructionSquareFlowWait.cpp" />
@@ -204,6 +209,7 @@
     <ClCompile Include="PopUpStack.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="ResourceHandler.cpp" />
+    <ClCompile Include="RobotControl.cpp" />
     <ClCompile Include="RobotPair.cpp" />
     <ClCompile Include="InstructionMouseDragHandler.cpp" />
     <ClCompile Include="SaveDataReader.cpp" />
@@ -262,10 +268,15 @@
     <ClInclude Include="InstructionSquare.h" />
     <ClInclude Include="InstructionSquareAccept.h" />
     <ClInclude Include="InstructionSquareActCloud.h" />
+    <ClInclude Include="InstructionSquareActColor.h" />
     <ClInclude Include="InstructionSquareActMove.h" />
     <ClInclude Include="InstructionSquareCheck.h" />
     <ClInclude Include="InstructionSquareCheckBorder.h" />
     <ClInclude Include="InstructionSquareCheckCloud.h" />
+    <ClInclude Include="InstructionSquareCheckColor.h" />
+    <ClInclude Include="InstructionSquareFlowPause.h" />
+    <ClInclude Include="InstructionSquareFlowResume.h" />
+    <ClInclude Include="InstructionSquareFlowSync.h" />
     <ClInclude Include="InstructionSquareReject.h" />
     <ClInclude Include="InstructionSquareStart.h" />
     <ClInclude Include="InstructionSquareFlowWait.h" />
@@ -281,6 +292,7 @@
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="ResourceHandler.h" />
+    <ClInclude Include="RobotControl.h" />
     <ClInclude Include="RobotPair.h" />
     <ClInclude Include="SaveDataReader.h" />
     <ClInclude Include="SoundHandler.h" />

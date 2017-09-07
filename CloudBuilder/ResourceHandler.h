@@ -25,6 +25,11 @@ public:
 	void pauseMusic();
 	void stopMusic();
 
+	void setSoundVolume(float volume);
+	float getSoundVolume();
+	void setMusicVolume(float volume);
+	float getMusicVolume();
+
 	sf::Font& getFont(FontHandler::eFont id);
 
 	virtual void updateAll(sf::Time dt);

@@ -54,6 +54,10 @@ public:
 	virtual bool applyInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress);
 	//virtual bool isValid();
 
+
+	virtual Enums::eColor getRobotColor();
+	virtual void setRobotColor(Enums::eColor newColor);
+
 	virtual Enums::eColor getStartColor();
 	virtual void setStartColor(Enums::eColor newColor);
 
@@ -69,5 +73,7 @@ protected:
 	Enums::eInstruction mType;
 	Enums::eDir mNext;
 	std::string mName;
+
+	Enums::eColor mRobotColor;
 };
 

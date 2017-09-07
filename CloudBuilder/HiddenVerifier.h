@@ -4,7 +4,7 @@
 #include "CloudCanvas.h"
 #include "CloudPicture.h"
 #include "InstructionBoard.h"
-#include "RobotPair.h"
+#include "RobotControl.h"
 
 struct VerificationReport
 {
@@ -37,8 +37,6 @@ public:
 	HiddenVerifier(GameContext& gameContext, VerificationReport& report, InstructionBoard& board, unsigned int nbRobots);
 	~HiddenVerifier();
 
-	void createRobotPairs(GameContext& gameContext, unsigned int nb);
-
 	void resetAll();
 
 	void play(unsigned int maxSteps);
@@ -50,7 +48,8 @@ public:
 	VerificationReport getReport();
 
 private:
-	std::map<Enums::eColor, RobotPair> mRobots;
+	//std::map<Enums::eColor, RobotPair> mRobots;
+	RobotControl mRobots;
 	CloudCanvas mCanvas;
 	InstructionBoard& mBoard;
 	VerificationReport mReport;

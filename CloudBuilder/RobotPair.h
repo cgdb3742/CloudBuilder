@@ -16,7 +16,7 @@ public:
 	void startPointsUpdated();
 
 	void resetInstructionDone();
-	bool applyInstruction(float progress); //return if done
+	bool applyInstruction(float progress, CloudRobot& actingRobot); //return if done
 	bool moveInstructionRobot(float progress); //return if done
 	void resetAll();
 

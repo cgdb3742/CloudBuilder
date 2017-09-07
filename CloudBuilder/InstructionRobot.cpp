@@ -98,6 +98,7 @@ bool InstructionRobot::moveDown(float progress)
 void InstructionRobot::resetAll()
 {
 	setPos(mBoard.getStartPosition(mColor).first, mBoard.getStartPosition(mColor).second);
+	setIsActive(true);
 	mPosOffset = sf::Vector2f(0.0f, 0.0f);
 	setResult(Enums::eResult::Running);
 }
@@ -174,6 +175,22 @@ void InstructionRobot::drawCurrent(sf::RenderTarget & target)
 	if (drawColor.b == 0)
 	{
 		drawColor.b = 63;
+	}
+
+	if (!getIsActive())
+	{
+		if (drawColor.r == 255)
+		{
+			drawColor.r = 127;
+		}
+		if (drawColor.g == 255)
+		{
+			drawColor.g = 127;
+		}
+		if (drawColor.b == 255)
+		{
+			drawColor.b = 127;
+		}
 	}
 
 	border.setFillColor(drawColor);

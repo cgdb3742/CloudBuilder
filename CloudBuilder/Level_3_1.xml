@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<level_data>
+    <general_info>
+        <name>
+            <en>Sandbox</en>
+            <fr>Bac à sable</fr>
+        </name>
+        <world>3</world>
+        <level>1</level>
+        <type>modification</type>
+        <robots>4</robots>
+        <music_id>3</music_id>
+    </general_info>
+    <cloud_pictures>
+        <cloud id = "0">
+            <data>w3h3p001010100</data>
+            <result>w3h3p001010100</result>
+        </cloud>
+        <cloud id = "1">
+            <data>w3h3p010111010</data>
+            <result>w3h3p010111010</result>
+        </cloud>
+        <cloud id = "2">
+            <data>w3h3p101010101</data>
+            <result>w3h3p101010101</result>
+        </cloud>
+    </cloud_pictures>
+    <board>
+        <starting_data>w8h8i1j1vSSrri1j2vSSrbi1j3vSSrgi1j4vSSry</starting_data>
+        <available_instructions>
+            <instruction code_name = "ActMove" id = "21" />
+            <instruction code_name = "ActSetCloud" id = "22" />
+            <instruction code_name = "ActSetColor" id = "23" />
+            <instruction code_name = "CheckCloud" id = "31" />
+            <instruction code_name = "CheckColor" id = "32" />
+            <instruction code_name = "CheckBorder" id = "33" />
+            <instruction code_name = "FlowWait" id = "41" />
+            <instruction code_name = "FlowPause" id = "42" />
+            <instruction code_name = "FlowResume" id = "43" />
+            <instruction code_name = "FlowSync" id = "44" />
+            <instruction code_name = "SpeAccept" id = "12" />
+        </available_instructions>
+    </board>
+    <infos>
+        <topic id = "0">
+            <name>
+                <en>Welcome!</en>
+                <fr>Bienvenue !</fr>
+            </name>
+            <text id = "0">
+                <en>This is the sandbox mode, where the magic happens! Everything is available, so be free and go crazy!</en>
+                <fr>Voici le mode bac à sable, où le magie prend vie ! Tout est disponible, alors sentez-vous libre et laissez-vous prendre par la folie !</fr>
+            </text>
+        </topic>
+        <topic id = "1">
+            <name>
+                <en>Goal</en>
+                <fr>Objectif</fr>
+            </name>
+            <text id = "0">
+                <en>There's nothing wrong here, build your own goals!</en>
+                <fr>Rien n'est faux ici, construisez-vous vos propres objectifs!</fr>
+            </text>
+        </topic>
+        <topic id = "2">
+            <name>
+                <en>Tools</en>
+                <fr>Outils</fr>
+            </name>
+            <text id = "0">
+                <en>(The sandbox includes some elements introduced in levels missing from the current project. They will be explained at a later time, meanwhile have fun trying to guess!)</en>
+                <fr>(Ce bac à sable inclus des éléments introduits dans des niveaux absents du projet actuel. Ils seront expliqués plus tard, en attendant amusez-vous à deviner !)</fr>
+            </text>
+        </topic>
+        <topic id = "3">
+            <name>
+                <en>Constraints</en>
+                <fr>Contraintes</fr>
+            </name>
+            <text id = "0">
+                <en>Still wondering what to do? This is freedom! You choose your own rules!</en>
+                <fr>Encore en train de vous demander quoi faire ? Ceci est la liberté: Choisissez vos propres règles!</fr>
+            </text>
+        </topic>
+        <topic id = "4">
+            <name>
+                <en>Hints</en>
+                <fr>Indices</fr>
+            </name>
+            <text id = "0">
+                <en>This sandbox is currently being used by the creator to test new features, so anything can happen!</en>
+                <fr>Ce bac à sable est actuellement utilisé par le créateur pour essayer de nouvelles fonctions, alors tout peut arriver !</fr>
+            </text>
+        </topic>
+    </infos>
+</level_data>

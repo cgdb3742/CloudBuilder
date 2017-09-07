@@ -20,8 +20,6 @@ public:
 
 	virtual Enums::eDir getCheckDir();
 	virtual void setCheckDir(Enums::eDir newDir);
-	virtual Enums::eColor getRobotColor();
-	virtual void setRobotColor(Enums::eColor newColor);
 
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
@@ -39,6 +37,5 @@ protected:
 	Enums::eDir mNextFalse;
 
 	Enums::eDir mCheckDir;
-	Enums::eColor mRobotColor;
 };
 

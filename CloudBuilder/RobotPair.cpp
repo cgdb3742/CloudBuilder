@@ -70,16 +70,16 @@ void RobotPair::resetInstructionDone()
 	mInstructionDone = false;
 }
 
-bool RobotPair::applyInstruction(float progress)
+bool RobotPair::applyInstruction(float progress, CloudRobot & actingRobot)
 {
 	if (mInstructionDone)
 	{
 		return true;
 	}
 
-	mInstructionDone = (mInstructionRobot.getPos()).applyInstruction(mCloudRobot, mCanvas, mInstructionRobot, progress);
+	mInstructionDone = (mInstructionRobot.getPos()).applyInstruction(actingRobot, mCanvas, mInstructionRobot, progress);
 	
-	setPositionChilds(mTopLeftCorner, mBoundingBox);//TODO Can do better
+	//setPositionChilds(mTopLeftCorner, mBoundingBox);
 	
 	return mInstructionDone;
 }

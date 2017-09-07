@@ -20,13 +20,19 @@ LevelSelectButton::~LevelSelectButton()
 
 void LevelSelectButton::clicked()
 {
-	mState.startLevel();
+	if (mGameContext.saveData.levelStatus[mWorld - 1][mId - 1] != Enums::eLevelStatus::Locked)
+	{
+		mState.startLevel();
+	}
 }
 
 void LevelSelectButton::beginHover()
 {
 	std::cout << "Begin Hover." << std::endl;
-	mState.selectLevel(mId);
+	if (mGameContext.saveData.levelStatus[mWorld - 1][mId - 1] != Enums::eLevelStatus::Locked)
+	{
+		mState.selectLevel(mId);
+	}
 }
 
 void LevelSelectButton::endHover()

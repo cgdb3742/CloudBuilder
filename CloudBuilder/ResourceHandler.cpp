@@ -65,6 +65,26 @@ void ResourceHandler::stopMusic()
 	mMusicPlayer.stopMusic();
 }
 
+void ResourceHandler::setSoundVolume(float volume)
+{
+	mSoundPlayer.setVolume(volume);
+}
+
+float ResourceHandler::getSoundVolume()
+{
+	return mSoundPlayer.getVolume();;
+}
+
+void ResourceHandler::setMusicVolume(float volume)
+{
+	mMusicPlayer.setVolume(volume);
+}
+
+float ResourceHandler::getMusicVolume()
+{
+	return mMusicPlayer.getVolume();
+}
+
 sf::Font & ResourceHandler::getFont(FontHandler::eFont id)
 {
 	return mFonts.getFont(id);

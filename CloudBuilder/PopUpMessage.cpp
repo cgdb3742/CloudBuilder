@@ -37,7 +37,7 @@ void PopUpMessage::drawCurrent(sf::RenderTarget & target)
 	text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	float scale = std::min(mBoundingBox.x / textRect.width, (mBoundingBox.y / textRect.height) *3.0f / 4.0f);
 	text.scale(sf::Vector2f(scale, scale) * 0.8f);
-	text.setPosition(mTopLeftCorner + mBoundingBox / 2.0f);
+	text.setPosition(mTopLeftCorner + sf::Vector2f(mBoundingBox.x / 2.0f, mBoundingBox.y * 3.0f / 8.0f));
 	target.draw(text);
 }
 

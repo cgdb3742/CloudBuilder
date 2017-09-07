@@ -25,6 +25,9 @@ public:
 	void pauseMusic();
 	void stopMusic();
 
+	void setVolume(float volume);
+	float getVolume();
+
 	virtual void updateCurrent(sf::Time dt);
 private:
 	void loadMusic();
@@ -41,5 +44,7 @@ private:
 	bool mPlayLayer;
 	float mLayerCoeff;
 	float mFadeDuration;
+
+	float mVolumeRatio;
 };
 

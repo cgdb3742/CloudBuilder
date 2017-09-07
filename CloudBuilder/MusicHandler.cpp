@@ -8,7 +8,8 @@ MusicHandler::MusicHandler():
 	mLayerCoeff(0.0f),
 	mIsBaseActive(false),
 	mIsLayerActive(false),
-	mFadeDuration(1.0f)
+	mFadeDuration(1.0f),
+	mVolumeRatio(1.0f)
 {
 	fillFilenames();
 	mMusicBase.setLoop(true);
@@ -102,6 +103,19 @@ void MusicHandler::stopMusic()
 	{
 		mMusicLayer.stop();
 	}
+}
+
+void MusicHandler::setVolume(float volume)
+{
+	mVolumeRatio = std::min(0.0f, std::max(1.0f, volume));
+
+	mMusicBase.setVolume(mVolumeRatio * 100.0f);
+	mMusicLayer.setVolume(mLayerCoeff * mVolumeRatio * 100.0f);
+}
+
+float MusicHandler::getVolume()
+{
+	return mVolumeRatio;
 }
 
 void MusicHandler::updateCurrent(sf::Time dt)

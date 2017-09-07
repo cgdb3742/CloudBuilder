@@ -5,7 +5,7 @@
 
 
 
-InstructionPlayer::InstructionPlayer(GameContext & gameContext, Level & level, std::map<Enums::eColor, RobotPair> & robots):
+InstructionPlayer::InstructionPlayer(GameContext & gameContext, Level & level, RobotControl & robots):
 	GameEntity(gameContext),
 	mRobots(robots),
 	mPlayerSpeed(1.0f),
@@ -26,6 +26,11 @@ InstructionPlayer::~InstructionPlayer()
 
 void InstructionPlayer::activate(bool loopOnce)
 {
+	if (!mIsPlaying)
+	{
+		mRobots.processCloudRobotAttribution();
+	}
+
 	mIsPlaying = true;
 	mIsPaused = false;
 	//mPlayerSpeed = 10.0f; //TODO For tests purpose only
@@ -144,29 +149,11 @@ bool InstructionPlayer::progressPlayInstant()
 
 	if (mApplyingInstruction)
 	{
-		
-		for (auto& pair : mRobots)
-		{
-			if (pair.second.getInstructionRobot().getPos().IsCheck()) //Do checks first
-			{
-				allDone = pair.second.applyInstruction(2.0f) && allDone;
-			}
-		}
-
-		for (auto& pair : mRobots)
-		{
-			if (!pair.second.getInstructionRobot().getPos().IsCheck()) //Do non-checks after
-			{
-				allDone = pair.second.applyInstruction(2.0f) && allDone;
-			}
-		}
+		allDone = mRobots.processCloudRobotActions(2.0f);
 	}
 	else
 	{
-		for (auto& pair : mRobots)
-		{
-			allDone = pair.second.moveInstructionRobot(2.0f) && allDone;
-		}
+		allDone = mRobots.processInstructionRobotMoves(2.0f);
 	}
 
 	if (allDone)
@@ -182,10 +169,8 @@ bool InstructionPlayer::progressPlayInstant()
 		allDone = false;
 		mPlayerProgress = 0.0f;
 		mApplyingInstruction = !mApplyingInstruction;
-		for (auto& pair : mRobots)
-		{
-			pair.second.resetInstructionDone();
-		}
+		
+		mRobots.resetInstructionDone(mApplyingInstruction);
 
 		if (mStopAtEnd && mApplyingInstruction)
 		{
@@ -212,29 +197,11 @@ bool InstructionPlayer::progressPlay(sf::Time dt)
 
 	if (mApplyingInstruction)
 	{
-		for (auto& pair : mRobots)
-		{
-			if (pair.second.getInstructionRobot().getPos().IsCheck()) //Do checks first
-			{
-				allDone = pair.second.applyInstruction(mPlayerProgress) && allDone;
-			}
-		}
-
-		for (auto& pair : mRobots)
-		{
-			if (!pair.second.getInstructionRobot().getPos().IsCheck()) //Do non-checks after
-			{
-				allDone = pair.second.applyInstruction(mPlayerProgress) && allDone;
-			}
-		}
+		allDone = mRobots.processCloudRobotActions(mPlayerProgress);
 	}
 	else
 	{
-		for (auto& pair : mRobots)
-		{
-			//std::cout << "Almost moving Instruction Robot " << pair.second.getInstructionRobot().getTopLeftCorner().x << std::endl;
-			allDone = pair.second.moveInstructionRobot(mPlayerProgress) && allDone;
-		}
+		allDone = mRobots.processInstructionRobotMoves(mPlayerProgress);
 	}
 
 	if (allDone && mPlayerProgress >= 1.0f)
@@ -250,10 +217,8 @@ bool InstructionPlayer::progressPlay(sf::Time dt)
 		allDone = false;
 		mPlayerProgress = 0.0f;
 		mApplyingInstruction = !mApplyingInstruction;
-		for (auto& pair : mRobots)
-		{
-			pair.second.resetInstructionDone();
-		}
+		
+		mRobots.resetInstructionDone(mApplyingInstruction);
 
 		if (mStopAtEnd && mApplyingInstruction)
 		{
@@ -273,27 +238,7 @@ bool InstructionPlayer::progressPlay(sf::Time dt)
 
 Enums::eResult InstructionPlayer::getCurrentResult()
 {
-	bool hasRejected = false;
-
-	for (auto& pair : mRobots)
-	{
-		switch (pair.second.getResult())
-		{
-		case Enums::eResult::Accept: return Enums::eResult::Accept;
-		case Enums::eResult::Refuse: hasRejected = true; break;
-		case Enums::eResult::Submit: return Enums::eResult::Submit;
-		default: break;
-		}
-	}
-
-	if (hasRejected)
-	{
-		return Enums::eResult::Refuse;
-	}
-	else
-	{
-		return Enums::eResult::Running;
-	}
+	return mRobots.getCurrentResult();
 }
 
 //void InstructionPlayer::handleEventCurrent(const sf::Event & event) //TODO For tests purposes only

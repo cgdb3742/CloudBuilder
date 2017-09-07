@@ -1,17 +1,17 @@
 #pragma once
 #include "InstructionSquare.h"
-class InstructionSquareActCloud :
+class InstructionSquareActColor :
 	public InstructionSquare
 {
 public:
-	InstructionSquareActCloud(GameContext& gameContext);
-	InstructionSquareActCloud(GameContext& gameContext, std::string& source);
-	~InstructionSquareActCloud();
+	InstructionSquareActColor(GameContext& gameContext);
+	InstructionSquareActColor(GameContext& gameContext, std::string& source);
+	~InstructionSquareActColor();
 
 	virtual bool isValid();
 
-	bool getWantCloud();
-	void setWantCloud(bool newWant);
+	Enums::eColor getCloudColor();
+	void setCloudColor(Enums::eColor newColor);
 
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
@@ -23,6 +23,6 @@ public:
 
 	virtual void drawInterior(sf::RenderTarget & target);
 private:
-	bool mWantCloud;
+	Enums::eColor mCloudColor;
 };
 
