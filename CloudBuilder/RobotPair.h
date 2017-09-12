@@ -18,6 +18,7 @@ public:
 	void resetInstructionDone();
 	bool applyInstruction(float progress, CloudRobot& actingRobot); //return if done
 	bool moveInstructionRobot(float progress); //return if done
+	void animateInstruction(float progress, float lastProgress, CloudRobot& actingRobot);
 	void resetAll();
 
 	Enums::eResult getResult();

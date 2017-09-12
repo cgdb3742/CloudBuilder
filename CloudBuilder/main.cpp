@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 //#include "GameDataReader.h"
@@ -35,6 +36,18 @@ void testSFML()
 //}
 
 int main()
+{
+	//testSFML();
+	//testPugiXML();
+
+	Game game;
+	//game.run();
+	game.test();
+
+	return 0;
+}
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
 	//testSFML();
 	//testPugiXML();

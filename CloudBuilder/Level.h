@@ -41,6 +41,8 @@ public:
 
 	bool saveBoard();
 
+	virtual void handleEventCurrent(const sf::Event & event);
+
 	virtual void updateCurrent(sf::Time dt);
 
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
@@ -58,5 +60,7 @@ private:
 	InstructionMouseDragHandler mInstructionDragger;
 	InstructionPlayer mPlayer;
 	std::list<VerificationReport> mBaseReports;
+
+	bool mDebugMode;
 };
 

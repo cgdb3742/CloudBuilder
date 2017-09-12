@@ -130,6 +130,18 @@
     <Filter Include="Fichiers de ressources\Music">
       <UniqueIdentifier>{b22e7e65-5729-400e-ace6-31cf795153d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers de ressources\Textures">
+      <UniqueIdentifier>{75ce5b2c-ef1a-49f2-a32c-0e428ed3e39a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Particles">
+      <UniqueIdentifier>{7f98b7ac-2c3d-42b4-84e4-3e53151baf84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Particles">
+      <UniqueIdentifier>{5ba1d2a4-7675-457c-99db-da7ce7abb8d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\Sounds">
+      <UniqueIdentifier>{f2a69a88-e688-4171-9038-5d56f4a6d63d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -371,6 +383,12 @@
     </ClCompile>
     <ClCompile Include="InstructionSquareCheckColor.cpp">
       <Filter>Fichiers sources\Instruction\InstructionSquares</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Fichiers sources\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleHandler.cpp">
+      <Filter>Fichiers sources\Particles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -614,44 +632,78 @@
     <ClInclude Include="InstructionSquareCheckColor.h">
       <Filter>Fichiers d%27en-tête\Instruction\InstructionSquares</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Fichiers d%27en-tête\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleHandler.h">
+      <Filter>Fichiers d%27en-tête\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Game_data.xml">
+    <Xml Include="Data\Game_data.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
-    <Xml Include="Level_1_1.xml">
+    <Xml Include="Data\Level_1_1.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
-    <Xml Include="Level_1_2.xml">
+    <Xml Include="Data\Level_1_2.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
-    <Xml Include="Level_2_1.xml">
+    <Xml Include="Data\Level_2_1.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
-    <Xml Include="Save_data.xml">
+    <Xml Include="Data\Level_3_1.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Data\Save_data.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="arial.ttf">
+    <Font Include="Fonts\arial.ttf">
       <Filter>Fichiers de ressources\Fonts</Filter>
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CafouilleBase.ogg">
+    <None Include="Music\CafouilleBase.ogg">
       <Filter>Fichiers de ressources\Music</Filter>
     </None>
-    <None Include="CafouilleLayer.ogg">
+    <None Include="Music\CafouilleLayer.ogg">
       <Filter>Fichiers de ressources\Music</Filter>
     </None>
-    <None Include="LupanarBase.ogg">
+    <None Include="Music\LupanarBase.ogg">
       <Filter>Fichiers de ressources\Music</Filter>
     </None>
-    <None Include="LupanarLayer.ogg">
+    <None Include="Music\LupanarLayer.ogg">
       <Filter>Fichiers de ressources\Music</Filter>
     </None>
-    <None Include="Pouillasse.ogg">
+    <None Include="Music\Pouillasse.ogg">
       <Filter>Fichiers de ressources\Music</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\cat_palette.png">
+      <Filter>Fichiers de ressources\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\sfx_blip.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\sfx_clic.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\sfx_no.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\sfx_sleep.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\sfx_yes.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\sfx_move.wav">
+      <Filter>Fichiers de ressources\Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>

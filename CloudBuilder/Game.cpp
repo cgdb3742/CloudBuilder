@@ -7,10 +7,11 @@
 Game::Game():
 	mWindow(sf::VideoMode(1024, 768), "Cloud Builder"),
 	mResourceHandler(),
+	mParticleHandler(static_cast<float>(mWindow.getSize().x), static_cast<float>(mWindow.getSize().y), mResourceHandler),
 	mStateStack(),
 	mPopUpStack(mStateStack),
 	mData(mPopUpStack),
-	mContext(mResourceHandler, mStateStack, mPopUpStack, mData),
+	mContext(mResourceHandler, mParticleHandler, mStateStack, mPopUpStack, mData),
 	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;
@@ -72,6 +73,7 @@ void Game::handleEvent(const sf::Event& event)
 void Game::update(sf::Time dt)
 {
 	mResourceHandler.updateAll(dt);
+	mParticleHandler.updateAll(dt);
 	mStateMachine.updateAll(dt);
 }
 
@@ -80,6 +82,7 @@ void Game::draw()
 	mWindow.clear(sf::Color(63, 63, 63));
 	//mWindow.draw();
 	mStateMachine.drawAll(mWindow);
+	mParticleHandler.drawAll(mWindow);
 	mWindow.display();
 }
 

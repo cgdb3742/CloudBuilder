@@ -42,7 +42,7 @@ void LevelDataReader::updateLanguage(std::string language)
 
 bool LevelDataReader::readData()
 {
-	std::string source = "Level_" + std::to_string(mWorld) + "_" + std::to_string(mLevel) + ".xml";
+	std::string source = "Data/Level_" + std::to_string(mWorld) + "_" + std::to_string(mLevel) + ".xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 

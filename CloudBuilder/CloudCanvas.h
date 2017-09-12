@@ -33,11 +33,18 @@ public:
 	bool getIsCloud(unsigned int i, unsigned int j);
 	bool getIsBorder(unsigned int i, unsigned int j, Enums::eDir dir);
 
+	void addColumn();
+	void removeColumn();
+	void addRow();
+	void removeRow();
+
 	bool convertFromPicture(CloudPicture& picture);
 	virtual std::string convertToString();
 	virtual bool convertFromString(std::string& source);
 	
-	//virtual void drawCurrent(sf::RenderTarget & target);
+	virtual void drawCurrent(sf::RenderTarget & target);
+	virtual void drawCloudEdge(int i, int j, Enums::eDir dir, sf::RenderTarget & target);
+
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 protected:

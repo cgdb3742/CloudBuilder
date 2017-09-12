@@ -54,6 +54,29 @@ void GUIButton::handleEventCurrent(const sf::Event & event)
 			clicked();
 		}
 		break;
+	case sf::Event::TouchMoved:
+		if (event.touch.finger == 0 && containsPoint(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y))))
+		{
+			if (!mIsHovered)
+			{
+				mIsHovered = true;
+				beginHover();
+			}
+		}
+		else
+		{
+			if (mIsHovered)
+			{
+				mIsHovered = false;
+				endHover();
+			}
+		}
+		break;
+	case sf::Event::TouchEnded:
+		if (event.touch.finger == 0 && containsPoint(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y))))
+		{
+			clicked();
+		}
 	}
 }
 

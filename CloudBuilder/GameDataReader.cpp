@@ -25,7 +25,7 @@ void GameDataReader::updateLanguage(std::string language)
 
 bool GameDataReader::readData()
 {
-	std::string source = "Game_data.xml";
+	std::string source = "Data/Game_data.xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 

@@ -28,6 +28,8 @@ public:
 	bool processCloudRobotActions(float progress);
 	void resetInstructionDone(bool applyInstructionNext);
 
+	void processAnimations(float progress, bool applyInstruction);
+
 	Enums::eResult getCurrentResult();
 protected:
 	virtual void updateChildsVector();
@@ -39,5 +41,7 @@ private:
 	bool mIsVisible;
 	CloudCanvas& mCanvas;
 	InstructionBoard& mBoard;
+
+	float mLastProgress;
 };
 

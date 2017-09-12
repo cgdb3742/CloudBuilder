@@ -1,4 +1,5 @@
 #include "RobotControl.h"
+#include "Game.h"
 
 
 
@@ -7,7 +8,8 @@ RobotControl::RobotControl(GameContext& gameContext, CloudCanvas& canvas, Instru
 	mNbRobots(nbRobots),
 	mIsVisible(isVisible),
 	mCanvas(canvas),
-	mBoard(board)
+	mBoard(board),
+	mLastProgress(0.0f)
 {
 	//createRobotPairs();
 	//processCloudRobotAttribution();
@@ -60,6 +62,8 @@ void RobotControl::resetAll()
 	}
 
 	processCloudRobotAttribution();
+
+	mLastProgress = 0.0f;
 }
 
 //Check whether a CloudRobot is available for remote control
@@ -101,6 +105,7 @@ bool RobotControl::isCloudRobotAvailable(Enums::eColor robotColor)
 }
 
 //Here, NoColor means the associated instructionrobot do nothing.
+//TODO Writable only instructions
 void  RobotControl::processCloudRobotAttribution()
 {
 	mRobotAttributions.clear();
@@ -113,14 +118,29 @@ void  RobotControl::processCloudRobotAttribution()
 
 			if (wantedColor == Enums::eColor::NoColor || wantedColor == pair.first)
 			{
-				mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, pair.first));
+				if (pair.second.getInstructionRobot().getPos().IsWriteOnly() && !pair.second.getCloudRobot().getIsWriter())
+				{
+					mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, Enums::eColor::NoColor));
+				}
+				else
+				{
+					mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, pair.first));
+				}
 			}
 			else
 			{
 				//The complicated case : we must check this InstructionRobot is the only one wanting access to the desired CloudRobot
-				if (isCloudRobotAvailable(wantedColor))
+				//Note that Flow instructions are truly processed in processInstructionRobotActivation and checks have no persistent effects so are always accepted
+				if ((pair.second.getInstructionRobot().getPos().IsCheck() && Enums::isValid(wantedColor, mGameContext)) || isCloudRobotAvailable(wantedColor))
 				{
-					mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, wantedColor));
+					if (pair.second.getInstructionRobot().getPos().IsWriteOnly() && !mRobots.at(wantedColor).getCloudRobot().getIsWriter())
+					{
+						mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, Enums::eColor::NoColor));
+					}
+					else
+					{
+						mRobotAttributions.insert(std::pair<Enums::eColor, Enums::eColor>(pair.first, wantedColor));
+					}
 				}
 				else
 				{
@@ -208,6 +228,11 @@ bool RobotControl::processInstructionRobotMoves(float progress)
 		}
 	}
 
+	if (mIsVisible)
+	{
+		processAnimations(progress, false);
+	}
+
 	return allDone;
 }
 
@@ -239,6 +264,11 @@ bool RobotControl::processCloudRobotActions(float progress)
 
 	setPositionChilds(mTopLeftCorner, mBoundingBox); //TODO Overkill ?
 
+	if (mIsVisible)
+	{
+		processAnimations(progress, true);
+	}
+
 	return allDone;
 }
 
@@ -257,6 +287,40 @@ void RobotControl::resetInstructionDone(bool applyInstructionNext)
 	{
 		processInstructionRobotActivation();
 	}
+
+	mLastProgress = 0.0f;
+}
+
+void RobotControl::processAnimations(float progress, bool applyInstruction)
+{
+	progress = std::min(1.0f, std::max(0.0f, progress));
+
+	if (applyInstruction)
+	{
+		for (auto& pair : mRobots)
+		{
+			if (mRobotAttributions[pair.first] != Enums::eColor::NoColor)
+			{
+				pair.second.animateInstruction(progress, mLastProgress, mRobots.at(mRobotAttributions[pair.first]).getCloudRobot());
+			}
+		}
+	}
+	else
+	{
+		for (auto& pair : mRobots)
+		{
+			if (!pair.second.getInstructionRobot().getIsActive())
+			{
+				if (progress > 0.25f && mLastProgress <= 0.25f)
+				{
+					mGameContext.particleHandler.createParticle(ParticleHandler::eParticle::ParticleSleep, 0.5f, pair.second.getInstructionRobot().getTopLeftCorner().x, pair.second.getInstructionRobot().getTopLeftCorner().y - pair.second.getInstructionRobot().getBoundingBox().y / 4.0f, pair.second.getInstructionRobot().getBoundingBox().x / 2.0f, pair.second.getInstructionRobot().getBoundingBox().y / 32.0f);
+					mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXSleep);
+				}
+			}
+		}
+	}
+
+	mLastProgress = progress;
 }
 
 Enums::eResult RobotControl::getCurrentResult()

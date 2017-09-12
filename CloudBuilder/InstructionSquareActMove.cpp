@@ -1,6 +1,7 @@
 #include <iostream>
 #include "InstructionSquareActMove.h"
 #include "CloudRobot.h"
+#include "Game.h"
 
 
 
@@ -41,6 +42,14 @@ bool InstructionSquareActMove::applyInstruction(CloudRobot & cloudRobot, CloudCa
 	}
 
 	return true;
+}
+
+void InstructionSquareActMove::animateInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress, float lastProgress)
+{
+	if (progress > 0.0f && lastProgress <= 0.0f)
+	{
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXMove);
+	}
 }
 
 void InstructionSquareActMove::drawInterior(sf::RenderTarget & target)

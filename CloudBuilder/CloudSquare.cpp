@@ -63,6 +63,7 @@ void CloudSquare::drawCurrent(sf::RenderTarget & target)
 	cloud.setOutlineThickness(1.0f);
 	cloud.setOutlineColor(sf::Color(0, 0, 0));
 	target.draw(cloud);
+
 	if (mColor != Enums::eColor::NoColor)
 	{
 		//std::cout << "Drawing CloudSquare : mColor." << std::endl;

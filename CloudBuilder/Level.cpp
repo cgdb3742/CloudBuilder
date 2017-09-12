@@ -3,7 +3,7 @@
 #include "Game.h"
 
 
-Level::Level(GameContext & gameContext):
+Level::Level(GameContext & gameContext) :
 	GameEntity(gameContext),
 	mCurrentCloud(0),
 	mCanvas(gameContext, gameContext.levelData.clouds[mCurrentCloud]), //TODO Choosing cloud
@@ -12,7 +12,8 @@ Level::Level(GameContext & gameContext):
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
-	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true)
+	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true),
+	mDebugMode(true)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
@@ -38,7 +39,8 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
-	mRobots(gameContext, mCanvas, mBoard, levelData.nbRobots, true)
+	mRobots(gameContext, mCanvas, mBoard, levelData.nbRobots, true),
+	mDebugMode(true)
 {
 	mBoard.loadLevelBoard(levelData.world, levelData.level);
 
@@ -59,7 +61,8 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	mPlayer(gameContext, *this, mRobots),
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
-	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true)
+	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true),
+	mDebugMode(true)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
@@ -253,6 +256,66 @@ void Level::runVerifications()
 bool Level::saveBoard()
 {
 	return mGameContext.dataReader.writeSavedBoard(mGameContext.levelData.world, mGameContext.levelData.level, mBoard.convertToString());
+}
+
+void Level::handleEventCurrent(const sf::Event & event)
+{
+	//TODO All events for tests purposes only
+	switch (event.type)
+	{
+	case sf::Event::MouseButtonReleased:
+		if (mDebugMode && event.mouseButton.button == sf::Mouse::Button::Left)
+		{
+			float i = (event.mouseButton.x - mCanvas.getTopLeftCorner().x) * mCanvas.getWidth() / mCanvas.getBoundingBox().x;
+			float j = (event.mouseButton.y - mCanvas.getTopLeftCorner().y) * mCanvas.getHeight() / mCanvas.getBoundingBox().y;
+
+			if (i >= 0.0f && i < mCanvas.getWidth() && j >= 0.0f && j < mCanvas.getHeight())
+			{
+				mCanvas.get(static_cast<unsigned int>(i), static_cast<unsigned int>(j)).setIsCloud(true);
+			}
+		}
+		else if (mDebugMode && event.mouseButton.button == sf::Mouse::Button::Right)
+		{
+			float i = (event.mouseButton.x - mCanvas.getTopLeftCorner().x) * mCanvas.getWidth() / mCanvas.getBoundingBox().x;
+			float j = (event.mouseButton.y - mCanvas.getTopLeftCorner().y) * mCanvas.getHeight() / mCanvas.getBoundingBox().y;
+
+			if (i >= 0.0f && i < mCanvas.getWidth() && j >= 0.0f && j < mCanvas.getHeight())
+			{
+				mCanvas.get(static_cast<unsigned int>(i), static_cast<unsigned int>(j)).setIsCloud(false);
+			}
+		}
+		break;
+	case sf::Event::KeyReleased:
+		if (mDebugMode && event.key.code == sf::Keyboard::B)
+		{
+			std::cout << "Board code : " + mBoard.convertToString() << std::endl;
+		}
+		else if (mDebugMode && event.key.code == sf::Keyboard::C)
+		{
+			std::cout << "Canvas code : " + mCanvas.convertToString() << std::endl;
+		}
+		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad1)
+		{
+			mCanvas.removeColumn();
+			setPositionChilds(mTopLeftCorner, mBoundingBox);
+		}
+		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad2)
+		{
+			mCanvas.addColumn();
+			setPositionChilds(mTopLeftCorner, mBoundingBox);
+		}
+		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad9)
+		{
+			mCanvas.removeRow();
+			setPositionChilds(mTopLeftCorner, mBoundingBox);
+		}
+		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad6)
+		{
+			mCanvas.addRow();
+			setPositionChilds(mTopLeftCorner, mBoundingBox);
+		}
+		break;
+	}
 }
 
 void Level::updateCurrent(sf::Time dt)

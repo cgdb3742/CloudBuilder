@@ -121,7 +121,7 @@
       <AdditionalIncludeDirectories>C:\Software\SFML-2.4.2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\Software\SFML-2.4.2\lib</AdditionalLibraryDirectories>
@@ -204,6 +204,8 @@
     <ClCompile Include="LevelSelectDescription.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MusicHandler.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleHandler.cpp" />
     <ClCompile Include="PopUpButton.cpp" />
     <ClCompile Include="PopUpMessage.cpp" />
     <ClCompile Include="PopUpStack.cpp" />
@@ -286,6 +288,8 @@
     <ClInclude Include="LevelSelectButton.h" />
     <ClInclude Include="LevelSelectDescription.h" />
     <ClInclude Include="MusicHandler.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleHandler.h" />
     <ClInclude Include="PopUpButton.h" />
     <ClInclude Include="PopUpMessage.h" />
     <ClInclude Include="PopUpStack.h" />
@@ -309,21 +313,33 @@
     <ClInclude Include="WorldSelectButton.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Game_data.xml" />
-    <Xml Include="Level_1_1.xml" />
-    <Xml Include="Level_1_2.xml" />
-    <Xml Include="Level_2_1.xml" />
-    <Xml Include="Save_data.xml" />
+    <Xml Include="Data\Game_data.xml" />
+    <Xml Include="Data\Level_1_1.xml" />
+    <Xml Include="Data\Level_1_2.xml" />
+    <Xml Include="Data\Level_2_1.xml" />
+    <Xml Include="Data\Level_3_1.xml" />
+    <Xml Include="Data\Save_data.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="arial.ttf" />
+    <Font Include="Fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CafouilleBase.ogg" />
-    <None Include="CafouilleLayer.ogg" />
-    <None Include="LupanarBase.ogg" />
-    <None Include="LupanarLayer.ogg" />
-    <None Include="Pouillasse.ogg" />
+    <None Include="Music\CafouilleBase.ogg" />
+    <None Include="Music\CafouilleLayer.ogg" />
+    <None Include="Music\LupanarBase.ogg" />
+    <None Include="Music\LupanarLayer.ogg" />
+    <None Include="Music\Pouillasse.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\cat_palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\sfx_blip.wav" />
+    <Media Include="Sounds\sfx_clic.wav" />
+    <Media Include="Sounds\sfx_move.wav" />
+    <Media Include="Sounds\sfx_no.wav" />
+    <Media Include="Sounds\sfx_sleep.wav" />
+    <Media Include="Sounds\sfx_yes.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,7 @@
 #include "InstructionSquareCheck.h"
 #include "CloudRobot.h"
 #include "InstructionRobot.h"
+#include "Game.h"
 
 
 
@@ -127,6 +128,23 @@ bool InstructionSquareCheck::applyInstruction(CloudRobot & cloudRobot, CloudCanv
 bool InstructionSquareCheck::performCheck(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, unsigned int toChecki, unsigned int toCheckj)
 {
 	return false;
+}
+
+void InstructionSquareCheck::animateInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress, float lastProgress)
+{
+	if (progress >= 0.25f && lastProgress < 0.25f)
+	{
+		if (instructionRobot.getLastCheck())
+		{
+			mGameContext.particleHandler.createParticle(ParticleHandler::eParticle::ParticleYes, 0.5f, instructionRobot.getTopLeftCorner().x, instructionRobot.getTopLeftCorner().y - instructionRobot.getBoundingBox().y / 4.0f, instructionRobot.getBoundingBox().x / 2.0f, instructionRobot.getBoundingBox().y / 32.0f);
+			mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXYes);
+		}
+		else
+		{
+			mGameContext.particleHandler.createParticle(ParticleHandler::eParticle::ParticleNo, 0.5f, instructionRobot.getTopLeftCorner().x, instructionRobot.getTopLeftCorner().y - instructionRobot.getBoundingBox().y / 4.0f, instructionRobot.getBoundingBox().x / 2.0f, instructionRobot.getBoundingBox().y / 32.0f);
+			mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXNo);
+		}
+	}
 }
 
 void InstructionSquareCheck::setUpNextDir(bool isLeftBorder, bool isRightBorder, bool isUpBorder, bool isDownBorder)

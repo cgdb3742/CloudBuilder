@@ -14,8 +14,10 @@ FontHandler::~FontHandler()
 
 void FontHandler::loadResources()
 {
+	mFonts.clear();
+
 	sf::Font arial;
-	arial.loadFromFile("arial.ttf");
+	arial.loadFromFile("Fonts/arial.ttf");
 	mFonts.insert(std::pair<eFont,sf::Font>(eFont::Arial,arial));
 	std::cout << "Font loaded." << std::endl;
 }

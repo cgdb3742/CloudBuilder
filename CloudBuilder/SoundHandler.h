@@ -7,7 +7,12 @@ class SoundHandler
 public:
 	enum eSound
 	{
-		SoundTODO = 0
+		SFXYes = 0,
+		SFXNo = 1,
+		SFXBlip = 2,
+		SFXClic = 3,
+		SFXSleep = 4,
+		SFXMove = 5
 	};
 
 	SoundHandler();

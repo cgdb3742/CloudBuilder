@@ -44,6 +44,12 @@ void GUILevelMenuTab::handleEventCurrent(const sf::Event & event)
 			mMenu.changeSelection(mId);
 		}
 		break;
+	case sf::Event::TouchEnded:
+		if (event.touch.finger == 0 && event.touch.x > mTopLeftCorner.x && event.touch.x < mTopLeftCorner.x + mBoundingBox.x && event.touch.y > mTopLeftCorner.y && event.touch.y < mTopLeftCorner.y + mBoundingBox.y)
+		{
+			mMenu.changeSelection(mId);
+		}
+		break;
 	}
 }
 

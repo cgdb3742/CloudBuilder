@@ -1,5 +1,6 @@
 #include "InstructionSquareActColor.h"
 #include "CloudRobot.h"
+#include "Game.h"
 
 
 
@@ -89,6 +90,61 @@ bool InstructionSquareActColor::applyInstruction(CloudRobot & cloudRobot, CloudC
 	{
 		return false;
 	}
+}
+
+void InstructionSquareActColor::animateInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress, float lastProgress)
+{
+	ParticleHandler::eParticle toUse = ParticleHandler::eParticle::ParticleLightRed;
+
+	switch (mCloudColor)
+	{
+	case Enums::eColor::Red: toUse = ParticleHandler::eParticle::ParticleLightRed; break;
+	case Enums::eColor::Blue: toUse = ParticleHandler::eParticle::ParticleLightBlue; break;
+	case Enums::eColor::Green: toUse = ParticleHandler::eParticle::ParticleLightGreen; break;
+	case Enums::eColor::Yellow: toUse = ParticleHandler::eParticle::ParticleLightYellow; break;
+	case Enums::eColor::NoColor:
+		switch (cloudRobot.getPos().getColor())
+		{
+		case Enums::eColor::Red: toUse = ParticleHandler::eParticle::ParticleLightRed; break;
+		case Enums::eColor::Blue: toUse = ParticleHandler::eParticle::ParticleLightBlue; break;
+		case Enums::eColor::Green: toUse = ParticleHandler::eParticle::ParticleLightGreen; break;
+		case Enums::eColor::Yellow: toUse = ParticleHandler::eParticle::ParticleLightYellow; break;
+		case Enums::eColor::NoColor: return;
+		}
+	}
+
+	if (progress >= 0.2f && lastProgress < 0.2f)
+	{
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXClic);
+	}
+	if (progress >= 0.4f && lastProgress < 0.4f)
+	{
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXClic);
+	}
+	if (progress >= 0.6f && lastProgress < 0.6f)
+	{
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXClic);
+	}
+	if (progress >= 0.8f && lastProgress < 0.8f)
+	{
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXClic);
+	}
+	if (progress >= 1.0f && lastProgress < 1.0f)
+	{
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.particleHandler.createParticle(toUse, 0.2f, cloudRobot.getPos().getTopLeftCorner().x + cloudRobot.getPos().getBoundingBox().x / 2.0f, cloudRobot.getPos().getTopLeftCorner().y + cloudRobot.getPos().getBoundingBox().y / 2.0f, cloudRobot.getPos().getBoundingBox().x / 4.0f, cloudRobot.getPos().getBoundingBox().y / 4.0f);
+		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXClic);
+	}
+
+	float rot = fmodf(progress, 0.2f);
+	rot = ((rot > 0.1f) ? (0.2f - rot) : rot) * 10.0f;
+	cloudRobot.animateBody(-135.0f * rot, -135.0f * rot, 0.0f, 0.0f, true);
 }
 
 void InstructionSquareActColor::drawInterior(sf::RenderTarget & target)

@@ -50,7 +50,7 @@ public:
 	virtual void setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox);
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 
-	void handleEventCurrent(const sf::Event & event);
+	virtual void handleEventCurrent(const sf::Event & event);
 
 	bool hasUpdatedStartPoints();
 	void setStartPosition(Enums::eColor color, unsigned int i, unsigned int j);

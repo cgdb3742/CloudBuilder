@@ -142,9 +142,26 @@ void InstructionMouseDragHandler::handleEventCurrent(const sf::Event & event)
 		}
 		break;
 	case sf::Event::MouseButtonReleased:
-		if (event.mouseButton.button == sf::Mouse::Button::Left)
+		if (event.touch.finger == 0)
 		{
-			updateMousePos(sf::Vector2f(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)));
+			updateMousePos(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y)));
+			drop(mMousePos);
+		}
+		break;
+	case sf::Event::TouchMoved:
+		updateMousePos(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y)));
+		break;
+	case sf::Event::TouchBegan:
+		if (event.touch.finger == 0)
+		{
+			updateMousePos(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y)));
+			pick();
+		}
+		break;
+	case sf::Event::TouchEnded:
+		if (event.touch.finger == 0)
+		{
+			updateMousePos(sf::Vector2f(static_cast<float>(event.touch.x), static_cast<float>(event.touch.y)));
 			drop(mMousePos);
 		}
 		break;

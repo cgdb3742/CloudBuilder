@@ -30,12 +30,12 @@ void MusicHandler::fillFilenames()
 
 	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::None, "NONE"));
 	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::None, "NONE"));
-	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::Title, "Pouillasse.ogg"));
+	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::Title, "Music/Pouillasse.ogg"));
 	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::Title, "NONE"));
-	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::LevelTuto, "LupanarBase.ogg"));
-	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::LevelTuto, "LupanarLayer.ogg"));
-	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::LevelTricky, "CafouilleBase.ogg"));
-	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::LevelTricky, "CafouilleLayer.ogg"));
+	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::LevelTuto, "Music/LupanarBase.ogg"));
+	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::LevelTuto, "Music/LupanarLayer.ogg"));
+	mBaseName.insert(std::pair<eMusic, std::string>(eMusic::LevelTricky, "Music/CafouilleBase.ogg"));
+	mLayerName.insert(std::pair<eMusic, std::string>(eMusic::LevelTricky, "Music/CafouilleLayer.ogg"));
 }
 
 //TODO Layer fade-in/fade-out

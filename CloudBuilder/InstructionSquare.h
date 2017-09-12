@@ -54,6 +54,7 @@ public:
 	virtual bool applyInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress);
 	//virtual bool isValid();
 
+	virtual void animateInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress, float lastProgress);
 
 	virtual Enums::eColor getRobotColor();
 	virtual void setRobotColor(Enums::eColor newColor);

@@ -14,7 +14,7 @@ SaveDataReader::~SaveDataReader()
 
 bool SaveDataReader::readData()
 {
-	std::string source = "Save_data.xml";
+	std::string source = "Data/Save_data.xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 
@@ -54,7 +54,7 @@ bool SaveDataReader::writeLanguage(std::string language)
 		return false;
 	}
 
-	std::string source = "Save_data.xml";
+	std::string source = "Data/Save_data.xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 
@@ -91,7 +91,7 @@ bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, En
 		return false;
 	}
 
-	std::string source = "Save_data.xml";
+	std::string source = "Data/Save_data.xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 
@@ -140,7 +140,7 @@ bool SaveDataReader::writeSavedBoard(unsigned int world, unsigned int level, std
 		return false;
 	}
 
-	std::string source = "Save_data.xml";
+	std::string source = "Data/Save_data.xml";
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(source.c_str());
 

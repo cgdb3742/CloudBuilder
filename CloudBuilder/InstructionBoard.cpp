@@ -458,12 +458,7 @@ void InstructionBoard::handleEventCurrent(const sf::Event & event)
 			}
 		}
 		break;
-	case sf::Event::KeyReleased:
-		if (event.key.code == sf::Keyboard::C)
-		{
-			std::cout << "Code : " + convertToString() << std::endl; //TODO For tests purposes only
-		}
-		break;
+	//No touch event needed
 	}
 }
 

@@ -15,6 +15,18 @@ SoundHandler::~SoundHandler()
 
 void SoundHandler::loadResources()
 {
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXYes, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXYes).loadFromFile("Sounds/sfx_yes.wav");
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXNo, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXNo).loadFromFile("Sounds/sfx_no.wav");
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXBlip, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXBlip).loadFromFile("Sounds/sfx_blip.wav");
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXClic, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXClic).loadFromFile("Sounds/sfx_clic.wav");
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXSleep, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXSleep).loadFromFile("Sounds/sfx_sleep.wav");
+	mSoundBuffers.insert(std::pair<eSound, sf::SoundBuffer>(eSound::SFXMove, sf::SoundBuffer()));
+	mSoundBuffers.at(eSound::SFXMove).loadFromFile("Sounds/sfx_move.wav");
 }
 
 void SoundHandler::updateCurrent(sf::Time dt)
@@ -62,9 +74,15 @@ sf::SoundBuffer & SoundHandler::getBuffer(eSound id)
 
 sf::Sound & SoundHandler::playSound(eSound id)
 {
-	sf::Sound toInsert;
-	toInsert.setBuffer(getBuffer(id));
-	toInsert.play();
-	toInsert.setVolume(mVolumeRatio * 100.0f);
-	return (mSounds.insert(std::pair<eSound, sf::Sound>(id, toInsert)))->second;
+	sf::Sound& toReturn = (mSounds.insert(std::pair<eSound, sf::Sound>(id, sf::Sound())))->second;
+	toReturn.setBuffer(getBuffer(id));
+	toReturn.play();
+	toReturn.setVolume(mVolumeRatio * 100.0f);
+	return toReturn;
+
+	//sf::Sound toInsert;
+	//toInsert.setBuffer(getBuffer(id));
+	//toInsert.play();
+	//toInsert.setVolume(mVolumeRatio * 100.0f);
+	//return (mSounds.insert(std::pair<eSound, sf::Sound>(id, toInsert)))->second;
 }

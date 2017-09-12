@@ -44,6 +44,7 @@ void GUIInstructionCreatorContainer::setUpCreators()
 	}
 }
 
+//TODO what if board square size too big ?
 sf::Vector2f GUIInstructionCreatorContainer::computeChildsBoundingBox()
 {
 	//float size = std::min(mBoard.getSquareSize().x, std::min(mBoundingBox.x / 16.0f, mBoundingBox.y / 4.0f));

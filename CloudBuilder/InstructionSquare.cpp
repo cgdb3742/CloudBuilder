@@ -286,6 +286,10 @@ bool InstructionSquare::applyInstruction(CloudRobot & cloudRobot, CloudCanvas & 
 	return true;
 }
 
+void InstructionSquare::animateInstruction(CloudRobot & cloudRobot, CloudCanvas & canvas, InstructionRobot & instructionRobot, float progress, float lastProgress)
+{
+}
+
 Enums::eColor InstructionSquare::getRobotColor()
 {
 	return mRobotColor;

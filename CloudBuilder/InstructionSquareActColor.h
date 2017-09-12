@@ -21,6 +21,8 @@ public:
 
 	virtual bool applyInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress);
 
+	virtual void animateInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress, float lastProgress);
+
 	virtual void drawInterior(sf::RenderTarget & target);
 private:
 	Enums::eColor mCloudColor;

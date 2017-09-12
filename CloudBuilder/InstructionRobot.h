@@ -2,14 +2,17 @@
 
 #include "GameEntity.h"
 #include "InstructionBoard.h"
+#include "SpriteHandler.h"
 
 class InstructionRobot :
 	public GameEntity
 {
 public:
-	InstructionRobot(GameContext& gameContext, InstructionBoard& board);
-	InstructionRobot(GameContext& gameContext, InstructionBoard& board, Enums::eColor color);
+	InstructionRobot(GameContext& gameContext, InstructionBoard& board, bool isVisible);
+	InstructionRobot(GameContext& gameContext, InstructionBoard& board, Enums::eColor color, bool isVisible);
 	~InstructionRobot();
+
+	bool getIsVisible();
 
 	InstructionSquare& getPos();
 	bool setPos(unsigned int i, unsigned int j);
@@ -30,6 +33,10 @@ public:
 	bool getIsActive();
 	void setIsActive(bool newValue);
 
+	bool changeFace(SpriteHandler::eSprite newFace);
+
+	virtual void updateCurrent(sf::Time dt);
+
 	virtual void drawCurrent(sf::RenderTarget& target);
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 private:
@@ -42,6 +49,16 @@ private:
 	bool mLastCheck;
 	Enums::eResult mResult;
 
+	bool mIsVisible;
+
 	sf::Vector2f mPosOffset;
+
+	float mRotation;
+	float mMaxRotation;
+	bool mRotateLeft;
+
+	sf::Sprite mHead;
+	sf::Sprite mFace;
+	sf::Sprite mBand;
 };
 

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<game_data>
+    <levels>
+        <world id = "1">
+            <name>
+                <en>The workshop</en>
+                <fr>L'atelier</fr>
+            </name>
+            <level id = "1">
+                <type>validation</type>
+                <name>
+                    <en>Moving in</en>
+                    <fr>L'amorce</fr>
+                </name>
+                <description>
+                    <en>Work is piling in the cloud workshop! Learn how you can help by directing the cloud weavers in your first assignment.</en>
+                    <fr>Le travail s'entasse dans l'atelier des nuages ! Apprenez comment venir en aide en dirigeant les tisseurs de nuages dans votre première mission.</fr>
+                </description>
+                <!--unlock_requirements syntax : oawXlXawXlXawXlXoawXlXawXlXawXlXoawXlXawXlXawXlXoawXlXawXlXawXlX-->
+                <unlock_requirements></unlock_requirements>
+            </level>
+            <level id = "2">
+                <type>validation</type>
+                <name>
+                    <en>Back to square one</en>
+                    <fr>Retour à la case départ</fr>
+                </name>
+                <description>
+                    <en>Already feeling you are repeating the same thing again and again? Well, we can help that!</en>
+                    <fr>Vous avez déjà l'impression de vous répéter encore et encore ? Bien, on peut aider ça !</fr>
+                </description>
+                <unlock_requirements>oaw1l1</unlock_requirements>
+            </level>
+        </world>
+        <world id = "2">
+            <name>
+                <en>A change of pace</en>
+                <fr>Un changement de rythme</fr>
+            </name>
+            <level id = "1">
+                <type>modification</type>
+                <name>
+                    <en>The other case</en>
+                    <fr>L'autre cas</fr>
+                </name>
+                <description>
+                    <en>Some days, everything is going well and there is nothing to say. Today is not one of these days. Quite the opposite.</en>
+                    <fr>Certains jours, tout va bien et il n'y a rien à dire. Aujourd'hui n'est pas un de ces jours. Au contraire.</fr>
+                </description>
+                <unlock_requirements>oaw1l1aw1l2</unlock_requirements>
+            </level>
+        </world>
+        <world id = "3">
+            <name>
+                <en>Unending</en>
+                <fr>Sans fin</fr>
+            </name>
+            <level id = "1">
+                <type>modification</type>
+                <name>
+                    <en>Sandbox</en>
+                    <fr>Bac à sable</fr>
+                </name>
+                <description>
+                    <en>You want freedom? Here it comes!</en>
+                    <fr>Vous voulez la liberté? Vous l'aurez!</fr>
+                </description>
+                <unlock_requirements></unlock_requirements>
+            </level>
+        </world>
+    </levels>
+    <options>
+        <available_language>
+            <name>English</name>
+            <tag>en</tag>
+        </available_language>
+        <available_language>
+            <name>Français</name>
+            <tag>fr</tag>
+        </available_language>
+    </options>
+    <common_translations>
+        <pop_up code_name = "Success" id = "0">
+            <message>
+                <en>Well done! Your board passed all the tests!&#xA;This assignment is a success!</en>
+                <fr>Bien joué ! Votre tableau a passé tous les tests !&#xA;Cette mission est un succès !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Failure" id = "1">
+            <message>
+                <en>Sorry, your solution is wrong.&#xA;Do not give up yet, keep trying!</en>
+                <fr>Désolé, votre solution est fausse.&#xA;N'abandonnez pas encore, continuez d'essayer !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Hidden Failure" id = "2">
+            <message>
+                <en>Your solution may work with this canvas,&#xA;but not all test samples. Try this one!</en>
+                <fr>Votre solution marche peut-être avec ce canevas,&#xA;mais pas tous les échantillons de test. Essayez celui-là !</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Save Board" id = "3">
+            <message>
+                <en>The current instruction board&#xA;has been successfully saved.</en>
+                <fr>Le tableau d'instructions actuel&#xA;a été correctement enregistré.</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <pop_up code_name = "Level Unlock" id = "4">
+            <message>
+                <en>Congratulations!&#xA;You unlocked a new level :&#xA;</en>
+                <fr>Félicitations !&#xA;Vous avez débloqué un nouveau niveau :&#xA;</fr>
+            </message>
+            <button>
+                <en>Continue</en>
+                <fr>Continuer</fr>
+            </button>
+        </pop_up>
+        <instruction code_name = "Unassigned" id = "0">
+            <en>Unassigned</en>
+            <fr>Vide</fr>
+        </instruction>
+        <instruction code_name = "SpeStart" id = "11">
+            <en>Start</en>
+            <fr>Démarrer</fr>
+            </instruction>
+        <instruction code_name = "SpeAccept" id = "12">
+            <en>Accept</en>
+            <fr>Accepter</fr>
+        </instruction>
+        <instruction code_name = "SpeReject" id = "13">
+            <en>Reject</en>
+            <fr>Refuser</fr>
+        </instruction>
+        <instruction code_name = "ActMove" id = "21">
+            <en>Move</en>
+            <fr>Déplacer</fr>
+        </instruction>
+        <instruction code_name = "ActSetCloud" id = "22">
+            <en>Change cloud</en>
+            <fr>Changer nuage</fr>
+        </instruction>
+        <instruction code_name = "ActSetColor" id = "23">
+            <en>Change color</en>
+            <fr>Changer couleur</fr>
+        </instruction>
+        <instruction code_name = "CheckCloud" id = "31">
+            <en>Check cloud</en>
+            <fr>Vérifier nuage</fr>
+        </instruction>
+        <instruction code_name = "CheckColor" id = "32">
+            <en>Check color</en>
+            <fr>Vérifier couleur</fr>
+        </instruction>
+        <instruction code_name = "CheckBorder" id = "33">
+            <en>Check border</en>
+            <fr>Vérifier bordure</fr>
+        </instruction>
+        <instruction code_name = "FlowWait" id = "41">
+            <en>Wait</en>
+            <fr>Attendre</fr>
+        </instruction>
+        <instruction code_name = "FlowPause" id = "42">
+            <en>Pause</en>
+            <fr>Pauser</fr>
+        </instruction>
+        <instruction code_name = "FlowResume" id = "43">
+            <en>Resume</en>
+            <fr>Rependre</fr>
+        </instruction>
+        <instruction code_name = "FlowSync" id = "44">
+            <en>Synchronize</en>
+            <fr>Synchroniser</fr>
+        </instruction>
+        <instruction_modifier code_name = "NextDir" id = "11">
+            <en>Next</en>
+            <fr>Suivant</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "NextDirTrue" id = "12">
+            <en>Next if true</en>
+            <fr>Suivant si vrai</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "NextDirFalse" id = "13">
+            <en>Next if false</en>
+            <fr>Suivant si vrai</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CheckDir" id = "14">
+            <en>Check direction</en>
+            <fr>Direction de vérification</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudDir" id = "15">
+            <en>Direction</en>
+            <fr>Direction</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "RobotColor" id = "21">
+            <en>Robot color</en>
+            <fr>Couleur du robot</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudColor" id = "22">
+            <en>Color</en>
+            <fr>Couleur</fr>
+        </instruction_modifier>
+        <instruction_modifier code_name = "CloudBool" id = "31">
+            <en>Want cloud</en>
+            <fr>Nuage voulu</fr>
+        </instruction_modifier>
+        <level_tab code_name = "Infos" id = "0">
+            <en>Infos</en>
+            <fr>Infos</fr>
+        </level_tab>
+        <level_tab code_name = "New" id = "1">
+            <en>New</en>
+            <fr>Nouveau</fr>
+        </level_tab>
+        <level_tab code_name = "Modify" id = "2">
+            <en>Modify</en>
+            <fr>Modifier</fr>
+        </level_tab>
+        <level_tab code_name = "Play" id = "3">
+            <en>Play</en>
+            <fr>Jouer</fr>
+        </level_tab>
+        <level_tab code_name = "Tests" id = "4">
+            <en>Tests</en>
+            <fr>Tests</fr>
+        </level_tab>
+        <level_tab code_name = "Options" id = "5">
+            <en>Options</en>
+            <fr>Options</fr>
+        </level_tab>
+        <state code_name = "Undefined" id = "0">
+            <en>Undefined</en>
+            <fr>Indéfini</fr>
+        </state>
+        <state code_name = "TitleScreen" id = "1">
+            <en>Title screen</en>
+            <fr>Ecran titre</fr>
+        </state>
+        <state code_name = "MainMenu" id = "2">
+            <en>Main menu</en>
+            <fr>Menu principal</fr>
+        </state>
+        <state code_name = "LevelSelect" id = "3">
+            <en>Level select</en>
+            <fr>Choix du niveau</fr>
+        </state>
+        <state code_name = "Level" id = "4">
+            <en>Level</en>
+            <fr>Niveau</fr>
+        </state>
+        <state code_name = "Pause" id = "5">
+            <en>Pause</en>
+            <fr>Pause</fr>
+        </state>
+        <state code_name = "PopUp" id = "6">
+            <en>Pop-up</en>
+            <fr>Pop-up</fr>
+        </state>
+    </common_translations>
+</game_data>

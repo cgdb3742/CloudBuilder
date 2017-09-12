@@ -13,6 +13,8 @@ public:
 	CloudRobot(GameContext& gameContext, CloudCanvas& canvas, Enums::eColor color, bool isWriter, bool isVisible);
 	~CloudRobot();
 
+	bool getIsVisible();
+
 	bool getIsWriter();
 	void setIsWriter(bool newValue);
 	CloudSquare& getPos();
@@ -27,9 +29,16 @@ public:
 
 	void resetAll();
 
+	virtual void animateBody(float bodyRotation, float backArmRotation, float frontArmRotation, float backLegRotation, float frontLegRotation, bool reflect);
+	virtual void animateBody(float backArmRotation, float frontArmRotation, float backLegRotation, float frontLegRotation, bool reflect);
+
+	virtual void updateCurrent(sf::Time dt);
+
 	virtual void drawCurrent(sf::RenderTarget& target);
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 private:
+	void loadSprites();
+
 	Enums::eColor mColor;
 	CloudCanvas& mCanvas;
 	unsigned int mPosi;
@@ -38,6 +47,23 @@ private:
 
 	bool mIsVisible;
 
+	float mFlyOffset;
+	float mFlyMax;
+	bool mFlyUp;
+
 	sf::Vector2f mPosOffset;
+
+	sf::Sprite mBody;
+	sf::Sprite mShirt;
+	sf::Sprite mBackArm;
+	sf::Sprite mFrontArm;
+	sf::Sprite mBackLeg;
+	sf::Sprite mFrontLeg;
+
+	float mBodyRotation;
+	float mBackArmRotation;
+	float mFrontArmRotation;
+	float mBackLegRotation;
+	float mFrontLegRotation;
 };
 

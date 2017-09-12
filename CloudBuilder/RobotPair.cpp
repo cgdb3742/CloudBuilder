@@ -10,7 +10,7 @@ RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionB
 	GameEntity(gameContext),
 	mColor(Enums::eColor::NoColor),
 	mCloudRobot(gameContext, canvas, isVisible),
-	mInstructionRobot(gameContext, board),
+	mInstructionRobot(gameContext, board, isVisible),
 	mCanvas(canvas),
 	mBoard(board),
 	mInstructionDone(false)
@@ -32,7 +32,7 @@ RobotPair::RobotPair(GameContext& gameContext, CloudCanvas& canvas, InstructionB
 	GameEntity(gameContext),
 	mColor(color),
 	mCloudRobot(gameContext, canvas, color, isVisible),
-	mInstructionRobot(gameContext, board, color),
+	mInstructionRobot(gameContext, board, color, isVisible),
 	mCanvas(canvas),
 	mBoard(board),
 	mInstructionDone(false)
@@ -68,6 +68,8 @@ void RobotPair::startPointsUpdated() //Only called in build mode
 void RobotPair::resetInstructionDone()
 {
 	mInstructionDone = false;
+
+	mCloudRobot.animateBody(20.0f, 0.0f, 0.0f, 0.0f, 0.0f, true);
 }
 
 bool RobotPair::applyInstruction(float progress, CloudRobot & actingRobot)
@@ -108,6 +110,11 @@ bool RobotPair::moveInstructionRobot(float progress) //TODO Should always return
 	setPositionChilds(mTopLeftCorner, mBoundingBox);//TODO Can do better
 
 	return mInstructionDone;
+}
+
+void RobotPair::animateInstruction(float progress, float lastProgress, CloudRobot & actingRobot)
+{
+	(mInstructionRobot.getPos()).animateInstruction(actingRobot, mCanvas, mInstructionRobot, progress, lastProgress);
 }
 
 void RobotPair::resetAll()

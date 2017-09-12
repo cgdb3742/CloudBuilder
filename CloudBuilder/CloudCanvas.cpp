@@ -152,6 +152,62 @@ bool CloudCanvas::getIsBorder(unsigned int i, unsigned int j, Enums::eDir dir)
 	}
 }
 
+void CloudCanvas::addColumn()
+{
+	mWidth++;
+
+	mCanvas.push_back(std::vector<CloudSquare>(mHeight, CloudSquare(mGameContext)));
+
+	updateChildsVectorAll();
+	//setPositionAll(mTopLeftCorner, mBoundingBox);
+}
+
+void CloudCanvas::removeColumn()
+{
+	if (mWidth <= 1)
+	{
+		return;
+	}
+
+	mWidth--;
+
+	mCanvas.pop_back();
+
+	updateChildsVectorAll();
+	//setPositionAll(mTopLeftCorner, mBoundingBox);
+}
+
+void CloudCanvas::addRow()
+{
+	mHeight++;
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		mCanvas[i].push_back(CloudSquare(mGameContext));
+	}
+
+	updateChildsVectorAll();
+	//setPositionAll(mTopLeftCorner, mBoundingBox);
+}
+
+void CloudCanvas::removeRow()
+{
+	if (mHeight <= 1)
+	{
+		return;
+	}
+
+	mHeight--;
+
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		mCanvas[i].pop_back();
+	}
+
+	updateChildsVectorAll();
+	//setPositionAll(mTopLeftCorner, mBoundingBox);
+}
+
 bool CloudCanvas::convertFromPicture(CloudPicture & picture)
 {
 	mWidth = picture.getWidth();
@@ -191,26 +247,130 @@ bool CloudCanvas::convertFromString(std::string & source)
 	return false;
 }
 
-//void CloudCanvas::drawCurrent(sf::RenderTarget & target)
-//{
-//	//std::cout << "Drawing CloudCanvas." << std::endl;
-//
-//	for (unsigned int i = 0; i <= mWidth; i++)
-//	{
-//		sf::RectangleShape line(sf::Vector2f(1.0f, mBoundingBox.y));
-//		line.setPosition(sf::Vector2f(mTopLeftCorner.x + mBoundingBox.x * i / mWidth, mTopLeftCorner.y));
-//		line.setFillColor(sf::Color(127, 127, 127));
-//		target.draw(line);
-//	}
-//
-//	for (unsigned int j = 0; j <= mHeight; j++)
-//	{
-//		sf::RectangleShape line(sf::Vector2f(mBoundingBox.x, 1.0f));
-//		line.setPosition(sf::Vector2f(mTopLeftCorner.x, mTopLeftCorner.y + mBoundingBox.y * j / mHeight));
-//		line.setFillColor(sf::Color(127, 127, 127));
-//		target.draw(line);
-//	}
-//}
+void CloudCanvas::drawCurrent(sf::RenderTarget & target)
+{
+	for (unsigned int i = 0; i < mWidth; i++)
+	{
+		for (unsigned int j = 0; j < mHeight; j++)
+		{
+			if (getIsCloud(i, j))
+			{
+				if (!getIsCloud(i - 1, j))
+				{
+					drawCloudEdge(i - 1, j, Enums::eDir::Right, target);
+				}
+				if (!getIsCloud(i + 1, j))
+				{
+					drawCloudEdge(i + 1, j, Enums::eDir::Left, target);
+				}
+				if (!getIsCloud(i, j - 1))
+				{
+					drawCloudEdge(i, j - 1, Enums::eDir::Down, target);
+				}
+				if (!getIsCloud(i, j + 1))
+				{
+					drawCloudEdge(i, j + 1, Enums::eDir::Up, target);
+				}
+			}
+		}
+	}
+}
+
+void CloudCanvas::drawCloudEdge(int i,  int j, Enums::eDir dir, sf::RenderTarget & target)
+{
+	if (dir == Enums::eDir::Center)
+	{
+		return;
+	}
+
+	sf::Vector2f squareSize = mCanvas[0][0].getBoundingBox();
+
+	sf::ConvexShape edge1;
+	edge1.setPointCount(6);
+	sf::ConvexShape edge2;
+	edge2.setPointCount(6);
+	sf::ConvexShape edge3;
+	edge3.setPointCount(6);
+	sf::ConvexShape edge4;
+	edge4.setPointCount(6);
+
+	switch (dir)
+	{
+	case Enums::eDir::Left:
+		edge1.setPoint(0, sf::Vector2f(0.0f, 0.0f));
+		edge1.setPoint(1, sf::Vector2f(0.02f, 0.05f));
+		edge1.setPoint(2, sf::Vector2f(0.03f, 0.10f));
+		edge1.setPoint(3, sf::Vector2f(0.03f, 0.15f));
+		edge1.setPoint(4, sf::Vector2f(0.02f, 0.20f));
+		edge1.setPoint(5, sf::Vector2f(0.0f, 0.25f));
+		for (unsigned int i = 0; i < 6; i++)
+		{
+			edge2.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.25f));
+			edge3.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.5f));
+			edge4.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.75f));
+		}
+		break;
+	case Enums::eDir::Right:
+		edge1.setPoint(0, sf::Vector2f(1.0f, 0.0f));
+		edge1.setPoint(1, sf::Vector2f(0.98f, 0.05f));
+		edge1.setPoint(2, sf::Vector2f(0.97f, 0.10f));
+		edge1.setPoint(3, sf::Vector2f(0.97f, 0.15f));
+		edge1.setPoint(4, sf::Vector2f(0.98f, 0.20f));
+		edge1.setPoint(5, sf::Vector2f(1.0f, 0.25f));
+		for (unsigned int i = 0; i < 6; i++)
+		{
+			edge2.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.25f));
+			edge3.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.5f));
+			edge4.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.0f, 0.75f));
+		}
+		break;
+	case Enums::eDir::Up:
+		edge1.setPoint(0, sf::Vector2f(0.0f, 0.0f));
+		edge1.setPoint(1, sf::Vector2f(0.05f, 0.02f));
+		edge1.setPoint(2, sf::Vector2f(0.1f, 0.03f));
+		edge1.setPoint(3, sf::Vector2f(0.15f, 0.03f));
+		edge1.setPoint(4, sf::Vector2f(0.2f, 0.02f));
+		edge1.setPoint(5, sf::Vector2f(0.25f, 0.0f));
+		for (unsigned int i = 0; i < 6; i++)
+		{
+			edge2.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.25f, 0.0f));
+			edge3.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.5f, 0.0f));
+			edge4.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.75f, 0.0f));
+		}
+		break;
+	case Enums::eDir::Down:
+		edge1.setPoint(0, sf::Vector2f(0.0f, 1.0f));
+		edge1.setPoint(1, sf::Vector2f(0.05f, 0.98f));
+		edge1.setPoint(2, sf::Vector2f(0.1f, 0.97f));
+		edge1.setPoint(3, sf::Vector2f(0.15f, 0.97f));
+		edge1.setPoint(4, sf::Vector2f(0.2f, 0.98f));
+		edge1.setPoint(5, sf::Vector2f(0.25f, 1.0f));
+		for (unsigned int i = 0; i < 6; i++)
+		{
+			edge2.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.25f, 0.0f));
+			edge3.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.5f, 0.0f));
+			edge4.setPoint(i, edge1.getPoint(i) + sf::Vector2f(0.75f, 0.0f));
+		}
+		break;
+	}
+
+	edge1.setScale(squareSize);
+	edge1.setPosition(mTopLeftCorner + sf::Vector2f(static_cast<float>(i) * squareSize.x, static_cast<float>(j) * squareSize.y));
+	edge1.setFillColor(sf::Color(191, 191, 191));
+	target.draw(edge1);
+	edge2.setScale(squareSize);
+	edge2.setPosition(mTopLeftCorner + sf::Vector2f(static_cast<float>(i) * squareSize.x, static_cast<float>(j) * squareSize.y));
+	edge2.setFillColor(sf::Color(191, 191, 191));
+	target.draw(edge2);
+	edge3.setScale(squareSize);
+	edge3.setPosition(mTopLeftCorner + sf::Vector2f(static_cast<float>(i) * squareSize.x, static_cast<float>(j) * squareSize.y));
+	edge3.setFillColor(sf::Color(191, 191, 191));
+	target.draw(edge3);
+	edge4.setScale(squareSize);
+	edge4.setPosition(mTopLeftCorner + sf::Vector2f(static_cast<float>(i) * squareSize.x, static_cast<float>(j) * squareSize.y));
+	edge4.setFillColor(sf::Color(191, 191, 191));
+	target.draw(edge4);
+}
 
 void CloudCanvas::setPositionChilds(sf::Vector2f minCorner, sf::Vector2f maxBox)
 {
