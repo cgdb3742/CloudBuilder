@@ -3,7 +3,7 @@
 #include <memory>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-//#include <SFML\Network.hpp>
+//#include <SFML/Network.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include "StateMachine.h"
@@ -12,12 +12,23 @@
 #include "StateRequestStack.h"
 #include "PopUpStack.h"
 #include "ParticleHandler.h"
+#include "ClipboardControl.h"
 
-class InstructionSquare;
+//class InstructionSquare;
+
+struct GlobalInfos
+{
+	GlobalInfos() : debugMode(false), system(ClipboardControl::System::Unsupported) {}
+	GlobalInfos(ClipboardControl::System sys) : debugMode(false), system(sys) {}
+	GlobalInfos(bool debug, ClipboardControl::System sys) : debugMode(debug), system(sys) {}
+
+	bool debugMode;
+	ClipboardControl::System system;
+};
 
 struct GameContext
 {
-	GameContext(ResourceHandler& rh, ParticleHandler& ph, StateRequestStack& srs, PopUpStack& pus, CompleteData& cd) : resourceHandler(rh), particleHandler(ph), stateStack(srs), popUpStack(pus), dataReader(cd), saveData(cd.getSaveData()), gameData(cd.getGameData()), levelData(cd.getLevelData()) {}
+	GameContext(ResourceHandler& rh, ParticleHandler& ph, StateRequestStack& srs, PopUpStack& pus, CompleteData& cd, ClipboardControl& cc, GlobalInfos& gi) : resourceHandler(rh), particleHandler(ph), stateStack(srs), popUpStack(pus), dataReader(cd), saveData(cd.getSaveData()), gameData(cd.getGameData()), levelData(cd.getLevelData()), clipboardControl(cc), globalInfos(gi) {}
 
 	//StateMachine& stateMachine;
 	ResourceHandler& resourceHandler;
@@ -28,12 +39,15 @@ struct GameContext
 	SaveData& saveData;
 	GameData& gameData;
 	LevelData& levelData;
+	ClipboardControl& clipboardControl;
+
+	GlobalInfos& globalInfos;
 };
 
 class Game
 {
 public:
-	Game();
+	Game(GlobalInfos infos);
 	~Game();
 
 	void run();
@@ -57,5 +71,8 @@ private:
 	PopUpStack mPopUpStack;
 	GameContext mContext;
 	CompleteData mData;
+	ClipboardControl mClipboardControl;
+	
+	GlobalInfos mInfos;
 };
 

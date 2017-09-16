@@ -40,7 +40,8 @@ int main()
 	//testSFML();
 	//testPugiXML();
 
-	Game game;
+	//NOTE : You maye wish to change the system
+	Game game(GlobalInfos(true, ClipboardControl::System::Windows));
 	//game.run();
 	game.test();
 
@@ -52,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//testSFML();
 	//testPugiXML();
 
-	Game game;
+	Game game(GlobalInfos(false, ClipboardControl::System::Windows));
 	//game.run();
 	game.test();
 

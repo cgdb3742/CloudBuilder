@@ -47,7 +47,7 @@ std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare
 	}
 }
 
-std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(GameContext& gameContext, std::string source)
+std::unique_ptr<InstructionSquare> InstructionSquare::createNewInstructionSquare(GameContext& gameContext, std::wstring source)
 {
 	switch (Enums::getInstructionFromString(source.substr(0, 2)))
 	{
@@ -98,7 +98,7 @@ InstructionSquare::InstructionSquare(GameContext& gameContext) :
 	//std::cout << "Creating GameEntity : InstructionSquare." << std::endl;
 }
 
-InstructionSquare::InstructionSquare(GameContext& gameContext, std::string & source) :
+InstructionSquare::InstructionSquare(GameContext& gameContext, std::wstring & source) :
 	GameEntity(gameContext),
 	mType(Enums::eInstruction::Unassigned),
 	mName("Unassigned"),
@@ -262,12 +262,12 @@ void InstructionSquare::applyModification(InstructionModificationData modificati
 {
 }
 
-std::string InstructionSquare::convertToString()
+std::wstring InstructionSquare::convertToString()
 {
 	return Enums::getString(getType());
 }
 
-bool InstructionSquare::convertFromString(std::string & source)
+bool InstructionSquare::convertFromString(std::wstring & source)
 {
 	//if (source == Enums::getString(Enums::eInstruction::Unassigned))
 	if (source.substr(0, 2) == Enums::getString(getType()))

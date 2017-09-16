@@ -142,6 +142,12 @@
     <Filter Include="Fichiers de ressources\Sounds">
       <UniqueIdentifier>{f2a69a88-e688-4171-9038-5d56f4a6d63d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Clipboard">
+      <UniqueIdentifier>{a62fb961-14f6-403c-a600-321554b69ead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Clipboard">
+      <UniqueIdentifier>{0fb505aa-8c8a-4e42-93ab-36e49b6cb7fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -390,6 +396,12 @@
     <ClCompile Include="ParticleHandler.cpp">
       <Filter>Fichiers sources\Particles</Filter>
     </ClCompile>
+    <ClCompile Include="GUIOptionsVolume.cpp">
+      <Filter>Fichiers sources\GameControl\GUI\GUIOptions</Filter>
+    </ClCompile>
+    <ClCompile Include="ClipboardControl.cpp">
+      <Filter>Fichiers sources\Clipboard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloudCanvas.h">
@@ -637,6 +649,12 @@
     </ClInclude>
     <ClInclude Include="ParticleHandler.h">
       <Filter>Fichiers d%27en-tête\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIOptionsVolume.h">
+      <Filter>Fichiers d%27en-tête\GameControl\GUI\GUIOptions</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardControl.h">
+      <Filter>Fichiers d%27en-tête\Clipboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

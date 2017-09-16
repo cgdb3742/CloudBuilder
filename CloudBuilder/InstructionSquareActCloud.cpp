@@ -12,7 +12,7 @@ InstructionSquareActCloud::InstructionSquareActCloud(GameContext & gameContext) 
 {
 }
 
-InstructionSquareActCloud::InstructionSquareActCloud(GameContext & gameContext, std::string & source) :
+InstructionSquareActCloud::InstructionSquareActCloud(GameContext & gameContext, std::wstring & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActSetCloud, "Cloud Action"),
 	mWantCloud(true)
 {
@@ -54,12 +54,12 @@ void InstructionSquareActCloud::applyModification(InstructionModificationData mo
 	}
 }
 
-std::string InstructionSquareActCloud::convertToString()
+std::wstring InstructionSquareActCloud::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getWantCloud()) + Enums::getString(getRobotColor());
 }
 
-bool InstructionSquareActCloud::convertFromString(std::string & source)
+bool InstructionSquareActCloud::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 5)
 	{

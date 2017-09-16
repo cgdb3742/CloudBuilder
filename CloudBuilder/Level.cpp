@@ -13,7 +13,7 @@ Level::Level(GameContext & gameContext) :
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
 	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true),
-	mDebugMode(true)
+	mDebugMode(gameContext.globalInfos.debugMode)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
@@ -40,7 +40,7 @@ Level::Level(GameContext & gameContext, LevelData levelData) :
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
 	mRobots(gameContext, mCanvas, mBoard, levelData.nbRobots, true),
-	mDebugMode(true)
+	mDebugMode(gameContext.globalInfos.debugMode)
 {
 	mBoard.loadLevelBoard(levelData.world, levelData.level);
 
@@ -62,7 +62,7 @@ Level::Level(GameContext & gameContext, unsigned int nbRobots) :
 	mMenu(gameContext, *this, mBoard, mPlayer),
 	mInstructionDragger(gameContext, mBoard, mMenu.getCreator()),
 	mRobots(gameContext, mCanvas, mBoard, gameContext.levelData.nbRobots, true),
-	mDebugMode(true)
+	mDebugMode(gameContext.globalInfos.debugMode)
 {
 	std::cout << "Creating GameEntity : Level." << std::endl;
 
@@ -103,7 +103,7 @@ void Level::createBaseReports(LevelData data)
 	{
 		if (data.isValidation)
 		{
-			mBaseReports.push_back(VerificationReport(CloudPicture(mGameContext, data.clouds[i]), (data.results[i] == "Accept") ? Enums::eResult::Accept : Enums::eResult::Refuse));
+			mBaseReports.push_back(VerificationReport(CloudPicture(mGameContext, data.clouds[i]), (data.results[i] == L"Accept") ? Enums::eResult::Accept : Enums::eResult::Refuse));
 		}
 		else
 		{
@@ -288,11 +288,13 @@ void Level::handleEventCurrent(const sf::Event & event)
 	case sf::Event::KeyReleased:
 		if (mDebugMode && event.key.code == sf::Keyboard::B)
 		{
-			std::cout << "Board code : " + mBoard.convertToString() << std::endl;
+			std::wcout << L"Board code : " + mBoard.convertToString() << std::endl;
+			std::cout << mGameContext.clipboardControl.setClipboard(mBoard.convertToString()) << std::endl;
 		}
 		else if (mDebugMode && event.key.code == sf::Keyboard::C)
 		{
-			std::cout << "Canvas code : " + mCanvas.convertToString() << std::endl;
+			std::wcout << L"Canvas code : " + mCanvas.convertToString() << std::endl;
+			std::cout << mGameContext.clipboardControl.setClipboard(mCanvas.convertToString()) << std::endl;
 		}
 		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad1)
 		{

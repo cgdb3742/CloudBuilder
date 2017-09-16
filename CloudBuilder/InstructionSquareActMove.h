@@ -5,7 +5,7 @@ class InstructionSquareActMove :
 {
 public:
 	InstructionSquareActMove(GameContext& gameContext);
-	InstructionSquareActMove(GameContext& gameContext, std::string& source);
+	InstructionSquareActMove(GameContext& gameContext, std::wstring& source);
 	~InstructionSquareActMove();
 
 	virtual bool isValid();
@@ -16,8 +16,8 @@ public:
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 
 	virtual bool applyInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress);
 

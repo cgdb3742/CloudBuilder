@@ -11,12 +11,12 @@ StringConvertible::~StringConvertible()
 {
 }
 
-std::string StringConvertible::convertToString()
+std::wstring StringConvertible::convertToString()
 {
-	return std::string();
+	return std::wstring();
 }
 
-bool StringConvertible::convertFromString(std::string & source)
+bool StringConvertible::convertFromString(std::wstring & source)
 {
 	return false;
 }

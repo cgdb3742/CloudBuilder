@@ -7,7 +7,7 @@ InstructionSquareReject::InstructionSquareReject(GameContext& gameContext) :
 {
 }
 
-InstructionSquareReject::InstructionSquareReject(GameContext& gameContext, std::string & source) :
+InstructionSquareReject::InstructionSquareReject(GameContext& gameContext, std::wstring & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::SpeReject, "Reject")
 {
 	convertFromString(source);
@@ -28,12 +28,12 @@ void InstructionSquareReject::applyModification(InstructionModificationData modi
 	InstructionSquare::applyModification(modificationData);
 }
 
-std::string InstructionSquareReject::convertToString()
+std::wstring InstructionSquareReject::convertToString()
 {
 	return Enums::getString(getType());
 }
 
-bool InstructionSquareReject::convertFromString(std::string & source)
+bool InstructionSquareReject::convertFromString(std::wstring & source)
 {
 	return (source.substr(0, 2) == Enums::getString(getType()));
 }

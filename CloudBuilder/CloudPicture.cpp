@@ -11,7 +11,7 @@ CloudPicture::CloudPicture(GameContext& gameContext):
 	std::cout << "Creating GameEntity : CloudPicture." << std::endl;
 }
 
-CloudPicture::CloudPicture(GameContext & gameContext, std::string source) :
+CloudPicture::CloudPicture(GameContext & gameContext, std::wstring source) :
 	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
@@ -109,9 +109,9 @@ bool CloudPicture::compare(CloudPicture & picture)
 	return true;
 }
 
-std::string CloudPicture::getPicture()
+std::wstring CloudPicture::getPicture()
 {
-	std::string res(mWidth*mHeight, '0');
+	std::wstring res(mWidth*mHeight, L'0');
 
 	for (unsigned int i = 0; i < mWidth; i++)
 	{
@@ -119,7 +119,7 @@ std::string CloudPicture::getPicture()
 		{
 			if (mPicture[i][j])
 			{
-				res[i + j*mWidth] = '1';
+				res[i + j*mWidth] = L'1';
 			}
 		}
 	}
@@ -127,7 +127,7 @@ std::string CloudPicture::getPicture()
 	return res;
 }
 
-bool CloudPicture::getPictureFromString(unsigned int width, unsigned int height, std::string values)
+bool CloudPicture::getPictureFromString(unsigned int width, unsigned int height, std::wstring values)
 {
 	if (values.length() != width * height)
 	{
@@ -142,7 +142,7 @@ bool CloudPicture::getPictureFromString(unsigned int width, unsigned int height,
 	}
 }
 
-bool CloudPicture::getPictureFromString(std::string values)
+bool CloudPicture::getPictureFromString(std::wstring values)
 {
 	if (values.length() != mWidth * mHeight)
 	{
@@ -158,7 +158,7 @@ bool CloudPicture::getPictureFromString(std::string values)
 			{
 				if (i + j*mWidth< l)
 				{
-					mPicture[i][j] = (values[i + j*mWidth] == '1');
+					mPicture[i][j] = (values[i + j*mWidth] == L'1');
 				}
 			}
 		}
@@ -167,18 +167,18 @@ bool CloudPicture::getPictureFromString(std::string values)
 	}
 }
 
-std::string CloudPicture::convertToString()
+std::wstring CloudPicture::convertToString()
 {
-	return "w" + std::to_string(mWidth) + "h" + std::to_string(mHeight) + "p" + getPicture();
+	return L"w" + std::to_wstring(mWidth) + L"h" + std::to_wstring(mHeight) + L"p" + getPicture();
 }
 
-bool CloudPicture::convertFromString(std::string & source)
+bool CloudPicture::convertFromString(std::wstring & source)
 {
-	size_t wFound = source.find("w");
-	size_t hFound = source.find("h");
-	size_t pFound = source.find("p");
+	size_t wFound = source.find(L"w");
+	size_t hFound = source.find(L"h");
+	size_t pFound = source.find(L"p");
 
-	if (wFound == std::string::npos || hFound == std::string::npos || pFound == std::string::npos)
+	if (wFound == std::wstring::npos || hFound == std::wstring::npos || pFound == std::wstring::npos)
 	{
 		return false;
 	}
@@ -187,7 +187,7 @@ bool CloudPicture::convertFromString(std::string & source)
 	{
 		unsigned int width = stoul(source.substr(wFound + 1, hFound - wFound - 1));
 		unsigned int height = stoul(source.substr(hFound + 1, pFound - hFound - 1));
-		std::string values = source.substr(pFound + 1, width * height);
+		std::wstring values = source.substr(pFound + 1, width * height);
 
 		return getPictureFromString(width, height, values);
 	}

@@ -8,7 +8,7 @@ InstructionSquareStart::InstructionSquareStart(GameContext& gameContext) :
 {
 }
 
-InstructionSquareStart::InstructionSquareStart(GameContext& gameContext, std::string & source) :
+InstructionSquareStart::InstructionSquareStart(GameContext& gameContext, std::wstring & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::SpeStart, "Robot Start"),
 	mColor(Enums::eColor::NoColor)
 {
@@ -46,12 +46,12 @@ void InstructionSquareStart::applyModification(InstructionModificationData modif
 	}
 }
 
-std::string InstructionSquareStart::convertToString()
+std::wstring InstructionSquareStart::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getStartColor());
 }
 
-bool InstructionSquareStart::convertFromString(std::string & source)
+bool InstructionSquareStart::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 4)
 	{

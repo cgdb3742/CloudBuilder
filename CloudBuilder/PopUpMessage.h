@@ -18,7 +18,7 @@ public:
 
 	virtual void updateChildsVector();
 private:
-	std::string mText;
+	std::wstring mText;
 	PopUpButton mButton;
 	sf::Font& mFont;
 };

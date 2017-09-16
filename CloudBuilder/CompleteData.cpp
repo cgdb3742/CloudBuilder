@@ -1,13 +1,15 @@
 #include "CompleteData.h"
 #include "PopUpStack.h"
+#include "ResourceHandler.h"
 
 
 
-CompleteData::CompleteData(PopUpStack & popUpStack):
+CompleteData::CompleteData(PopUpStack & popUpStack, ResourceHandler & resourceHandler):
 	mSaveDataReader(),
 	mGameDataReader(),
 	mLevelDataReader(),
-	mPopUpStack(popUpStack)
+	mPopUpStack(popUpStack),
+	mResourceHandler(resourceHandler)
 {
 	loadSaveData();
 	mGameDataReader.updateLanguage(getSaveData().currentLanguage);
@@ -23,7 +25,17 @@ CompleteData::~CompleteData()
 
 bool CompleteData::loadSaveData()
 {
-	return mSaveDataReader.readData();
+	if (mSaveDataReader.readData())
+	{
+		mResourceHandler.setMusicVolume(getSaveData().musicVolume);
+		mResourceHandler.setSoundVolume(getSaveData().soundVolume);
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 bool CompleteData::loadGameData()
@@ -41,7 +53,7 @@ bool CompleteData::loadLevelData(unsigned int world, unsigned int level)
 	return mLevelDataReader.readData(world, level);
 }
 
-bool CompleteData::writeLanguage(std::string language)
+bool CompleteData::writeLanguage(std::wstring language)
 {
 	if (mSaveDataReader.writeLanguage(language))
 	{
@@ -51,6 +63,34 @@ bool CompleteData::writeLanguage(std::string language)
 		loadLevelData();
 
 		//Each object should update its translation on its own
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool CompleteData::writeMusicVolume(float volume)
+{
+	if (mSaveDataReader.writeMusicVolume(volume))
+	{
+		mResourceHandler.setMusicVolume(volume);
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool CompleteData::writeSoundVolume(float volume)
+{
+	if (mSaveDataReader.writeSoundVolume(volume))
+	{
+		mResourceHandler.setSoundVolume(volume);
 
 		return true;
 	}
@@ -71,7 +111,7 @@ bool CompleteData::writeLevelStatus(unsigned int world, unsigned int level, Enum
 		}
 		if (status == Enums::eLevelStatus::New)
 		{
-			mPopUpStack.addMessage(mGameDataReader.getData().popUpMessage[4] + std::to_string(world) + "-" + std::to_string(level) + " : " + mGameDataReader.getData().levelName[world - 1][level - 1], mGameDataReader.getData().popUpButton[4]);
+			mPopUpStack.addMessage(mGameDataReader.getData().popUpMessage[4] + std::to_wstring(world) + L"-" + std::to_wstring(level) + L" : " + mGameDataReader.getData().levelName[world - 1][level - 1], mGameDataReader.getData().popUpButton[4]);
 		}
 
 		return true;
@@ -82,7 +122,7 @@ bool CompleteData::writeLevelStatus(unsigned int world, unsigned int level, Enum
 	}
 }
 
-bool CompleteData::writeSavedBoard(unsigned int world, unsigned int level, std::string board)
+bool CompleteData::writeSavedBoard(unsigned int world, unsigned int level, std::wstring board)
 {
 	if (mSaveDataReader.writeSavedBoard(world, level, board))
 	{

@@ -20,12 +20,12 @@ public:
 
 	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type);
 	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, Enums::eInstruction type, Enums::eColor color); //used for starter
-	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, std::string source);
+	static InstructionSquarePtr createNewInstructionSquare(GameContext& gameContext, std::wstring source);
 	//static InstructionSquare createNewInstructionSquareRaw(Enums::eInstruction type);
 	//static InstructionSquare createNewInstructionSquareRaw(Enums::eInstruction type, Enums::eColor color);
 
 	InstructionSquare(GameContext& gameContext);
-	InstructionSquare(GameContext& gameContext, std::string& source);
+	InstructionSquare(GameContext& gameContext, std::wstring& source);
 	~InstructionSquare();
 
 	virtual bool isValid(); //ie is valid in the current gameContext, including the Level restrications
@@ -48,8 +48,8 @@ public:
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 
 	virtual bool applyInstruction(CloudRobot& cloudRobot, CloudCanvas& canvas, InstructionRobot& instructionRobot, float progress);
 	//virtual bool isValid();

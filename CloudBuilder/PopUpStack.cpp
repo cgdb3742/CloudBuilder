@@ -24,7 +24,7 @@ void PopUpStack::addMessage(PopUpData message)
 	mStateStack.addFullFocusRequest(Enums::eState::PopUp);
 }
 
-void PopUpStack::addMessage(std::string mainMessage, std::string buttonMessage)
+void PopUpStack::addMessage(std::wstring mainMessage, std::wstring buttonMessage)
 {
 	addMessage(PopUpData(mainMessage, buttonMessage));
 }

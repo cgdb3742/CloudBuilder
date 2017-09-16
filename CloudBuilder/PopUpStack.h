@@ -6,11 +6,11 @@ class StateRequestStack;
 
 struct PopUpData
 {
-	PopUpData() : mainMessage("error"), buttonMessage("error") {}
-	PopUpData(std::string mainMess, std::string buttonMess) : mainMessage(mainMess), buttonMessage(buttonMess) {}
+	PopUpData() : mainMessage(L"error"), buttonMessage(L"error") {}
+	PopUpData(std::wstring mainMess, std::wstring buttonMess) : mainMessage(mainMess), buttonMessage(buttonMess) {}
 
-	std::string mainMessage;
-	std::string buttonMessage;
+	std::wstring mainMessage;
+	std::wstring buttonMessage;
 };
 
 class PopUpStack
@@ -21,7 +21,7 @@ public:
 
 	bool isEmpty();
 	void addMessage(PopUpData message);
-	void addMessage(std::string mainMessage, std::string buttonMessage);
+	void addMessage(std::wstring mainMessage, std::wstring buttonMessage);
 	PopUpData popMessage();
 private:
 	std::list<PopUpData> mStack;

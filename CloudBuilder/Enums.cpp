@@ -43,57 +43,57 @@ bool Enums::isValid(eColor color, GameContext& gameContext)
 	}
 }
 
-Enums::eInstruction Enums::getInstructionFromString(std::string source)
+Enums::eInstruction Enums::getInstructionFromString(std::wstring source)
 {
-	if (source == "SS")
+	if (source == L"SS")
 	{
 		return Enums::eInstruction::SpeStart;
 	}
-	else if (source == "SA")
+	else if (source == L"SA")
 	{
 		return Enums::eInstruction::SpeAccept;
 	}
-	else if (source == "SR")
+	else if (source == L"SR")
 	{
 		return Enums::eInstruction::SpeReject;
 	}
-	else if (source == "AM")
+	else if (source == L"AM")
 	{
 		return Enums::eInstruction::ActMove;
 	}
-	else if (source == "AL")
+	else if (source == L"AL")
 	{
 		return Enums::eInstruction::ActSetCloud;
 	}
-	else if (source == "AO")
+	else if (source == L"AO")
 	{
 		return Enums::eInstruction::ActSetColor;
 	}
-	else if (source == "CL")
+	else if (source == L"CL")
 	{
 		return Enums::eInstruction::CheckCloud;
 	}
-	else if (source == "CO")
+	else if (source == L"CO")
 	{
 		return Enums::eInstruction::CheckColor;
 	}
-	else if (source == "CB")
+	else if (source == L"CB")
 	{
 		return Enums::eInstruction::CheckBorder;
 	}
-	else if (source == "FW")
+	else if (source == L"FW")
 	{
 		return Enums::eInstruction::FlowWait;
 	}
-	else if (source == "FP")
+	else if (source == L"FP")
 	{
 		return Enums::eInstruction::FlowPause;
 	}
-	else if (source == "FR")
+	else if (source == L"FR")
 	{
 		return Enums::eInstruction::FlowResume;
 	}
-	else if (source == "FS")
+	else if (source == L"FS")
 	{
 		return Enums::eInstruction::FlowSync;
 	}
@@ -101,25 +101,25 @@ Enums::eInstruction Enums::getInstructionFromString(std::string source)
 	return Enums::eInstruction::Unassigned;
 }
 
-Enums::eColor Enums::getColorFromString(char source)
+Enums::eColor Enums::getColorFromString(wchar_t source)
 {
-	if (source == 'n')
+	if (source == L'n')
 	{
 		return Enums::eColor::NoColor;
 	}
-	else if (source == 'r')
+	else if (source == L'r')
 	{
 		return Enums::eColor::Red;
 	}
-	else if (source == 'b')
+	else if (source == L'b')
 	{
 		return Enums::eColor::Blue;
 	}
-	else if (source == 'g')
+	else if (source == L'g')
 	{
 		return Enums::eColor::Green;
 	}
-	else if (source == 'y')
+	else if (source == L'y')
 	{
 		return Enums::eColor::Yellow;
 	}
@@ -127,25 +127,25 @@ Enums::eColor Enums::getColorFromString(char source)
 	return Enums::eColor::NoColor;
 }
 
-Enums::eDir Enums::getDirFromString(char source)
+Enums::eDir Enums::getDirFromString(wchar_t source)
 {
-	if (source == 'c')
+	if (source == L'c')
 	{
 		return Enums::eDir::Center;
 	}
-	else if (source == 'l')
+	else if (source == L'l')
 	{
 		return Enums::eDir::Left;
 	}
-	else if (source == 'r')
+	else if (source == L'r')
 	{
 		return Enums::eDir::Right;
 	}
-	else if (source == 'u')
+	else if (source == L'u')
 	{
 		return Enums::eDir::Up;
 	}
-	else if (source == 'd')
+	else if (source == L'd')
 	{
 		return Enums::eDir::Down;
 	}
@@ -153,60 +153,60 @@ Enums::eDir Enums::getDirFromString(char source)
 	return Enums::eDir::Center;
 }
 
-bool Enums::getBoolFromString(char source)
+bool Enums::getBoolFromString(wchar_t source)
 {
-	return (source == '1');
+	return (source == L'1');
 }
 
-std::string Enums::getString(eInstruction instruction)
+std::wstring Enums::getString(eInstruction instruction)
 {
 	switch (instruction)
 	{
-	case Enums::eInstruction::Unassigned: return "UU";
-	case Enums::eInstruction::SpeStart: return "SS";
-	case Enums::eInstruction::SpeAccept: return "SA";
-	case Enums::eInstruction::SpeReject: return "SR";
-	case Enums::eInstruction::ActMove: return "AM";
-	case Enums::eInstruction::ActSetCloud: return "AL";
-	case Enums::eInstruction::ActSetColor: return "AO";
-	case Enums::eInstruction::CheckCloud: return "CL";
-	case Enums::eInstruction::CheckColor: return "CO";
-	case Enums::eInstruction::CheckBorder: return "CB";
-	case Enums::eInstruction::FlowWait: return "FW";
-	case Enums::eInstruction::FlowPause: return "FP";
-	case Enums::eInstruction::FlowResume: return "FR";
-	case Enums::eInstruction::FlowSync: return "FS";
-	default: return "UU";
+	case Enums::eInstruction::Unassigned: return L"UU";
+	case Enums::eInstruction::SpeStart: return L"SS";
+	case Enums::eInstruction::SpeAccept: return L"SA";
+	case Enums::eInstruction::SpeReject: return L"SR";
+	case Enums::eInstruction::ActMove: return L"AM";
+	case Enums::eInstruction::ActSetCloud: return L"AL";
+	case Enums::eInstruction::ActSetColor: return L"AO";
+	case Enums::eInstruction::CheckCloud: return L"CL";
+	case Enums::eInstruction::CheckColor: return L"CO";
+	case Enums::eInstruction::CheckBorder: return L"CB";
+	case Enums::eInstruction::FlowWait: return L"FW";
+	case Enums::eInstruction::FlowPause: return L"FP";
+	case Enums::eInstruction::FlowResume: return L"FR";
+	case Enums::eInstruction::FlowSync: return L"FS";
+	default: return L"UU";
 	}
 }
 
-char Enums::getString(eColor color)
+wchar_t Enums::getString(eColor color)
 {
 	switch (color)
 	{
-	case Enums::eColor::NoColor: return 'n';
-	case Enums::eColor::Red: return 'r';
-	case Enums::eColor::Blue: return 'b';
-	case Enums::eColor::Green: return 'g';
-	case Enums::eColor::Yellow: return 'y';
-	default: return 'n';
+	case Enums::eColor::NoColor: return L'n';
+	case Enums::eColor::Red: return L'r';
+	case Enums::eColor::Blue: return L'b';
+	case Enums::eColor::Green: return L'g';
+	case Enums::eColor::Yellow: return L'y';
+	default: return L'n';
 	}
 }
 
-char Enums::getString(eDir dir)
+wchar_t Enums::getString(eDir dir)
 {
 	switch (dir)
 	{
-	case Enums::eDir::Center: return 'c';
-	case Enums::eDir::Left: return 'l';
-	case Enums::eDir::Right: return 'r';
-	case Enums::eDir::Up: return 'u';
-	case Enums::eDir::Down: return 'd';
-	default: return 'c';
+	case Enums::eDir::Center: return L'c';
+	case Enums::eDir::Left: return L'l';
+	case Enums::eDir::Right: return L'r';
+	case Enums::eDir::Up: return L'u';
+	case Enums::eDir::Down: return L'd';
+	default: return L'c';
 	}
 }
 
-char Enums::getString(bool value)
+wchar_t Enums::getString(bool value)
 {
-	return (value ? '1' : '0');
+	return (value ? L'1' : L'0');
 }

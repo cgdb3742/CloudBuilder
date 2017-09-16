@@ -103,13 +103,13 @@ public:
 	static sf::Color getColor(eColor color);
 	static bool isValid(eColor color, GameContext& gameContext); //Get if the robot color is allowed in the given level context in gameContext
 
-	static eInstruction getInstructionFromString(std::string source);
-	static eColor getColorFromString(char source);
-	static eDir getDirFromString(char source);
-	static bool getBoolFromString(char source);
-	static std::string getString(eInstruction instruction);
-	static char getString(eColor color);
-	static char getString(eDir dir);
-	static char getString(bool value);
+	static eInstruction getInstructionFromString(std::wstring source);
+	static eColor getColorFromString(wchar_t source);
+	static eDir getDirFromString(wchar_t source);
+	static bool getBoolFromString(wchar_t source);
+	static std::wstring getString(eInstruction instruction);
+	static wchar_t getString(eColor color);
+	static wchar_t getString(eDir dir);
+	static wchar_t getString(bool value);
 };
 

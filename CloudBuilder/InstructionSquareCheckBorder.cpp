@@ -11,7 +11,7 @@ InstructionSquareCheckBorder::InstructionSquareCheckBorder(GameContext & gameCon
 {
 }
 
-InstructionSquareCheckBorder::InstructionSquareCheckBorder(GameContext & gameContext, std::string & source) :
+InstructionSquareCheckBorder::InstructionSquareCheckBorder(GameContext & gameContext, std::wstring & source) :
 	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
 	mBorder(Enums::eDir::Right)
 {
@@ -46,12 +46,12 @@ void InstructionSquareCheckBorder::applyModification(InstructionModificationData
 	}
 }
 
-std::string InstructionSquareCheckBorder::convertToString()
+std::wstring InstructionSquareCheckBorder::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextTrueDir()) + Enums::getString(getNextFalseDir()) + Enums::getString(getCheckDir()) + Enums::getString(getRobotColor()) + Enums::getString(getBorder());
 }
 
-bool InstructionSquareCheckBorder::convertFromString(std::string & source)
+bool InstructionSquareCheckBorder::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 7)
 	{

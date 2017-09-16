@@ -16,7 +16,7 @@ CloudCanvas::CloudCanvas(GameContext& gameContext):
 	std::cout << "Creating GameEntity : CloudCanvas ( " << mWidth << " * " << mHeight <<" )." << std::endl;
 }
 
-CloudCanvas::CloudCanvas(GameContext & gameContext, std::string source) :
+CloudCanvas::CloudCanvas(GameContext & gameContext, std::wstring source) :
 	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
@@ -228,14 +228,14 @@ bool CloudCanvas::convertFromPicture(CloudPicture & picture)
 	return true;
 }
 
-std::string CloudCanvas::convertToString()
+std::wstring CloudCanvas::convertToString()
 {
 	CloudPicture pic(mGameContext, *this);
 
 	return pic.convertToString();
 }
 
-bool CloudCanvas::convertFromString(std::string & source)
+bool CloudCanvas::convertFromString(std::wstring & source)
 {
 	CloudPicture pic(mGameContext);
 

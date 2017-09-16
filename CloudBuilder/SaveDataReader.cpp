@@ -14,25 +14,27 @@ SaveDataReader::~SaveDataReader()
 
 bool SaveDataReader::readData()
 {
-	std::string source = "Data/Save_data.xml";
+	std::wstring source = L"Data/Save_data.xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
 		mData = SaveData();
 
-		mData.currentLanguage = doc.child("save_data").child("options").child_value("current_language");
+		mData.currentLanguage = doc.child(L"save_data").child(L"options").child_value(L"current_language");
+		mData.musicVolume = doc.child(L"save_data").child(L"options").child(L"music_volume").text().as_float();
+		mData.soundVolume = doc.child(L"save_data").child(L"options").child(L"sound_volume").text().as_float();
 
-		for (pugi::xml_node world : doc.child("save_data").child("levels").children("world")) //TODO Should be read in the right order
+		for (pugi::xml_node world : doc.child(L"save_data").child(L"levels").children(L"world")) //TODO Should be read in the right order
 		{
 			std::vector<Enums::eLevelStatus> status;
-			std::vector<std::string> board;
+			std::vector<std::wstring> board;
 
-			for (pugi::xml_node level : world.children("level"))
+			for (pugi::xml_node level : world.children(L"level"))
 			{
-				status.push_back(static_cast<Enums::eLevelStatus>(level.child("status").text().as_uint()));
-				board.push_back(level.child_value("saved_board"));
+				status.push_back(static_cast<Enums::eLevelStatus>(level.child(L"status").text().as_uint()));
+				board.push_back(level.child_value(L"saved_board"));
 			}
 
 			mData.levelStatus.push_back(status);
@@ -47,24 +49,74 @@ bool SaveDataReader::readData()
 	}
 }
 
-bool SaveDataReader::writeLanguage(std::string language)
+bool SaveDataReader::writeLanguage(std::wstring language)
 {
 	if (language == mData.currentLanguage)
 	{
 		return false;
 	}
 
-	std::string source = "Data/Save_data.xml";
+	std::wstring source = L"Data/Save_data.xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
-		doc.child("save_data").child("options").child("current_language").text().set(language.c_str());
-		//std::cout << "Saving new language : " << doc.child("save_data").child("options").child("current_language").text().set(language.c_str()) << std::endl;
-		doc.save_file(source.c_str());
+		doc.child(L"save_data").child(L"options").child(L"current_language").text().set(language.c_str());
+		//std::cout << "Saving new language : " << doc.child(L"save_data").child(L"options").child(L"current_language").text().set(language.c_str()) << std::endl;
+		doc.save_file(source.c_str(), L"\t", pugi::format_default, pugi::xml_encoding::encoding_latin1);
 
 		mData.currentLanguage = language;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool SaveDataReader::writeMusicVolume(float volume)
+{
+	if (volume == mData.musicVolume)
+	{
+		return false;
+	}
+
+	std::wstring source = L"Data/Save_data.xml";
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
+
+	if (result)
+	{
+		doc.child(L"save_data").child(L"options").child(L"music_volume").text().set(volume);
+		doc.save_file(source.c_str(), L"\t", pugi::format_default, pugi::xml_encoding::encoding_latin1);
+
+		mData.musicVolume = volume;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool SaveDataReader::writeSoundVolume(float volume)
+{
+	if (volume == mData.soundVolume)
+	{
+		return false;
+	}
+
+	std::wstring source = L"Data/Save_data.xml";
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
+
+	if (result)
+	{
+		doc.child(L"save_data").child(L"options").child(L"sound_volume").text().set(volume);
+		doc.save_file(source.c_str(), L"\t", pugi::format_default, pugi::xml_encoding::encoding_latin1);
+
+		mData.soundVolume = volume;
 		return true;
 	}
 	else
@@ -91,28 +143,28 @@ bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, En
 		return false;
 	}
 
-	std::string source = "Data/Save_data.xml";
+	std::wstring source = L"Data/Save_data.xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
-		for (pugi::xml_node worldNode : doc.child("save_data").child("levels").children("world"))
+		for (pugi::xml_node worldNode : doc.child(L"save_data").child(L"levels").children(L"world"))
 		{
-			if (worldNode.attribute("id").as_uint() == world)
+			if (worldNode.attribute(L"id").as_uint() == world)
 			{
-				for (pugi::xml_node levelNode : worldNode.children("level"))
+				for (pugi::xml_node levelNode : worldNode.children(L"level"))
 				{
-					if (levelNode.attribute("id").as_uint() == level)
+					if (levelNode.attribute(L"id").as_uint() == level)
 					{
-						levelNode.child("status").text().set(status);
-						//std::cout << "Saving new status : " << levelNode.child("status").set_value(status.c_str()) << std::endl;
+						levelNode.child(L"status").text().set(status);
+						//std::cout << "Saving new status : " << levelNode.child(L"status").set_value(status.c_str()) << std::endl;
 					}
 				}
 			}
 		}
 
-		doc.save_file(source.c_str());
+		doc.save_file(source.c_str(), L"\t", pugi::format_default, pugi::xml_encoding::encoding_latin1);
 
 		mData.levelStatus[world - 1][level - 1] = status;
 		return true;
@@ -123,7 +175,7 @@ bool SaveDataReader::writeLevelStatus(unsigned int world, unsigned int level, En
 	}
 }
 
-bool SaveDataReader::writeSavedBoard(unsigned int world, unsigned int level, std::string board)
+bool SaveDataReader::writeSavedBoard(unsigned int world, unsigned int level, std::wstring board)
 {
 	if (world > mData.savedBoard.size())
 	{
@@ -140,27 +192,27 @@ bool SaveDataReader::writeSavedBoard(unsigned int world, unsigned int level, std
 		return false;
 	}
 
-	std::string source = "Data/Save_data.xml";
+	std::wstring source = L"Data/Save_data.xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
-		for (pugi::xml_node worldNode : doc.child("save_data").child("levels").children("world"))
+		for (pugi::xml_node worldNode : doc.child(L"save_data").child(L"levels").children(L"world"))
 		{
-			if (worldNode.attribute("id").as_uint() == world)
+			if (worldNode.attribute(L"id").as_uint() == world)
 			{
-				for (pugi::xml_node levelNode : worldNode.children("level"))
+				for (pugi::xml_node levelNode : worldNode.children(L"level"))
 				{
-					if (levelNode.attribute("id").as_uint() == level)
+					if (levelNode.attribute(L"id").as_uint() == level)
 					{
-						levelNode.child("saved_board").text().set(board.c_str());
+						levelNode.child(L"saved_board").text().set(board.c_str());
 					}
 				}
 			}
 		}
 
-		doc.save_file(source.c_str());
+		doc.save_file(source.c_str(), L"\t", pugi::format_default, pugi::xml_encoding::encoding_latin1);
 
 		mData.savedBoard[world - 1][level - 1] = board;
 		return true;

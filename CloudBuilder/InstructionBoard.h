@@ -18,7 +18,7 @@ class InstructionBoard :
 {
 public:
 	InstructionBoard(GameContext& gameContext);
-	InstructionBoard(GameContext& gameContext, std::string source);
+	InstructionBoard(GameContext& gameContext, std::wstring source);
 	InstructionBoard(GameContext& gameContext, unsigned int width, unsigned int height);
 	~InstructionBoard();
 
@@ -29,8 +29,8 @@ public:
 
 	void loadLevelBoard(unsigned int world, unsigned int level);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 
 	bool exists(unsigned int i, unsigned int j);
 	InstructionSquare& get(unsigned int i, unsigned int j);

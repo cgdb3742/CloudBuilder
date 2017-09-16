@@ -5,25 +5,25 @@
 LevelDataReader::LevelDataReader() :
 	mWorld(1),
 	mLevel(1),
-	mLanguage("en")
+	mLanguage(L"en")
 {
 }
 
 LevelDataReader::LevelDataReader(unsigned int world, unsigned int level) :
 	mWorld(world),
 	mLevel(level),
-	mLanguage("en")
+	mLanguage(L"en")
 {
 }
 
-LevelDataReader::LevelDataReader(std::string language) :
+LevelDataReader::LevelDataReader(std::wstring language) :
 	mWorld(1),
 	mLevel(1),
 	mLanguage(language)
 {
 }
 
-LevelDataReader::LevelDataReader(std::string language, unsigned int world, unsigned int level) :
+LevelDataReader::LevelDataReader(std::wstring language, unsigned int world, unsigned int level) :
 	mWorld(world),
 	mLevel(level),
 	mLanguage(language)
@@ -35,52 +35,52 @@ LevelDataReader::~LevelDataReader()
 {
 }
 
-void LevelDataReader::updateLanguage(std::string language)
+void LevelDataReader::updateLanguage(std::wstring language)
 {
 	mLanguage = language;
 }
 
 bool LevelDataReader::readData()
 {
-	std::string source = "Data/Level_" + std::to_string(mWorld) + "_" + std::to_string(mLevel) + ".xml";
+	std::wstring source = L"Data/Level_" + std::to_wstring(mWorld) + L"_" + std::to_wstring(mLevel) + L".xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
 		//TODO get the current language
-		//std::string currentLanguage = "en"; //For test purposes only
+		//std::wstring currentLanguage = "en"; //For test purposes only
 
 		mData = LevelData();
 
-		mData.name = doc.child("level_data").child("general_info").child("name").child_value(mLanguage.c_str());
-		mData.world = doc.child("level_data").child("general_info").child("world").text().as_uint();
-		mData.level = doc.child("level_data").child("general_info").child("level").text().as_uint();
-		mData.isValidation = (doc.child("level_data").child("general_info").child_value("type") == std::string("validation"));
-		mData.nbRobots = doc.child("level_data").child("general_info").child("robots").text().as_uint();
-		mData.music = static_cast<MusicHandler::eMusic>(doc.child("level_data").child("general_info").child("music_id").text().as_uint());
+		mData.name = doc.child(L"level_data").child(L"general_info").child(L"name").child_value(mLanguage.c_str());
+		mData.world = doc.child(L"level_data").child(L"general_info").child(L"world").text().as_uint();
+		mData.level = doc.child(L"level_data").child(L"general_info").child(L"level").text().as_uint();
+		mData.isValidation = (doc.child(L"level_data").child(L"general_info").child_value(L"type") == std::wstring(L"validation"));
+		mData.nbRobots = doc.child(L"level_data").child(L"general_info").child(L"robots").text().as_uint();
+		mData.music = static_cast<MusicHandler::eMusic>(doc.child(L"level_data").child(L"general_info").child(L"music_id").text().as_uint());
 
-		for (pugi::xml_node cloud : doc.child("level_data").child("cloud_pictures").children("cloud"))
+		for (pugi::xml_node cloud : doc.child(L"level_data").child(L"cloud_pictures").children(L"cloud"))
 		{
-			mData.clouds.push_back(cloud.child_value("data"));
-			mData.results.push_back(cloud.child_value("result"));
+			mData.clouds.push_back(cloud.child_value(L"data"));
+			mData.results.push_back(cloud.child_value(L"result"));
 		}
 
-		mData.startingBoard = doc.child("level_data").child("board").child_value("starting_data");
+		mData.startingBoard = doc.child(L"level_data").child(L"board").child_value(L"starting_data");
 		//mData.currentBoard = doc.child("level_data").child("board").child_value("current_data");
 
-		for (pugi::xml_node instruction : doc.child("level_data").child("board").child("available_instructions").children("instruction"))
+		for (pugi::xml_node instruction : doc.child(L"level_data").child(L"board").child(L"available_instructions").children(L"instruction"))
 		{
-			mData.availableInstructions.push_back(static_cast<Enums::eInstruction>(instruction.attribute("id").as_uint()));
+			mData.availableInstructions.push_back(static_cast<Enums::eInstruction>(instruction.attribute(L"id").as_uint()));
 		}
 
-		for (pugi::xml_node topic : doc.child("level_data").child("infos").children("topic"))
+		for (pugi::xml_node topic : doc.child(L"level_data").child(L"infos").children(L"topic"))
 		{
-			mData.topics.push_back(topic.child("name").child_value(mLanguage.c_str()));
+			mData.topics.push_back(topic.child(L"name").child_value(mLanguage.c_str()));
 
-			std::vector<std::string> infoString;
+			std::vector<std::wstring> infoString;
 
-			for (pugi::xml_node info : topic.children("text"))
+			for (pugi::xml_node info : topic.children(L"text"))
 			{
 				infoString.push_back(info.child_value(mLanguage.c_str()));
 			}
@@ -103,13 +103,13 @@ bool LevelDataReader::readData(unsigned int newWorld, unsigned int newLevel)
 	return readData();
 }
 
-bool LevelDataReader::readData(std::string language)
+bool LevelDataReader::readData(std::wstring language)
 {
 	mLanguage = language;
 	return readData();
 }
 
-bool LevelDataReader::readData(std::string language, unsigned int newWorld, unsigned int newLevel)
+bool LevelDataReader::readData(std::wstring language, unsigned int newWorld, unsigned int newLevel)
 {
 	mLanguage = language;
 	mWorld = newWorld;

@@ -107,7 +107,7 @@ void MusicHandler::stopMusic()
 
 void MusicHandler::setVolume(float volume)
 {
-	mVolumeRatio = std::min(0.0f, std::max(1.0f, volume));
+	mVolumeRatio = std::max(0.0f, std::min(1.0f, volume));
 
 	mMusicBase.setVolume(mVolumeRatio * 100.0f);
 	mMusicLayer.setVolume(mLayerCoeff * mVolumeRatio * 100.0f);

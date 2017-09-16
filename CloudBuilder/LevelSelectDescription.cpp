@@ -5,8 +5,8 @@
 
 LevelSelectDescription::LevelSelectDescription(GameContext & gameContext, sf::Vector2f positionRatio):
 	GUIButton(gameContext, positionRatio),
-	mText(""),
-	mWrappedText(""),
+	mText(L""),
+	mWrappedText(L""),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
 {
 }
@@ -20,8 +20,8 @@ void LevelSelectDescription::setLevelText(unsigned int worldId, unsigned int lev
 {
 	if (levelId == 0)
 	{
-		mText = "";
-		mWrappedText = "";
+		mText = L"";
+		mWrappedText = L"";
 	}
 	else
 	{
@@ -30,14 +30,14 @@ void LevelSelectDescription::setLevelText(unsigned int worldId, unsigned int lev
 	}
 }
 
-void LevelSelectDescription::wrapDescription(std::string & desc) //TODO Why wrapped text begin by /n ?
+void LevelSelectDescription::wrapDescription(std::wstring & desc) //TODO Why wrapped text begin by /n ?
 {
-	size_t nextSpace = desc.find(" ");
+	size_t nextSpace = desc.find(L" ");
 
-	std::string res = "";
-	std::string currentLine = desc.substr(0, nextSpace);
+	std::wstring res = L"";
+	std::wstring currentLine = desc.substr(0, nextSpace);
 	size_t prevSpace = nextSpace;
-	nextSpace = desc.find(" ", nextSpace + 1);
+	nextSpace = desc.find(L" ", nextSpace + 1);
 
 	sf::Text text;
 	text.setFont(mFont);
@@ -45,29 +45,29 @@ void LevelSelectDescription::wrapDescription(std::string & desc) //TODO Why wrap
 	text.setCharacterSize(32);
 	text.scale(mBoundingBox / 480.0f); //Note : only width is useful here
 
-	while (prevSpace != std::string::npos)
+	while (prevSpace != std::wstring::npos)
 	{
-		std::string currentWord = desc.substr(prevSpace + 1, nextSpace - prevSpace - 1);
-		text.setString(currentLine + " " + currentWord);
+		std::wstring currentWord = desc.substr(prevSpace + 1, nextSpace - prevSpace - 1);
+		text.setString(currentLine + L" " + currentWord);
 
 		sf::FloatRect textRect = text.getGlobalBounds();
 
 		if (textRect.width >= mBoundingBox.x * 0.95f)
 		{
 			//std::cout << textRect.width << std::endl;
-			res += "\n" + currentLine;
+			res += L"\n" + currentLine;
 			currentLine = currentWord;
 		}
 		else
 		{
-			currentLine += " " + currentWord;
+			currentLine += L" " + currentWord;
 		}
 
 		prevSpace = nextSpace;
-		nextSpace = desc.find(" ", nextSpace + 1);
+		nextSpace = desc.find(L" ", nextSpace + 1);
 	}
 
-	res += "\n" + currentLine;
+	res += L"\n" + currentLine;
 	mWrappedText = res;
 
 	//std::cout << res << std::endl;

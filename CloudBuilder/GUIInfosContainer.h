@@ -32,12 +32,12 @@ private:
 	std::vector<GUIInfosTopic> mTopics;
 	GUIInfosScroller mScrollerUp;
 	GUIInfosScroller mScrollerDown;
-	std::vector<std::vector<std::string>>& mStrings;
+	std::vector<std::vector<std::wstring>>& mStrings;
 
 	unsigned int mCurrentTopic;
 	unsigned int mCurrentText;
 
-	std::string mLanguage;
+	std::wstring mLanguage;
 
 	//sf::Font mFont;
 };

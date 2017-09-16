@@ -3,28 +3,30 @@
 	<levels>
 		<world id="1">
 			<level id="1">
-				<status>1</status>
+				<status>2</status>
 				<saved_board>NONE</saved_board>
 			</level>
 			<level id="2">
-				<status>0</status>
+				<status>2</status>
 				<saved_board>NONE</saved_board>
 			</level>
 		</world>
 		<world id="2">
 			<level id="1">
-				<status>0</status>
+				<status>2</status>
 				<saved_board>NONE</saved_board>
 			</level>
 		</world>
 		<world id="3">
 			<level id="1">
-				<status>1</status>
+				<status>2</status>
 				<saved_board>NONE</saved_board>
 			</level>
 		</world>
 	</levels>
 	<options>
-		<current_language>en</current_language>
+		<current_language>fr</current_language>
+		<music_volume>1</music_volume>
+		<sound_volume>1</sound_volume>
 	</options>
 </save_data>

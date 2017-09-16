@@ -2,6 +2,7 @@
 #include <vector>
 #include "GameEntity.h"
 #include "GUIOptionsLanguage.h"
+#include "GUIOptionsVolume.h"
 #include "GUIButtonChangeState.h"
 class GUIOptionsContainer :
 	public GameEntity
@@ -17,6 +18,9 @@ protected:
 	virtual void updateChildsVector();
 private:
 	std::vector<GUIOptionsLanguage> mLanguageButtons;
+
+	GUIOptionsVolume mMusicVolume;
+	GUIOptionsVolume mSoundVolume;
 
 	GUIButtonChangeState mToLevelSelect;
 };

@@ -12,7 +12,7 @@ InstructionSquareCheckColor::InstructionSquareCheckColor(GameContext & gameConte
 {
 }
 
-InstructionSquareCheckColor::InstructionSquareCheckColor(GameContext & gameContext, std::string & source) :
+InstructionSquareCheckColor::InstructionSquareCheckColor(GameContext & gameContext, std::wstring & source) :
 	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckColor, "Check Color"),
 	mCloudColor(Enums::eColor::NoColor)
 {
@@ -47,12 +47,12 @@ void InstructionSquareCheckColor::applyModification(InstructionModificationData 
 	}
 }
 
-std::string InstructionSquareCheckColor::convertToString()
+std::wstring InstructionSquareCheckColor::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextTrueDir()) + Enums::getString(getNextFalseDir()) + Enums::getString(getCheckDir()) + Enums::getString(getRobotColor()) + Enums::getString(getCloudColor());
 }
 
-bool InstructionSquareCheckColor::convertFromString(std::string & source)
+bool InstructionSquareCheckColor::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 7)
 	{

@@ -12,7 +12,7 @@ InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext) :
 	std::cout << "Creating GameEntity : InstructionSquareActMove." << std::endl;
 }
 
-InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext, std::string & source) :
+InstructionSquareActMove::InstructionSquareActMove(GameContext& gameContext, std::wstring & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActMove, "Move Action"),
 	mToMove(Enums::eDir::Right)
 {
@@ -49,6 +49,21 @@ void InstructionSquareActMove::animateInstruction(CloudRobot & cloudRobot, Cloud
 	if (progress > 0.0f && lastProgress <= 0.0f)
 	{
 		mGameContext.resourceHandler.playSound(SoundHandler::eSound::SFXMove);
+	}
+
+	float rot = 45.0f * (progress < 0.2f ? (progress / 0.2f) : (progress > 0.8f ? (1.0f - progress) / 0.2f : 1.0f));
+
+	if (mToMove == Enums::eDir::Up)
+	{
+		rot /= 4.0f;
+	}
+
+	switch (mToMove)
+	{
+	case Enums::eDir::Left: cloudRobot.animateBody(-rot, -rot, -rot, -rot, false); break;
+	case Enums::eDir::Right: cloudRobot.animateBody(rot, rot, rot, rot, false); break;
+	case Enums::eDir::Up: cloudRobot.animateBody(rot, -rot, rot, -rot, true); break;
+	case Enums::eDir::Down: cloudRobot.animateBody(-rot, rot, -rot, rot, true); break;
 	}
 }
 
@@ -126,12 +141,12 @@ void InstructionSquareActMove::applyModification(InstructionModificationData mod
 	}
 }
 
-std::string InstructionSquareActMove::convertToString()
+std::wstring InstructionSquareActMove::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getToMove()) + Enums::getString(getRobotColor());
 }
 
-bool InstructionSquareActMove::convertFromString(std::string & source)
+bool InstructionSquareActMove::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 5)
 	{

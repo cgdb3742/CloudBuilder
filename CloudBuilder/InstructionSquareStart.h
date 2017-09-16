@@ -8,7 +8,7 @@ class InstructionSquareStart :
 {
 public:
 	InstructionSquareStart(GameContext& gameContext);
-	InstructionSquareStart(GameContext& gameContext, std::string& source);
+	InstructionSquareStart(GameContext& gameContext, std::wstring& source);
 	InstructionSquareStart(GameContext& gameContext, Enums::eColor color);
 	//InstructionSquareStart(Enums::eColor color, InstructionRobot& robot);
 	~InstructionSquareStart();
@@ -18,8 +18,8 @@ public:
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 
 	virtual Enums::eColor getStartColor();
 	virtual void setStartColor(Enums::eColor newColor);

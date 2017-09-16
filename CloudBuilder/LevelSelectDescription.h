@@ -8,14 +8,14 @@ public:
 	~LevelSelectDescription();
 
 	void setLevelText(unsigned int worldId, unsigned int levelId);
-	void wrapDescription(std::string& desc);
+	void wrapDescription(std::wstring& desc);
 
 	virtual void drawCurrent(sf::RenderTarget & target);
 
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 private:
-	std::string mText;
-	std::string mWrappedText;
+	std::wstring mText;
+	std::wstring mWrappedText;
 
 	sf::Font& mFont;
 };

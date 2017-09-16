@@ -6,12 +6,14 @@
 
 struct SaveData
 {
-	SaveData() : currentLanguage("en") {}
+	SaveData() : currentLanguage(L"en") {}
 
-	std::string currentLanguage;
+	std::wstring currentLanguage;
+	float musicVolume;
+	float soundVolume;
 
 	std::vector<std::vector<Enums::eLevelStatus>> levelStatus;//"Locked", "New", "Available", "Complete"
-	std::vector<std::vector<std::string>> savedBoard;
+	std::vector<std::vector<std::wstring>> savedBoard;
 };
 
 class SaveDataReader
@@ -23,9 +25,11 @@ public:
 	bool readData();
 	//TODO Save data
 
-	bool writeLanguage(std::string language);
+	bool writeLanguage(std::wstring language);
+	bool writeMusicVolume(float volume);
+	bool writeSoundVolume(float volume);
 	bool writeLevelStatus(unsigned int world, unsigned int level, Enums::eLevelStatus status);
-	bool writeSavedBoard(unsigned int world, unsigned int level, std::string board);
+	bool writeSavedBoard(unsigned int world, unsigned int level, std::wstring board);
 
 	SaveData& getData();
 

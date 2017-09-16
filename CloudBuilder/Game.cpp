@@ -4,14 +4,16 @@
 
 
 
-Game::Game():
+Game::Game(GlobalInfos infos):
+	mInfos(infos),
 	mWindow(sf::VideoMode(1024, 768), "Cloud Builder"),
 	mResourceHandler(),
 	mParticleHandler(static_cast<float>(mWindow.getSize().x), static_cast<float>(mWindow.getSize().y), mResourceHandler),
 	mStateStack(),
 	mPopUpStack(mStateStack),
-	mData(mPopUpStack),
-	mContext(mResourceHandler, mParticleHandler, mStateStack, mPopUpStack, mData),
+	mData(mPopUpStack, mResourceHandler),
+	mClipboardControl(infos.system),
+	mContext(mResourceHandler, mParticleHandler, mStateStack, mPopUpStack, mData, mClipboardControl, mInfos),
 	mStateMachine(mContext)
 {
 	std::cout << "Creating Game." << std::endl;

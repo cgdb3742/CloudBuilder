@@ -54,7 +54,7 @@ void SoundHandler::clearSounds()
 
 void SoundHandler::setVolume(float volume)
 {
-	mVolumeRatio = std::min(0.0f, std::max(1.0f, volume));
+	mVolumeRatio = std::max(0.0f, std::min(1.0f, volume));
 
 	for (std::multimap<eSound, sf::Sound>::iterator pos = mSounds.begin(); pos != mSounds.end(); ++pos)
 	{

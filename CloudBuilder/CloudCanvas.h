@@ -14,7 +14,7 @@ class CloudCanvas :
 {
 public:
 	CloudCanvas(GameContext& gameContext);
-	CloudCanvas(GameContext& gameContext, std::string source);
+	CloudCanvas(GameContext& gameContext, std::wstring source);
 	CloudCanvas(GameContext& gameContext, unsigned int width, unsigned int height);
 	CloudCanvas(GameContext& gameContext, CloudPicture& picture);
 	~CloudCanvas();
@@ -39,8 +39,8 @@ public:
 	void removeRow();
 
 	bool convertFromPicture(CloudPicture& picture);
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 	
 	virtual void drawCurrent(sf::RenderTarget & target);
 	virtual void drawCloudEdge(int i, int j, Enums::eDir dir, sf::RenderTarget & target);

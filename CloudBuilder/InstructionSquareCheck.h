@@ -5,7 +5,7 @@ class InstructionSquareCheck :
 {
 public:
 	InstructionSquareCheck(GameContext& gameContext);
-	InstructionSquareCheck(GameContext& gameContext, std::string& source);
+	InstructionSquareCheck(GameContext& gameContext, std::wstring& source);
 	~InstructionSquareCheck();
 
 	virtual bool isValid();

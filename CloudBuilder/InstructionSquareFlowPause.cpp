@@ -8,7 +8,7 @@ InstructionSquareFlowPause::InstructionSquareFlowPause(GameContext & gameContext
 {
 }
 
-InstructionSquareFlowPause::InstructionSquareFlowPause(GameContext & gameContext, std::string source) :
+InstructionSquareFlowPause::InstructionSquareFlowPause(GameContext & gameContext, std::wstring source) :
 	InstructionSquare(gameContext, Enums::eInstruction::FlowPause, "Pause")
 {
 	convertFromString(source);
@@ -38,12 +38,12 @@ void InstructionSquareFlowPause::applyModification(InstructionModificationData m
 	}
 }
 
-std::string InstructionSquareFlowPause::convertToString()
+std::wstring InstructionSquareFlowPause::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getRobotColor());
 }
 
-bool InstructionSquareFlowPause::convertFromString(std::string & source)
+bool InstructionSquareFlowPause::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 4)
 	{

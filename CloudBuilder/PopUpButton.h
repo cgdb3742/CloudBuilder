@@ -15,7 +15,7 @@ public:
 
 	virtual void clicked();
 private:
-	std::string mText;
+	std::wstring mText;
 	sf::Font& mFont;
 };
 

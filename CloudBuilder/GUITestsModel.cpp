@@ -28,7 +28,7 @@ void GUITestsModel::updateCloud()
 
 	if (mIsValidation)
 	{
-		mWantAccept = (mGameContext.levelData.results[mLevel.getCurrentCloud()] == "Accept");
+		mWantAccept = (mGameContext.levelData.results[mLevel.getCurrentCloud()] == L"Accept");
 	}
 	else
 	{

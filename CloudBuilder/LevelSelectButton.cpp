@@ -67,7 +67,7 @@ void LevelSelectButton::drawCurrent(sf::RenderTarget & target)
 
 	sf::Text text;
 	text.setFont(mFont);
-	text.setString(std::to_string(mId) + " : " + mGameContext.gameData.levelName[mWorld - 1][mId - 1]);
+	text.setString(std::to_wstring(mId) + L" : " + mGameContext.gameData.levelName[mWorld - 1][mId - 1]);
 	text.setCharacterSize(36);
 	text.setFillColor(sf::Color(0, 0, 0));
 	sf::FloatRect textRect = text.getLocalBounds();

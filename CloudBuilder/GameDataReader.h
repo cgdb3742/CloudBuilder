@@ -14,40 +14,40 @@ struct GameData
 	//GameData() : currentLanguage("en") {}
 	GameData() {}
 
-	std::vector<std::string> worldName;
-	std::vector<std::vector<std::string>> levelName;
-	std::vector<std::vector<std::string>> levelDescription;
+	std::vector<std::wstring> worldName;
+	std::vector<std::vector<std::wstring>> levelName;
+	std::vector<std::vector<std::wstring>> levelDescription;
 	std::vector<std::vector<bool>> levelIsValidation;
 	std::vector<std::vector<LevelUnlockPossibilities>> levelUnlockRequirements;
 
-	std::vector<std::string> availableLanguageName;
-	std::vector<std::string> availableLanguageTag;
+	std::vector<std::wstring> availableLanguageName;
+	std::vector<std::wstring> availableLanguageTag;
 
-	std::map<Enums::eInstruction, std::string> instructionName;
-	std::map<Enums::eInstructionModifier, std::string> instructionModifierName;
-	std::vector<std::string> levelTabName;
-	std::map<Enums::eState, std::string> stateName;
-	std::vector<std::string> popUpMessage;
-	std::vector<std::string> popUpButton;
+	std::map<Enums::eInstruction, std::wstring> instructionName;
+	std::map<Enums::eInstructionModifier, std::wstring> instructionModifierName;
+	std::vector<std::wstring> levelTabName;
+	std::map<Enums::eState, std::wstring> stateName;
+	std::vector<std::wstring> popUpMessage;
+	std::vector<std::wstring> popUpButton;
 };
 
 class GameDataReader
 {
 public:
 	GameDataReader();
-	GameDataReader(std::string language);
+	GameDataReader(std::wstring language);
 	~GameDataReader();
 
-	void updateLanguage(std::string language);
+	void updateLanguage(std::wstring language);
 
 	bool readData();
-	bool readData(std::string language);
+	bool readData(std::wstring language);
 
-	GameData::LevelUnlockPossibilities readUnlockPossibilities(std::string source);
+	GameData::LevelUnlockPossibilities readUnlockPossibilities(std::wstring source);
 
 	GameData& getData();
 private:
-	std::string mLanguage;
+	std::wstring mLanguage;
 
 	GameData mData;
 };

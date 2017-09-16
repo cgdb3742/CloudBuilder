@@ -42,7 +42,7 @@ InstructionBoard::InstructionBoard(GameContext& gameContext) :
 	updateBordFlow();
 }
 
-InstructionBoard::InstructionBoard(GameContext & gameContext, std::string source) :
+InstructionBoard::InstructionBoard(GameContext & gameContext, std::wstring source) :
 	GameEntity(gameContext),
 	mWidth(1),
 	mHeight(1),
@@ -192,7 +192,7 @@ bool InstructionBoard::isValid()
 
 void InstructionBoard::loadLevelBoard(unsigned int world, unsigned int level)
 {
-	if (mGameContext.saveData.savedBoard[world - 1][level - 1] == "NONE")
+	if (mGameContext.saveData.savedBoard[world - 1][level - 1] == L"NONE")
 	{
 		convertFromString(mGameContext.levelData.startingBoard);
 	}
@@ -204,9 +204,9 @@ void InstructionBoard::loadLevelBoard(unsigned int world, unsigned int level)
 	//mFlow.computeLinks();
 }
 
-std::string InstructionBoard::convertToString() //Sparse definition, TODO do full definition too ?
+std::wstring InstructionBoard::convertToString() //Sparse definition, TODO do full definition too ?
 {
-	std::string values = "";
+	std::wstring values = L"";
 
 	for (unsigned int i = 0; i < mWidth; i++)
 	{
@@ -214,25 +214,25 @@ std::string InstructionBoard::convertToString() //Sparse definition, TODO do ful
 		{
 			if (get(i, j).getType() != Enums::eInstruction::Unassigned)
 			{
-				values += "i" + std::to_string(i) + "j" + std::to_string(j) + "v" + get(i, j).convertToString();
+				values += L"i" + std::to_wstring(i) + L"j" + std::to_wstring(j) + L"v" + get(i, j).convertToString();
 			}
 		}
 	}
 
-	return "w" + std::to_string(mWidth) + "h" + std::to_string(mHeight) + values;
+	return L"w" + std::to_wstring(mWidth) + L"h" + std::to_wstring(mHeight) + values;
 }
 
-bool InstructionBoard::convertFromString(std::string & source)
+bool InstructionBoard::convertFromString(std::wstring & source)
 {
 	try
 	{
-		size_t wFound = source.find("w");
-		size_t hFound = source.find("h");
-		size_t iFound = source.find("i");
-		size_t jFound = source.find("j");
-		size_t vFound = source.find("v");
+		size_t wFound = source.find(L"w");
+		size_t hFound = source.find(L"h");
+		size_t iFound = source.find(L"i");
+		size_t jFound = source.find(L"j");
+		size_t vFound = source.find(L"v");
 
-		if (wFound == std::string::npos || hFound == std::string::npos || iFound == std::string::npos || jFound == std::string::npos || vFound == std::string::npos)
+		if (wFound == std::wstring::npos || hFound == std::wstring::npos || iFound == std::wstring::npos || jFound == std::wstring::npos || vFound == std::wstring::npos)
 		{
 			return false;
 		}
@@ -250,14 +250,14 @@ bool InstructionBoard::convertFromString(std::string & source)
 			}
 		}
 
-		while (iFound != std::string::npos)
+		while (iFound != std::wstring::npos)
 		{
 			unsigned int i = stoul(source.substr(iFound + 1, iFound - jFound - 1));
 			unsigned int j = stoul(source.substr(jFound + 1, jFound - vFound - 1));
-			iFound = source.find("i", iFound + 1);
+			iFound = source.find(L"i", iFound + 1);
 			InstructionSquare::InstructionSquarePtr newSquare;
 
-			if (iFound != std::string::npos)
+			if (iFound != std::wstring::npos)
 			{
 				newSquare = InstructionSquare::createNewInstructionSquare(mGameContext, source.substr(vFound + 1, vFound - iFound - 1));
 			}
@@ -273,8 +273,8 @@ bool InstructionBoard::convertFromString(std::string & source)
 
 			insert(i, j, std::move(newSquare));
 
-			jFound = source.find("j", jFound + 1);
-			vFound = source.find("v", vFound + 1);
+			jFound = source.find(L"j", jFound + 1);
+			vFound = source.find(L"v", vFound + 1);
 		}
 
 		//TODO use isValid() to check whether the loaded board is correct for the current level

@@ -6,10 +6,10 @@
 
 GUIInfosText::GUIInfosText(GameContext& gameContext, sf::Vector2f positionRatio):
 	GUIButton(gameContext, positionRatio),
-	mCompleteString(""),
+	mCompleteString(L""),
 	mCurrentLength(0),
-	mCurrentString(""),
-	mWrappedString(""),
+	mCurrentString(L""),
+	mWrappedString(L""),
 	mTimerShow(0.0f),
 	mMaxTimerShow(0.05f),
 	mFont(gameContext.resourceHandler.getFont(FontHandler::Arial))
@@ -85,11 +85,11 @@ void GUIInfosText::setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBo
 	wrapCompleteString();
 }
 
-void GUIInfosText::setNewText(std::string newString)
+void GUIInfosText::setNewText(std::wstring newString)
 {
 	mCompleteString = newString;
 	mCurrentLength = 0;
-	mCurrentString = "";
+	mCurrentString = L"";
 	mTimerShow = 0.0f;
 	wrapCompleteString();
 }
@@ -104,12 +104,12 @@ void GUIInfosText::showAll()
 
 void GUIInfosText::wrapCompleteString() //TODO Why wrapped text begin by /n ?
 {
-	size_t nextSpace = mCompleteString.find(" ");
+	size_t nextSpace = mCompleteString.find(L" ");
 
-	std::string res = "";
-	std::string currentLine = mCompleteString.substr(0, nextSpace);
+	std::wstring res = L"";
+	std::wstring currentLine = mCompleteString.substr(0, nextSpace);
 	size_t prevSpace = nextSpace;
-	nextSpace = mCompleteString.find(" ", nextSpace + 1);
+	nextSpace = mCompleteString.find(L" ", nextSpace + 1);
 
 	sf::Text text;
 	text.setFont(mFont);
@@ -117,29 +117,29 @@ void GUIInfosText::wrapCompleteString() //TODO Why wrapped text begin by /n ?
 	text.setCharacterSize(16);
 	text.scale(mBoundingBox / 480.0f); //Note : only width is useful here
 
-	while (prevSpace != std::string::npos)
+	while (prevSpace != std::wstring::npos)
 	{
-		std::string currentWord = mCompleteString.substr(prevSpace + 1, nextSpace - prevSpace - 1);
-		text.setString(currentLine + " " + currentWord);
+		std::wstring currentWord = mCompleteString.substr(prevSpace + 1, nextSpace - prevSpace - 1);
+		text.setString(currentLine + L" " + currentWord);
 
 		sf::FloatRect textRect = text.getGlobalBounds();
 
 		if (textRect.width >= mBoundingBox.x * 0.95f)
 		{
 			//std::cout << textRect.width << std::endl;
-			res += "\n" + currentLine;
+			res += L"\n" + currentLine;
 			currentLine = currentWord;
 		}
 		else
 		{
-			currentLine += " " + currentWord;
+			currentLine += L" " + currentWord;
 		}
 
 		prevSpace = nextSpace;
-		nextSpace = mCompleteString.find(" ", nextSpace + 1);
+		nextSpace = mCompleteString.find(L" ", nextSpace + 1);
 	}
 
-	res += "\n" + currentLine;
+	res += L"\n" + currentLine;
 	mWrappedString = res;
 
 	//std::cout << res << std::endl;

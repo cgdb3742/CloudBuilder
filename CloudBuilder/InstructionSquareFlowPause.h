@@ -5,7 +5,7 @@ class InstructionSquareFlowPause :
 {
 public:
 	InstructionSquareFlowPause(GameContext& gameContext);
-	InstructionSquareFlowPause(GameContext& gameContext, std::string source);
+	InstructionSquareFlowPause(GameContext& gameContext, std::wstring source);
 	~InstructionSquareFlowPause();
 
 	virtual bool isValid();
@@ -13,8 +13,8 @@ public:
 	virtual std::list<Enums::eInstructionModifier> getPossibleModifications();
 	virtual void applyModification(InstructionModificationData modificationData);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 protected:
 	virtual void drawInterior(sf::RenderTarget & target);
 };

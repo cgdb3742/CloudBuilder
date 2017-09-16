@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <level_data>
     <general_info>
         <name>
             <en>Sandbox</en>
-            <fr>Bac √† sable</fr>
+            <fr>Bac ‡ sable</fr>
         </name>
         <world>3</world>
         <level>1</level>
@@ -49,7 +49,7 @@
             </name>
             <text id = "0">
                 <en>This is the sandbox mode, where the magic happens! Everything is available, so be free and go crazy!</en>
-                <fr>Voici le mode bac √† sable, o√π le magie prend vie ! Tout est disponible, alors sentez-vous libre et laissez-vous prendre par la folie !</fr>
+                <fr>Voici le mode bac ‡ sable, o˘ le magie prend vie ! Tout est disponible, alors sentez-vous libre et laissez-vous prendre par la folie !</fr>
             </text>
         </topic>
         <topic id = "1">
@@ -69,7 +69,7 @@
             </name>
             <text id = "0">
                 <en>(The sandbox includes some elements introduced in levels missing from the current project. They will be explained at a later time, meanwhile have fun trying to guess!)</en>
-                <fr>(Ce bac √† sable inclus des √©l√©ments introduits dans des niveaux absents du projet actuel. Ils seront expliqu√©s plus tard, en attendant amusez-vous √† deviner !)</fr>
+                <fr>(Ce bac ‡ sable inclus des ÈlÈments introduits dans des niveaux absents du projet actuel. Ils seront expliquÈs plus tard, en attendant amusez-vous È deviner !)</fr>
             </text>
         </topic>
         <topic id = "3">
@@ -79,7 +79,7 @@
             </name>
             <text id = "0">
                 <en>Still wondering what to do? This is freedom! You choose your own rules!</en>
-                <fr>Encore en train de vous demander quoi faire ? Ceci est la libert√©: Choisissez vos propres r√®gles!</fr>
+                <fr>Encore en train de vous demander quoi faire ? Ceci est la libertÈ : Choisissez vos propres rËgles!</fr>
             </text>
         </topic>
         <topic id = "4">
@@ -89,7 +89,7 @@
             </name>
             <text id = "0">
                 <en>This sandbox is currently being used by the creator to test new features, so anything can happen!</en>
-                <fr>Ce bac √† sable est actuellement utilis√© par le cr√©ateur pour essayer de nouvelles fonctions, alors tout peut arriver !</fr>
+                <fr>Ce bac ‡ sable est actuellement utilisÈ par le cr√©ateur pour essayer de nouvelles fonctions, alors tout peut arriver !</fr>
             </text>
         </topic>
     </infos>

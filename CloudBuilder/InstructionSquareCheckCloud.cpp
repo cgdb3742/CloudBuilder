@@ -10,7 +10,7 @@ InstructionSquareCheckCloud::InstructionSquareCheckCloud(GameContext& gameContex
 {
 }
 
-InstructionSquareCheckCloud::InstructionSquareCheckCloud(GameContext& gameContext, std::string & source) :
+InstructionSquareCheckCloud::InstructionSquareCheckCloud(GameContext& gameContext, std::wstring & source) :
 	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
 	mWantCloud(true)
 {
@@ -46,12 +46,12 @@ void InstructionSquareCheckCloud::applyModification(InstructionModificationData 
 	}
 }
 
-std::string InstructionSquareCheckCloud::convertToString()
+std::wstring InstructionSquareCheckCloud::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextTrueDir()) + Enums::getString(getNextFalseDir()) + Enums::getString(getCheckDir()) + Enums::getString(getRobotColor()) + Enums::getString(getWantCloud());
 }
 
-bool InstructionSquareCheckCloud::convertFromString(std::string & source)
+bool InstructionSquareCheckCloud::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 7)
 	{

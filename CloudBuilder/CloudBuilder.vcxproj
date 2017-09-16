@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BuildLockable.cpp" />
+    <ClCompile Include="ClipboardControl.cpp" />
     <ClCompile Include="CloudCanvas.cpp" />
     <ClCompile Include="CloudPicture.cpp" />
     <ClCompile Include="CloudRobot.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="GUILevelMenuTab.cpp" />
     <ClCompile Include="GUIOptionsContainer.cpp" />
     <ClCompile Include="GUIOptionsLanguage.cpp" />
+    <ClCompile Include="GUIOptionsVolume.cpp" />
     <ClCompile Include="GUIPlayerButton.cpp" />
     <ClCompile Include="GUIPlayerContainer.cpp" />
     <ClCompile Include="GUITestsButton.cpp" />
@@ -230,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuildLockable.h" />
+    <ClInclude Include="ClipboardControl.h" />
     <ClInclude Include="CloudCanvas.h" />
     <ClInclude Include="CloudPicture.h" />
     <ClInclude Include="CloudRobot.h" />
@@ -253,6 +256,7 @@
     <ClInclude Include="GUILevelMenuTab.h" />
     <ClInclude Include="GUIOptionsContainer.h" />
     <ClInclude Include="GUIOptionsLanguage.h" />
+    <ClInclude Include="GUIOptionsVolume.h" />
     <ClInclude Include="GUIPlayerButton.h" />
     <ClInclude Include="GUIPlayerContainer.h" />
     <ClInclude Include="GUITestsButton.h" />

@@ -9,7 +9,7 @@ InstructionSquareFlowWait::InstructionSquareFlowWait(GameContext & gameContext) 
 {
 }
 
-InstructionSquareFlowWait::InstructionSquareFlowWait(GameContext & gameContext, std::string source) :
+InstructionSquareFlowWait::InstructionSquareFlowWait(GameContext & gameContext, std::wstring source) :
 	InstructionSquare(gameContext, Enums::eInstruction::FlowWait, "Wait")
 {
 	convertFromString(source);
@@ -33,12 +33,12 @@ void InstructionSquareFlowWait::applyModification(InstructionModificationData mo
 	}
 }
 
-std::string InstructionSquareFlowWait::convertToString()
+std::wstring InstructionSquareFlowWait::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir());
 }
 
-bool InstructionSquareFlowWait::convertFromString(std::string & source)
+bool InstructionSquareFlowWait::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 3)
 	{

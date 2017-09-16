@@ -13,7 +13,7 @@ class CloudPicture :
 {
 public:
 	CloudPicture(GameContext& gameContext);
-	CloudPicture(GameContext& gameContext, std::string source);
+	CloudPicture(GameContext& gameContext, std::wstring source);
 	CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height);
 	CloudPicture(GameContext& gameContext, unsigned int width, unsigned int height, std::string values);
 	CloudPicture(GameContext& gameContext, CloudCanvas& canvas);
@@ -24,12 +24,12 @@ public:
 	bool get(unsigned int i, unsigned int j);
 	bool compare(CloudPicture& picture);
 
-	std::string getPicture();
-	bool getPictureFromString(unsigned int width, unsigned int height, std::string values);
-	bool getPictureFromString(std::string values);
+	std::wstring getPicture();
+	bool getPictureFromString(unsigned int width, unsigned int height, std::wstring values);
+	bool getPictureFromString(std::wstring values);
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 
 	virtual void convertFromCanvas(CloudCanvas& canvas);
 

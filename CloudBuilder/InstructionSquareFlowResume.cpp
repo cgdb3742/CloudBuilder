@@ -8,7 +8,7 @@ InstructionSquareFlowResume::InstructionSquareFlowResume(GameContext & gameConte
 {
 }
 
-InstructionSquareFlowResume::InstructionSquareFlowResume(GameContext & gameContext, std::string source) :
+InstructionSquareFlowResume::InstructionSquareFlowResume(GameContext & gameContext, std::wstring source) :
 	InstructionSquare(gameContext, Enums::eInstruction::FlowResume, "Resume")
 {
 	convertFromString(source);
@@ -38,12 +38,12 @@ void InstructionSquareFlowResume::applyModification(InstructionModificationData 
 	}
 }
 
-std::string InstructionSquareFlowResume::convertToString()
+std::wstring InstructionSquareFlowResume::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getRobotColor());
 }
 
-bool InstructionSquareFlowResume::convertFromString(std::string & source)
+bool InstructionSquareFlowResume::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 4)
 	{

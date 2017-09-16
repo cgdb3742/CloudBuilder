@@ -7,7 +7,7 @@ InstructionSquareFlowSync::InstructionSquareFlowSync(GameContext & gameContext) 
 {
 }
 
-InstructionSquareFlowSync::InstructionSquareFlowSync(GameContext & gameContext, std::string source) :
+InstructionSquareFlowSync::InstructionSquareFlowSync(GameContext & gameContext, std::wstring source) :
 	InstructionSquare(gameContext, Enums::eInstruction::FlowSync, "Sync")
 {
 	convertFromString(source);
@@ -31,12 +31,12 @@ void InstructionSquareFlowSync::applyModification(InstructionModificationData mo
 	}
 }
 
-std::string InstructionSquareFlowSync::convertToString()
+std::wstring InstructionSquareFlowSync::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir());
 }
 
-bool InstructionSquareFlowSync::convertFromString(std::string & source)
+bool InstructionSquareFlowSync::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 3)
 	{

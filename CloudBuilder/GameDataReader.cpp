@@ -4,11 +4,11 @@
 
 
 GameDataReader::GameDataReader():
-	mLanguage("en")
+	mLanguage(L"en")
 {
 }
 
-GameDataReader::GameDataReader(std::string language):
+GameDataReader::GameDataReader(std::wstring language):
 	mLanguage(language)
 {
 }
@@ -18,20 +18,20 @@ GameDataReader::~GameDataReader()
 {
 }
 
-void GameDataReader::updateLanguage(std::string language)
+void GameDataReader::updateLanguage(std::wstring language)
 {
 	mLanguage = language;
 }
 
 bool GameDataReader::readData()
 {
-	std::string source = "Data/Game_data.xml";
+	std::wstring source = L"Data/Game_data.xml";
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(source.c_str());
+	pugi::xml_parse_result result = doc.load_file(source.c_str(), pugi::parse_default, pugi::xml_encoding::encoding_latin1);
 
 	if (result)
 	{
-		//std::cout << "-" + std::string(doc.child("game_data").child("options").child_value("language"))  + "-" << std::endl;
+		//std::cout << "-" + std::wstring(doc.child("game_data").child("options").child_value("language"))  + "-" << std::endl;
 
 		//pugi::xml_node translations = doc.child("game_data").child("common_translations");
 
@@ -49,30 +49,27 @@ bool GameDataReader::readData()
 
 		mData = GameData();
 
-		//mData.currentLanguage = doc.child("game_data").child("options").child_value("current_language");
-		//std::string currentLanguage = "en"; //TODO Get current language
-
-		for (pugi::xml_node language : doc.child("game_data").child("options").children("available_language"))
+		for (pugi::xml_node language : doc.child(L"game_data").child(L"options").children(L"available_language"))
 		{
-			mData.availableLanguageName.push_back(language.child_value("name"));
-			mData.availableLanguageTag.push_back(language.child_value("tag"));
+			mData.availableLanguageName.push_back(language.child(L"name").text().as_string());
+			mData.availableLanguageTag.push_back(language.child(L"tag").text().as_string());
 		}
 
-		for (pugi::xml_node world : doc.child("game_data").child("levels").children("world"))
+		for (pugi::xml_node world : doc.child(L"game_data").child(L"levels").children(L"world"))
 		{
 			//unsigned int worldId = world.attribute("id").as_uint;
-			mData.worldName.push_back(world.child("name").child_value(mLanguage.c_str()));
-			std::vector<std::string> levelName;
-			std::vector<std::string> levelDescription;
+			mData.worldName.push_back(world.child(L"name").child(mLanguage.c_str()).text().as_string());
+			std::vector<std::wstring> levelName;
+			std::vector<std::wstring> levelDescription;
 			std::vector<bool> levelIsValidation;
 			std::vector<GameData::LevelUnlockPossibilities> levelUnlockRequirements;
 
-			for (pugi::xml_node level : world.children("level"))
+			for (pugi::xml_node level : world.children(L"level"))
 			{
-				levelName.push_back(level.child("name").child_value(mLanguage.c_str()));
-				levelDescription.push_back(level.child("description").child_value(mLanguage.c_str()));
-				levelIsValidation.push_back(level.child_value("type") == std::string("validation"));
-				levelUnlockRequirements.push_back(readUnlockPossibilities(level.child_value("unlock_requirements")));
+				levelName.push_back(level.child(L"name").child(mLanguage.c_str()).text().as_string());
+				levelDescription.push_back(level.child(L"description").child(mLanguage.c_str()).text().as_string());
+				levelIsValidation.push_back(level.child(L"type").text().as_string() == std::wstring(L"validation"));
+				levelUnlockRequirements.push_back(readUnlockPossibilities(level.child(L"unlock_requirements").text().as_string()));
 			}
 
 			mData.levelName.push_back(levelName);
@@ -81,31 +78,31 @@ bool GameDataReader::readData()
 			mData.levelUnlockRequirements.push_back(levelUnlockRequirements);
 		}
 
-		for (pugi::xml_node instruction : doc.child("game_data").child("common_translations").children("instruction"))
+		for (pugi::xml_node instruction : doc.child(L"game_data").child(L"common_translations").children(L"instruction"))
 		{
 			//TODO Verify the static_cast return a correct value ?
-			mData.instructionName.insert(std::pair<Enums::eInstruction, std::string>(static_cast<Enums::eInstruction>(instruction.attribute("id").as_uint()), instruction.child_value(mLanguage.c_str())));
+			mData.instructionName.insert(std::pair<Enums::eInstruction, std::wstring>(static_cast<Enums::eInstruction>(instruction.attribute(L"id").as_uint()), instruction.child(mLanguage.c_str()).text().as_string()));
 		}
 
-		for (pugi::xml_node instructionModifier : doc.child("game_data").child("common_translations").children("instruction_modifier"))
+		for (pugi::xml_node instructionModifier : doc.child(L"game_data").child(L"common_translations").children(L"instruction_modifier"))
 		{
-			mData.instructionModifierName.insert(std::pair<Enums::eInstructionModifier, std::string>(static_cast<Enums::eInstructionModifier>(instructionModifier.attribute("id").as_uint()), instructionModifier.child_value(mLanguage.c_str())));
+			mData.instructionModifierName.insert(std::pair<Enums::eInstructionModifier, std::wstring>(static_cast<Enums::eInstructionModifier>(instructionModifier.attribute(L"id").as_uint()), instructionModifier.child(mLanguage.c_str()).text().as_string()));
 		}
 
-		for (pugi::xml_node levelTab : doc.child("game_data").child("common_translations").children("level_tab"))
+		for (pugi::xml_node levelTab : doc.child(L"game_data").child(L"common_translations").children(L"level_tab"))
 		{
-			mData.levelTabName.push_back(levelTab.child_value(mLanguage.c_str()));
+			mData.levelTabName.push_back(levelTab.child(mLanguage.c_str()).text().as_string());
 		}
 
-		for (pugi::xml_node instructionModifier : doc.child("game_data").child("common_translations").children("state"))
+		for (pugi::xml_node instructionModifier : doc.child(L"game_data").child(L"common_translations").children(L"state"))
 		{
-			mData.stateName.insert(std::pair<Enums::eState, std::string>(static_cast<Enums::eState>(instructionModifier.attribute("id").as_uint()), instructionModifier.child_value(mLanguage.c_str())));
+			mData.stateName.insert(std::pair<Enums::eState, std::wstring>(static_cast<Enums::eState>(instructionModifier.attribute(L"id").as_uint()), instructionModifier.child(mLanguage.c_str()).text().as_string()));
 		}
 
-		for (pugi::xml_node result : doc.child("game_data").child("common_translations").children("pop_up"))
+		for (pugi::xml_node result : doc.child(L"game_data").child(L"common_translations").children(L"pop_up"))
 		{
-			mData.popUpMessage.push_back(result.child("message").child_value(mLanguage.c_str()));
-			mData.popUpButton.push_back(result.child("button").child_value(mLanguage.c_str()));
+			mData.popUpMessage.push_back(result.child(L"message").child(mLanguage.c_str()).text().as_string());
+			mData.popUpButton.push_back(result.child(L"button").child(mLanguage.c_str()).text().as_string());
 		}
 
 		return true;
@@ -116,32 +113,32 @@ bool GameDataReader::readData()
 	}
 }
 
-bool GameDataReader::readData(std::string language)
+bool GameDataReader::readData(std::wstring language)
 {
 	mLanguage = language;
 	return readData();
 }
 
-GameData::LevelUnlockPossibilities GameDataReader::readUnlockPossibilities(std::string source)
+GameData::LevelUnlockPossibilities GameDataReader::readUnlockPossibilities(std::wstring source)
 {
 	GameData::LevelUnlockPossibilities res;
 
-	size_t oFound = source.find("o");
+	size_t oFound = source.find(L"o");
 
-	while (oFound != std::string::npos)
+	while (oFound != std::wstring::npos)
 	{
-		size_t aFound = source.find("a", oFound + 1);
+		size_t aFound = source.find(L"a", oFound + 1);
 
-		oFound = source.find("o", oFound + 1);
+		oFound = source.find(L"o", oFound + 1);
 
 		std::vector<std::pair<unsigned int, unsigned int>> possibility;
 
-		while (aFound != std::string::npos && aFound < oFound)
+		while (aFound != std::wstring::npos && aFound < oFound)
 		{
-			size_t wFound = source.find("w", aFound + 1);
-			size_t lFound = source.find("l", wFound + 1);
+			size_t wFound = source.find(L"w", aFound + 1);
+			size_t lFound = source.find(L"l", wFound + 1);
 
-			aFound = source.find("a", lFound + 1);
+			aFound = source.find(L"a", lFound + 1);
 
 			unsigned int w = stoul(source.substr(wFound + 1, wFound - lFound - 1));
 			unsigned int l = stoul(source.substr(lFound + 1, lFound - std::min(oFound, aFound) - 1));

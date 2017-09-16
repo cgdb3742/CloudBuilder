@@ -14,7 +14,7 @@ InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext):
 {
 }
 
-InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext, std::string & source):
+InstructionSquareCheck::InstructionSquareCheck(GameContext & gameContext, std::wstring & source):
 	InstructionSquare(gameContext, source),
 	mNextTrue(Enums::eDir::Center),
 	mNextFalse(Enums::eDir::Center),

@@ -11,7 +11,7 @@ InstructionSquareActColor::InstructionSquareActColor(GameContext & gameContext) 
 {
 }
 
-InstructionSquareActColor::InstructionSquareActColor(GameContext & gameContext, std::string & source) :
+InstructionSquareActColor::InstructionSquareActColor(GameContext & gameContext, std::wstring & source) :
 	InstructionSquare(gameContext, Enums::eInstruction::ActSetColor, "Color Action"),
 	mCloudColor(Enums::eColor::NoColor)
 {
@@ -53,12 +53,12 @@ void InstructionSquareActColor::applyModification(InstructionModificationData mo
 	}
 }
 
-std::string InstructionSquareActColor::convertToString()
+std::wstring InstructionSquareActColor::convertToString()
 {
 	return Enums::getString(getType()) + Enums::getString(getNextDir()) + Enums::getString(getCloudColor()) + Enums::getString(getRobotColor());
 }
 
-bool InstructionSquareActColor::convertFromString(std::string & source)
+bool InstructionSquareActColor::convertFromString(std::wstring & source)
 {
 	if (source.substr(0, 2) == Enums::getString(getType()) && source.size() >= 5)
 	{

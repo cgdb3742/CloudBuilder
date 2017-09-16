@@ -7,7 +7,7 @@ public:
 	StringConvertible();
 	~StringConvertible();
 
-	virtual std::string convertToString();
-	virtual bool convertFromString(std::string& source);
+	virtual std::wstring convertToString();
+	virtual bool convertFromString(std::wstring& source);
 };
 

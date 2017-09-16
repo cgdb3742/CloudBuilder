@@ -15,15 +15,15 @@ public:
 
 	virtual void setPositionCurrent(sf::Vector2f minCorner, sf::Vector2f maxBox);
 
-	void setNewText(std::string newString);
+	void setNewText(std::wstring newString);
 	void showAll();
 private:
 	void wrapCompleteString();
 
-	std::string mCompleteString;
+	std::wstring mCompleteString;
 	size_t mCurrentLength;
-	std::string mCurrentString;
-	std::string mWrappedString;
+	std::wstring mCurrentString;
+	std::wstring mWrappedString;
 
 	float mTimerShow;
 	float mMaxTimerShow;
