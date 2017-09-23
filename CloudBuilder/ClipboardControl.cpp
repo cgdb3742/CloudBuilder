@@ -79,7 +79,7 @@ std::wstring ClipboardControl::getClipboardWindows()
 bool ClipboardControl::setClipboardWindows(std::wstring value)
 {
 	//const size_t len = strlen(value.c_str()) + 1;
-	const size_t len = wcslen(value.c_str()) + 1;
+	const size_t len = (wcslen(value.c_str()) + 1) * sizeof(TCHAR);
 	HGLOBAL hMem = GlobalAlloc(GMEM_MOVEABLE, len);
 	memcpy(GlobalLock(hMem), value.c_str(), len);
 

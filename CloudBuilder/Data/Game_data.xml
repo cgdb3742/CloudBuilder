@@ -23,6 +23,18 @@
             <level id = "2">
                 <type>validation</type>
                 <name>
+                    <en>The big idea</en>
+                    <fr>La grande idée</fr>
+                </name>
+                <description>
+                    <en>Your first real assignment had to be about something huge!</en>
+                    <fr>Votre première véritable mission se devait d'être quelque chose d'énorme !</fr>
+                </description>
+                <unlock_requirements>oaw1l1</unlock_requirements>
+            </level>
+            <level id = "3">
+                <type>validation</type>
+                <name>
                     <en>Back to square one</en>
                     <fr>Retour à la case départ</fr>
                 </name>
@@ -30,7 +42,31 @@
                     <en>Already feeling you are repeating the same thing again and again? Well, we can help that!</en>
                     <fr>Vous avez déjà l'impression de vous répéter encore et encore ? Bien, on peut aider ça !</fr>
                 </description>
-                <unlock_requirements>oaw1l1</unlock_requirements>
+                <unlock_requirements>oaw1l2</unlock_requirements>
+            </level>
+            <level id = "4">
+                <type>validation</type>
+                <name>
+                    <en>End of the line</en>
+                    <fr>Fin de la ligne</fr>
+                </name>
+                <description>
+                    <en>At first glance, there is nothing new to see here, but does that mean there is nothing new to do?</en>
+                    <fr>A première vue, il n'y a rien de nouveau à voir ici, mais est-ce que ça signifie qu'il n'y a rien de nouveau à faire ?</fr>
+                </description>
+                <unlock_requirements>oaw1l2</unlock_requirements>
+            </level>
+            <level id = "5">
+                <type>validation</type>
+                <name>
+                    <en>Don't forget this one</en>
+                    <fr>N'oubliez pas celui-là</fr>
+                </name>
+                <description>
+                    <en>The first chapter comes to a close with a not so unique assignment.</en>
+                    <fr>Le premier chapitre se conclue par une mission pas si unique.</fr>
+                </description>
+                <unlock_requirements>oaw1l3oaw1l4</unlock_requirements>
             </level>
         </world>
         <world id = "2">
@@ -48,10 +84,28 @@
                     <en>Some days, everything is going well and there is nothing to say. Today is not one of these days. Quite the opposite.</en>
                     <fr>Certains jours, tout va bien et il n'y a rien à dire. Aujourd'hui n'est pas un de ces jours. Au contraire.</fr>
                 </description>
-                <unlock_requirements>oaw1l1aw1l2</unlock_requirements>
+                <unlock_requirements>oaw1l5</unlock_requirements>
             </level>
         </world>
         <world id = "3">
+            <name>
+                <en>Teamwork</en>
+                <fr>Travail d'équipe</fr>
+            </name>
+            <level id = "1">
+                <type>validation</type>
+                <name>
+                    <en>Wait for it</en>
+                    <fr>Attendez-le</fr>
+                </name>
+                <description>
+                    <en>The true mark of teamwork is moving as one and reflecting the other's actions.</en>
+                    <fr>La vraie marque du travail d'équipe est d'être en mouvement comme un et refléter les mouvements de l'autre.</fr>
+                </description>
+                <unlock_requirements>oaw1l5</unlock_requirements>
+            </level>
+        </world>
+        <world id = "4">
             <name>
                 <en>Unending</en>
                 <fr>Sans fin</fr>
@@ -66,7 +120,7 @@
                     <en>You want freedom? Here it comes!</en>
                     <fr>Vous voulez la liberté? Vous l'aurez!</fr>
                 </description>
-                <unlock_requirements></unlock_requirements>
+                <unlock_requirements>oaw2l1aw3l1</unlock_requirements>
             </level>
         </world>
     </levels>

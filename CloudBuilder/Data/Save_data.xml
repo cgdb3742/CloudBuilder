@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <save_data>
 	<levels>
 		<world id="1">
@@ -7,6 +7,18 @@
 				<saved_board>NONE</saved_board>
 			</level>
 			<level id="2">
+				<status>2</status>
+				<saved_board>NONE</saved_board>
+			</level>
+			<level id="3">
+				<status>2</status>
+				<saved_board>NONE</saved_board>
+			</level>
+			<level id="4">
+				<status>2</status>
+				<saved_board>NONE</saved_board>
+			</level>
+			<level id="5">
 				<status>2</status>
 				<saved_board>NONE</saved_board>
 			</level>
@@ -23,10 +35,16 @@
 				<saved_board>NONE</saved_board>
 			</level>
 		</world>
+		<world id="4">
+			<level id="1">
+				<status>2</status>
+				<saved_board>NONE</saved_board>
+			</level>
+		</world>
 	</levels>
 	<options>
-		<current_language>fr</current_language>
-		<music_volume>1</music_volume>
-		<sound_volume>1</sound_volume>
+		<current_language>en</current_language>
+		<music_volume>0</music_volume>
+		<sound_volume>0</sound_volume>
 	</options>
 </save_data>

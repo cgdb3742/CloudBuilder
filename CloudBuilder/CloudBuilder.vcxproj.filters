@@ -676,6 +676,18 @@
     <Xml Include="Data\Save_data.xml">
       <Filter>Fichiers de ressources\Data</Filter>
     </Xml>
+    <Xml Include="Data\Level_1_3.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Data\Level_1_4.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Data\Level_1_5.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
+    <Xml Include="Data\Level_4_1.xml">
+      <Filter>Fichiers de ressources\Data</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\arial.ttf">

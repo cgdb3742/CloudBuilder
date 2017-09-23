@@ -291,10 +291,20 @@ void Level::handleEventCurrent(const sf::Event & event)
 			std::wcout << L"Board code : " + mBoard.convertToString() << std::endl;
 			std::cout << mGameContext.clipboardControl.setClipboard(mBoard.convertToString()) << std::endl;
 		}
+		if (mDebugMode && event.key.code == sf::Keyboard::N)
+		{
+			std::cout << mBoard.convertFromString(mGameContext.clipboardControl.getClipboard()) << std::endl;
+			std::wcout << L"Board code : " + mBoard.convertToString() << std::endl;
+		}
 		else if (mDebugMode && event.key.code == sf::Keyboard::C)
 		{
 			std::wcout << L"Canvas code : " + mCanvas.convertToString() << std::endl;
 			std::cout << mGameContext.clipboardControl.setClipboard(mCanvas.convertToString()) << std::endl;
+		}
+		if (mDebugMode && event.key.code == sf::Keyboard::V)
+		{
+			std::cout << mCanvas.convertFromString(mGameContext.clipboardControl.getClipboard()) << std::endl;
+			std::wcout << L"Canvas code : " + mCanvas.convertToString() << std::endl;
 		}
 		else if (mDebugMode && event.key.code == sf::Keyboard::Numpad1)
 		{

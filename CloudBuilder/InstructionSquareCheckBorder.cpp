@@ -6,13 +6,13 @@
 
 
 InstructionSquareCheckBorder::InstructionSquareCheckBorder(GameContext & gameContext) :
-	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
+	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckBorder, "Check Border"),
 	mBorder(Enums::eDir::Right)
 {
 }
 
 InstructionSquareCheckBorder::InstructionSquareCheckBorder(GameContext & gameContext, std::wstring & source) :
-	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckCloud, "Check Cloud"),
+	InstructionSquareCheck(gameContext, Enums::eInstruction::CheckBorder, "Check Border"),
 	mBorder(Enums::eDir::Right)
 {
 	convertFromString(source);

@@ -3,8 +3,8 @@
 <level_data>
     <general_info>
         <name>
-            <en>Back to square one</en>
-            <fr>Retour à la case départ</fr>
+            <en>The big idea</en>
+            <fr>La grande idée</fr>
         </name>
         <world>1</world>
         <level>2</level>
@@ -14,24 +14,35 @@
     </general_info>
     <cloud_pictures>
         <cloud id = "0">
-            <data>w2h3p011001</data>
+            <data>w3h3p101010101</data>
             <result>Reject</result>
         </cloud>
         <cloud id = "1">
-            <data>w3h2p011001</data>
-            <result>Reject</result>
+            <data>w7h7p0000000000001000001110101110111110001110000010000</data>
+            <result>Accept</result>
         </cloud>
         <cloud id = "2">
-            <data>w3h3p010111010</data>
+            <data>w5h4p00000101010111011111</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "3">
+            <data>w5h5p0111010101111111111110101</data>
             <result>Accept</result>
+        </cloud>
+        <cloud id = "4">
+            <data>w4h5p01101001100111111001</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "5">
+            <data>w12h3p001001001001010010010010100100100100</data>
+            <result>Reject</result>
         </cloud>
     </cloud_pictures>
     <board>
-        <starting_data>w8h8i2j2vFWdi2j3vSSdri2j4vFWri3j2vAMldni3j3vFWui3j4vAMurn</starting_data>
+        <starting_data>w8h8i1j1vSSrr</starting_data>
         <available_instructions>
             <instruction code_name = "ActMove" id = "21" />
             <instruction code_name = "CheckBorder" id = "33" />
-            <instruction code_name = "FlowWait" id = "41" />
             <instruction code_name = "SpeAccept" id = "12" />
             <instruction code_name = "SpeReject" id = "13" />
         </available_instructions>
@@ -47,12 +58,16 @@
                 <fr>Bonjour Commandeur ! Félicitations pour votre dernière mission ! L'équipe marketing a de grands espoirs pour vous et nous a déjà envoyé un nouveau problème.</fr>
             </text>
             <text id = "1">
-                <en>And that is all for the good news. While you were away, one of the engineers gave us the prototype of their last instruction : the Wait instruction. They said we had to test it, but it does nothing. When the instruction reader reaches it, nothing happens for one step and then the reader just skip to the next instruction on the board. What is the point ?</en>
-                <fr>Et c'est tout pour les bonnes nouvelles. Pendant que vous étiez partis, un des ingénieurs nous a donné le prototype de leur dernière instruction : l'instruction Attendre. Il a dit que nous devions l'essayer, mais elle ne fait rien. Quand le lecteur l'atteint, rien ne se passe pendant un cycle et puis le lecteur passe à l'instruction suivante sur le tableau. Quel est l'intérêt ?</fr>
+                <en>I know you may still be a bit confused, but I am sure you will eventually get the hang out of it as long as you keep practicing.</en>
+                <fr>Je sais que vous êtes peut-être encore un peu perdu, mais je suis sûre que vous allez vous y habituez à la fin tant que vous vous entrainez.</fr>
             </text>
             <text id = "2">
-                <en>Then later, the cloud weavers were bored so they decided to play with board. Look at what they did! They created a loop, it makes no sense ! If you play it, it just keeps going forever !</en>
-                <fr>Et plus tard, les tisseurs de nuages s'ennuyaient alors ils ont décidé de jouer avec le tableau. Regardez ce qu'ils ont fait ! Ils ont créé une boucle, ça n'a aucun sens ! Si vous la lisez, ça ne s'arrête jamais !</fr>
+                <en>Try to focus on understanding on how each element works on its own, then how it interacts with the rest and you should be fine. Take it slowly if you need to.</en>
+                <fr>Essayez de vous concentrer sur comment chaque élément fonctionne de lui-même, puis comment il interagit avec le reste et vous devriez vous en sortir. Allez-y lentement si vous en avez besoin.</fr>
+            </text>
+            <text id = "3">
+                <en>Oh, and please listen to everything I have to say to you! I know it can be a bit much, but I am sure it will help! Well, maybe not the hints if you still have ideas on you own...</en>
+                <fr>Oh, et s'il-vous-plaît écoutez tout ce que j'ai à vous dire ! Je sais que c'est peut-être beaucoup, mais je suis sûr que ça vous aidera ! Enfin, peut-être pas les indices si vous avez encore des idées de votre côté...</fr>
             </text>
         </topic>
         <topic id = "1">
@@ -61,8 +76,8 @@
                 <fr>Objectif</fr>
             </name>
             <text id = "0">
-                <en>We noticed some irregularities in the canvases lately. The marketing team asks we only accept square canvases. That means we do not care about the clouds themselves, only whether the width and height of the canvas are equal.</en>
-                <fr>Nous avons noté récemment quelques irrégularités dans les canevas. L'équipe marketing demande que nous acceptions que des canevas carrés. Cela veut dire que les nuages en eux-mêmes n'ont pas d'importance, seulement si la largeur et la hauteur du canevas sont égaux.</fr>
+                <en>We got complaints about the canvases, it seems they are too small. Please accept canvases which are at least 5 spaces wide and 5 spaces high, and reject the other ones. The content of the canvases themselves does not matter.</en>
+                <fr>Nous avons reçu des complaintes à propos des canevas, il semblerait qu'ils sont trop petits. Nous sommes priés de n'accepter que les canevas qui font au moins 5 cases de large et 5 cases de haut. Le contenu des canevas en lui-même n'a pas d'importance.</fr>
             </text>
         </topic>
         <topic id = "2">
@@ -71,16 +86,24 @@
                 <fr>Outils</fr>
             </name>
             <text id = "0">
-                <en>(Please note that this assignment requires the use of the Check Border instruction which is introduced in a level missing from the current project. It behaves much like the other Check instruction you have already seen but is useful for checking move possibilities. How? Well, experiment and try to guess!)</en>
-                <fr>(Notez que cette mission nécessite l'utilisation de l'instruction Vérifier Bordure qui est présentée dans un niveau absent du projet actuel. Elle se comporte à peu près comme l'autre instruction Vérifier que vous connaissez déjà mais est utile pour vérifier les possibilités de déplacement. Comment ? He bien, expérimentez et essayez de deviner !)</fr>
+                <en>Here is a recap of everything we have seen in the first assignment. The most important concept is we can only interact with the instruction board, and not with the cloud canvas. But the weaver head in the instruction board controls the weaver body in the cloud canvas.</en>
+                <fr>Voici un résumé de tout ce que nous avons vu dans la première mission. Le concept le plus important est que nous ne pouvons interagir qu'avec le tableau d'instruction, et pas avec le canevas de nuages. Mais la tête du tisseur dans le tableau d'instruction contrôle le corps dans le canevas de nuages.</fr>
             </text>
             <text id = "1">
-                <en>So, this Wait instruction does nothing to our weaver, but at least the instruction reader keeps moving. I guess you can build a path of Wait instructions on the board? I still fail to see the point. By the way, after the reader starts moving, the Start instruction acts like a Wait instruction.</en>
-                <fr>Donc, cette instruction Attendre ne fait rien à notre tisseur, mais au moins le lecteur d'instructions continue d'avancer. Je suppose que vous pouvez construire un chemin sur le tableau avec des instructions Attendre ? Je ne vois toujours pas l'intérÃªt. Au fait, aprÃ¨s que le lecteur ait commencé à bouger, l'instruction Démarrer marche comme une instruction Attendre.</fr>
+                <en>The body always starts at the top left corner of the canvas. The head starts at the purple Start instruction. When the head starts moving, it applies the current instruction to its body, then move to the next instruction.</en>
+                <fr>Le corps commence toujours dans le coin haut-gauche du canevas. La tête commence sur l'instruction Démarrer violette. Quand la tête commence à bouger, elle applique l'instruction actuelle à son corps, puis se déplace vers l'instruction suivante.</fr>
             </text>
             <text id = "2">
-                <en>I noticed in the last assignment you may need to repeat some instructions. It feels like a waste of space on the board. I wish there was a way to use the same instructions several times. Weird, it feels like the solution is right in front of my eyes...</en>
-                <fr>J'ai remarqué durant la derniÃ¨re mission que vous pouviez avoir besoin de répéter des instructions. J'ai l'impression que c'est un gÃ¢chis de place sur le tableau. J'aimerais qu'il existe un moyen de réutiliser les mÃªmes instructions plusieurs fois. Bizarre, j'ai l'impression que la solution est pile devant mes yeux...</fr>
+                <en>Blue instructions are Action instructions. For example the Move instruction moves the weaver body one space. Most instructions can be customized in the Modify menu to fit your needs. For the Move instruction, you can choose on the left in which direction the body moves, and on the right in which direction the head moves after applying the instruction.</en>
+                <fr>Les instructions bleues sont des instructions d'Action. Par exemple l'instruction Déplacer déplace le corps du tisseur d'une case. La plupart des instructions peuvent être ajustées dans le menu Modifier pour s'adapter à vos besoins. Pour l'instruction Déplacer, vous pouvez choisir à gauche dans quelle direction le corps se déplace, et à droite dans quelle direction la tête se déplace après avoir appliqué l'instruction.</fr>
+            </text>
+            <text id = "3">
+                <en>Yellow instructions are Check instructions. They have no effect on the canvas, but changes which direction the head moves depending on the canvas. You already know about the Check Cloud instruction. This time the Check Border checks whether the current space occupied by the weaver body is at a specific edge of the canvas. In addition to the edge and the possible directions for the head, you can choose to perform the check on an adjacent space too but you rarely need this.</en>
+                <fr>Les instructions jaunes sont des instructions Vérifier. Elles n'ont aucun effet sur le canevas, mais change la direction que suit la tête selon l'état du canevas. Vous connaissez déjà l'instruction Vérifier Nuage. Cette fois l'instruction Vérifier Bordure vérifie si la case occupée par le corps du tisseur est sur un bord spécifique du canevas. En plus du bord et des directions possibles pour la tête, vous pouvez aussi réaliser la vérification sur une case adjacente mais vous en aurez rarement besoin.</fr>
+            </text>
+            <text id = "4">
+                <en>The final goal of the head is to reach a purple ending instruction, either the Accept or the Reject instruction. If the weaver head reaches an Accept instruction, it will accept the canvas, otherwise it will reject it. Remember to always include at least one of each! You can check in the Tests tab the expected result. The same board must work for every test, so plan ahead!</en>
+                <fr>L'objectif final de la tête est d'atteindre une instruction de fin mauve, soit Accepter, soit Refuser. Si la tête du tisseur atteind une instruction Accepter, il acceptera le canevas, sinon il le refusera. Pensez à toujours inclure au moins un de chaque ! Vous pouvez regarder dans l'onglet Tests le résultat attendu. Le même tableau doit fonctionner pour tous les tests, alors soyez prévoyant !</fr>
             </text>
         </topic>
         <topic id = "3">
@@ -89,8 +112,8 @@
                 <fr>Contraintes</fr>
             </name>
             <text id = "0">
-                <en>Sorry, nothing special today. But remember the canvases are always at least rectangular. Does it help?</en>
-                <fr>Désolée, rien de spécial aujourd'hui. Mais n'oubliez pas que les canevas sont toujours rectangulaires. Est-ce que c'est utile ?</fr>
+                <en>Here is something about the canvases : they are always rectangular, and the weaver body always starts at the top left corner. There may be additionnal constraints, but not this time.</en>
+                <fr>Voici quelque chose à propos des canevas : ils sont toujours rectangulaires, et le corps du tisseur commence toujours dans le coin haut-gauche. Il peut y avoir des contraintes supplémentaires, mais pas cette fois.</fr>
             </text>
         </topic>
         <topic id = "4">
@@ -99,24 +122,20 @@
                 <fr>Indices</fr>
             </name>
             <text id = "0">
-                <en>It seems so simple, but the weaver lacks some... abilities. We will have to use some sort of trick to compensate.</en>
-                <fr>Cela a l'air si simple, mais le tisseur manque de certaines... abilités. Il va falloir utiliser une sorte d'astuce pour compenser.</fr>
+                <en>Try to understand what you can do, then you will understand what you must do. Know your tools first!</en>
+                <fr>Essayez de comprendre ce que vous pouvez faire, puis vous comprendrez ce que vous devez faire. Connaissez vos outils avant tout !</fr>
             </text>
             <text id = "1">
-                <en>What can we do? I am more certain of what we cannot do. The weaver cannot count or remember anything. So checking the width then the height separately is pointless. There must be an other way to be sure they are equal.</en>
-                <fr>Que pouvons-nous faire ? Je suis plus certaine de ce que nous ne pouvons pas faire. Le tisseur ne peut pas compter ou se souvenir de quoi que ce soit. Donc regarder la largeur puis la hauteur séparément est sans intérÃªt. Il doit y avoir un autre moyen de s'assurer qu'ils sont égaux.</fr>
+                <en>If the width and the height of the canvas are 5 or larger, direct the weaver head to an Accept instruction. Otherwise, direct it to a Reject instruction. Can you do that?</en>
+                <fr>Si la largeur et la hauteur du canevas sont de 5 ou plus, dirigez la tête du tisseur vers une instruction Accepter. Sinon, dirigez-la vers une instruction Refuser. Est-ce que vous pouvez le faire?</fr>
             </text>
             <text id = "2">
-                <en>Sorry, I am still angry for how the weavers messed with the board before you came. They are not supposed to touch it. That loop was stupid! They are stupid! I mean, how was the reader supposed to reach an end? It had to leave the loop somehow! Can you create a loop which can reach a conclusion somehow? I do not think so, it would be a paradox!</en>
-                <fr>Désolé, je suis encore en colÃ¨re contre les tisseurs qui se sont amusés avec le tableau avant que vous arriviez. Ils ne sont pas censés le toucher. Cette boucle était stupide ! Ils sont stupides ! Je veux dire, comment devait le lecteur atteindre une fin ? Il devait sortir de la boucle d'un faÃ§on ou d'une autre ! Est-ce que tu peux créer une boucle qui peut atteindre une conclusion ? Je ne pense pas, ce serait paradoxal !</fr>
+                <en>Oh, about the Check Border instruction modification : forget about the Check direction, it is useful mainly for optimization. The second option is much more interesting, it allows you to check for a specific side of the canvas.</en>
+                <fr>Oh, à propos de la modification de l'instruction Vérifier Bordure : oubliez la Direction de vérification, elle sert principalement pour de l'optimisation. La seconde option est bien plus intéressante, elle vous permet de vérifier un côté spécifique du canevas.</fr>
             </text>
             <text id = "3">
-                <en>I am afraid the artistic studio will send huge canvases, like a million by a million. It is scary! I need to breathe, I need to think of... smaller canvases. Yes, one by one, much better, I see how it works. Now that I am comfortable with this, I can go a bit higher, like two by two. Yes, step by step. If I keep repeating this, eventually everything possible will be fine.</en>
-                <fr>J'ai peur que le studio artistique envoie des canevas énormes, par exemple un million par un million. C'est effrayant ! J'ai besoin de respirer. J'ai besoin de penser à... des petits canevas. Oui, une case par une case, beaucoup mieux, je vois comment Ã§a marche. Maintenant que je suis confortable avec Ã§a, je peux monter un peu, comme deux par deux. Oui, étape par étape. Si je répÃ¨te Ã§a, au bout d'un moment tout sera bien.</fr>
-            </text>
-            <text id = "4">
-                <en>I suppose we cannot check the size of the canvas without reaching its down-right corner. But we do not know the size of the canvas, so how do we know we reached the end? Is there an efficient to travel to that corner if the canvas is a square?</en>
-                <fr>Je suppose qu'on ne peut pas vérifier la taille du canevas sans atteindre son coin bas-droit. Mais nous ne connaissons pas la taille du canevas, alors comment savons-nous que nous avons atteint sa fin ? Y a-t-il un moyen efficace de voyager vers le coin si le canevas est un carré ?</fr>
+                <en>Understanding the basic use of each instruction is very useful. The Move instruction moves the body one space in a specific direction, and the Check Border checks whether the body can move one more space in that direction or not. Try to experiment with simple examples first.</en>
+                <fr>Comprendre l'utilité basique de chaque instruction est très utile. L'instruction Déplacer déplace le corps d'une case dans une direction spécifique, et l'instruction Vérifier Bordure vérifie si le corps peut se déplacer d'encore une case dans cette direction ou non. Essayez d'expérimenter avec des exemples simples d'abord.</fr>
             </text>
         </topic>
     </infos>

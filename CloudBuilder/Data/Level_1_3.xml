@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<level_data>
+    <general_info>
+        <name>
+            <en>Back to square one</en>
+            <fr>Retour à la case départ</fr>
+        </name>
+        <world>1</world>
+        <level>3</level>
+        <type>validation</type>
+        <robots>1</robots>
+        <music_id>3</music_id>
+    </general_info>
+    <cloud_pictures>
+        <cloud id = "0">
+            <data>w2h3p011001</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "1">
+            <data>w3h2p011001</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "2">
+            <data>w3h3p010111010</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "3">
+            <data>w2h1p11</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "4">
+            <data>w1h2p00</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "5">
+            <data>w7h7p0000000000001000001110101110111110001110000010000</data>
+            <result>Accept</result>
+        </cloud>
+    </cloud_pictures>
+    <board>
+        <starting_data>w8h8i1j1vAMrrni1j2vFWui1j3vAMuuni2j1vFWri2j2vSSlri2j3vFWli3j1vAMddni3j2vFWdi3j3vAMlln</starting_data>
+        <available_instructions>
+            <instruction code_name = "ActMove" id = "21" />
+            <instruction code_name = "CheckBorder" id = "33" />
+            <instruction code_name = "FlowWait" id = "41" />
+            <instruction code_name = "SpeAccept" id = "12" />
+            <instruction code_name = "SpeReject" id = "13" />
+        </available_instructions>
+    </board>
+    <infos>
+        <topic id = "0">
+            <name>
+                <en>Welcome!</en>
+                <fr>Bienvenue !</fr>
+            </name>
+            <text id = "0">
+                <en>Well done! I knew you could do it! I feel you now understand the weavers and can tackle more complex challenges!</en>
+                <fr>Bien joué ! Je savais que vous en étiez capable ! Je sens que vous comprenez maintenant les tisseurs et pouvez vous attaquez à des défis plus complexes !</fr>
+            </text>
+            <text id = "1">
+                <en>And that is all for the good news. While you were away, one of the engineers gave us the prototype of their last instruction : the Wait instruction. They said we had to test it, but it does nothing. When the head reaches it, nothing happens for one step and then the head just skip to the next instruction on the board. What is the point ?</en>
+                <fr>Et c'est tout pour les bonnes nouvelles. Pendant que vous étiez partis, un des ingénieurs nous a donné le prototype de leur dernière instruction : l'instruction Attendre. Il a dit que nous devions l'essayer, mais elle ne fait rien. Quand la tête l'atteint, rien ne se passe pendant un cycle et puis elle passe à l'instruction suivante sur le tableau. Quel est l'intérêt ?</fr>
+            </text>
+            <text id = "2">
+                <en>Then later, the cloud weavers were bored so they decided to play with board. Look at what they did! They created a loop, it makes no sense ! If you play it, it just keeps going forever!</en>
+                <fr>Et plus tard, les tisseurs de nuages s'ennuyaient alors ils ont décidé de jouer avec le tableau. Regardez ce qu'ils ont fait ! Ils ont créé une boucle, ça n'a aucun sens ! Si vous la lisez, ça ne s'arrête jamais !</fr>
+            </text>
+        </topic>
+        <topic id = "1">
+            <name>
+                <en>Goal</en>
+                <fr>Objectif</fr>
+            </name>
+            <text id = "0">
+                <en>We noticed some irregularities in the canvases lately. The marketing team asks we only accept square canvases. That means we do not care about the clouds themselves, only whether the width and height of the canvas are equal.</en>
+                <fr>Nous avons noté récemment quelques irrégularités dans les canevas. L'équipe marketing demande que nous acceptions que des canevas carrés. Cela veut dire que les nuages en eux-mêmes n'ont pas d'importance, seulement si la largeur et la hauteur du canevas sont égaux.</fr>
+            </text>
+        </topic>
+        <topic id = "2">
+            <name>
+                <en>Tools</en>
+                <fr>Outils</fr>
+            </name>
+            <text id = "0">
+                <en>So, this Wait instruction does nothing to our weaver body, but at least the head keeps moving. I guess you can build a path of Wait instructions on the board? I still fail to see the point. By the way, after the head starts moving, the Start instruction acts like a Wait instruction.</en>
+                <fr>Donc, cette instruction Attendre ne fait rien au corps de notre tisseur, mais au moins sa tête continue d'avancer. Je suppose que vous pouvez construire un chemin sur le tableau avec des instructions Attendre ? Je ne vois toujours pas l'intérêt. Au fait, après que la tête ait commencé à bouger, l'instruction Démarrer marche comme une instruction Attendre.</fr>
+            </text>
+            <text id = "1">
+                <en>I noticed in the last assignment you may need to repeat some instructions. It feels like a waste of space on the board. I wish there was a way to use the same instructions several times. Weird, it feels like the solution is right in front of my eyes...</en>
+                <fr>J'ai remarqué durant la dernière mission que vous pouviez avoir besoin de répéter des instructions. J'ai l'impression que c'est un gâchis de place sur le tableau. J'aimerais qu'il existe un moyen de réutiliser les mêmes instructions plusieurs fois. Bizarre, j'ai l'impression que la solution est pile devant mes yeux...</fr>
+            </text>
+        </topic>
+        <topic id = "3">
+            <name>
+                <en>Constraints</en>
+                <fr>Contraintes</fr>
+            </name>
+            <text id = "0">
+                <en>Sorry, nothing special today. But remember the canvases are always at least rectangular. Does it help?</en>
+                <fr>Désolée, rien de spécial aujourd'hui. Mais n'oubliez pas que les canevas sont toujours rectangulaires. Est-ce que c'est utile ?</fr>
+            </text>
+        </topic>
+        <topic id = "4">
+            <name>
+                <en>Hints</en>
+                <fr>Indices</fr>
+            </name>
+            <text id = "0">
+                <en>It seems so simple, but the weaver lacks some... abilities. We will have to use some sort of trick to compensate.</en>
+                <fr>Cela a l'air si simple, mais le tisseur manque de certaines... abilités. Il va falloir utiliser une sorte d'astuce pour compenser.</fr>
+            </text>
+            <text id = "1">
+                <en>What can we do? I am more certain of what we cannot do. The weaver cannot count or remember anything. So checking the width then the height separately is pointless. There must be an other way to be sure they are equal.</en>
+                <fr>Que pouvons-nous faire ? Je suis plus certaine de ce que nous ne pouvons pas faire. Le tisseur ne peut pas compter ou se souvenir de quoi que ce soit. Donc regarder la largeur puis la hauteur séparément est sans intérêt. Il doit y avoir un autre moyen de s'assurer qu'ils sont égaux.</fr>
+            </text>
+            <text id = "2">
+                <en>Sorry, I am still angry for how the weavers messed with the board before you came. They are not supposed to touch it. That loop was stupid! They are stupid! I mean, how was the head supposed to reach an end? It had to leave the loop somehow! Can you create a loop which can reach a conclusion somehow? I do not think so, it would be a paradox!</en>
+                <fr>Désolé, je suis encore en colère contre les tisseurs qui se sont amusés avec le tableau avant que vous arriviez. Ils ne sont pas censés le toucher. Cette boucle était stupide ! Ils sont stupides ! Je veux dire, comment devait la tête atteindre une fin ? Il devait sortir de la boucle d'un façon ou d'une autre ! Est-ce que tu peux créer une boucle qui peut atteindre une conclusion ? Je ne pense pas, ce serait paradoxal !</fr>
+            </text>
+            <text id = "3">
+                <en>I am afraid the artistic studio will send huge canvases, like a million by a million. It is scary! I need to breathe, I need to think of... smaller canvases. Yes, one by one, much better, I see how it works. Now that I am comfortable with this, I can go a bit higher, like two by two. Yes, step by step. If I keep repeating this, eventually everything possible will be fine.</en>
+                <fr>J'ai peur que le studio artistique envoie des canevas énormes, par exemple un million par un million. C'est effrayant ! J'ai besoin de respirer. J'ai besoin de penser à... des petits canevas. Oui, une case par une case, beaucoup mieux, je vois comment ça marche. Maintenant que je suis confortable avec ça, je peux monter un peu, comme deux par deux. Oui, étape par étape. Si je répète ça, au bout d'un moment tout sera bien.</fr>
+            </text>
+            <text id = "4">
+                <en>I suppose we cannot check the size of the canvas without reaching its down-right corner. But we do not know the size of the canvas, so how do we know we reached the end? Is there an efficient to travel to that corner if the canvas is a square?</en>
+                <fr>Je suppose qu'on ne peut pas vérifier la taille du canevas sans atteindre son coin bas-droit. Mais nous ne connaissons pas la taille du canevas, alors comment savons-nous que nous avons atteint sa fin ? Y a-t-il un moyen efficace de voyager vers le coin si le canevas est un carré ?</fr>
+            </text>
+        </topic>
+    </infos>
+</level_data>

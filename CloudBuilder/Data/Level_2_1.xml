@@ -14,16 +14,20 @@
     </general_info>
     <cloud_pictures>
         <cloud id = "0">
-            <data>w3h3p001010100</data>
-            <result>w3h3p110101011</result>
+            <data>w5h5p1010100000000001000111011</data>
+            <result>w5h5p0101011111111110111000100</result>
         </cloud>
         <cloud id = "1">
-            <data>w3h3p010111010</data>
-            <result>w3h3p101000101</result>
+            <data>w5h5p0101010001000001000101010</data>
+            <result>w5h5p1010101110111110111010101</result>
         </cloud>
         <cloud id = "2">
-            <data>w3h3p101010101</data>
-            <result>w3h3p010101010</result>
+            <data>w5h5p1000101010000000000001010</data>
+            <result>w5h5p0111010101111111111110101</result>
+        </cloud>
+        <cloud id = "3">
+            <data>w5h5p1000101110010100111010001</data>
+            <result>w5h5p0111010001101011000101110</result>
         </cloud>
     </cloud_pictures>
     <board>
@@ -44,8 +48,8 @@
                 <fr>Bienvenue !</fr>
             </name>
             <text id = "0">
-                <en>Well, this is awkward. The boss saw the weavers playing with clouds and discovered they can create and destroy them. It gave him ideas and he decided we could do new things. Which means more work for us. Yeah...</en>
-                <fr>Bien, c'est étrange. Le patron a vu les tisseurs jouer avec des nuages et a découvert qu'ils peuvent en créer et détruire. Cela lui a donné des idées et il a décidé que nous pourrions faire de nouvelles choses. Ce qui veut dire plus de travail pour nous. Ouais...</fr>
+                <en>Well, this is awkward. The boss learned today that the cloud weavers can actually really weave clouds. It gave him ideas and he decided we could do new things. Which means more work for us. Yeah...</en>
+                <fr>Bien, c'est étrange. Le patron a appris aujourd'ui que les tisseurs de nuages peut vraiment tisser des nuages. Cela lui a donné des idées et il a décidé que nous pourrions faire de nouvelles choses. Ce qui veut dire plus de travail pour nous. Ouais...</fr>
             </text>
             <text id = "1">
                 <en>Starting from now, our verification assignments may be replaced with modification ones. During these, the weaver must modify a canvas to suit the requests of the marketing team. Why cannot the artistic studio do it? Beat me.</en>
@@ -72,8 +76,8 @@
                 <fr>Heureusement les ingénieurs nous ont donné une nouvelle instruction : l'instruction Changer Nuage. Vous pouvez l'utiliser pour créer ou détruire un nuage là où se trouve le tisseur. Avec les autres instructions, ça devrait être assez pour corriger tout avant que l'équipe marketing ne remarque quelque chose.</fr>
             </text>
             <text id = "1">
-                <en>Oh, I almost forgot! To end the modification process, use the Accept instruction. Just make sure the modification is complete before accepting it, understood?</en>
-                <fr>Oh, j'ai presque oublié ! Pour terminer le processus de modification, utilisez l'instruction Accepter. Soyez sûr que la modification est complétée avant de l'accepter, compris ?</fr>
+                <en>Oh, I almost forgot! To end the modification process, use the Accept instruction, much like before. Just make sure the modification is complete before accepting it, understood?</en>
+                <fr>Oh, j'ai presque oublié ! Pour terminer le processus de modification, utilisez l'instruction Accepter, à peu près comme auparavant. Soyez sûr que la modification est complétée avant de l'accepter, compris ?</fr>
             </text>
         </topic>
         <topic id = "3">

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<level_data>
+    <general_info>
+        <name>
+            <en>End of the line</en>
+            <fr>Fin de la ligne</fr>
+        </name>
+        <world>1</world>
+        <level>4</level>
+        <type>validation</type>
+        <robots>1</robots>
+        <music_id>3</music_id>
+    </general_info>
+    <cloud_pictures>
+        <cloud id = "0">
+            <data>w7h5p11101111000101101010110101011110111</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "1">
+            <data>w7h7p0000000001010001111100111110001110000010000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "2">
+            <data>w3h6p111001111100000100</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "3">
+            <data>w7h8p00010000011100001110000111000111110111111100111000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "4">
+            <data>w9h9p000001100000000110000000110000001100001000000011100000001000010000000111000000010</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "5">
+            <data>w5h4p00000001000111011111</data>
+            <result>Reject</result>
+        </cloud>
+    </cloud_pictures>
+    <board>
+        <starting_data>w8h8i1j1vSSrr</starting_data>
+        <available_instructions>
+            <instruction code_name = "ActMove" id = "21" />
+            <instruction code_name = "CheckCloud" id = "31" />
+            <instruction code_name = "CheckBorder" id = "33" />
+            <instruction code_name = "FlowWait" id = "41" />
+            <instruction code_name = "SpeAccept" id = "12" />
+            <instruction code_name = "SpeReject" id = "13" />
+        </available_instructions>
+    </board>
+    <infos>
+        <topic id = "0">
+            <name>
+                <en>Welcome!</en>
+                <fr>Bienvenue !</fr>
+            </name>
+            <text id = "0">
+                <en>It seems you are getting the hang out of it! Which is great, because the marketing team has a lot of ideas too.</en>
+                <fr>Il semblerait que vous commencez à vous sentir à l'aise ! Ce qui est excellent, car l'équipe marketing a elle aussi beaucoup d'idées.</fr>
+            </text>
+            <text id = "1">
+                <en>For the time being, you already know enough tools to do a lot, so we can already satisfy some of their demands.</en>
+                <fr>Pour le moment, vous avez déjà assez d'outils pour faire beaucoup de choses, donc nous pouvons déjà satisfaire certaines de leurs demandes.</fr>
+            </text>
+        </topic>
+        <topic id = "1">
+            <name>
+                <en>Goal</en>
+                <fr>Objectif</fr>
+            </name>
+            <text id = "0">
+                <en>The marketing team said we should go green, and stop any waste of space in the canvases. As a first step, they suggested we accept only the canvases which have no empty lines.</en>
+                <fr>L'équipe marketing a dit que nous devrions devenir écologiques et arrêter le gâchis d'espace dans les canevas. Pour le premier pas, ils ont suggéré que nous acceptions uniquement les canevas qui n'ont aucune ligne vide.</fr>
+            </text>
+        </topic>
+        <topic id = "2">
+            <name>
+                <en>Tools</en>
+                <fr>Outils</fr>
+            </name>
+            <text id = "0">
+                <en>We have already seen every instruction available, but never all of them together. I wonder how they can work together?</en>
+                <fr>Nous avons déjà vu chaque instruction disponible, mais jamais tout en même temps. Je me demande comment ils peuvent fonctionner ensemble ?</fr>
+            </text>
+        </topic>
+        <topic id = "3">
+            <name>
+                <en>Constraints</en>
+                <fr>Contraintes</fr>
+            </name>
+            <text id = "0">
+                <en>Nothing special. Again.</en>
+                <fr>Rien de spécial. Encore une fois.</fr>
+            </text>
+        </topic>
+        <topic id = "4">
+            <name>
+                <en>Hints</en>
+                <fr>Indices</fr>
+            </name>
+            <text id = "0">
+                <en>Remember everything you've learned up to now and you should be fine.</en>
+                <fr>Souvenez-vous de tout ce que vous avez appris jusqu'ici et vous devriez vous en sortir.</fr>
+            </text>
+            <text id = "1">
+                <en>Do not forget to check the Tests tab to see what you can expect. It may help you understand your task.</en>
+                <fr>N'oubliez pas de regarder l'onglet Tests pour voir à quoi vous attendre. Ils pourraient vous aider à comprendre votre tâche.</fr>
+            </text>
+            <text id = "2">
+                <en>Work the problem step by step. For example, how do you check whether the first line is empty or not? Then the second one?</en>
+                <fr>Travaillez sur le problème étape par étape. Par exemple, comment vérifier si la première ligne est vide ou non ? Puis la seconde ?</fr>
+            </text>
+            <text id = "3">
+                <en>The engineers told me one of the biggest problem is knowing when to stop. Knowing when you are sure of your answer can be as important as choosing it.</en>
+                <fr>Les ingénieurs m'ont dit que l'un des plus gros problèmes est savoir quand s'arrêter. Savoir quand on est sûr de sa réponse peut être aussi important que la choisr.</fr>
+            </text>
+            <text id = "4">
+                <en>I fail to understand how to use the Check Border instructions. Maybe I need to take some time to understand what they can tell me.</en>
+                <fr>Je n'arrive pas à comprendre comment utiliser les instructions Vérifier Bordure. Peut-être que j'ai besoin de prendre un peu de temps pour comprendre ce qu'ils peuvent me dire.</fr>
+            </text>
+        </topic>
+    </infos>
+</level_data>

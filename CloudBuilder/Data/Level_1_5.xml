@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<level_data>
+    <general_info>
+        <name>
+            <en>Don't forget this one</en>
+            <fr>N'oubliez pas celui-là</fr>
+        </name>
+        <world>1</world>
+        <level>5</level>
+        <type>validation</type>
+        <robots>1</robots>
+        <music_id>3</music_id>
+    </general_info>
+    <cloud_pictures>
+        <cloud id = "0">
+            <data>w7h7p0110110111111111111110111110111111111111110110110</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "1">
+            <data>w3h3p000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "2">
+            <data>w5h5p0000000000001000000000000</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "3">
+            <data>w5h5p0000000000000000000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "4">
+            <data>w6h6p000000000000000000000000000000100000</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "5">
+            <data>w2h7p00000000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "6">
+            <data>w7h7p1000000000000000000000000000000000000000000000000</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "7">
+            <data>w7h2p00000000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "8">
+            <data>w7h7p0000001000000000000000000000000000000000000000000</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "9">
+            <data>w6h6p000000000000000000000000000000000001</data>
+            <result>Accept</result>
+        </cloud>
+    </cloud_pictures>
+    <board>
+        <starting_data>w8h8i1j1vSSrr</starting_data>
+        <available_instructions>
+            <instruction code_name = "ActMove" id = "21" />
+            <instruction code_name = "CheckCloud" id = "31" />
+            <instruction code_name = "CheckBorder" id = "33" />
+            <instruction code_name = "FlowWait" id = "41" />
+            <instruction code_name = "SpeAccept" id = "12" />
+            <instruction code_name = "SpeReject" id = "13" />
+        </available_instructions>
+    </board>
+    <infos>
+        <topic id = "0">
+            <name>
+                <en>Welcome!</en>
+                <fr>Bienvenue !</fr>
+            </name>
+            <text id = "0">
+                <en>Great work as always! The boss is so impressed he is thinking about giving more responsibilities to us! Keep it up!</en>
+                <fr>Magnifique travail comme toujours ! Le patron est si impressionné qu'il réfléchit à nous donner plus de responsabilités ! Continuez comme ça !</fr>
+            </text>
+        </topic>
+        <topic id = "1">
+            <name>
+                <en>Goal</en>
+                <fr>Objectif</fr>
+            </name>
+            <text id = "0">
+                <en>The artistic studio went a bit too far cutting down expenses. Long story short, we need to reject any empty canvas. There must be at least a cloud to accept it.</en>
+                <fr>Le studio artistique est allé un peu trop loin à couper les dépenses. Je vous passe l'histoire, mais nous devons refuser les canevas vides. Il doit y avoir au moins un nuage pour l'accepter.</fr>
+            </text>
+            <text id = "1">
+                <en>I discussed it with an engineer and she told me it may get tricky if you want to optimize the solution. She added it varies heavily depending on what you mean when you are talking about optimization. What did she meant?</en>
+                <fr>J'en ai discuté avec une ingénieure et elle m'a dit que ça peut devenir tordu si vous essayez d'optimiser la solution. Elle a ajouté que ça dépend grandement dece que vous voulez dire quand vous parlez d'optimisation. Qu'est-ce qu'elle voulait dire ?</fr>
+            </text>
+        </topic>
+        <topic id = "2">
+            <name>
+                <en>Tools</en>
+                <fr>Outils</fr>
+            </name>
+            <text id = "0">
+                <en>If you are comfortable with everything introduced so far, you should be able to do it. Good luck!</en>
+                <fr>Si vous êtes à l'aise avec tout ce qui a été introduit jusqu'ici, vous devriez vous en sortir. Bonne chance!</fr>
+            </text>
+        </topic>
+        <topic id = "3">
+            <name>
+                <en>Constraints</en>
+                <fr>Contraintes</fr>
+            </name>
+            <text id = "0">
+                <en>The artistic studio told me nothing about the canvases this time. In fact they did not told me anything at all. Did they cut down the phone too?</en>
+                <fr>Le studio artistique ne m'a rien dit à propos des canevas cette fois. En fait ils ne m'ont rien dit du tout. Ont-ils coupé le téléphone aussi ?</fr>
+            </text>
+        </topic>
+        <topic id = "4">
+            <name>
+                <en>Hints</en>
+                <fr>Indices</fr>
+            </name>
+            <text id = "0">
+                <en>Previous assignments may help you complete this one. You have learned so much!</en>
+                <fr>Les missions précédentes peuvent vous aider à réussir celle-ci. Vous avez tellement appris!</fr>
+            </text>
+            <text id = "1">
+                <en>Sorry, I have no idea this time. Maybe you can check all my previous suggestions and see how they fit in this case?</en>
+                <fr>Désolé, je n'ai pas d'idée cette fois. Peut-être que vous pouvez revoir toutes mes précédentes suggestions and réfléchir à comment elles s'adaptent à cette situation ?</fr>
+            </text>
+        </topic>
+    </infos>
+</level_data>

@@ -8,37 +8,58 @@
         </name>
         <world>3</world>
         <level>1</level>
-        <type>modification</type>
-        <robots>4</robots>
+        <type>validation</type>
+        <robots>2</robots>
         <music_id>3</music_id>
     </general_info>
     <cloud_pictures>
         <cloud id = "0">
-            <data>w3h3p001010100</data>
-            <result>w3h3p001010100</result>
+            <data>w5h5p0101011111111110111000100</data>
+            <result>Accept</result>
         </cloud>
         <cloud id = "1">
-            <data>w3h3p010111010</data>
-            <result>w3h3p010111010</result>
+            <data>w8h8p0011110001111110100110011001100111111111101111010100001000111100</data>
+            <result>Accept</result>
         </cloud>
         <cloud id = "2">
-            <data>w3h3p101010101</data>
-            <result>w3h3p101010101</result>
+            <data>w8h8p0011110001111110110110011010100111111111101111010100001000111100</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w6h6p011110111111101001111111111111101101</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w6h6p011110111111100101111111111111101101</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w6h6p001100011110111111001100001100001100</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w7h7p0000000010001010101010000000010001000111000000000</data>
+            <result>Accept</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w7h7p0000000010001010101010000000010000000111000000000</data>
+            <result>Reject</result>
+        </cloud>
+        <cloud id = "0">
+            <data>w7h7p0000000010001010101010000000000001000111000000000</data>
+            <result>Reject</result>
         </cloud>
     </cloud_pictures>
     <board>
-        <starting_data>w8h8i1j1vSSrri1j2vSSrbi1j3vSSrgi1j4vSSry</starting_data>
+        <starting_data>w8h8i1j1vSSdri1j2vFSri5j1vAMrrni6j1vCBdlcnri6j2vFSli7j1vSSlb</starting_data>
         <available_instructions>
             <instruction code_name = "ActMove" id = "21" />
-            <instruction code_name = "ActSetCloud" id = "22" />
-            <instruction code_name = "ActSetColor" id = "23" />
             <instruction code_name = "CheckCloud" id = "31" />
-            <instruction code_name = "CheckColor" id = "32" />
             <instruction code_name = "CheckBorder" id = "33" />
             <instruction code_name = "FlowWait" id = "41" />
-            <instruction code_name = "FlowPause" id = "42" />
-            <instruction code_name = "FlowResume" id = "43" />
             <instruction code_name = "FlowSync" id = "44" />
+            <instruction code_name = "SpeAccept" id = "12" />
+            <instruction code_name = "SpeReject" id = "13" />
         </available_instructions>
     </board>
     <infos>
@@ -48,8 +69,16 @@
                 <fr>Bienvenue !</fr>
             </name>
             <text id = "0">
-                <en>This is the sandbox mode, where the magic happens! Everything is available, so be free and go crazy!</en>
-                <fr>Voici le mode bac à sable, où le magie prend vie ! Tout est disponible, alors sentez-vous libre et laissez-vous prendre par la folie !</fr>
+                <en>I hope you're ready for overtime, because our workload just doubled! We have been assigned the formation of a new cloud weaver!</en>
+                <fr>J'espère que vous êtes prêt pour des heures supplémentaires, parce que notre charge de travail vient de doubler ! Nous veons d'être assigné à la formation d'un nouveau tisseur de nuages !</fr>
+            </text>
+            <text id = "1">
+                <en>Say hello to Blue! He is exactly like our red friend, except... More blue. As you can expect, each weaver head control its own body at the same time.</en>
+                <fr>Dîtes bonjour à Bleu ! Il est exactement comme notre ami rouge, juste... Un peu plus bleu. Comme vous pouvez vous en douter, chaque tête de tisseur contrôle son propre corps en même temps.</fr>
+            </text>
+            <text id = "2">
+                <en>We have a lot to learn today too, but do not fear. You already have learned so much, I am sure you will get it!</en>
+                <fr>Nous avons nous aussi beaucoup à apprendre aujourd'hui, mais n'ayez pas peur. Vous avez déjà appris tellement, je suis sûre que vous allez comprendre !</fr>
             </text>
         </topic>
         <topic id = "1">
@@ -58,8 +87,12 @@
                 <fr>Objectif</fr>
             </name>
             <text id = "0">
-                <en>There's nothing wrong here, build your own goals!</en>
-                <fr>Rien n'est faux ici, construisez-vous vos propres objectifs!</fr>
+                <en>A consumers association complained our clouds are not "equal enough". We are still trying to get them to explain what "equal" means, but in the meantime we should make sure our canvases are at least symmetric.</en>
+                <fr>Une association de consommateurs s'est plainte que nos nuages ne sont pas "assez égaux". Nous essayons toujours de leur demander d'expliquer ce que "égaux" signifie, nous devrions nous assurer que nos canevas sont symétriques.</fr>
+            </text>
+            <text id = "1">
+                <en>The right half of the canvas should be the mirror image of the left half. Can our two little weavers check that?</en>
+                <fr>La moitié droite du canevas doit être l'image miroir de la moitié gauche. Est-ce que nos deux petits tisseurs peuvent vérifier ça ?</fr>
             </text>
         </topic>
         <topic id = "2">
@@ -68,8 +101,16 @@
                 <fr>Outils</fr>
             </name>
             <text id = "0">
-                <en>(The sandbox includes some elements introduced in levels missing from the current project. They will be explained at a later time, meanwhile have fun trying to guess!)</en>
-                <fr>(Ce bac à sable inclus des éléments introduits dans des niveaux absents du projet actuel. Ils seront expliqués plus tard, en attendant amusez-vous é deviner !)</fr>
+                <en>With our second weaver come a few rules. First, both bodies still start at the top left corner of the canvas, but each weaver head has its own Start instruction and controls its own body.</en>
+                <fr>Avec notre second tisseur s'ajoutent quelques règles. D'abord, les deux corps démarrent toujours dans le coin haut-gauche du canevas, mais chaque tête de tisseur a sa propre instruction Démarrer et contrôle son propre corps.</fr>
+            </text>
+            <text id = "1">
+                <en>Then there is this new Synchronize instruction. When a weaver head reach this instruction, they will sleep and stop moving. When all heads have reached a Synchronize instruction, they will wake up together and start moving again. This way they can keep moving together.</en>
+                <fr>Et puis il y a cette nouvelle instruction Synchroniser. Quand une tête atteint cette instruction, elle s'endort et arrête de se déplacer. Quand toutes les têtes ont atteint une instruction Synchroniser, elles se réveillent ensemble et recommencent à se déplacer. De cette façon elles continuent d'avancer ensemble.</fr>
+            </text>
+            <text id = "2">
+                <en>Finally, a new option appeared in the Modify menu. Heads can sometimes use someone else's body for their instruction, specified by the selected color. Grey means the head will use its own body. This is very useful with Check instructions to look at an other body's situation. It is a bit more complicated for Action instructions, this will be explained to us at a further time.</en>
+                <fr>Enfin, une nouvelle option est apparue dans le menu Modifier. Les têtes peuvent parfois utiliser le corps de quelqu'un d'autre pour leurs instructions, spécifié par la couleur choisie. Le gris signifie que la tête va utiliser son propre corps. C'est très utile avec les instructions Vérifier pour regarder la situation d'un autre corps. C'est un peu plus compliqué pour les instructions Action, ceci nous sera expliqué plus tard.</fr>
             </text>
         </topic>
         <topic id = "3">
@@ -78,8 +119,8 @@
                 <fr>Contraintes</fr>
             </name>
             <text id = "0">
-                <en>Still wondering what to do? This is freedom! You choose your own rules!</en>
-                <fr>Encore en train de vous demander quoi faire ? Ceci est la liberté : Choisissez vos propres règles!</fr>
+                <en>The artistic studio received no instruction. I feel it is worth mentionning there is no way to predict whether the canvas width will be odd or even.</en>
+                <fr>Le studio artistique n'a reçu aucune instruction. Je pense qu'il est important de mentionner qu'il n'y a aucun moyen de prédire si la largeur du canevas sera paire ou impaire.</fr>
             </text>
         </topic>
         <topic id = "4">
@@ -89,7 +130,7 @@
             </name>
             <text id = "0">
                 <en>This sandbox is currently being used by the creator to test new features, so anything can happen!</en>
-                <fr>Ce bac à sable est actuellement utilisé par le crÃ©ateur pour essayer de nouvelles fonctions, alors tout peut arriver !</fr>
+                <fr>Ce bac à sable est actuellement utilisé par le créateur pour essayer de nouvelles fonctions, alors tout peut arriver !</fr>
             </text>
         </topic>
     </infos>
