@@ -14,6 +14,6 @@ This project uses both C++ Standard Library and SFML for C++ Library, make sure 
 The development is currently mainly focused on running the game on Windows, hopefully cross-platform support will be implemented later. In the meantime, if you use an other operating system, you will have to comment any reference to <windows.h> and related code in main.ccp and ClipboardControl.cpp.
 
 For more info, please check the following links :
-My Twitter : https://twitter.com/cgdb3742
-The devblog : https://cgdb3742.wordpress.com
-The game on itch : https://cgdb.itch.io/cloudbuilder
+* My Twitter : https://twitter.com/cgdb3742
+* The devblog : https://cgdb3742.wordpress.com
+* The game on itch : https://cgdb.itch.io/cloudbuilder
